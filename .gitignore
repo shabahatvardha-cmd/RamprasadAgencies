@@ -1,0 +1,95 @@
+# ==============================================================================
+# Ram Prasad Agencies (TheWatchStore.in) — Master Git Ignore
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment Variables & Secret Credentials (CRITICAL — NEVER COMMIT)
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
+*.env
+*.env.local
+*.env.*
+
+# Keep example templates committed for reference
+!.env.example
+!*.env.example
+
+# Subdirectory env files
+admin/.env
+admin/.env.local
+admin/.env.*
+!admin/.env.example
+
+backend/.env
+backend/.env.local
+backend/.env.*
+!backend/.env.example
+
+frontend/.env
+frontend/.env.local
+frontend/.env.*
+!frontend/.env.example
+
+# ------------------------------------------------------------------------------
+# 2. Dependency Directories
+# ------------------------------------------------------------------------------
+node_modules/
+*/node_modules/
+
+# ------------------------------------------------------------------------------
+# 3. Production & Build Artifacts
+# ------------------------------------------------------------------------------
+dist/
+dist-ssr/
+build/
+*/dist/
+*/build/
+.next/
+out/
+
+# ------------------------------------------------------------------------------
+# 4. User Uploaded Media & Static Storage
+# ------------------------------------------------------------------------------
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ------------------------------------------------------------------------------
+# 5. Log Files
+# ------------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------------------------------------------
+# 6. Operating System & Editor Files
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# IDEs
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sublime-workspace
+*.sublime-project
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files & Windows script scratch
+*.tmp
+*.temp
+getadmin.vbs

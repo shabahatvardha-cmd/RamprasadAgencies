@@ -1,0 +1,9 @@
+{
+  "name": "ram-prasad-agencies",
+  "version": "2.6.0",
+  "description": "Ram Prasad Agencies - Luxury Horology Storefront & Admin Studio",
+  "scripts": {
+    "gateway": "node gateway.js",
+    "domains": "setup-custom-domain.bat"
+  }
+}
