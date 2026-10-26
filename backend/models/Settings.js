@@ -66,7 +66,7 @@ const DEFAULT_ADS = [
     celebrity: 'Takumi Master Horologists • Tokyo Atelier',
     tagline: 'Hand-enameled dials crafted by master artisans with centuries of Japanese metalworking pedigree.',
     brand: 'Seiko',
-    image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1200&q=85',
+    image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=1200&q=85',
     watchModel: 'Seiko Presage Craftsmanship Urushi Automatic',
     storeLocation: 'Shop No. 1, JalKal Building, Golghar',
     isActive: true,
