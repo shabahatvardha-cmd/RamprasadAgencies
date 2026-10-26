@@ -8,6 +8,7 @@ export default function WishlistDrawer({
   wishlist = [],
   onRemoveFromWishlist,
   contactPhone,
+  onSelectWatch,
 }) {
   if (!isOpen) return null;
 
@@ -66,23 +67,28 @@ export default function WishlistDrawer({
 
                 return (
                   <div
-                    key={watch._id}
-                    className="p-3.5 rounded-2xl bg-white border border-[#E5DFD5] flex items-center gap-4 group shadow-sm hover:shadow-md transition-shadow"
+                    key={watch._id || watch.id}
+                    onClick={() => onSelectWatch && onSelectWatch(watch)}
+                    className="p-3.5 rounded-2xl bg-white border border-[#E5DFD5] hover:border-brass-600/40 flex items-center gap-4 group shadow-sm hover:shadow-md transition-all cursor-pointer"
                   >
                     <img
                       src={img}
                       alt={watch.name}
                       className="w-16 h-16 object-contain rounded-xl bg-[#F8F5EE] p-2 shrink-0 border border-[#EBE4D8]"
+                      onError={(e) => {
+                        e.target.src =
+                          'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=600&q=80';
+                      }}
                     />
                     <div className="flex-1 min-w-0">
                       <span className="text-[10px] uppercase font-bold text-brass-800 font-mono tracking-wider">
                         {watch.brand}
                       </span>
-                      <h4 className="text-xs font-bold text-[#1A1A1A] truncate mt-0.5">
+                      <h4 className="text-xs font-bold text-[#1A1A1A] truncate mt-0.5 group-hover:text-brass-800 transition-colors">
                         {watch.name}
                       </h4>
-                      <p className="text-[11px] font-serif font-bold text-brass-800 mt-1">
-                        Price Upon Request
+                      <p className="text-[10px] text-brass-700 font-semibold mt-1">
+                        View Specs & Inquire →
                       </p>
                     </div>
 

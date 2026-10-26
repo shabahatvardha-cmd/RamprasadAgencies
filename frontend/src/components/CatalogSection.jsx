@@ -23,238 +23,8 @@ const INDIAN_BRAND_NAMES = ['titan', 'hmt', 'fastrack', 'sonata'];
 const SWISS_BRAND_NAMES = ['rolex', 'omega', 'tissot', 'breitling', 'cartier', 'rado'];
 const JAPANESE_BRAND_NAMES = ['seiko', 'citizen', 'casio', 'orient'];
 
-// Curated Showcase Fallback
-const FALLBACK_WATCHES = [
-  // 🇮🇳 Indian Brands
-  {
-    _id: 'ind-1',
-    name: 'Titan Edge Ceramic Ultra-Slim 40mm',
-    brand: 'Titan',
-    price: 26995,
-    category: 'Dress',
-    movement: 'Titan In-House Ultra-Slim Quartz (4.2mm)',
-    caseDiameter: '40mm',
-    waterResistance: '30m',
-    strapType: 'Sapphire Crystal & Ceramic Link Bracelet',
-    description: 'One of the slimmest ceramic watches in the world. Engineered in India by Titan with scratch-resistant sapphire crystal and featherweight ceramic craftsmanship.',
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
-    inStock: true,
-    featured: true,
-  },
-  {
-    _id: 'ind-2',
-    name: 'Titan Octane Chronograph Matte Black & Bold Orange',
-    brand: 'Titan',
-    price: 12995,
-    category: 'Chronograph',
-    movement: 'High-Precision Quartz Chronograph with Date',
-    caseDiameter: '44mm',
-    waterResistance: '100m / 10 Bar',
-    strapType: 'Perforated Racing Black Silicone & Leather Hybrid',
-    description: 'Bold dual-layer tachymeter dial with high-contrast orange chronograph accents, 100M water resistance, and racing date window.',
-    image: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Shop No. 1, JalKal Building, Golghar',
-    inStock: true,
-    featured: true,
-  },
-  {
-    _id: 'ind-3',
-    name: 'HMT Kohinoor 17-Jewel Manual-Wind Mechanical',
-    brand: 'HMT',
-    price: 11500,
-    category: 'Automatic',
-    movement: 'HMT Calibre 0231 17-Jewel Hand-Wound Mechanical',
-    caseDiameter: '36mm',
-    waterResistance: '30m',
-    strapType: 'Vintage 18mm Stainless Steel Fold-Over Bracelet',
-    description: 'The historic pride of Indian horology since 1961. Hand-wound 17-jewel movement with audible mechanical sweep, polished steel case, and sunburst dial.',
-    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
-    inStock: true,
-    featured: true,
-  },
-  {
-    _id: 'ind-4',
-    name: 'Titan Regalia Two-Tone Gold & Steel Guilloché',
-    brand: 'Titan',
-    price: 15495,
-    category: 'Dress',
-    movement: 'Titan Precision Three-Hand Quartz with Day-Date',
-    caseDiameter: '41mm',
-    waterResistance: '50m',
-    strapType: 'Two-Tone 18ct Gold PVD & Stainless Steel Bracelet',
-    description: 'Classic royal Indian festive styling with Roman numeral hour markers, champagne guilloché dial, and two-tone gold PVD link bracelet.',
-    image: 'https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
-    inStock: true,
-    featured: false,
-  },
-  {
-    _id: 'ind-5',
-    name: 'HMT Janata Devnagari Mechanical Heritage Edition',
-    brand: 'HMT',
-    price: 9995,
-    category: 'Automatic',
-    movement: 'HMT Calibre 0231 17-Jewels Hand-Wound Mechanical',
-    caseDiameter: '35.5mm',
-    waterResistance: '30m',
-    strapType: 'Handcrafted Tan Top-Grain Leather Strap',
-    description: 'Historic Indian dress watch featuring authentic Devnagari numerals on an ivory enamel dial, manufactured in Bangalore heritage facilities.',
-    image: 'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
-    inStock: true,
-    featured: true,
-  },
-  {
-    _id: 'ind-6',
-    name: 'Fastrack Street All-Black Diver Chrono 45mm',
-    brand: 'Fastrack',
-    price: 5495,
-    category: 'Chronograph',
-    movement: 'Multi-Function Sport Calibre with Dual Sub-Dials',
-    caseDiameter: '45mm',
-    waterResistance: '50m',
-    strapType: 'Textured Heavy-Duty All-Black Silicone Strap',
-    description: 'Youth-inspired rugged street chronograph with gunmetal angular case, tactile pushers, 50M water resistance, and high-visibility indices.',
-    image: 'https://images.unsplash.com/photo-1587925358603-c2eea5305bbc?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Shop No. 1, JalKal Building, Golghar',
-    inStock: true,
-    featured: false,
-  },
-  {
-    _id: 'ind-7',
-    name: 'Sonata Poze Classic Sunray Gold 40mm',
-    brand: 'Sonata',
-    price: 2995,
-    category: 'Dress',
-    movement: 'Sonata Reliable Quartz Calibre',
-    caseDiameter: '40mm',
-    waterResistance: '30m',
-    strapType: 'Genuine Brown Crocodile-Pattern Leather Strap',
-    description: 'Timeless everyday Indian elegance from the Tata family. Clean champagne sunray dial with minimalist baton markers and croc-embossed leather.',
-    image: 'https://images.unsplash.com/photo-1518131672697-613becd4fab5?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Shop No. 1, JalKal Building, Golghar',
-    inStock: true,
-    featured: false,
-  },
-  {
-    _id: 'ind-8',
-    name: 'Titan Mechanical Open-Heart Automatic 43mm',
-    brand: 'Titan',
-    price: 24995,
-    category: 'Skeleton',
-    movement: 'In-House 22-Jewel Automatic Mechanical (40H Reserve)',
-    caseDiameter: '43mm',
-    waterResistance: '50m',
-    strapType: 'Midnight Blue Embossed Alligator Leather Strap',
-    description: "Titan's flagship automatic mechanical masterpiece with visible balance-wheel exhibition aperture at 7 o'clock and sapphire crystal.",
-    image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
-    storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
-    inStock: true,
-    featured: true,
-  },
+import { FALLBACK_WATCHES } from '../data/fallbackWatches';
 
-  // 🇨🇭 Swiss Luxury & Automatics
-  {
-    _id: 'sample-2',
-    name: 'PRX Powermatic 80 Blue Dial 40mm',
-    brand: 'Tissot Swiss',
-    price: 62000,
-    category: 'Automatic',
-    movement: 'Powermatic 80.111 Automatic',
-    caseDiameter: '40mm',
-    waterResistance: '100m / 10 Bar',
-    strapType: 'Integrated Steel Bracelet',
-    description: 'Integrated steel bracelet, waffle pattern tapisserie dial, Nivachron anti-magnetic balance spring, 80-hour power reserve.',
-    image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=700&q=80',
-    storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
-    inStock: true,
-    featured: true,
-  },
-  {
-    _id: 'sample-5',
-    name: 'Navitimer B01 Chronograph 43 Aviator',
-    brand: 'Breitling',
-    price: 740000,
-    category: 'Chronograph',
-    movement: 'Breitling 01 Manufacture Automatic',
-    caseDiameter: '43mm',
-    waterResistance: '30m',
-    strapType: 'Navitimer 7-Row Stainless Steel Bracelet',
-    description: 'Circular aviation slide-rule flight calculation bezel, reverse panda dial, and COSC-certified in-house Breitling 01 calibre.',
-    image: 'https://images.unsplash.com/photo-1639564879163-a2a85682410e?auto=format&fit=crop&w=700&q=80',
-    storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
-    inStock: true,
-    featured: false,
-  },
-  {
-    _id: 'sample-6',
-    name: 'Datejust 41 Two-Tone Fluted Bezel',
-    brand: 'Rolex',
-    price: 1240000,
-    category: 'Automatic',
-    movement: 'Rolex Calibre 3235 Superlative Chronometer',
-    caseDiameter: '41mm',
-    waterResistance: '100m / 10 Bar',
-    strapType: 'Five-Piece Link Jubilee Bracelet',
-    description: 'Distinctive fluted 18 ct yellow gold bezel, intense black sunray dial, and iconic five-link Jubilee bracelet with Easylink extension.',
-    image: 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=700&q=80',
-    storeLocation: 'Baldev Plaza, Golghar, Gorakhpur',
-    inStock: true,
-    featured: true,
-  },
-
-  // 🇯🇵 Japanese Precision
-  {
-    _id: 'sample-1',
-    name: 'Presage Cocktail Time "Skydiving" Automatic',
-    brand: 'Seiko Presage',
-    price: 45000,
-    category: 'Automatic',
-    movement: '4R35 Mechanical Automatic',
-    caseDiameter: '40.5mm',
-    waterResistance: '50m',
-    strapType: 'Solid Multi-Link Stainless Steel',
-    description: 'Box-shaped Hardlex crystal, radiant textured ice blue sunburst dial, 4R35 automatic movement with 41-hour power reserve.',
-    image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80',
-    storeLocation: 'Baldev Plaza, Golghar, Gorakhpur',
-    inStock: true,
-    featured: true,
-  },
-  {
-    _id: 'sample-3',
-    name: 'Tsuyosa Automatic Emerald Sunray 40mm',
-    brand: 'Citizen Automatics',
-    price: 32000,
-    category: 'Automatic',
-    movement: 'Miyota 8210 Automatic Calibre',
-    caseDiameter: '40mm',
-    waterResistance: '50m',
-    strapType: 'Curved Presidential Stainless Steel Bracelet',
-    description: 'Rich emerald green sunray dial with magnified date cyclops at 3 o\'clock, recessed 4 o\'clock crown, and seamlessly integrated presidential links.',
-    image: 'https://images.unsplash.com/photo-1613825539220-8321042d0707?auto=format&fit=crop&w=700&q=80',
-    storeLocation: 'Shop No. 1, JalKal Building, Golghar',
-    inStock: true,
-    featured: false,
-  },
-  {
-    _id: 'sample-4',
-    name: 'Heritage Automatic Skeleton Leather',
-    brand: 'Fossil Heritage',
-    price: 19995,
-    category: 'Skeleton',
-    movement: 'Automatic Skeleton Mechanical',
-    caseDiameter: '43mm',
-    waterResistance: '50m',
-    strapType: 'Luggage Brown Genuine Leather',
-    description: 'Exposed skeleton movement dial with roman numerals, rich luggage brown genuine leather strap and exhibition caseback.',
-    image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=700&q=80',
-    storeLocation: 'Shop No. 1, JalKal Building, Golghar',
-    inStock: true,
-    featured: false,
-  },
-];
 
 export default function CatalogSection({
   watches = [],
@@ -399,11 +169,10 @@ export default function CatalogSection({
               <button
                 key={origin.id}
                 onClick={() => setSelectedOrigin(origin.id)}
-                className={`flex flex-col text-left px-4 py-2.5 rounded-2xl border transition-all shrink-0 ${
-                  active
+                className={`flex flex-col text-left px-4 py-2.5 rounded-2xl border transition-all shrink-0 ${active
                     ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-stone-950 font-bold shadow-lg shadow-amber-500/20 border-amber-300 scale-[1.02]'
                     : 'bg-stone-900/90 text-stone-300 hover:text-white border-white/10 hover:border-amber-500/40'
-                }`}
+                  }`}
               >
                 <span className="text-xs sm:text-sm font-extrabold tracking-wide">
                   {origin.label}
@@ -428,11 +197,10 @@ export default function CatalogSection({
                 <button
                   key={cat}
                   onClick={() => onSelectCategory && onSelectCategory(cat)}
-                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-extrabold whitespace-nowrap transition-all ${
-                    active
+                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-extrabold whitespace-nowrap transition-all ${active
                       ? 'bg-white text-stone-950 shadow-md font-bold'
                       : 'bg-stone-900 text-stone-400 hover:text-white border border-white/5 hover:border-amber-500/40'
-                  }`}
+                    }`}
                 >
                   {cat === 'ALL' ? 'All Movements' : cat}
                 </button>
@@ -467,11 +235,10 @@ export default function CatalogSection({
               {/* In-Stock Toggle */}
               <button
                 onClick={() => setInStockOnly(!inStockOnly)}
-                className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all ${
-                  inStockOnly
+                className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all ${inStockOnly
                     ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50'
                     : 'bg-stone-900 text-stone-400 hover:text-white border-white/10'
-                }`}
+                  }`}
               >
                 <span className={`w-2 h-2 rounded-full ${inStockOnly ? 'bg-emerald-400' : 'bg-stone-500'}`}></span>
                 <span>In-Stock</span>

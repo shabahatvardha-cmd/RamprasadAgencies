@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, MessageCircle, Phone, MapPin, CheckCircle, ShieldCheck, Clock } from 'lucide-react';
 import { getFullImageUrl, getWhatsAppLink } from '../utils/api';
 
 export default function WatchModal({ watch, onClose, contactPhone }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && onClose) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!watch) return null;
 
   const fullImage = getFullImageUrl(watch.image);
@@ -10,15 +20,20 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
   const cleanPhone = (contactPhone || '9876543210').replace(/[^0-9]/g, '');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/60 backdrop-blur-md animate-fade-in">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/60 backdrop-blur-md animate-fade-in cursor-pointer"
+    >
       <div
-        className="relative w-full max-w-3xl mx-auto rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#DDD5C7] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-3xl mx-auto rounded-2xl sm:rounded-3xl bg-[#FAF7F2] border border-[#DDD5C7] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] overflow-y-auto cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-3 right-3 z-10 p-2 rounded-full bg-white/90 text-[#3D3731] hover:text-[#1A1A1A] border border-[#DDD5C7] shadow-sm transition-colors"
+          title="Close"
+          aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
@@ -29,14 +44,19 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
             src={fullImage}
             alt={watch.name}
             className="max-h-48 sm:max-h-80 md:max-h-96 w-auto object-contain drop-shadow-xl"
+            onError={(e) => {
+              e.target.src =
+                'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=600&q=80';
+            }}
           />
-          {watch.inStock ? (
-            <span className="absolute top-3 left-3 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-sm">
-              ● In Stock at Golghar
+          {watch.inStock !== false ? (
+            <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-sm flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+              In Stock at Gorakhpur
             </span>
           ) : (
-            <span className="absolute top-3 left-3 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-wider bg-rose-100 text-rose-800 border border-rose-300 shadow-sm">
-              ● On Special Order
+            <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-wider bg-rose-100 text-rose-800 border border-rose-300 shadow-sm">
+              Special Order
             </span>
           )}
         </div>
@@ -59,7 +79,7 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
                 <span className="text-xs text-[#6B635B]">Official Agency Stamped Papers & Full Warranty</span>
               </div>
               <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300">
-                Inquire With Agency
+                Inquire Agency
               </span>
             </div>
 
@@ -67,19 +87,19 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
             <div className="grid grid-cols-2 gap-2 pt-1">
               <div className="p-2.5 rounded-lg bg-white border border-[#E5DFD5] shadow-sm">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-[#6B635B]">Movement</span>
-                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.movement || watch.category || 'Automatic'}</p>
+                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.movement || watch.category || 'Mechanical / Quartz'}</p>
               </div>
               <div className="p-2.5 rounded-lg bg-white border border-[#E5DFD5] shadow-sm">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-[#6B635B]">Case Diameter</span>
-                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.caseDiameter || '40mm'}</p>
+                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.caseDiameter || watch.caseSize || '40mm'}</p>
               </div>
               <div className="p-2.5 rounded-lg bg-white border border-[#E5DFD5] shadow-sm">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-[#6B635B]">Water Resistance</span>
-                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.waterResistance || '100m / 10 Bar'}</p>
+                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.waterResistance || '50m / 5 Bar'}</p>
               </div>
               <div className="p-2.5 rounded-lg bg-white border border-[#E5DFD5] shadow-sm">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-[#6B635B]">Bracelet / Strap</span>
-                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.strapType || 'Steel Bracelet'}</p>
+                <p className="text-xs font-semibold text-[#1A1A1A] mt-0.5">{watch.strapType || watch.strap || 'Stainless Steel / Leather'}</p>
               </div>
             </div>
 
@@ -134,3 +154,4 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
     </div>
   );
 }
+

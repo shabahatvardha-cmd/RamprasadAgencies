@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import AdminTopBar from './components/visual/AdminTopBar';
 import VisualHeader from './components/visual/VisualHeader';
-import VisualFlashSale from './components/visual/VisualFlashSale';
 import VisualHero from './components/visual/VisualHero';
-import VisualCarouselSection from './components/visual/VisualCarouselSection';
-import VisualCategoryGrid from './components/visual/VisualCategoryGrid';
-import VisualEditorialAd from './components/visual/VisualEditorialAd';
 import VisualBrandMarquee from './components/visual/VisualBrandMarquee';
 import VisualShowrooms from './components/visual/VisualShowrooms';
 import VisualInquiry from './components/visual/VisualInquiry';
 import VisualFooter from './components/visual/VisualFooter';
 import ActiveEditorModal from './components/visual/ActiveEditorModal';
 import WatchEditModal from './components/visual/WatchEditModal';
+import WatchManager from './components/WatchManager';
 import ConfirmationModal from './components/ConfirmationModal';
 import Toast from './components/Toast';
 import LeadsManagerModal from './components/LeadsManagerModal';
@@ -26,7 +23,7 @@ import {
   getLeads,
 } from './utils/api';
 import { DEFAULT_VINTAGE_STORE_DATA, sanitizeStoreData } from './utils/defaults';
-import { Loader2 } from 'lucide-react';
+import { Loader2, X } from 'lucide-react';
 
 const LOCAL_STORAGE_KEY = 'fossil_storefront_state_v2';
 const BROADCAST_CHANNEL_NAME = 'fossil_store_realtime_sync';
@@ -58,6 +55,7 @@ function App() {
   const [watchDeleteCandidate, setWatchDeleteCandidate] = useState(null);
   const [showMasterRestoreModal, setShowMasterRestoreModal] = useState(false);
   const [isLeadsModalOpen, setIsLeadsModalOpen] = useState(false);
+  const [isInventoryModalOpen, setIsInventoryModalOpen] = useState(false);
   const [newLeadsCount, setNewLeadsCount] = useState(0);
 
   const [settings, setSettings] = useState(null);
@@ -188,35 +186,28 @@ function App() {
     collectionName: w.collectionName || 'newArrivals',
   }));
 
-  // Distribute live backend watches into target carousels
-  const newArrivalsBackend = formattedWatches.filter((w) => !w.collectionName || w.collectionName === 'newArrivals');
-  const collectorBackend = formattedWatches.filter((w) => w.collectionName === 'collectorCapsule');
-  const ourIconsBackend = formattedWatches.filter((w) => w.collectionName === 'ourIcons');
-  const flashDealsBackend = formattedWatches.filter((w) => w.collectionName === 'flashDeals');
-  const indianBackend = formattedWatches.filter((w) =>
-    w.collectionName === 'indianIcons' ||
-    ['titan', 'hmt', 'fastrack', 'sonata'].some((b) => (w.brand || '').toLowerCase().includes(b))
-  );
+  // Combine all watches from store carousels and backend into a unified collection
+  const allStoreWatches = useMemo(() => {
+    const rawList = [
+      ...formattedWatches,
+      ...(currentStoreData.carousels?.newArrivals || []),
+      ...(currentStoreData.carousels?.indianIcons || []),
+      ...(currentStoreData.carousels?.collectorCapsule || []),
+      ...(currentStoreData.carousels?.ourIcons || []),
+      ...(currentStoreData.carousels?.flashDeals || []),
+    ];
 
-  const newArrivalsList = newArrivalsBackend.length > 0
-    ? [...newArrivalsBackend, ...(currentStoreData.carousels?.newArrivals || []).filter((d) => !newArrivalsBackend.some((bw) => bw.name.toLowerCase() === d.name.toLowerCase()))]
-    : (currentStoreData.carousels?.newArrivals || DEFAULT_VINTAGE_STORE_DATA.carousels?.newArrivals || []);
-
-  const collectorCapsuleList = collectorBackend.length > 0
-    ? [...collectorBackend, ...(currentStoreData.carousels?.collectorCapsule || []).filter((d) => !collectorBackend.some((bw) => bw.name.toLowerCase() === d.name.toLowerCase()))]
-    : (currentStoreData.carousels?.collectorCapsule || DEFAULT_VINTAGE_STORE_DATA.carousels?.collectorCapsule || []);
-
-  const ourIconsList = ourIconsBackend.length > 0
-    ? [...ourIconsBackend, ...(currentStoreData.carousels?.ourIcons || []).filter((d) => !ourIconsBackend.some((bw) => bw.name.toLowerCase() === d.name.toLowerCase()))]
-    : (currentStoreData.carousels?.ourIcons || DEFAULT_VINTAGE_STORE_DATA.carousels?.ourIcons || []);
-
-  const flashDealsList = flashDealsBackend.length > 0
-    ? [...flashDealsBackend, ...(currentStoreData.carousels?.flashDeals || []).filter((d) => !flashDealsBackend.some((bw) => bw.name.toLowerCase() === d.name.toLowerCase()))]
-    : (currentStoreData.carousels?.flashDeals || DEFAULT_VINTAGE_STORE_DATA.carousels?.flashDeals || []);
-
-  const indianIconsList = indianBackend.length > 0
-    ? [...indianBackend, ...(currentStoreData.carousels?.indianIcons || []).filter((d) => !indianBackend.some((bw) => bw.name.toLowerCase() === d.name.toLowerCase()))]
-    : (currentStoreData.carousels?.indianIcons || DEFAULT_VINTAGE_STORE_DATA.carousels?.indianIcons || []);
+    const seen = new Set();
+    const unique = [];
+    for (const item of rawList) {
+      if (!item) continue;
+      const key = (item.name || item.id || item._id || '').toLowerCase().trim();
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      unique.push(item);
+    }
+    return unique;
+  }, [formattedWatches, currentStoreData.carousels]);
 
   // Save Section Handler (Called from active editor modal)
   const handleSaveSection = async (updatedFields, sectionName) => {
@@ -439,12 +430,15 @@ function App() {
           if (modalType === 'watch-add') {
             setSelectedWatchForEdit(null);
             setIsWatchModalOpen(true);
+          } else if (modalType === 'inventory') {
+            setIsInventoryModalOpen(true);
           } else {
             setActiveModal(modalType);
           }
         }}
         onOpenMasterRestore={() => setShowMasterRestoreModal(true)}
         onOpenLeads={() => setIsLeadsModalOpen(true)}
+        onOpenInventory={() => setIsInventoryModalOpen(true)}
         onLogout={handleLogout}
         newLeadsCount={newLeadsCount}
         isSaving={isSaving}
@@ -458,158 +452,29 @@ function App() {
         wishlistCount={2}
       />
 
-      {/* 3. Flash Sale Promotion Ribbon */}
-      <VisualFlashSale
-        flashSale={currentStoreData.flashSale}
-        isEditMode={isEditMode}
-        onOpenEdit={() => setActiveModal('flashSale')}
-        onQuickUpdateFlashSale={(updates) =>
-          handleSaveSection(
-            {
-              flashSale: {
-                ...currentStoreData.flashSale,
-                ...updates,
-              },
-            },
-            'Flash Sale'
-          )
-        }
-      />
-
-      {/* 4. Hero Watch Advertisement Photography Showcase */}
-      <VisualHero
-        heroData={currentStoreData.hero}
-        isEditMode={isEditMode}
-        onOpenEdit={() => setActiveModal('hero')}
-      />
-
-      {/* 5. Carousel 1: Shop New Arrivals */}
-      <VisualCarouselSection
-        id="new-arrivals"
-        badge="CURATED SEASON DROP"
-        badgeColor="brass"
-        title="Shop New Arrivals"
-        subtitle="The latest horological references: open-heart mechanicals, aviator chronographs, and vegetable-tanned leather straps."
-        items={newArrivalsList}
-        isEditMode={isEditMode}
-        onEditWatch={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-        onDeleteWatch={(watch) => setWatchDeleteCandidate(watch)}
-        onAddWatch={() => {
-          setSelectedWatchForEdit(null);
-          setIsWatchModalOpen(true);
-        }}
-        onQuickView={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-      />
-
-      {/* 6. Shop By Category Grid (4 Horology Pillars) */}
-      <VisualCategoryGrid
-        categories={currentStoreData.categories}
-        isEditMode={isEditMode}
-        onOpenEdit={() => setActiveModal('categories')}
-      />
-
-      {/* 6B. Carousel: Indian Watch Heritage & Icons */}
-      <VisualCarouselSection
-        id="indian-brands"
-        badge="🇮🇳 PROUD INDIAN HOROLOGY"
-        badgeColor="brass"
-        title="Indian Watch Heritage & Icons"
-        subtitle="From Titan's ultra-slim Edge and Octane chronographs to historic HMT Kohinoor mechanical legends and Fastrack street styles."
-        items={indianIconsList}
-        isEditMode={isEditMode}
-        onEditWatch={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-        onDeleteWatch={(watch) => setWatchDeleteCandidate(watch)}
-        onAddWatch={() => {
-          setSelectedWatchForEdit(null);
-          setIsWatchModalOpen(true);
-        }}
-        onQuickView={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-      />
-
-      {/* 7. Carousel 2: The Collector Capsule */}
-      <VisualCarouselSection
-        id="collector-capsule"
-        badge="LIMITED COLLECTOR CAPSULE"
-        badgeColor="rust"
-        title="The Collector Capsule"
-        subtitle="Exclusive numbered releases, racing motorsport chronographs, and skeletonized mechanical movements built in limited quantities."
-        items={collectorCapsuleList}
-        isEditMode={isEditMode}
-        onEditWatch={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-        onDeleteWatch={(watch) => setWatchDeleteCandidate(watch)}
-        onAddWatch={() => {
-          setSelectedWatchForEdit(null);
-          setIsWatchModalOpen(true);
-        }}
-        onQuickView={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-      />
-
-      {/* 8. Signature Craftsmanship Editorial Spotlight (Ref 84-MKII) */}
-      <VisualEditorialAd
-        editorialAd={currentStoreData.editorialAd}
-        isEditMode={isEditMode}
-        onOpenEdit={() => setActiveModal('editorial')}
-      />
-
-      {/* 9. Carousel 3: Our Timeless Icons */}
-      <VisualCarouselSection
-        id="our-icons"
-        badge="HERITAGE ICONS • EST. 1984"
-        badgeColor="brass"
-        title="Our Timeless Icons"
-        subtitle="The timepieces that define our identity: classic Roman dials, rich saddle luggage leather, and everyday minimalist silhouettes."
-        items={ourIconsList}
-        isEditMode={isEditMode}
-        onEditWatch={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-        onDeleteWatch={(watch) => setWatchDeleteCandidate(watch)}
-        onAddWatch={() => {
-          setSelectedWatchForEdit(null);
-          setIsWatchModalOpen(true);
-        }}
-        onQuickView={(watch) => {
-          setSelectedWatchForEdit(watch);
-          setIsWatchModalOpen(true);
-        }}
-      />
-
-      {/* 10. Carousel 4: Flash Deals Vault (visible if active or in admin edit mode) */}
-      {((currentStoreData.flashSale?.flashSale?.isActive ?? currentStoreData.flashSale?.isActive) || isEditMode) && (
-        <VisualCarouselSection
-          id="flash-deals"
-          badge="FLASH SALE SPOTLIGHT"
-          badgeColor="rust"
-          title="Flash Sale Vault"
-          subtitle="Special limited-time discounts up to 35% off. Use coupon code VINTAGE15 for extra savings."
-          items={flashDealsList}
+      {/* 3. Hero Watch Advertisement Photography Showcase */}
+      <div id="hero">
+        <VisualHero
+          heroData={currentStoreData.hero}
           isEditMode={isEditMode}
+          onOpenEdit={() => setActiveModal('hero')}
+        />
+      </div>
+
+      {/* 4. The Maison Portfolio & Interactive Brand Timepiece Showcase */}
+      <div id="brands">
+        <VisualBrandMarquee
+          brands={currentStoreData.brands}
+          watches={allStoreWatches}
+          isEditMode={isEditMode}
+          onOpenEdit={(type = 'branding') => setActiveModal(type)}
           onEditWatch={(watch) => {
             setSelectedWatchForEdit(watch);
             setIsWatchModalOpen(true);
           }}
           onDeleteWatch={(watch) => setWatchDeleteCandidate(watch)}
-          onAddWatch={() => {
-            setSelectedWatchForEdit(null);
+          onAddWatch={(defaults) => {
+            setSelectedWatchForEdit(defaults || null);
             setIsWatchModalOpen(true);
           }}
           onQuickView={(watch) => {
@@ -617,36 +482,35 @@ function App() {
             setIsWatchModalOpen(true);
           }}
         />
-      )}
+      </div>
 
-      {/* 11. Authorized Brand Portfolios */}
-      <VisualBrandMarquee
-        brands={currentStoreData.brands}
-        isEditMode={isEditMode}
-        onOpenEdit={() => setActiveModal('brands')}
-      />
+      {/* 5. Dual Showroom Experience Stores (Baldev Plaza & JalKal Building) */}
+      <div id="showrooms">
+        <VisualShowrooms
+          showrooms={currentStoreData.showrooms}
+          isEditMode={isEditMode}
+          onOpenEdit={() => setActiveModal('showrooms')}
+        />
+      </div>
 
-      {/* 12. Dual Showroom Experience Stores */}
-      <VisualShowrooms
-        showrooms={currentStoreData.showrooms}
-        isEditMode={isEditMode}
-        onOpenEdit={() => setActiveModal('showrooms')}
-      />
+      {/* 6. Bespoke Inquiries & Consultation Form */}
+      <div id="inquiry">
+        <VisualInquiry
+          storeData={currentStoreData}
+          isEditMode={isEditMode}
+          onOpenEdit={(modal = 'inquiry') => setActiveModal(modal)}
+          onOpenLeads={() => setIsLeadsModalOpen(true)}
+        />
+      </div>
 
-      {/* 13. Bespoke Inquiries & Consultation */}
-      <VisualInquiry
-        storeData={currentStoreData}
-        isEditMode={isEditMode}
-        onOpenEdit={(modal = 'inquiry') => setActiveModal(modal)}
-        onOpenLeads={() => setIsLeadsModalOpen(true)}
-      />
-
-      {/* 14. Brand Lifestyle Footer */}
-      <VisualFooter
-        storeData={currentStoreData}
-        isEditMode={isEditMode}
-        onOpenEdit={() => setActiveModal('branding')}
-      />
+      {/* 7. Brand Lifestyle Footer */}
+      <div id="footer">
+        <VisualFooter
+          storeData={currentStoreData}
+          isEditMode={isEditMode}
+          onOpenEdit={() => setActiveModal('branding')}
+        />
+      </div>
 
       {/* ===================================================================== */}
       {/* MODAL DIALOGS */}
@@ -710,6 +574,40 @@ function App() {
         showToast={showToast}
         onOpenFormEditor={() => setActiveModal('inquiry')}
       />
+
+      {/* Showcase Inventory & Database Desk Modal */}
+      {isInventoryModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md overflow-y-auto">
+          <div className="relative w-full max-w-6xl bg-[#FAF7F2] rounded-3xl border border-[#DDD5C7] shadow-2xl overflow-hidden my-6 flex flex-col max-h-[90vh]">
+            <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-[#E8E1D5] shrink-0">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-brass-600"></span>
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-brass-800 font-bold block">
+                    Showcase Inventory & Database Desk
+                  </span>
+                  <h2 className="font-serif text-lg font-bold text-[#1A1A1A]">
+                    All Timepiece Models ({backendWatches.length} Saved)
+                  </h2>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsInventoryModalOpen(false)}
+                className="w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#DDD5C7] flex items-center justify-center text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#F0EBE1] transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="p-4 sm:p-6 overflow-y-auto flex-1">
+              <WatchManager
+                watches={formattedWatches}
+                onRefresh={loadWatches}
+                showToast={showToast}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

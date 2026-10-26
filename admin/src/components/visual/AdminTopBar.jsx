@@ -26,6 +26,7 @@ export default function AdminTopBar({
   onOpenModal,
   onOpenMasterRestore,
   onOpenLeads,
+  onOpenInventory,
   onLogout,
   newLeadsCount = 0,
 }) {
@@ -44,10 +45,8 @@ export default function AdminTopBar({
   }, []);
 
   const sections = [
-    { label: 'Flash Sale', href: '#flash-sale' },
     { label: 'Hero Showcase', href: '#hero' },
-    { label: 'New Arrivals', href: '#new-arrivals' },
-    { label: 'Categories', href: '#categories' },
+    { label: 'The Maison Portfolio', href: '#brands' },
     { label: 'Showrooms', href: '#showrooms' },
     { label: 'Inquiry Form', href: '#inquiry' },
     { label: 'Footer & VIP', href: '#footer' },
@@ -143,6 +142,16 @@ export default function AdminTopBar({
             )}
           </button>
 
+          {/* Timepiece Inventory Catalog Desk */}
+          <button
+            onClick={() => onOpenInventory ? onOpenInventory() : handleQuickEdit('inventory')}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#222224] hover:bg-[#2c2c30] text-amber-300 border border-brass-600/30 hover:border-brass-400 transition-all shadow-sm active:scale-95"
+            title="Open Full Timepiece Inventory Desk"
+          >
+            <Layers className="w-3.5 h-3.5 text-brass-400" />
+            <span className="hidden sm:inline">Inventory</span>
+          </button>
+
           {/* Quick Section Editors Dropdown */}
           <div className="relative" ref={quickMenuRef}>
             <button
@@ -164,17 +173,6 @@ export default function AdminTopBar({
 
                 <div className="space-y-0.5">
                   <button
-                    onClick={() => handleQuickEdit('flashSale')}
-                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-white hover:bg-brass-500/15 text-left transition-colors"
-                  >
-                    <Zap className="w-3.5 h-3.5 text-rust-400" />
-                    <div>
-                      <div className="font-bold">Flash Sale & Countdown</div>
-                      <div className="text-[10px] text-[#A0988E]">Promotions & coupon codes</div>
-                    </div>
-                  </button>
-
-                  <button
                     onClick={() => handleQuickEdit('hero')}
                     className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-white hover:bg-brass-500/15 text-left transition-colors"
                   >
@@ -186,13 +184,24 @@ export default function AdminTopBar({
                   </button>
 
                   <button
-                    onClick={() => handleQuickEdit('categories')}
+                    onClick={() => handleQuickEdit('branding')}
                     className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-white hover:bg-brass-500/15 text-left transition-colors"
                   >
-                    <Compass className="w-3.5 h-3.5 text-brass-400" />
+                    <Award className="w-3.5 h-3.5 text-brass-400" />
                     <div>
-                      <div className="font-bold">Categories & Showcase</div>
-                      <div className="text-[10px] text-[#A0988E]">Swiss, Japanese, Automatics</div>
+                      <div className="font-bold">The Maison Brands Portfolio</div>
+                      <div className="text-[10px] text-[#A0988E]">Brand list & heritage badges</div>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => onOpenInventory ? onOpenInventory() : handleQuickEdit('inventory')}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-white hover:bg-brass-500/15 text-left transition-colors"
+                  >
+                    <Layers className="w-3.5 h-3.5 text-amber-400" />
+                    <div>
+                      <div className="font-bold">Timepiece Inventory Desk</div>
+                      <div className="text-[10px] text-[#A0988E]">Add, edit, seed & filter watches</div>
                     </div>
                   </button>
 

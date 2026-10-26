@@ -8,7 +8,7 @@ const BROADCAST_CHANNEL_NAME = 'fossil_store_realtime_sync';
 // CURATED VINTAGE-INSPIRED DEFAULT DATASET (Fossil Luxury Lifestyle Aesthetic)
 // ============================================================================
 export const DEFAULT_VINTAGE_STORE_DATA = {
-  version: '2.6.0',
+  version: '3.0.0',
   brandName: 'RAM PRASAD AGENCIES',
   tagline: 'ramprasadWatchstore.in • Golghar',
   logo: '/logo.png',
@@ -95,39 +95,36 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     slides: [
       {
         id: 'hero-1',
-        badge: 'SWISS PRECISION • EST. 1853',
-        headline: 'Tissot PRX Powermatic 80 & Swiss Automatics',
-        subheadline: 'Iconic 1970s integrated bracelet geometry powered by an 80-hour Nivachron anti-magnetic balance spring. Experience authentic Swiss horology at Ram Prasad Agencies.',
-        ctaPrimary: 'Explore Tissot PRX',
-        ctaPrimaryLink: '#new-arrivals',
+        badge: 'SWISS PRECISION',
+        headline: 'Tissot PRX & Swiss Automatics',
+        subheadline: 'Iconic 1970s integrated bracelet design powered by an 80-hour Nivachron anti-magnetic movement.',
+        ctaPrimary: 'Explore Maisons',
+        ctaPrimaryLink: '#brands',
         ctaSecondary: 'View Showrooms',
         ctaSecondaryLink: '#showrooms',
         image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1600&q=85',
-        specsTag: 'Powermatic 80 Caliber • 100M Water Resistant • Anti-Magnetic',
       },
       {
         id: 'hero-2',
-        badge: 'CERTIFIED SWISS LUXURY IMPORTS',
-        headline: 'Rolex Submariner & Omega Speedmaster Showcase',
-        subheadline: 'Legendary chronometers imported for discerning collectors in Eastern UP. Complete with official international stamped papers, presentation cases, and provenance.',
-        ctaPrimary: 'Inquire Swiss Icons',
-        ctaPrimaryLink: '#collector-capsule',
+        badge: 'CERTIFIED SWISS IMPORTS',
+        headline: 'Rolex & Omega Swiss Showcase',
+        subheadline: 'Certified authentic Swiss chronometers with international warranty and stamped papers in Gorakhpur.',
+        ctaPrimary: 'Explore Maisons',
+        ctaPrimaryLink: '#brands',
         ctaSecondary: 'WhatsApp Concierge',
         ctaSecondaryLink: '#inquiry',
         image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=1600&q=85',
-        specsTag: 'Cerachrom Ceramic Bezel • Co-Axial Master Chronometer',
       },
       {
         id: 'hero-3',
-        badge: 'JAPANESE AUTOMATIC MASTERY',
-        headline: 'Seiko Presage Cocktail Time & Automatic Calibers',
-        subheadline: 'Exquisite radial sunburst guilloché dials with heat-blued hands, crafted by master Japanese horologists. Powered by robust in-house mechanical movements.',
-        ctaPrimary: 'Discover Seiko Presage',
-        ctaPrimaryLink: '#our-icons',
-        ctaSecondary: 'Book Private Fitting',
+        badge: 'JAPANESE CRAFTSMANSHIP',
+        headline: 'Seiko Presage Automatics',
+        subheadline: 'Exquisite radial sunburst guilloché dials crafted with authentic in-house mechanical calibers.',
+        ctaPrimary: 'Explore Maisons',
+        ctaPrimaryLink: '#brands',
+        ctaSecondary: 'View Showrooms',
         ctaSecondaryLink: '#showrooms',
-        image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1600&q=85',
-        specsTag: 'In-House 4R35 Automatic • Box-Shaped Hardlex Crystal',
+        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=1600&q=85',
       },
     ],
   },
@@ -160,7 +157,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 49995,
         badge: 'Best Seller',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
         movement: 'Japanese Calibre 4R35 Automatic',
         caseSize: '40.5mm Polished Steel',
         strap: 'Solid Multi-Link Stainless Steel Bracelet',
@@ -192,7 +189,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 36000,
         badge: 'Trending Drop',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1613825539220-8321042d0707?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
         movement: 'Miyota 8210 Automatic Calibre (42H Reserve)',
         caseSize: '40mm Integrated Lugs',
         strap: 'Curved Presidential Stainless Steel Bracelet',
@@ -224,7 +221,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 24000,
         badge: 'Vintage Drop',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
         movement: 'Japanese 21-Jewel Automatic Mechanical',
         caseSize: '43mm Antique Brushed Steel',
         strap: 'Vegetable-Tanned Saddle Brown Leather',
@@ -342,7 +339,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 49995,
         badge: 'Heritage Icon',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
         movement: 'Seiko 4R35 Mechanical Automatic',
         caseSize: '40.5mm Polished Steel',
         strap: 'Multi-Link Fine Stainless Steel Bracelet',
@@ -390,7 +387,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 17995,
         badge: 'Vintage Style',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
         movement: 'Precision Chronograph Multi-Hand',
         caseSize: '44mm',
         strap: 'Supple Luggage Brown Saddle Leather',
@@ -409,7 +406,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 36000,
         badge: '22% OFF FLASH',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1613825539220-8321042d0707?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
         movement: 'Miyota 8210 Automatic Calibre',
         caseSize: '40mm Integrated Lugs',
         strap: 'Presidential Curved Steel Bracelet',
@@ -425,7 +422,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 46000,
         badge: '20% OFF FLASH',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
         movement: 'Japanese 4R35 Automatic Caliber',
         caseSize: '40.5mm Polished Steel',
         strap: 'Fine Multi-Link Stainless Steel',
@@ -441,7 +438,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 21000,
         badge: '24% OFF',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
         movement: 'Japanese 21-Jewel Automatic Movement',
         caseSize: '43mm Antique Steel',
         strap: 'Genuine Vegetable-Tanned Saddle Leather',
@@ -457,7 +454,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 16000,
         badge: '25% OFF',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
         movement: 'Precision Multi-Function Chronograph',
         caseSize: '44mm',
         strap: 'Luggage Brown Saddle Leather',
@@ -476,7 +473,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 29995,
         badge: 'Ultra-Slim Record',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1561634343-3a2787687046?auto=format&fit=crop&w=800&q=80',
         movement: 'Titan In-House Ultra-Slim Quartz (4.2mm)',
         caseSize: '40mm High-Tech Ceramic',
         strap: 'Sapphire Crystal & Ceramic Link Bracelet',
@@ -556,7 +553,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 6495,
         badge: 'Youth Street',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1587925358603-c2eea5305bbc?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1548907228-419a3f3d11d0?auto=format&fit=crop&w=800&q=80',
         movement: 'Multi-Function Sport Calibre with Dual Sub-Dials',
         caseSize: '45mm Gunmetal Ion-Plated Steel',
         strap: 'Textured Heavy-Duty All-Black Silicone Strap',
@@ -588,7 +585,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 28995,
         badge: 'Titan Automatic',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1773161266930-8fdbf73c0515?auto=format&fit=crop&w=800&q=80',
         movement: 'In-House 22-Jewel Automatic Mechanical (40H Reserve)',
         caseSize: '43mm Polished Steel',
         strap: 'Midnight Blue Embossed Alligator Leather Strap',
@@ -606,7 +603,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'Titan Edge, Octane, HMT Mechanicals, Fastrack & Sonata',
       itemCount: '45+ Timepieces',
       tag: '🇮🇳 Proud Indian Horology',
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
       filterKey: 'Indian Brands',
     },
     {
@@ -624,7 +621,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'Seiko Presage, Prospex & Citizen Tsuyosa',
       itemCount: '29 Timepieces',
       tag: 'In-House Calibers',
-      image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
       filterKey: 'Automatic',
     },
     {
@@ -642,7 +639,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'Fossil Heritage, Open Heart & 21-Jewel Automatics',
       itemCount: '19 Open-Heart Pieces',
       tag: 'Exhibition Glass',
-      image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
       filterKey: 'Skeleton',
     },
   ],
@@ -802,6 +799,49 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
 
 export const DEFAULT_INQUIRY_FORM_CONFIG = DEFAULT_VINTAGE_STORE_DATA.inquiryFormConfig;
 
+const BRAND_VERIFIED_WATCH_IMAGE = {
+  titan: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
+  hmt: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=80',
+  fastrack: 'https://images.unsplash.com/photo-1548907228-419a3f3d11d0?auto=format&fit=crop&w=800&q=80',
+  sonata: 'https://images.unsplash.com/photo-1518131672697-613becd4fab5?auto=format&fit=crop&w=800&q=80',
+  tissot: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=800&q=80',
+  rolex: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+  omega: 'https://images.unsplash.com/photo-1556453007-ee036169934b?auto=format&fit=crop&w=800&q=80',
+  seiko: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
+  citizen: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+  casio: 'https://images.unsplash.com/photo-1605583972593-1fda24a7bea2?auto=format&fit=crop&w=800&q=80',
+  fossil: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
+  breitling: 'https://images.unsplash.com/photo-1639564879163-a2a85682410e?auto=format&fit=crop&w=800&q=80',
+  rado: 'https://images.unsplash.com/photo-1618337978865-f02783a02355?auto=format&fit=crop&w=800&q=80',
+  cartier: 'https://images.unsplash.com/photo-1747995525955-92010650c3ae?auto=format&fit=crop&w=800&q=80',
+  'tag heuer': 'https://images.unsplash.com/photo-1630262174975-38bf8d42745f?auto=format&fit=crop&w=800&q=80',
+};
+
+// Check if an image URL is a known non-watch offender (makeup, shoe, bag, coffee, etc.)
+export const isOffenderImage = (url) => {
+  if (!url || typeof url !== 'string') return true;
+  return (
+    url.includes('photo-1522335789203') || // Makeup & cosmetics palette
+    url.includes('photo-1539185441755') || // Sneaker shoe
+    url.includes('photo-1543163521') ||    // Shoes & footwear
+    url.includes('photo-1548036328') ||    // Handbag
+    url.includes('photo-1509042239860') || // Coffee cups
+    url.includes('photo-1508615039623') || // Blank sunset sky
+    url.includes('photo-1526045612212') || // Person on smartphone
+    url.includes('photo-1547996160') ||    // 404 broken image
+    url.includes('photo-1523275335684')    // Generic white plastic 3D mockup
+  );
+};
+
+export const getVerifiedBrandImage = (brand, fallback) => {
+  if (!brand) return fallback;
+  const brandLower = brand.toLowerCase();
+  for (const [key, verifiedUrl] of Object.entries(BRAND_VERIFIED_WATCH_IMAGE)) {
+    if (brandLower.includes(key)) return verifiedUrl;
+  }
+  return fallback;
+};
+
 // Helper to safely merge saved data with complete defaults
 export const sanitizeStoreData = (data) => {
   if (!data || typeof data !== 'object') return DEFAULT_VINTAGE_STORE_DATA;
@@ -810,9 +850,27 @@ export const sanitizeStoreData = (data) => {
     ? DEFAULT_VINTAGE_STORE_DATA.tagline
     : rawTagline;
 
-  return {
+  const serialized = JSON.stringify(data);
+  const hasOffenders = isOffenderImage(serialized);
+  const isOldVersion = !data.version || data.version !== '3.0.0';
+  const shouldResetImagery = hasOffenders || isOldVersion;
+
+  const sanitizeWatchList = (list, defaultList) => {
+    if (shouldResetImagery || !list || !Array.isArray(list) || list.length === 0) {
+      return defaultList;
+    }
+    return list.map((w) => {
+      if (isOffenderImage(w.image)) {
+        return { ...w, image: getVerifiedBrandImage(w.brand, defaultList[0]?.image || DEFAULT_VINTAGE_STORE_DATA.hero.slides[0].image) };
+      }
+      return w;
+    });
+  };
+
+  const sanitized = {
     ...DEFAULT_VINTAGE_STORE_DATA,
     ...data,
+    version: '3.0.0',
     tagline: cleanTagline,
     footerVipBadge: data.footerVipBadge || DEFAULT_VINTAGE_STORE_DATA.footerVipBadge,
     footerVipTitle: data.footerVipTitle || DEFAULT_VINTAGE_STORE_DATA.footerVipTitle,
@@ -831,37 +889,29 @@ export const sanitizeStoreData = (data) => {
     },
     hero: {
       ...DEFAULT_VINTAGE_STORE_DATA.hero,
-      ...(data.hero || {}),
-      slides: (data.hero?.slides && Array.isArray(data.hero.slides) && data.hero.slides.length > 0)
-        ? data.hero.slides
-        : DEFAULT_VINTAGE_STORE_DATA.hero.slides,
+      slides: shouldResetImagery
+        ? DEFAULT_VINTAGE_STORE_DATA.hero.slides
+        : (data.hero?.slides && Array.isArray(data.hero.slides) && data.hero.slides.length > 0
+          ? data.hero.slides.map((s) => (isOffenderImage(s.image) ? { ...s, image: DEFAULT_VINTAGE_STORE_DATA.hero.slides[0].image } : s))
+          : DEFAULT_VINTAGE_STORE_DATA.hero.slides),
     },
     carousels: {
       ...DEFAULT_VINTAGE_STORE_DATA.carousels,
-      ...(data.carousels || {}),
-      newArrivals: (data.carousels?.newArrivals && Array.isArray(data.carousels.newArrivals) && data.carousels.newArrivals.length > 0)
-        ? data.carousels.newArrivals
-        : DEFAULT_VINTAGE_STORE_DATA.carousels.newArrivals,
-      collectorCapsule: (data.carousels?.collectorCapsule && Array.isArray(data.carousels.collectorCapsule) && data.carousels.collectorCapsule.length > 0)
-        ? data.carousels.collectorCapsule
-        : DEFAULT_VINTAGE_STORE_DATA.carousels.collectorCapsule,
-      ourIcons: (data.carousels?.ourIcons && Array.isArray(data.carousels.ourIcons) && data.carousels.ourIcons.length > 0)
-        ? data.carousels.ourIcons
-        : DEFAULT_VINTAGE_STORE_DATA.carousels.ourIcons,
-      flashDeals: (data.carousels?.flashDeals && Array.isArray(data.carousels.flashDeals) && data.carousels.flashDeals.length > 0)
-        ? data.carousels.flashDeals
-        : DEFAULT_VINTAGE_STORE_DATA.carousels.flashDeals,
-      indianIcons: (data.carousels?.indianIcons && Array.isArray(data.carousels.indianIcons) && data.carousels.indianIcons.length > 0)
-        ? data.carousels.indianIcons
-        : DEFAULT_VINTAGE_STORE_DATA.carousels.indianIcons,
+      newArrivals: sanitizeWatchList(data.carousels?.newArrivals, DEFAULT_VINTAGE_STORE_DATA.carousels.newArrivals),
+      collectorCapsule: sanitizeWatchList(data.carousels?.collectorCapsule, DEFAULT_VINTAGE_STORE_DATA.carousels.collectorCapsule),
+      ourIcons: sanitizeWatchList(data.carousels?.ourIcons, DEFAULT_VINTAGE_STORE_DATA.carousels.ourIcons),
+      flashDeals: sanitizeWatchList(data.carousels?.flashDeals, DEFAULT_VINTAGE_STORE_DATA.carousels.flashDeals),
+      indianIcons: sanitizeWatchList(data.carousels?.indianIcons, DEFAULT_VINTAGE_STORE_DATA.carousels.indianIcons),
     },
-    categories: (data.categories && Array.isArray(data.categories) && data.categories.length > 0)
-      ? data.categories
-      : DEFAULT_VINTAGE_STORE_DATA.categories,
-    editorialAd: {
-      ...DEFAULT_VINTAGE_STORE_DATA.editorialAd,
-      ...(data.editorialAd || {}),
-    },
+    categories: shouldResetImagery || !data.categories || !Array.isArray(data.categories) || data.categories.length === 0
+      ? DEFAULT_VINTAGE_STORE_DATA.categories
+      : data.categories.map((c, idx) => (isOffenderImage(c.image) ? DEFAULT_VINTAGE_STORE_DATA.categories[idx] || c : c)),
+    editorialAd: shouldResetImagery || isOffenderImage(data.editorialAd?.image)
+      ? DEFAULT_VINTAGE_STORE_DATA.editorialAd
+      : {
+          ...DEFAULT_VINTAGE_STORE_DATA.editorialAd,
+          ...(data.editorialAd || {}),
+        },
     appearance: {
       primaryColor: '#C5A059',
       backgroundColor: '#FAF7F2',
@@ -890,6 +940,17 @@ export const sanitizeStoreData = (data) => {
         : DEFAULT_INQUIRY_FORM_CONFIG.fields,
     },
   };
+
+  // If we cleaned any offender imagery or updated version, persist sanitized data
+  try {
+    if (typeof window !== 'undefined' && shouldResetImagery) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(sanitized));
+    }
+  } catch {
+    // ignore storage quota errors
+  }
+
+  return sanitized;
 };
 
 // ============================================================================

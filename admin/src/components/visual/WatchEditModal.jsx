@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { uploadImageFile, getFullImageUrl } from '../../utils/api';
+import { getVerifiedBrandImage, BRAND_VERIFIED_WATCH_IMAGE } from '../../utils/defaults';
 
 const POPULAR_BRANDS = [
   'Titan',
@@ -20,12 +21,12 @@ const POPULAR_BRANDS = [
   'Omega',
   'Seiko Presage',
   'Citizen Automatics',
-  'Rado Swiss',
-  'Breitling',
-  'Fossil Heritage',
   'Casio Edifice',
-  'Victorinox',
-  'Emporio Armani',
+  'Fossil Heritage',
+  'Breitling',
+  'Rado Swiss',
+  'Cartier',
+  'TAG Heuer',
   'Vintage Horology',
 ];
 
@@ -60,7 +61,7 @@ export default function WatchEditModal({
 
   const [formData, setFormData] = useState({
     name: '',
-    brand: 'Tissot Swiss',
+    brand: 'Titan',
     category: 'Automatic',
     collectionName: 'newArrivals',
     price: 14995,
@@ -72,7 +73,7 @@ export default function WatchEditModal({
     waterResistance: '50m / 5 Bar',
     inStock: true,
     featured: false,
-    image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+    image: BRAND_VERIFIED_WATCH_IMAGE.titan,
     description: 'Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   });
@@ -83,7 +84,7 @@ export default function WatchEditModal({
     if (watch) {
       setFormData({
         name: watch.name || '',
-        brand: watch.brand || 'Tissot Swiss',
+        brand: watch.brand || 'Titan',
         category: watch.category || 'Automatic',
         collectionName: watch.collectionName || 'newArrivals',
         price: watch.price || 14995,
@@ -95,14 +96,14 @@ export default function WatchEditModal({
         waterResistance: watch.waterResistance || '50m / 5 Bar',
         inStock: watch.inStock !== false,
         featured: Boolean(watch.featured),
-        image: watch.image || 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+        image: watch.image || getVerifiedBrandImage(watch.brand || 'Titan', BRAND_VERIFIED_WATCH_IMAGE.titan),
         description: watch.description || '',
         storeLocation: watch.storeLocation || 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
       });
     } else {
       setFormData({
         name: '',
-        brand: 'Tissot Swiss',
+        brand: 'Titan',
         category: 'Automatic',
         collectionName: 'newArrivals',
         price: 14995,
@@ -114,7 +115,7 @@ export default function WatchEditModal({
         waterResistance: '50m / 5 Bar',
         inStock: true,
         featured: false,
-        image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+        image: BRAND_VERIFIED_WATCH_IMAGE.titan,
         description: 'Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.',
         storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
       });
@@ -217,6 +218,31 @@ export default function WatchEditModal({
                   <option key={b} value={b} />
                 ))}
               </datalist>
+
+              {/* Quick Brand Selector Chips */}
+              <div className="flex flex-wrap gap-1 mt-1.5">
+                {['Titan', 'HMT', 'Fastrack', 'Sonata', 'Tissot', 'Rolex', 'Omega', 'Seiko', 'Citizen', 'Casio'].map((b) => (
+                  <button
+                    key={b}
+                    type="button"
+                    onClick={() => {
+                      const verifiedImg = getVerifiedBrandImage(b, formData.image);
+                      setFormData((prev) => ({
+                        ...prev,
+                        brand: b,
+                        image: verifiedImg,
+                      }));
+                    }}
+                    className={`px-2 py-0.5 rounded text-[10px] font-semibold border transition-all ${
+                      formData.brand?.toLowerCase() === b.toLowerCase()
+                        ? 'bg-brass-600 text-white border-brass-700 shadow-sm'
+                        : 'bg-[#FAF7F2] text-[#5A524A] border-[#DDD5C7] hover:border-brass-600'
+                    }`}
+                  >
+                    {b}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -389,17 +415,64 @@ export default function WatchEditModal({
               </label>
             </div>
 
+            {/* Quick Brand Watch Imagery Presets */}
+            <div className="mt-2.5 p-2 rounded-xl bg-[#FAF7F2] border border-[#DDD5C7]">
+              <div className="flex items-center justify-between mb-1.5 px-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brass-800 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-brass-600" />
+                  <span>Verified Brand Watch Imagery (Click To Apply)</span>
+                </span>
+                {formData.brand && (
+                  <span className="text-[10px] text-[#6B635B]">
+                    Active: <strong className="text-brass-800">{formData.brand}</strong>
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+                {Object.entries(BRAND_VERIFIED_WATCH_IMAGE).map(([bKey, bImg]) => (
+                  <button
+                    key={bKey}
+                    type="button"
+                    onClick={() => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        image: bImg,
+                        brand: prev.brand || (bKey.charAt(0).toUpperCase() + bKey.slice(1)),
+                      }));
+                    }}
+                    className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] font-medium shrink-0 transition-all ${
+                      formData.image === bImg
+                        ? 'bg-brass-600 text-white border-brass-700 shadow-sm'
+                        : 'bg-white text-[#5A524A] border-[#DDD5C7] hover:border-brass-600'
+                    }`}
+                    title={`Select authentic ${bKey} watch photo`}
+                  >
+                    <img src={bImg} alt={bKey} className="w-3.5 h-3.5 rounded-full object-cover" />
+                    <span className="capitalize">{bKey}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Thumbnail Preview */}
             {formData.image && (
               <div className="mt-2.5 flex items-center gap-3 p-2 rounded-xl bg-[#FAF7F2] border border-[#DDD5C7]">
                 <img
                   src={getFullImageUrl(formData.image)}
                   alt="Preview"
+                  onError={(e) => {
+                    e.currentTarget.src = getVerifiedBrandImage(formData.brand, BRAND_VERIFIED_WATCH_IMAGE.titan);
+                  }}
                   className="w-12 h-12 rounded-lg object-contain bg-white border border-[#DDD5C7]"
                 />
-                <span className="text-[11px] text-[#5A524A] truncate">
-                  {formData.image}
-                </span>
+                <div className="flex-1 min-w-0">
+                  <span className="text-[11px] text-[#5A524A] truncate block">
+                    {formData.image}
+                  </span>
+                  <span className="text-[10px] text-emerald-700 font-bold flex items-center gap-1 mt-0.5">
+                    <Check className="w-3 h-3" /> Authentic Watch Imagery
+                  </span>
+                </div>
               </div>
             )}
           </div>

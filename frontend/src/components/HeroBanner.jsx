@@ -101,42 +101,44 @@ export default function HeroBanner() {
       {/* Hero Content Container */}
       <div className="relative z-20 w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 py-16 sm:py-24 lg:py-28 min-h-[550px] lg:min-h-[640px] flex items-center">
         {/* Top Content Block: Luxury Editorial Showcase Card */}
-        <div className="max-w-xl lg:max-w-2xl">
-          <div className="p-6 sm:p-9 lg:p-11 rounded-3xl bg-[#FAF7F2]/98 sm:bg-[#FAF7F2]/95 backdrop-blur-2xl border border-[#DDD5C7] shadow-2xl relative vintage-shadow">
-            <div key={currentSlide.id || currentSlideIndex} className="space-y-4 sm:space-y-6 animate-editorial-fade">
-              {/* Badges Row */}
-              <div className="flex flex-wrap items-center gap-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brass-500/15 border border-brass-600/40 shadow-sm">
-                  <Sparkles className="w-3.5 h-3.5 text-brass-700 animate-pulse" />
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-brass-800">
-                    {currentSlide.badge || 'EST. 1984 • VINTAGE HERITAGE'}
+        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+          <div className="p-7 sm:p-10 lg:p-12 xl:p-14 rounded-3xl bg-[#FAF7F2]/95 backdrop-blur-xl border border-[#DDD5C7] shadow-2xl relative vintage-shadow">
+            <div key={currentSlide.id || currentSlideIndex} className="space-y-4 sm:space-y-5 lg:space-y-6 animate-editorial-fade">
+              {/* Badge */}
+              <div>
+                <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-brass-500/15 border border-brass-600/30 shadow-sm">
+                  <Sparkles className="w-4 h-4 text-brass-700" />
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brass-800 font-mono">
+                    {(currentSlide.badge || 'SWISS LUXURY')
+                      .replace(' • EST. 1853', '')
+                      .replace('CERTIFIED SWISS LUXURY IMPORTS', 'SWISS LUXURY IMPORTS')
+                      .replace('JAPANESE AUTOMATIC MASTERY', 'JAPANESE AUTOMATICS')}
                   </span>
                 </div>
-
-                {currentSlide.specsTag && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white border border-[#DDD5C7] text-[10px] sm:text-xs font-mono text-[#5A524A] font-semibold shadow-sm">
-                    {currentSlide.specsTag}
-                  </span>
-                )}
               </div>
 
               {/* Bold Clean Headline */}
-              <h1 className="font-sans text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1A1A1A] leading-[1.14]">
-                {currentSlide.headline}
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-[#1A1A1A] leading-[1.12]">
+                {(currentSlide.headline || '')
+                  .replace('Rolex Submariner & Omega Speedmaster Showcase', 'Rolex & Omega Showcase')
+                  .replace('Tissot PRX Powermatic 80 & Swiss Automatics', 'Tissot PRX & Swiss Automatics')
+                  .replace('Seiko Presage Cocktail Time & Automatic Calibers', 'Seiko Presage Automatics')}
               </h1>
 
-              {/* Descriptive Subheadline */}
-              <p className="text-xs sm:text-sm lg:text-base text-[#4A433D] font-normal leading-relaxed">
-                {currentSlide.subheadline}
+              {/* Concise Subheadline */}
+              <p className="text-sm sm:text-base lg:text-lg text-[#4A433D] font-normal leading-relaxed max-w-xl">
+                {(currentSlide.subheadline || '').includes('discerning collectors in Eastern UP')
+                  ? 'Certified authentic Swiss chronometers with international warranty and stamped papers in Gorakhpur.'
+                  : currentSlide.subheadline}
               </p>
 
               {/* Action CTAs */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
                 <a
-                  href={currentSlide.ctaPrimaryLink || '#new-arrivals'}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-widest font-extrabold bg-gradient-to-r from-brass-600 via-amber-600 to-brass-700 hover:from-brass-500 hover:to-amber-500 text-white shadow-xl shadow-brass-600/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  href="#brands"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 sm:px-9 py-3.5 sm:py-4 rounded-2xl text-xs sm:text-sm uppercase tracking-wider font-extrabold bg-gradient-to-r from-brass-600 via-amber-600 to-brass-700 hover:from-brass-500 hover:to-amber-500 text-white shadow-xl shadow-brass-600/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span>{currentSlide.ctaPrimary || 'Shop The Capsule'}</span>
+                  <span>Explore Maisons</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
 
@@ -144,7 +146,7 @@ export default function HeroBanner() {
                   href={currentSlide.ctaSecondaryLink || waLink}
                   target={currentSlide.ctaSecondaryLink?.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-widest font-bold text-[#1A1A1A] bg-white hover:bg-[#F2ECE1] border border-[#DDD5C7] hover:border-brass-600/60 shadow-sm transition-all active:scale-[0.98]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-xs sm:text-sm uppercase tracking-wider font-bold text-[#1A1A1A] bg-white hover:bg-[#F2ECE1] border border-[#DDD5C7] hover:border-brass-600/60 shadow-md transition-all active:scale-[0.98]"
                 >
                   <Compass className="w-4 h-4 text-brass-700" />
                   <span>{currentSlide.ctaSecondary || 'View Showrooms'}</span>

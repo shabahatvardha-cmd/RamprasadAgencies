@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { uploadImageFile, createWatch, updateWatch, deleteWatch, getFullImageUrl } from '../utils/api';
 import { formatINR } from '../utils/formatters';
+import { getVerifiedBrandImage, BRAND_VERIFIED_WATCH_IMAGE } from '../utils/defaults';
 import ConfirmationModal from './ConfirmationModal';
 
 const POPULAR_BRANDS = [
@@ -52,26 +53,101 @@ const CATEGORIES = [
 
 const DEFAULT_SAMPLE_WATCHES = [
   {
-    name: 'Presage Cocktail Time Skydiving 40.5mm',
-    brand: 'Seiko Presage',
+    name: 'Titan Octane Chronograph Matte Black & Bold Orange',
+    brand: 'Titan',
+    category: 'Chronograph',
+    price: 12995,
+    movement: 'High-Precision Quartz Chronograph with Date',
+    caseDiameter: '44mm',
+    strapType: 'Perforated Racing Black Silicone & Leather Hybrid',
+    waterResistance: '100m / 10 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
+    description: 'Bold dual-layer tachymeter dial with high-contrast orange chronograph accents, 100M water resistance, and racing date window.',
+    storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
+  },
+  {
+    name: 'Titan Edge Ceramic Ultra-Slim 40mm',
+    brand: 'Titan',
+    category: 'Dress',
+    price: 26995,
+    movement: 'Titan In-House Ultra-Slim Quartz (4.2mm)',
+    caseDiameter: '40mm',
+    strapType: 'High-Tech Ceramic Link Bracelet',
+    waterResistance: '30m / 3 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1561634343-3a2787687046?auto=format&fit=crop&w=800&q=80',
+    description: 'One of the slimmest ceramic watches in the world. Featherweight scratch-resistant ceramic with sapphire crystal.',
+    storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
+  },
+  {
+    name: 'HMT Kohinoor 17-Jewel Manual-Wind Mechanical',
+    brand: 'HMT',
     category: 'Automatic',
-    price: 45000,
-    movement: 'Japanese 4R35 Mechanical Automatic',
-    caseDiameter: '40.5mm',
-    strapType: 'Solid Multi-Link Stainless Steel',
+    price: 11500,
+    movement: 'HMT Calibre 0231 17-Jewel Hand-Wound Mechanical',
+    caseDiameter: '36mm',
+    strapType: 'Vintage Stainless Steel Fold-Over Bracelet',
+    waterResistance: '30m / 3 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=80',
+    description: 'The historic pride of Indian mechanical horology since 1961. Hand-wound 17-jewel caliber with audible mechanical sweep.',
+    storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
+  },
+  {
+    name: 'HMT Janata Devnagari Heritage Edition',
+    brand: 'HMT',
+    category: 'Automatic',
+    price: 9995,
+    movement: 'HMT Calibre 0231 17-Jewel Hand-Wound Mechanical',
+    caseDiameter: '35.5mm',
+    strapType: 'Top-Grain Saddle Tan Leather',
+    waterResistance: '30m / 3 Bar',
+    inStock: true,
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=800&q=80',
+    description: 'Historic Indian dress watch featuring authentic Devnagari numerals on an ivory enamel dial.',
+    storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
+  },
+  {
+    name: 'Fastrack Street All-Black Diver Chrono 45mm',
+    brand: 'Fastrack',
+    category: 'Chronograph',
+    price: 5495,
+    movement: 'Multi-Function Sport Calibre with Dual Sub-Dials',
+    caseDiameter: '45mm',
+    strapType: 'Heavy-Duty All-Black Silicone Strap',
     waterResistance: '50m / 5 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80',
-    description: 'Radiant ice blue sunburst dial with heat-blued hands inspired by cocktail culture, date window, and exhibition back.',
-    storeLocation: 'Baldev Plaza, Golghar, Gorakhpur',
+    image: 'https://images.unsplash.com/photo-1548907228-419a3f3d11d0?auto=format&fit=crop&w=800&q=80',
+    description: 'Rugged street chronograph with angular gunmetal case, tactile pushers, and high-visibility indices.',
+    storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
   },
   {
-    name: 'PRX Powermatic 80 Ice Blue 40mm',
+    name: 'Sonata Poze Classic Sunray Gold 40mm',
+    brand: 'Sonata',
+    category: 'Dress',
+    price: 2995,
+    movement: 'Sonata Reliable Quartz Calibre',
+    caseDiameter: '40mm',
+    strapType: 'Genuine Brown Croc-Pattern Leather',
+    waterResistance: '30m / 3 Bar',
+    inStock: true,
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1518131672697-613becd4fab5?auto=format&fit=crop&w=800&q=80',
+    description: 'Timeless everyday Indian elegance from the Tata family. Clean champagne sunray dial with minimalist baton markers.',
+    storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
+  },
+  {
+    name: 'Tissot PRX Powermatic 80 Ice Blue 40mm',
     brand: 'Tissot Swiss',
     category: 'Automatic',
     price: 62000,
-    movement: 'Swiss Powermatic 80.111 Automatic',
+    movement: 'Swiss Powermatic 80.111 Automatic (80H Reserve)',
     caseDiameter: '40mm',
     strapType: 'Integrated 316L Stainless Steel Bracelet',
     waterResistance: '100m / 10 Bar',
@@ -82,22 +158,82 @@ const DEFAULT_SAMPLE_WATCHES = [
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   },
   {
-    name: 'Datejust 41 Two-Tone Fluted Bezel',
+    name: 'Rolex Submariner Date 41mm Bluesy Two-Tone',
     brand: 'Rolex',
     category: 'Luxury Swiss',
-    price: 1240000,
+    price: 1480000,
     movement: 'Rolex Calibre 3235 Superlative Chronometer',
     caseDiameter: '41mm',
-    strapType: 'Five-Piece Link Jubilee Bracelet',
-    waterResistance: '100m / 10 Bar',
+    strapType: 'Oystersteel & 18ct Gold Oyster Bracelet with Glidelock',
+    waterResistance: '300m / 30 Bar',
     inStock: true,
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=800&q=80',
-    description: 'Distinctive fluted 18 ct yellow gold bezel, intense black sunray dial, and iconic five-link Jubilee bracelet with Easylink extension.',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+    description: 'Royal blue sunburst dial framed by blue Cerachrom ceramic bezel and signature Rolesor yellow gold and Oystersteel bracelet.',
     storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
   },
   {
-    name: 'Heritage Automatic Skeleton 43mm',
+    name: 'Omega Speedmaster Professional Moonwatch Co-Axial',
+    brand: 'Omega',
+    category: 'Luxury Swiss',
+    price: 690000,
+    movement: 'Omega Co-Axial Master Chronometer 3861',
+    caseDiameter: '42mm',
+    strapType: 'Brushed 5-Arched-Links-per-Row Stainless Steel',
+    waterResistance: '50m / 5 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1556453007-ee036169934b?auto=format&fit=crop&w=800&q=80',
+    description: 'The flight-qualified watch worn on all six lunar missions. Matte step dial with dot-over-ninety anodised aluminium bezel.',
+    storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
+  },
+  {
+    name: 'Seiko Presage Cocktail Time Skydiving 40.5mm',
+    brand: 'Seiko Presage',
+    category: 'Automatic',
+    price: 45000,
+    movement: 'Japanese 4R35 Mechanical Automatic',
+    caseDiameter: '40.5mm',
+    strapType: 'Solid Multi-Link Stainless Steel',
+    waterResistance: '50m / 5 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
+    description: 'Radiant ice blue sunburst dial with heat-blued hands inspired by cocktail culture, date window, and exhibition back.',
+    storeLocation: 'Baldev Plaza, Golghar, Gorakhpur',
+  },
+  {
+    name: 'Citizen Promaster Eco-Drive 200M Diver',
+    brand: 'Citizen Automatics',
+    category: 'Automatic',
+    price: 34995,
+    movement: 'Citizen Eco-Drive Solar Calibre with Date',
+    caseDiameter: '44mm',
+    strapType: 'Heavy-Duty Ribbed Polyurethane Diver Strap',
+    waterResistance: '200m / 20 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+    description: 'ISO-compliant deep-sea professional diver with luminous hands, one-way rotating elapsed-time bezel, and Eco-Drive solar charge.',
+    storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
+  },
+  {
+    name: 'Casio G-Shock 2100 CasiOak Octagon All-Black',
+    brand: 'Casio Edifice',
+    category: 'Chronograph',
+    price: 9995,
+    movement: 'Tough Quartz Dual Analog-Digital Movement',
+    caseDiameter: '45.4mm',
+    strapType: 'High-Durability Resin Band',
+    waterResistance: '200m / 20 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1605583972593-1fda24a7bea2?auto=format&fit=crop&w=800&q=80',
+    description: 'Ultra-thin octagonal bezel with carbon core guard structure, dual illuminator LED, and 200-meter water resistance.',
+    storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
+  },
+  {
+    name: 'Fossil Heritage Automatic Skeleton 43mm',
     brand: 'Fossil Heritage',
     category: 'Skeleton',
     price: 19995,
@@ -107,9 +243,24 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '50m / 5 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
     description: 'Intricately skeletonized exhibition dial showing balance wheel oscillation, encased in antique steel with rich luggage leather strap.',
     storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
+  },
+  {
+    name: 'Breitling Navitimer B01 Chronograph 43',
+    brand: 'Breitling',
+    category: 'Chronograph',
+    price: 740000,
+    movement: 'Breitling 01 Manufacture Automatic (COSC)',
+    caseDiameter: '43mm',
+    strapType: 'Navitimer 7-Row Stainless Steel Bracelet',
+    waterResistance: '30m / 3 Bar',
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1639564879163-a2a85682410e?auto=format&fit=crop&w=800&q=80',
+    description: 'The quintessential pilot\'s watch since 1952. Circular slide rule flight calculation bezel and in-house COSC-certified Breitling 01 calibre.',
+    storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
   },
 ];
 
@@ -149,18 +300,18 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
   const handleOpenCreate = () => {
     setEditingWatchId(null);
     setName('');
-    setBrand('Fossil Heritage');
+    setBrand('Titan');
     setPrice('');
     setCategory('Automatic');
-    setMovement('Automatic Movement');
+    setMovement('Titan Automatic Mechanical Calibre');
     setCaseDiameter('42mm');
-    setStrapType('Vegetable-Tanned Saddle Leather');
+    setStrapType('Solid Stainless Steel / Genuine Leather');
     setWaterResistance('100m / 10 Bar');
     setStoreLocation('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
     setInStock(true);
     setFeatured(false);
     setDescription('');
-    setImageUrl('https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80');
+    setImageUrl(BRAND_VERIFIED_WATCH_IMAGE.titan);
     setIsModalOpen(true);
   };
 
@@ -581,9 +732,30 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                     required
                     value={brand}
                     onChange={(e) => setBrand(e.target.value)}
-                    placeholder="e.g. Fossil Heritage"
+                    placeholder="e.g. Titan, HMT, Tissot, Rolex..."
                     className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600"
                   />
+                  {/* Quick Brand Selectors */}
+                  <div className="flex flex-wrap gap-1 mt-1.5 max-h-16 overflow-y-auto">
+                    {POPULAR_BRANDS.map((b) => (
+                      <button
+                        key={b}
+                        type="button"
+                        onClick={() => {
+                          setBrand(b);
+                          const presetImg = getVerifiedBrandImage(b, '');
+                          if (presetImg) setImageUrl(presetImg);
+                        }}
+                        className={`px-2 py-0.5 rounded text-[10px] font-medium transition-all ${
+                          brand.toLowerCase() === b.toLowerCase()
+                            ? 'bg-brass-600 text-white shadow-sm'
+                            : 'bg-white text-[#5A524A] border border-[#DDD5C7] hover:border-brass-600'
+                        }`}
+                      >
+                        {b}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -704,6 +876,60 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                     />
                   </label>
                 </div>
+
+                {/* Verified Brand Watch Presets */}
+                <div className="mt-2.5 p-2 rounded-xl bg-white border border-[#DDD5C7]">
+                  <div className="flex items-center justify-between mb-1.5 px-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-brass-800 flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-brass-600" />
+                      <span>Verified Brand Watch Imagery (Click To Apply)</span>
+                    </span>
+                    {brand && (
+                      <span className="text-[10px] text-[#6B635B]">
+                        Selected: <strong className="text-brass-800">{brand}</strong>
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+                    {Object.entries(BRAND_VERIFIED_WATCH_IMAGE).map(([bKey, bImg]) => (
+                      <button
+                        key={bKey}
+                        type="button"
+                        onClick={() => {
+                          setImageUrl(bImg);
+                          setBrand(bKey.charAt(0).toUpperCase() + bKey.slice(1));
+                        }}
+                        className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] font-medium shrink-0 transition-all ${
+                          imageUrl === bImg
+                            ? 'bg-brass-600 text-white border-brass-700 shadow-sm'
+                            : 'bg-[#FAF7F2] text-[#5A524A] border-[#DDD5C7] hover:border-brass-600'
+                        }`}
+                        title={`Select authentic ${bKey} watch photo`}
+                      >
+                        <img src={bImg} alt={bKey} className="w-3.5 h-3.5 rounded-full object-cover" />
+                        <span className="capitalize">{bKey}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Thumbnail Preview */}
+                {imageUrl && (
+                  <div className="mt-2 flex items-center gap-3 p-2 rounded-xl bg-white border border-[#DDD5C7]">
+                    <img
+                      src={getFullImageUrl(imageUrl)}
+                      alt="Preview"
+                      className="w-12 h-12 rounded-lg object-contain bg-[#FAF7F2] border border-[#DDD5C7]"
+                      onError={(e) => {
+                        e.target.src = getVerifiedBrandImage(brand, BRAND_VERIFIED_WATCH_IMAGE.titan);
+                      }}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <span className="text-[10px] font-mono text-brass-800 font-bold block">Active Photo URL</span>
+                      <p className="text-[11px] text-[#5A524A] truncate">{imageUrl}</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Description */}

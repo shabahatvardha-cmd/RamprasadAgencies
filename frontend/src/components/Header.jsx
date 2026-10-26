@@ -31,14 +31,10 @@ export default function Header({
   const flashSale = storeData.flashSale?.flashSale || storeData.flashSale || {};
 
   const navLinks = [
-    { label: 'New Arrivals', href: '#new-arrivals' },
-    { label: '🇮🇳 Indian Brands', href: '#indian-brands', isHighlight: true },
-    { label: 'Collector Capsule', href: '#collector-capsule' },
-    { label: 'Categories', href: '#categories' },
-    { label: 'All Watches', href: '#catalog' },
-    { label: 'Our Icons', href: '#our-icons' },
-    ...(flashSale.isActive ? [{ label: '⚡ Flash Deals', href: '#flash-deals', isHighlight: true }] : []),
-    { label: 'Showrooms', href: '#showrooms' },
+    { label: 'Timepieces', href: '#catalog' },
+    { label: 'Featured Brands', href: '#brands' },
+    { label: 'Showrooms in Gorakhpur', href: '#showrooms' },
+    { label: 'Concierge Inquiry', href: '#inquiry' },
   ];
 
   return (
@@ -55,9 +51,9 @@ export default function Header({
               </span>
               <p className="text-[8px] sm:text-[9.5px] uppercase tracking-widest text-brass-600 font-bold truncate">
                 {storeData?.tagline &&
-                !storeData.tagline.includes('Vintage Horology') &&
-                !storeData.tagline.includes('Authorized & Imported') &&
-                !storeData.tagline.includes('TheWatchStore.in')
+                  !storeData.tagline.includes('Vintage Horology') &&
+                  !storeData.tagline.includes('Authorized & Imported') &&
+                  !storeData.tagline.includes('TheWatchStore.in')
                   ? storeData.tagline
                   : 'ramprasadWatchstore.in • Golghar'}
               </p>
@@ -157,11 +153,10 @@ export default function Header({
               <a
                 key={i}
                 href={item.href}
-                className={`font-semibold tracking-wide transition-colors ${
-                  item.isHighlight
+                className={`font-semibold tracking-wide transition-colors ${item.isHighlight
                     ? 'text-rust-600 hover:text-rust-700 font-extrabold flex items-center gap-1'
                     : 'text-[#4A443E] hover:text-brass-700'
-                }`}
+                  }`}
               >
                 {item.label}
               </a>
@@ -185,11 +180,10 @@ export default function Header({
                 key={i}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                  item.isHighlight
+                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${item.isHighlight
                     ? 'bg-rust-500/15 text-rust-700'
                     : 'text-[#2D2825] hover:bg-[#F0EBE1] hover:text-brass-700'
-                }`}
+                  }`}
               >
                 {item.label}
               </a>
