@@ -60,13 +60,13 @@ server.on('upgrade', (req, clientSocket, head) => {
 
 server.listen(GATEWAY_PORT, () => {
   console.log(`Domain Gateway running on port ${GATEWAY_PORT}`);
-  console.log(`Frontend URL: http://ramprasadwatchstore.in/ or http://ramprasadwatchstore.lvh.me/`);
-  console.log(`Admin URL:    http://admin.ramprasadwatchstore.in/ or http://admin.ramprasadwatchstore.lvh.me/`);
+  console.log(`Frontend URL: http://watchstore.in/ or http://watchstore.lvh.me/`);
+  console.log(`Admin URL:    http://admin.watchstore.in/ or http://admin.watchstore.lvh.me/`);
 }).on('error', (err) => {
   if (err.code === 'EACCES') {
     console.warn(`Port ${GATEWAY_PORT} requires administrator privileges. You can access directly via:`);
-    console.log(`Frontend: http://ramprasadwatchstore.in:5173`);
-    console.log(`Admin:    http://admin.ramprasadwatchstore.in:3000`);
+    console.log(`Frontend: http://watchstore.in:5173`);
+    console.log(`Admin:    http://admin.watchstore.in:3000`);
   } else {
     console.error('Gateway Error:', err.message);
   }

@@ -13,11 +13,11 @@ import { getVerifiedBrandImage, BRAND_VERIFIED_WATCH_IMAGE } from '../../utils/d
 
 const POPULAR_BRANDS = [
   'Titan',
+  'Titan Raga',
   'HMT',
   'Fastrack',
   'Sonata',
   'Tissot Swiss',
-  'Rolex',
   'Omega',
   'Seiko Presage',
   'Citizen Automatics',
@@ -221,7 +221,7 @@ export default function WatchEditModal({
 
               {/* Quick Brand Selector Chips */}
               <div className="flex flex-wrap gap-1 mt-1.5">
-                {['Titan', 'HMT', 'Fastrack', 'Sonata', 'Tissot', 'Rolex', 'Omega', 'Seiko', 'Citizen', 'Casio'].map((b) => (
+                {['Titan', 'Titan Raga', 'HMT', 'Fastrack', 'Sonata', 'Tissot', 'Omega', 'Seiko', 'Citizen', 'Casio', 'Rado'].map((b) => (
                   <button
                     key={b}
                     type="button"

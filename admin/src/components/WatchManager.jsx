@@ -25,11 +25,11 @@ import ConfirmationModal from './ConfirmationModal';
 
 const POPULAR_BRANDS = [
   'Titan',
+  'Titan Raga',
   'HMT',
   'Fastrack',
   'Sonata',
   'Tissot Swiss',
-  'Rolex',
   'Omega',
   'TAG Heuer',
   'Cartier',
@@ -63,7 +63,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '100m / 10 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/titan-octane-chronograph.webp',
     description: 'Bold dual-layer tachymeter dial with high-contrast orange chronograph accents, 100M water resistance, and racing date window.',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   },
@@ -78,7 +78,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '30m / 3 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1561634343-3a2787687046?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/titan-edge-ceramic.webp',
     description: 'One of the slimmest ceramic watches in the world. Featherweight scratch-resistant ceramic with sapphire crystal.',
     storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
   },
@@ -93,7 +93,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '30m / 3 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/hmt-kohinoor-mechanical.webp',
     description: 'The historic pride of Indian mechanical horology since 1961. Hand-wound 17-jewel caliber with audible mechanical sweep.',
     storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
   },
@@ -108,7 +108,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '30m / 3 Bar',
     inStock: true,
     featured: false,
-    image: 'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/hmt-janata-devnagari.webp',
     description: 'Historic Indian dress watch featuring authentic Devnagari numerals on an ivory enamel dial.',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   },
@@ -123,7 +123,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '50m / 5 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1548907228-419a3f3d11d0?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/fastrack-street-diver-chrono.webp',
     description: 'Rugged street chronograph with angular gunmetal case, tactile pushers, and high-visibility indices.',
     storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
   },
@@ -138,7 +138,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '30m / 3 Bar',
     inStock: true,
     featured: false,
-    image: 'https://images.unsplash.com/photo-1518131672697-613becd4fab5?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/sonata-poze-sunray-gold.webp',
     description: 'Timeless everyday Indian elegance from the Tata family. Clean champagne sunray dial with minimalist baton markers.',
     storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
   },
@@ -153,23 +153,23 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '100m / 10 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/tissot-prx-35-ice-blue.webp',
     description: 'Tonneau silhouette with mesmerizing waffle tapisserie dial, Nivachron balance spring, and transparent caseback.',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   },
   {
-    name: 'Rolex Submariner Date 41mm Bluesy Two-Tone',
-    brand: 'Rolex',
+    name: 'Rado Captain Cook High-Tech Ceramic Diver 300m',
+    brand: 'Rado',
     category: 'Luxury Swiss',
-    price: 1480000,
-    movement: 'Rolex Calibre 3235 Superlative Chronometer',
-    caseDiameter: '41mm',
-    strapType: 'Oystersteel & 18ct Gold Oyster Bracelet with Glidelock',
+    price: 345000,
+    movement: 'Rado Calibre R763 Automatic (80H Reserve)',
+    caseDiameter: '43mm',
+    strapType: 'High-Tech Ceramic Bracelet with Titanium Clasp',
     waterResistance: '300m / 30 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
-    description: 'Royal blue sunburst dial framed by blue Cerachrom ceramic bezel and signature Rolesor yellow gold and Oystersteel bracelet.',
+    image: '/images/watches/rado-captain-cook-ceramic.webp',
+    description: 'Pioneering plasma high-tech ceramic monobloc case with tinted sapphire dial and ISO 6425 diving certification.',
     storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
   },
   {
@@ -183,7 +183,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '50m / 5 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1556453007-ee036169934b?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/omega-speedmaster-moonwatch.webp',
     description: 'The flight-qualified watch worn on all six lunar missions. Matte step dial with dot-over-ninety anodised aluminium bezel.',
     storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
   },
@@ -198,7 +198,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '50m / 5 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/seiko-presage-cocktail-time.webp',
     description: 'Radiant ice blue sunburst dial with heat-blued hands inspired by cocktail culture, date window, and exhibition back.',
     storeLocation: 'Baldev Plaza, Golghar, Gorakhpur',
   },
@@ -213,7 +213,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '200m / 20 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/citizen-promaster-marine-diver.webp',
     description: 'ISO-compliant deep-sea professional diver with luminous hands, one-way rotating elapsed-time bezel, and Eco-Drive solar charge.',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   },
@@ -228,7 +228,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '200m / 20 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1605583972593-1fda24a7bea2?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/casio-gshock-2100-casioak.webp',
     description: 'Ultra-thin octagonal bezel with carbon core guard structure, dual illuminator LED, and 200-meter water resistance.',
     storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
   },
@@ -243,23 +243,23 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '50m / 5 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
+    image: '/images/watches/fossil-heritage-automatic.webp',
     description: 'Intricately skeletonized exhibition dial showing balance wheel oscillation, encased in antique steel with rich luggage leather strap.',
     storeLocation: 'Shop No. 1, JalKal Building Boutique, Golghar',
   },
   {
-    name: 'Breitling Navitimer B01 Chronograph 43',
+    name: 'Breitling Avenger B01 Chronograph 44',
     brand: 'Breitling',
     category: 'Chronograph',
-    price: 740000,
+    price: 680000,
     movement: 'Breitling 01 Manufacture Automatic (COSC)',
-    caseDiameter: '43mm',
-    strapType: 'Navitimer 7-Row Stainless Steel Bracelet',
-    waterResistance: '30m / 3 Bar',
+    caseDiameter: '44mm',
+    strapType: 'Military Tactical Anthracite Calfskin Strap',
+    waterResistance: '300m / 30 Bar',
     inStock: true,
     featured: true,
-    image: 'https://images.unsplash.com/photo-1639564879163-a2a85682410e?auto=format&fit=crop&w=800&q=80',
-    description: 'The quintessential pilot\'s watch since 1952. Circular slide rule flight calculation bezel and in-house COSC-certified Breitling 01 calibre.',
+    image: '/images/watches/breitling-avenger-b01-chronograph.webp',
+    description: 'Rugged aviation pilot chronograph engineered for cockpit resilience with satin-brushed steel bezel, four rider tabs, and military tactical strap.',
     storeLocation: 'Baldev Plaza Flagship Showroom, Golghar',
   },
 ];
@@ -388,7 +388,7 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
         inStock,
         featured,
         description: description.trim(),
-        image: imageUrl || 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+        image: imageUrl || '/images/watches/default-watch.webp',
       };
 
       if (editingWatchId) {
@@ -604,7 +604,7 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                       alt={w.name}
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
-                        e.target.src = 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=600&q=80';
+                        e.target.src = '/images/watches/default-watch.webp';
                       }}
                     />
 
@@ -732,7 +732,7 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                     required
                     value={brand}
                     onChange={(e) => setBrand(e.target.value)}
-                    placeholder="e.g. Titan, HMT, Tissot, Rolex..."
+                    placeholder="e.g. Titan, HMT, Tissot, Omega..."
                     className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600"
                   />
                   {/* Quick Brand Selectors */}

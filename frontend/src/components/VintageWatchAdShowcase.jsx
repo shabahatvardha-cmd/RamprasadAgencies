@@ -7,8 +7,10 @@ export default function VintageWatchAdShowcase() {
   const { storeData } = useStore();
   const ad = storeData.editorialAd || {};
   const contactPhone = storeData.contactPhone || '+91 98765 43210';
-  const waUrl = getWhatsAppLink(contactPhone, { name: ad.title || 'Townsend Skeleton Automatic', brand: 'Fossil Heritage' }, 'Baldev Plaza & JalKal showrooms');
-  const adImage = getFullImageUrl(ad.image);
+  const rawAdImage = ad.image && (ad.image.includes('1639006570490') || ad.image.includes('1670404160620') || ad.image.toLowerCase().includes('rolex'))
+    ? '/images/editorial-baldev-flagship.webp'
+    : ad.image;
+  const adImage = getFullImageUrl(rawAdImage);
 
   return (
     <section className="relative w-full py-16 sm:py-24 bg-[#FAF7F2] border-b border-[#E8E1D5] overflow-hidden">

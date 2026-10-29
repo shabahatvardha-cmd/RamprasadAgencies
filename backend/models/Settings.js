@@ -56,7 +56,7 @@ const DEFAULT_ADS = [
     celebrity: 'Daniel Craig • Speedmaster Ambassador',
     tagline: 'Tested in the vacuum of deep space and worn during every lunar landing. Available for in-person fitting and private consultation.',
     brand: 'Omega',
-    image: 'https://images.unsplash.com/photo-1556453007-ee036169934b?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/watches/omega-speedmaster-moonwatch.webp',
     watchModel: 'Omega Speedmaster Professional Moonwatch Co-Axial Master',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar',
     isActive: true,
@@ -66,7 +66,7 @@ const DEFAULT_ADS = [
     celebrity: 'Takumi Master Horologists • Tokyo Atelier',
     tagline: 'Hand-enameled dials crafted by master artisans with centuries of Japanese metalworking pedigree.',
     brand: 'Seiko',
-    image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/watches/seiko-presage-cocktail-time.webp',
     watchModel: 'Seiko Presage Craftsmanship Urushi Automatic',
     storeLocation: 'Shop No. 1, JalKal Building, Golghar',
     isActive: true,
@@ -80,7 +80,7 @@ const DEFAULT_HERO_SLIDES = [
     subheadline: 'Gorakhpur’s premier authorized specialists in imported luxury watches. Authentic Swiss precision, Japanese automatic craft, and certified showroom service at Baldev Plaza & JalKal Building, Golghar.',
     ctaPrimary: 'Shop The Drops',
     ctaSecondary: 'Visit Showrooms',
-    image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/watches/tissot-prx-powermatic-80.webp',
     tag: 'Seiko • Tissot • Citizen',
   },
   {
@@ -98,7 +98,7 @@ const DEFAULT_HERO_SLIDES = [
     subheadline: 'Step into our dual experience stores in Golghar for private timepiece consultations, certified bracelet sizing, and instant battery replacement.',
     ctaPrimary: 'Locate Showrooms',
     ctaSecondary: 'Book Viewing',
-    image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=1200&q=85',
+    image: 'https://images.unsplash.com/photo-1783867872755-c998f4ab12a3?auto=format&fit=crop&w=1200&q=85',
     tag: 'Golghar Flagships • Gorakhpur',
   },
 ];
@@ -131,7 +131,7 @@ const DEFAULT_SHOWROOMS = [
     landmark: 'Opposite Town Hall / Heart of Golghar Commercial Hub',
     hours: '10:30 AM – 9:00 PM (Monday to Sunday)',
     phone: '+91 98765 43210',
-    image: 'https://images.unsplash.com/photo-1783867872755-c998f4ab12a3?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/showrooms/baldev-plaza.webp',
     specialties: [
       'Official Swiss collections (Tissot, Rado, Victorinox)',
       'Japanese Automatics & Presage timepieces (Seiko, Citizen)',
@@ -148,7 +148,7 @@ const DEFAULT_SHOWROOMS = [
     landmark: 'Near JalKal Compound, Main Golghar Market',
     hours: '10:30 AM – 9:00 PM (Monday to Sunday)',
     phone: '+91 98765 43210',
-    image: 'https://images.unsplash.com/photo-1635462684825-3621c1df5403?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/showrooms/jalkal-building.webp',
     specialties: [
       'Casual Luxury & Chronographs (Fossil, Casio Edifice)',
       'Designer & lifestyle collections (Tommy Hilfiger, Armani)',
@@ -161,11 +161,11 @@ const DEFAULT_SHOWROOMS = [
 
 const DEFAULT_BRANDS = [
   { name: 'Titan', country: 'India', desc: 'Edge, Octane & Regalia Flagships' },
+  { name: 'Titan Raga', country: 'India', desc: 'Jewelry & Floral Designer Horology' },
   { name: 'HMT', country: 'India', desc: 'Kohinoor & Janata Mechanical Heritage' },
   { name: 'Fastrack', country: 'India', desc: 'Youth Sport & Street Chronographs' },
   { name: 'Sonata', country: 'India', desc: 'Everyday Reliable Indian Horology' },
   { name: 'Tissot', country: 'Swiss', desc: 'PRX & Heritage Swiss Precision' },
-  { name: 'Rolex', country: 'Swiss', desc: 'Certified Swiss Luxury Imports' },
   { name: 'Omega', country: 'Swiss', desc: 'Moonwatch & Co-Axial Chronometers' },
   { name: 'Seiko', country: 'Japan', desc: 'Automatic & Presage Craft' },
   { name: 'Citizen', country: 'Japan', desc: 'Tsuyosa & Eco-Drive Calibers' },
@@ -254,7 +254,7 @@ const DEFAULT_INQUIRY_FORM_CONFIG = {
       options: [
         'Buy / Inquire Specific Watch Model',
         'Private In-Store Showroom Fitting (Baldev Plaza / JalKal Building)',
-        'Custom Sourcing for Imported Reference (Rolex, Omega, Tissot, Seiko)',
+        'Custom Sourcing for Imported Reference (Omega, Tissot, Rado, Seiko)',
         'Watch Bracelet Sizing & Ultrasonic Cleaning',
         'Swiss Movement Servicing & Battery Replacement',
         'Corporate & Luxury Wedding Gifting Inquiry',
@@ -312,6 +312,7 @@ const DEFAULT_SETTINGS = {
   trustBadges: DEFAULT_TRUST_BADGES,
   showrooms: DEFAULT_SHOWROOMS,
   aboutText: 'Gorakhpur’s trusted destination for genuine imported luxury watches, automatic chronographs, and precision battery servicing for over three decades.',
+  certificateImage: '/images/about/heritage-certificate.webp',
   footerCopyright: 'Ram Prasad Agencies. Baldev Plaza & JalKal Building, Golghar, Gorakhpur. All rights reserved.',
   footerVipBadge: 'Vintage Collectors Circle',
   footerVipTitle: 'Receive 10% Off Your First Automatic Timepiece',
@@ -396,6 +397,11 @@ const settingsSchema = new mongoose.Schema(
       default: DEFAULT_SETTINGS.aboutText,
       trim: true,
     },
+    certificateImage: {
+      type: String,
+      default: DEFAULT_SETTINGS.certificateImage,
+      trim: true,
+    },
     footerCopyright: {
       type: String,
       default: DEFAULT_SETTINGS.footerCopyright,
@@ -473,8 +479,8 @@ settingsSchema.statics.getSingleton = async function () {
       settings.announcements = DEFAULT_ANNOUNCEMENTS;
       modified = true;
     }
-    if (!settings.logo) {
-      settings.logo = '/logo.png';
+    if (!settings.logo || settings.logo === '/logo.png' || settings.logo === '/logo.jpg') {
+      settings.logo = '/logo.webp';
       modified = true;
     }
     if (!settings.flashSale || typeof settings.flashSale.isActive === 'undefined') {

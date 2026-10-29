@@ -1,206 +1,179 @@
-import React, { useState } from 'react';
-import {
-  Menu,
-  X,
-  MessageCircle,
-  MapPin,
-  Sparkles,
-  Heart,
-  Search,
-  Phone,
-  Flame,
-  Watch,
-  Sliders,
-  Zap,
-} from 'lucide-react';
-import { getWhatsAppLink } from '../utils/api';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Search } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import BrandLogo from './BrandLogo';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import LiveWatchSearch from './LiveWatchSearch';
 
 export default function Header({
   wishlistCount = 0,
   onOpenWishlist,
+  allWatches = [],
+  onSelectWatch,
   onSearch,
   searchQuery,
   onSelectCategory,
 }) {
   const { storeData } = useStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const contactPhone = storeData.contactPhone || '+91 98765 43210';
-  const waLink = getWhatsAppLink(contactPhone, null);
-  const flashSale = storeData.flashSale?.flashSale || storeData.flashSale || {};
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Detect scroll to enhance contrast, border and elevation over underlying sections
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
-    { label: 'Timepieces', href: '#catalog' },
-    { label: 'Featured Brands', href: '#brands' },
-    { label: 'Showrooms in Gorakhpur', href: '#showrooms' },
-    { label: 'Concierge Inquiry', href: '#inquiry' },
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/#about' },
+    { label: 'Brand', href: '/#brands' },
+    { label: 'Store Locator', href: '/#showrooms' },
+    { label: 'Contact Us', href: '/#contact' },
   ];
 
+  const handleNavClick = (e, href) => {
+    setMobileMenuOpen(false);
+
+    if (href === '/') {
+      e.preventDefault();
+      if (location.pathname === '/') {
+        try {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch {
+          window.scrollTo(0, 0);
+        }
+      } else {
+        navigate('/');
+      }
+      return;
+    }
+
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const targetId = href.replace('/#', '');
+      if (location.pathname === '/') {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        navigate(href);
+      }
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-50 bg-[#FAF8F5]/98 backdrop-blur-2xl border-b border-[#E8E1D5] shadow-md transition-all font-sans text-[#1A1A1A]">
-      {/* Primary Brand & Search Row */}
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 font-sans text-[#1A1A1A] ${
+        isScrolled
+          ? 'bg-[#FAF8F5] border-b border-[#D8CEBC] shadow-[0_8px_30px_-4px_rgba(20,15,10,0.18)]'
+          : 'bg-[#FAF8F5] border-b border-[#E8E1D5] shadow-sm'
+      }`}
+      style={{ backgroundColor: '#FAF8F5' }}
+    >
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-6">
           {/* Brand Logo & Name */}
-          <a href="#" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
+          <Link
+            to="/"
+            onClick={(e) => handleNavClick(e, '/')}
+            className="flex items-center gap-2.5 sm:gap-3 shrink-0 group py-1"
+          >
             <BrandLogo customSrc={storeData?.logo} className="w-9 h-9 sm:w-11 sm:h-11" />
-            <div>
-              <span className="font-serif text-xs sm:text-base md:text-lg font-bold tracking-wider text-[#1A1A1A] block leading-tight">
+            <div className="flex flex-col justify-center">
+              <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-wider text-[#111111] block leading-tight group-hover:text-brass-700 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
                 {storeData?.brandName || 'RAM PRASAD AGENCIES'}
               </span>
-              <p className="text-[8px] sm:text-[9.5px] uppercase tracking-widest text-brass-600 font-bold truncate">
+              <p className="text-[8.5px] sm:text-[10px] uppercase tracking-widest text-brass-700 font-extrabold truncate mt-0.5">
                 {storeData?.tagline &&
-                  !storeData.tagline.includes('Vintage Horology') &&
-                  !storeData.tagline.includes('Authorized & Imported') &&
-                  !storeData.tagline.includes('TheWatchStore.in')
+                !storeData.tagline.includes('Vintage Horology') &&
+                !storeData.tagline.includes('Authorized & Imported') &&
+                !storeData.tagline.includes('TheWatchStore.in') &&
+                !storeData.tagline.toLowerCase().includes('ramprasadwatchstore')
                   ? storeData.tagline
-                  : 'ramprasadWatchstore.in • Golghar'}
+                  : 'WATCHSTORE.IN'}
               </p>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Search Bar */}
-          <div className="hidden md:flex flex-1 max-w-md lg:max-w-lg mx-4">
-            <div className="relative w-full">
-              <Search className="w-4 h-4 absolute left-3.5 top-3 text-[#7D756C]" />
-              <input
-                type="text"
-                placeholder="Search Townsend, Shelby, Automatics, Chronos, Leather..."
-                value={searchQuery || ''}
-                onChange={(e) => onSearch && onSearch(e.target.value)}
-                className="w-full bg-[#F0EBE1] border border-[#DDD5C7] focus:border-brass-500 rounded-full pl-10 pr-4 py-2 text-xs text-[#1A1A1A] placeholder-[#8A8277] focus:outline-none transition-colors"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => onSearch && onSearch('')}
-                  className="absolute right-3.5 top-2.5 text-xs text-[#7D756C] hover:text-[#1A1A1A]"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Right Header Badges & Actions */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Showroom Locator Pill */}
-            <a
-              href="#showrooms"
-              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F0EBE1] hover:bg-[#EAE4D8] border border-[#DDD5C7] text-xs text-[#3A3530] hover:text-[#1A1A1A] transition-all"
-            >
-              <MapPin className="w-3.5 h-3.5 text-brass-600" />
-              <span>Baldev & JalKal</span>
-            </a>
-
-            {/* Wishlist Button with Badge Counter */}
-            <button
-              onClick={onOpenWishlist}
-              className="relative p-2 sm:p-2.5 rounded-full bg-[#F0EBE1] hover:bg-[#EAE4D8] text-[#3A3530] hover:text-[#1A1A1A] border border-[#DDD5C7] transition-colors"
-              title="Saved Timepieces"
-              aria-label="Wishlist drawer"
-            >
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-rose-600 text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shadow-lg animate-pulse">
-                  {wishlistCount}
-                </span>
-              )}
-            </button>
-
-            {/* WhatsApp Concierge Button */}
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full text-xs uppercase tracking-wider font-extrabold bg-gradient-to-r from-emerald-700 to-teal-800 hover:from-emerald-600 hover:to-teal-700 text-white shadow-sm transition-all active:scale-95"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>WhatsApp Store</span>
-            </a>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#3A3530] hover:text-[#1A1A1A] rounded-lg focus:outline-none"
-              aria-label="Toggle Navigation"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Search Input Row */}
-        <div className="md:hidden pb-3 pt-0.5">
-          <div className="relative w-full">
-            <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-[#7D756C]" />
-            <input
-              type="text"
-              placeholder="Search Townsend, Automatics, Chronos..."
-              value={searchQuery || ''}
-              onChange={(e) => onSearch && onSearch(e.target.value)}
-              className="w-full bg-[#F0EBE1] border border-[#DDD5C7] focus:border-brass-500 rounded-full pl-9 pr-8 py-1.5 text-xs text-[#1A1A1A] placeholder-[#8A8277] focus:outline-none transition-colors"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Secondary Navigation Row (Desktop) */}
-      <div className="hidden md:block bg-[#F4EFE6] border-t border-[#E8E1D5] py-2.5">
-        <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 flex items-center justify-between text-xs">
-          <nav className="flex items-center gap-7">
-            {navLinks.map((item, i) => (
+          {/* Desktop Navigation Links (Center) */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-10">
+            {navLinks.map((item) => (
               <a
-                key={i}
+                key={item.label}
                 href={item.href}
-                className={`font-semibold tracking-wide transition-colors ${item.isHighlight
-                    ? 'text-rust-600 hover:text-rust-700 font-extrabold flex items-center gap-1'
-                    : 'text-[#4A443E] hover:text-brass-700'
-                  }`}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-xs lg:text-[13px] font-bold tracking-wider uppercase text-[#2B2621] hover:text-brass-700 relative py-2 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brass-600 hover:after:w-full after:transition-all after:duration-300"
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-4 text-[#736B63] text-[11px]">
-            <span>100% Genuine Stamped Horology</span>
-            <span>•</span>
-            <span>Baldev Plaza & JalKal Building</span>
+          {/* Right Header Search Bar & Mobile Hamburger */}
+          <div className="flex items-center gap-3 shrink-0">
+            {/* Desktop Live Search Bar */}
+            <LiveWatchSearch
+              allWatches={allWatches}
+              onSelectWatch={onSelectWatch}
+              className="hidden md:block w-48 lg:w-64 xl:w-80"
+              placeholder="Search watch, brand, caliber..."
+            />
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-[#3A3530] hover:text-[#1A1A1A] rounded-lg focus:outline-none"
+              aria-label="Toggle Navigation"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+        </div>
+
+        {/* Mobile Search Input Row with Live Results */}
+        <div className="md:hidden pb-3 pt-0.5">
+          <LiveWatchSearch
+            allWatches={allWatches}
+            onSelectWatch={onSelectWatch}
+            className="w-full"
+            isMobile={true}
+            placeholder="Search PRX, Tsuyosa, Speedmaster..."
+            onCloseMobile={() => setMobileMenuOpen(false)}
+          />
         </div>
       </div>
 
+      {/* Luxury Antique Gold Divider Line at Bottom of Header */}
+      <div
+        className={`h-[1.5px] w-full bg-gradient-to-r from-brass-600/10 via-brass-500/70 to-brass-600/10 transition-opacity duration-300 ${
+          isScrolled ? 'opacity-100' : 'opacity-40'
+        }`}
+      />
+
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF8F5] border-t border-[#E8E1D5] px-4 py-4 space-y-3 shadow-xl">
-          <div className="flex flex-col space-y-2">
-            {navLinks.map((item, i) => (
-              <a
-                key={i}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${item.isHighlight
-                    ? 'bg-rust-500/15 text-rust-700'
-                    : 'text-[#2D2825] hover:bg-[#F0EBE1] hover:text-brass-700'
-                  }`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="pt-3 border-t border-[#E8E1D5] flex flex-col gap-2">
+        <div
+          className="md:hidden border-t border-[#D8CEBC] px-4 py-4 space-y-1 shadow-2xl animate-fadeIn"
+          style={{ backgroundColor: '#FAF8F5' }}
+        >
+          {navLinks.map((item) => (
             <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider"
+              key={item.label}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="block px-3 py-2.5 rounded-lg text-sm font-bold text-[#2D2825] hover:bg-[#F0EBE1] hover:text-brass-700 transition-colors uppercase tracking-wider"
             >
-              <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp Store</span>
+              {item.label}
             </a>
-          </div>
+          ))}
         </div>
       )}
     </header>

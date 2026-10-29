@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Heart, MessageCircle, Trash2, ArrowRight, ExternalLink } from 'lucide-react';
-import { getFullImageUrl, getWhatsAppLink } from '../utils/api';
+import { getFullImageUrl, getWhatsAppLink, getStoredCustomerProfile } from '../utils/api';
 
 export default function WishlistDrawer({
   isOpen,
@@ -12,12 +12,23 @@ export default function WishlistDrawer({
 }) {
   if (!isOpen) return null;
 
-  // Build combined WhatsApp inquiry for all favorited watches
-  const names = wishlist.map((w) => `${w.brand} ${w.name}`).join('%0A- ');
-  const multiWaMessage = `Hello Ram Prasad Agencies, I have shortlisted the following timepieces from your website and would like to inquire about their pricing and showroom availability at Golghar:%0A- ${names}%0A%0ACould you please share the showroom pricing and let me know if these are ready for private viewing?`;
+  // Build combined WhatsApp inquiry in polite paragraph format with Name, Phone, and Email
+  const profile = getStoredCustomerProfile() || {};
+  const customerName = profile.name?.trim() || '[Your Name]';
+  const customerPhone = profile.phone?.trim() || '[Your Phone Number]';
+  const customerEmail = profile.email?.trim() || '[Your Email ID]';
+
+  const names = wishlist.map((w) => `• ${w.brand} ${w.name}`).join('\n');
+  const multiWaMessage = `Hello Ram Prasad Agencies,
+
+My name is ${customerName}. I have shortlisted the following timepieces and would like to inquire about their pricing and showroom availability at your Golghar showrooms:
+
+${names}
+
+You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to your guidance on showroom pricing and private viewing. Thank you!`;
 
   const cleanPhone = (contactPhone || '9876543210').replace(/[^0-9]/g, '');
-  const multiWaUrl = `https://wa.me/91${cleanPhone.slice(-10)}?text=${multiWaMessage}`;
+  const multiWaUrl = `https://wa.me/91${cleanPhone.slice(-10)}?text=${encodeURIComponent(multiWaMessage)}`;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden animate-fade-in">
@@ -76,8 +87,7 @@ export default function WishlistDrawer({
                       alt={watch.name}
                       className="w-16 h-16 object-contain rounded-xl bg-[#F8F5EE] p-2 shrink-0 border border-[#EBE4D8]"
                       onError={(e) => {
-                        e.target.src =
-                          'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=600&q=80';
+                        e.target.src = '/images/brands/default.webp';
                       }}
                     />
                     <div className="flex-1 min-w-0">

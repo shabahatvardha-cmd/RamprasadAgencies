@@ -101,7 +101,7 @@ export default function CampaignsManager({ settings, onRefresh, showToast }) {
         imageUrl = uploadRes.imageUrl;
       } else if (!previewUrl) {
         // High quality fallback horology campaign image
-        imageUrl = 'https://images.unsplash.com/photo-1630262174975-38bf8d42745f?auto=format&fit=crop&w=1200&q=85';
+        imageUrl = '/images/editorial-baldev-flagship.webp';
       }
 
       const newAd = {

@@ -8,7 +8,7 @@ Welcome to the backend engine for **Ram Prasad Agencies (TheWatchStore.in)**. Th
 
 1. **Watch Catalog & Inventory**:
    - Stores all timepieces in MongoDB via Mongoose schemas.
-   - Saves watch names, brands (Rolex, Omega, Tissot, Seiko, etc.), categories (Chronograph, Dress, Diver, Automatic), descriptions, showroom locations, and prices in Indian Rupees.
+   - Saves watch names, brands (Titan, Omega, Tissot, Seiko, etc.), categories (Chronograph, Dress, Diver, Automatic), descriptions, showroom locations, and prices in Indian Rupees.
    - When a watch is deleted from the Admin Studio, its local image file is automatically cleaned up from disk to keep storage neat.
 
 2. **Local Media & Photo Uploads (Multer)**:

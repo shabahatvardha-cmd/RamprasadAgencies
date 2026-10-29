@@ -95,7 +95,7 @@ Because `.in` is a custom domain, Windows just needs one quick approval to resol
 
 ### 2. Adding a New Watch to the Showcase
 - In the Admin Studio, click **"+ Add Watch"** in the top bar or go to the **Watches** tab.
-- Enter the model name, brand (Rolex, Omega, Tissot, Seiko, Casio, etc.), price in ₹ INR, and showroom availability.
+- Enter the model name, brand (Titan, Omega, Tissot, Seiko, Casio, etc.), price in ₹ INR, and showroom availability.
 - Upload a clear photo of the watch. It is automatically stored locally and resized for the showcase.
 - Click **Save Watch**. It immediately shows up in the customer catalog!
 

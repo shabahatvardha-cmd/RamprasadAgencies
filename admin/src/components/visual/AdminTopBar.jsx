@@ -81,7 +81,7 @@ export default function AdminTopBar({
                 RAM PRASAD AGENCIES
               </span>
               <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-brass-500/20 text-brass-300 border border-brass-500/40">
-                admin.ramprasadWatchstore.in
+                admin.watchstore.in
               </span>
             </div>
             <p className="text-[10px] text-[#A0988E] flex items-center gap-1.5">
@@ -274,14 +274,14 @@ export default function AdminTopBar({
 
           {/* View Live Storefront */}
           <a
-            href={window.location.hostname.includes('lvh.me') ? 'http://ramprasadwatchstore.lvh.me/#showrooms' : 'http://ramprasadwatchstore.in/#showrooms'}
+            href={window.location.hostname.includes('lvh.me') ? 'http://watchstore.lvh.me/#showrooms' : 'http://watchstore.in/#showrooms'}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition-all"
-            title="Open customer storefront at http://ramprasadwatchstore.in/#showrooms"
+            title="Open customer storefront at http://watchstore.in/#showrooms"
           >
             <Store className="w-3.5 h-3.5 text-brass-400" />
-            <span className="hidden md:inline">ramprasadWatchstore.in</span>
+            <span className="hidden md:inline">watchstore.in</span>
             <ExternalLink className="w-3 h-3 text-brass-400" />
           </a>
 

@@ -7,12 +7,27 @@ export const API_BASE = import.meta.env.VITE_API_BASE_URL || `${API_ROOT}/api`;
  */
 export const getFullImageUrl = (imagePath) => {
   if (!imagePath) {
-    return 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80';
+    return '/images/watches/default-watch.webp';
   }
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('data:')) {
-    return imagePath;
+  let pathStr = String(imagePath).trim();
+
+  // If local or relative path with .jpg / .jpeg / .png, switch to .webp
+  if (pathStr.endsWith('.jpg') || pathStr.endsWith('.jpeg') || pathStr.endsWith('.png')) {
+    pathStr = pathStr.replace(/\.(jpg|jpeg|png)$/i, '.webp');
   }
-  const cleanPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+
+  if (pathStr.startsWith('http://') || pathStr.startsWith('https://') || pathStr.startsWith('data:')) {
+    // If Unsplash, ensure WebP output
+    if (pathStr.includes('images.unsplash.com') && !pathStr.includes('fm=webp')) {
+      const sep = pathStr.includes('?') ? '&' : '?';
+      return `${pathStr}${sep}fm=webp`;
+    }
+    return pathStr;
+  }
+  if (pathStr.startsWith('/images/')) {
+    return pathStr;
+  }
+  const cleanPath = pathStr.startsWith('/') ? pathStr : `/${pathStr}`;
   return `${API_ROOT}${cleanPath}`;
 };
 
@@ -92,18 +107,69 @@ export const uploadImageFile = async (file) => {
 };
 
 /**
- * Helper to build prefilled WhatsApp inquiry link
+ * Retrieve saved customer profile from localStorage (Name, Phone, Email)
  */
-export const getWhatsAppLink = (phone, watch, storeName = 'Golghar showrooms') => {
+export const getStoredCustomerProfile = () => {
+  try {
+    const raw = localStorage.getItem('rpa_customer_profile');
+    if (raw) return JSON.parse(raw);
+  } catch {}
+  return null;
+};
+
+/**
+ * Persist customer profile to localStorage
+ */
+export const saveCustomerProfile = (profile) => {
+  try {
+    if (profile && typeof profile === 'object') {
+      const existing = getStoredCustomerProfile() || {};
+      const updated = { ...existing, ...profile };
+      localStorage.setItem('rpa_customer_profile', JSON.stringify(updated));
+    }
+  } catch {}
+};
+
+/**
+ * Helper to build prefilled WhatsApp inquiry link in a natural, polite paragraph format
+ * including the customer's Name, Phone Number, and Email ID.
+ */
+export const getWhatsAppLink = (
+  phone,
+  watchOrMessage,
+  storeName = 'Golghar showrooms',
+  userDetails = null
+) => {
   // Sanitize phone number (remove spaces, +, -, etc. then ensure country code)
   let cleanPhone = String(phone || '919876543210').replace(/[^0-9]/g, '');
   if (!cleanPhone.startsWith('91') && cleanPhone.length === 10) {
     cleanPhone = `91${cleanPhone}`;
   }
 
-  const message = watch
-    ? `Hello Ram Prasad Agencies, I would like to inquire about the price, availability, and in-store viewing of "${watch.brand} - ${watch.name}" at your ${storeName}. Could you please share the current showroom pricing and acquisition details?`
-    : `Hello Ram Prasad Agencies, I would like to inquire about your luxury & heritage timepiece collection and schedule a private consultation at your Golghar showrooms.`;
+  const profile = userDetails || getStoredCustomerProfile() || {};
+  const customerName = profile.name?.trim() || '[Your Name]';
+  const customerPhone = profile.phone?.trim() || '[Your Phone Number]';
+  const customerEmail = profile.email?.trim() || '[Your Email ID]';
+
+  const contactString = `You can reach me at ${customerPhone} or ${customerEmail}.`;
+
+  let message = '';
+  if (typeof watchOrMessage === 'string' && watchOrMessage.trim() !== '') {
+    message = watchOrMessage;
+  } else if (watchOrMessage && typeof watchOrMessage === 'object') {
+    const watchTitle = `${watchOrMessage.brand ? watchOrMessage.brand + ' ' : ''}${watchOrMessage.name || ''}`.trim();
+    message = `Hello Ram Prasad Agencies,
+
+My name is ${customerName}. I am interested in inquiring about the "${watchTitle}" at your ${storeName}.
+
+You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to your guidance on pricing and private viewing. Thank you!`;
+  } else {
+    message = `Hello Ram Prasad Agencies,
+
+My name is ${customerName}. I would like to inquire about your luxury & heritage watch collections and schedule a private showroom consultation in Golghar.
+
+You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to your guidance. Thank you!`;
+  }
 
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 };

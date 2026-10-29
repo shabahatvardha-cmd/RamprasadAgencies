@@ -55,8 +55,8 @@ const upload = multer({
   },
 });
 
-// POST /api/upload - Handle single image upload
-router.post('/', upload.single('image'), (req, res) => {
+// POST /api/upload - Handle single image upload and auto-convert to WebP
+router.post('/', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({
@@ -65,16 +65,37 @@ router.post('/', upload.single('image'), (req, res) => {
       });
     }
 
+    const originalPath = req.file.path;
+    const baseName = path.basename(req.file.filename, path.extname(req.file.filename));
+    const webpFilename = `${baseName}.webp`;
+    const webpPath = path.join(uploadDir, webpFilename);
+
+    let finalFilename = req.file.filename;
+
+    try {
+      const sharp = require('sharp');
+      await sharp(originalPath)
+        .webp({ quality: 90, effort: 4 })
+        .toFile(webpPath);
+
+      // If original wasn't already webp, remove original file
+      if (req.file.mimetype !== 'image/webp' && fs.existsSync(originalPath)) {
+        try { fs.unlinkSync(originalPath); } catch {}
+      }
+      finalFilename = webpFilename;
+    } catch (sharpErr) {
+      console.warn('Sharp conversion fallback, using original file:', sharpErr.message);
+    }
+
     // Relative URL served statically by express at /uploads
-    const imageUrl = `/uploads/${req.file.filename}`;
+    const imageUrl = `/uploads/${finalFilename}`;
 
     return res.status(201).json({
       success: true,
-      message: 'Image uploaded successfully',
+      message: 'Image uploaded and converted to WebP successfully',
       imageUrl: imageUrl,
-      filename: req.file.filename,
-      size: req.file.size,
-      mimetype: req.file.mimetype,
+      filename: finalFilename,
+      mimetype: 'image/webp',
     });
   } catch (error) {
     return res.status(500).json({

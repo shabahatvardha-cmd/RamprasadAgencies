@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 /**
  * BrandLogo component for Ram Prasad Agencies
- * Tries customSrc, then /logo.png, then /logo.jpg, then graceful initials fallback.
+ * Tries customSrc, then /logo.webp, then graceful initials fallback.
  */
 export default function BrandLogo({
   className = 'w-9 h-9 sm:w-11 sm:h-11',
@@ -11,11 +11,10 @@ export default function BrandLogo({
 }) {
   const [attemptIndex, setAttemptIndex] = useState(0);
 
-  // Candidate sources in order of priority
   const candidates = [
     customSrc,
     '/logo.png',
-    '/logo.jpg',
+    '/logo.webp',
   ].filter(Boolean);
 
   const handleError = () => {
@@ -43,7 +42,7 @@ export default function BrandLogo({
       src={currentSrc}
       alt={alt}
       onError={handleError}
-      className={`${className} rounded-xl object-contain shadow-md border border-brass-400/40 bg-white p-0.5 shrink-0 transition-transform group-hover:scale-105`}
+      className={`${className} rounded-full object-contain shadow-sm border border-brass-400/30 bg-white p-0.5 shrink-0 transition-transform group-hover:scale-105`}
     />
   );
 }

@@ -6,11 +6,25 @@ export const API_BASE = import.meta.env.VITE_API_BASE_URL || `${API_ROOT}/api`;
  * e.g. "/uploads/watch-123.jpg" -> "http://localhost:5000/uploads/watch-123.jpg"
  */
 export const getFullImageUrl = (imagePath) => {
-  if (!imagePath) return 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=600&q=80';
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('data:')) {
-    return imagePath;
+  if (!imagePath) return '/images/watches/default-watch.webp';
+  let pathStr = String(imagePath).trim();
+
+  // If local or relative path with .jpg / .jpeg / .png, switch to .webp
+  if (pathStr.endsWith('.jpg') || pathStr.endsWith('.jpeg') || pathStr.endsWith('.png')) {
+    pathStr = pathStr.replace(/\.(jpg|jpeg|png)$/i, '.webp');
   }
-  const cleanPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+
+  if (pathStr.startsWith('http://') || pathStr.startsWith('https://') || pathStr.startsWith('data:')) {
+    if (pathStr.includes('images.unsplash.com') && !pathStr.includes('fm=webp')) {
+      const sep = pathStr.includes('?') ? '&' : '?';
+      return `${pathStr}${sep}fm=webp`;
+    }
+    return pathStr;
+  }
+  if (pathStr.startsWith('/images/')) {
+    return pathStr;
+  }
+  const cleanPath = pathStr.startsWith('/') ? pathStr : `/${pathStr}`;
   return `${API_ROOT}${cleanPath}`;
 };
 

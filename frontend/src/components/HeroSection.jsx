@@ -19,7 +19,7 @@ const HERO_SLIDES = [
     subheadline: 'Gorakhpur’s premier authorized specialists in imported luxury watches. Authentic Swiss precision, Japanese automatic craft, and certified showroom service at Baldev Plaza & JalKal Building, Golghar.',
     ctaPrimary: 'Shop The Drops',
     ctaSecondary: 'Visit Showrooms',
-    image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/watches/tissot-prx-powermatic-80.webp',
     tag: 'Seiko • Tissot • Citizen',
   },
   {
@@ -28,7 +28,7 @@ const HERO_SLIDES = [
     subheadline: 'Explore iconic timepieces worn by legends of sport and cinema. Featuring TAG Heuer Carrera Chronographs, Omega Moonwatch, and Rado Captain Cook ceramics.',
     ctaPrimary: 'View Ambassador Series',
     ctaSecondary: 'Inquire on WhatsApp',
-    image: 'https://images.unsplash.com/photo-1630262174975-38bf8d42745f?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/hero-cartier-santos.webp',
     tag: 'TAG Heuer • Omega • Rado',
   },
   {
@@ -37,7 +37,7 @@ const HERO_SLIDES = [
     subheadline: 'Step into our dual experience stores in Golghar for private timepiece consultations, certified bracelet sizing, and instant battery replacement.',
     ctaPrimary: 'Locate Showrooms',
     ctaSecondary: 'Book Viewing',
-    image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/showrooms/baldev-plaza.webp',
     tag: 'Golghar Flagships • Gorakhpur',
   },
 ];

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, MessageCircle, Clock, ShieldCheck, Sparkles, Phone, Loader2, Store, AlertCircle, Check } from 'lucide-react';
-import { getWhatsAppLink, submitLead } from '../utils/api';
+import { getWhatsAppLink, submitLead, saveCustomerProfile } from '../utils/api';
 import { useStore, DEFAULT_INQUIRY_FORM_CONFIG } from '../context/StoreContext';
 
 const COUNTRY_CODES = [
@@ -157,6 +157,13 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
       const savedLead = await submitLead(leadPayload);
       setSubmittedLead(savedLead);
 
+      // Save customer profile locally for seamless future inquiries
+      saveCustomerProfile({
+        name: customerName,
+        phone: fullPhoneNumber,
+        email: customerEmail,
+      });
+
       // Broadcast new lead in real-time to open Admin Panels
       if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
         try {
@@ -182,26 +189,33 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
     }
   };
 
-  // Compile WhatsApp message string with all answers
-  const customerName = formAnswers.name || 'Customer';
+  // Compile polite, elegant paragraph format WhatsApp message with Name, Phone, and Email
+  const customerName = formAnswers.name?.trim() || 'Customer';
   const cleanDialCode = countryCode.replace('-CA', '');
   const phoneDigits = String(formAnswers.phone || '').replace(/\D/g, '');
   const fullPhoneDisplay = phoneDigits ? `${cleanDialCode} ${phoneDigits}` : '';
+  const customerEmail = (formAnswers.email || '').trim();
   const chosenStore = formAnswers.storeLocation || 'Baldev Plaza Flagship Showroom, Golghar';
   const chosenInquiry = formAnswers.inquiryType || 'Luxury Watch Consultation';
-  const customerMsg = formAnswers.message || '';
+  const customerMsg = formAnswers.message?.trim() ? ` Regarding: "${formAnswers.message.trim()}".` : '';
 
-  let customAnswersText = '';
-  activeFields.forEach((field) => {
-    if (!field.isSystem && formAnswers[field.id]) {
-      customAnswersText += `%0A*${encodeURIComponent(field.label)}:* ${encodeURIComponent(formAnswers[field.id])}`;
-    }
-  });
+  const contactList = [
+    fullPhoneDisplay ? `Phone: ${fullPhoneDisplay}` : null,
+    customerEmail ? `Email: ${customerEmail}` : null,
+  ].filter(Boolean).join(' | ');
 
-  const customWhatsAppMessage = `Hello Ram Prasad Agencies,%0A%0A*Showroom Lead Reference:* RPA-${String(submittedLead?._id || Date.now()).slice(-6).toUpperCase()}%0A*Name:* ${encodeURIComponent(customerName)}%0A*Mobile / WhatsApp:* ${encodeURIComponent(fullPhoneDisplay)}%0A*Preferred Showroom:* ${encodeURIComponent(chosenStore)}%0A*Inquiry Nature:* ${encodeURIComponent(chosenInquiry)}${customAnswersText}%0A*Notes:* ${encodeURIComponent(customerMsg || 'General Luxury Timepiece Consultation')}`;
+  const refId = String(submittedLead?._id || Date.now()).slice(-6).toUpperCase();
+
+  const paragraphMessage = `Hello Ram Prasad Agencies,
+
+My name is ${customerName}. I would like to inquire about a showroom consultation for "${chosenInquiry}" at your ${chosenStore}.${customerMsg}
+
+You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to your guidance on availability and private viewing. Thank you!
+
+(Ref: RPA-${refId})`;
 
   const cleanPhone = (contactPhone || '9876543210').replace(/[^0-9]/g, '');
-  const waDirectUrl = `https://wa.me/91${cleanPhone.slice(-10)}?text=${customWhatsAppMessage}`;
+  const waDirectUrl = `https://wa.me/91${cleanPhone.slice(-10)}?text=${encodeURIComponent(paragraphMessage)}`;
 
   return (
     <section id="inquiry" className="py-12 sm:py-24 bg-[#F5F2EB] relative overflow-hidden border-t border-[#E8E1D5]">

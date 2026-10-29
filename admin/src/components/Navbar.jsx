@@ -100,14 +100,14 @@ export default function Navbar({
 
             {/* View Live Storefront Button */}
             <a
-              href={window.location.hostname.includes('lvh.me') ? 'http://ramprasadwatchstore.lvh.me/#showrooms' : 'http://ramprasadwatchstore.in/#showrooms'}
+              href={window.location.hostname.includes('lvh.me') ? 'http://watchstore.lvh.me/#showrooms' : 'http://watchstore.in/#showrooms'}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-brass-600 to-amber-600 hover:from-brass-500 hover:to-amber-500 text-white shadow-sm shadow-brass-600/20 transition-all active:scale-95"
-              title="Open Customer Storefront at http://ramprasadwatchstore.in/#showrooms"
+              title="Open Customer Storefront at http://watchstore.in/#showrooms"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>ramprasadWatchstore.in</span>
+              <span>watchstore.in</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>

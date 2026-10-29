@@ -88,6 +88,7 @@ export default function SettingsEditor({ showToast }) {
 
   // About & Footer
   const [aboutText, setAboutText] = useState('');
+  const [certificateImage, setCertificateImage] = useState('/images/about/heritage-certificate.webp');
   const [footerCopyright, setFooterCopyright] = useState('');
   const [inquiryTitle, setInquiryTitle] = useState('');
   const [inquirySubtitle, setInquirySubtitle] = useState('');
@@ -115,6 +116,7 @@ export default function SettingsEditor({ showToast }) {
         setShowrooms(data.showrooms || []);
 
         setAboutText(data.aboutText || '');
+        setCertificateImage(data.certificateImage || '/images/about/heritage-certificate.webp');
         setFooterCopyright(data.footerCopyright || '');
         setInquiryTitle(data.inquiryTitle || '');
         setInquirySubtitle(data.inquirySubtitle || '');
@@ -151,6 +153,7 @@ export default function SettingsEditor({ showToast }) {
         trustBadges,
         showrooms,
         aboutText,
+        certificateImage,
         footerCopyright,
         inquiryTitle,
         inquirySubtitle,
@@ -415,7 +418,7 @@ export default function SettingsEditor({ showToast }) {
                         subheadline: 'Exclusive imported editions available for fitting at Baldev Plaza & JalKal Building.',
                         ctaPrimary: 'Explore Drops',
                         ctaSecondary: 'Visit Showrooms',
-                        image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1200&q=85',
+                        image: '/images/watches/tissot-prx-powermatic-80.webp',
                         tag: 'Authorized Imports',
                       };
                       setHeroSlides([...heroSlides, newSlide]);
@@ -876,6 +879,35 @@ export default function SettingsEditor({ showToast }) {
                     placeholder="e.g. Gorakhpur’s trusted destination for genuine imported luxury watches..."
                     className="w-full bg-obsidian-950 border border-slate-700 focus:border-gold-500 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none transition-colors resize-none"
                   />
+                </div>
+
+                {/* Heritage Dealership Certificate */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    Heritage Dealership Certificate Image (Our Heritage Tab)
+                  </label>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="text"
+                      value={certificateImage}
+                      onChange={(e) => setCertificateImage(e.target.value)}
+                      placeholder="/images/about/heritage-certificate.webp"
+                      className="flex-1 bg-obsidian-950 border border-slate-700 focus:border-gold-500 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none transition-colors"
+                    />
+                    {certificateImage && (
+                      <div className="w-12 h-10 rounded-lg overflow-hidden border border-slate-700 bg-black/60 shrink-0">
+                        <img
+                          src={certificateImage}
+                          alt="Certificate Preview"
+                          className="w-full h-full object-cover"
+                          onError={(e) => { e.target.style.display = 'none'; }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-slate-400 mt-1">
+                    Default dummy certificate is active at <code className="text-amber-400">/images/about/heritage-certificate.webp</code>. Replace this path or update the image anytime with your official scanned certificate.
+                  </p>
                 </div>
 
                 {/* Footer Copyright */}

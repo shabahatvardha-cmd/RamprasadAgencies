@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import AdminTopBar from './components/visual/AdminTopBar';
 import VisualHeader from './components/visual/VisualHeader';
 import VisualHero from './components/visual/VisualHero';
+import VisualAbout from './components/visual/VisualAbout';
 import VisualBrandMarquee from './components/visual/VisualBrandMarquee';
 import VisualShowrooms from './components/visual/VisualShowrooms';
 import VisualInquiry from './components/visual/VisualInquiry';
@@ -461,7 +462,16 @@ function App() {
         />
       </div>
 
-      {/* 4. The Maison Portfolio & Interactive Brand Timepiece Showcase */}
+      {/* 4. About - Certified Watchmaking Pedigree */}
+      <div id="about">
+        <VisualAbout
+          storeData={currentStoreData}
+          isEditMode={isEditMode}
+          onOpenEdit={() => setActiveModal('general')}
+        />
+      </div>
+
+      {/* 5. The Maison Portfolio & Interactive Brand Timepiece Showcase */}
       <div id="brands">
         <VisualBrandMarquee
           brands={currentStoreData.brands}
@@ -494,13 +504,15 @@ function App() {
       </div>
 
       {/* 6. Bespoke Inquiries & Consultation Form */}
-      <div id="inquiry">
-        <VisualInquiry
-          storeData={currentStoreData}
-          isEditMode={isEditMode}
-          onOpenEdit={(modal = 'inquiry') => setActiveModal(modal)}
-          onOpenLeads={() => setIsLeadsModalOpen(true)}
-        />
+      <div id="contact">
+        <div id="inquiry">
+          <VisualInquiry
+            storeData={currentStoreData}
+            isEditMode={isEditMode}
+            onOpenEdit={(modal = 'inquiry') => setActiveModal(modal)}
+            onOpenLeads={() => setIsLeadsModalOpen(true)}
+          />
+        </div>
       </div>
 
       {/* 7. Brand Lifestyle Footer */}

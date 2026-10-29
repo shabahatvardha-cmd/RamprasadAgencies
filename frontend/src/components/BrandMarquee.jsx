@@ -1,223 +1,270 @@
-import React, { useMemo, useEffect, useRef } from 'react';
-import { Sparkles, X } from 'lucide-react';
-import WatchCard from './WatchCard';
-import { FALLBACK_WATCHES } from '../data/fallbackWatches';
+import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { Flame, Zap, Award } from 'lucide-react';
 
-const IMPORTED_BRANDS = [
-  { name: 'Titan', country: 'India', desc: 'Edge, Octane & Regalia Flagships' },
-  { name: 'HMT', country: 'India', desc: 'Kohinoor & Janata Mechanical Heritage' },
-  { name: 'Fastrack', country: 'India', desc: 'Youth Sport & Street Chronographs' },
-  { name: 'Sonata', country: 'India', desc: 'Everyday Reliable Indian Horology' },
-  { name: 'Tissot', country: 'Swiss', desc: 'PRX & Heritage Swiss Precision' },
-  { name: 'Rolex', country: 'Swiss', desc: 'Certified Swiss Luxury Imports' },
-  { name: 'Omega', country: 'Swiss', desc: 'Moonwatch & Co-Axial Chronometers' },
-  { name: 'Seiko', country: 'Japan', desc: 'Automatic & Presage Craft' },
-  { name: 'Citizen', country: 'Japan', desc: 'Tsuyosa & Eco-Drive Calibers' },
-  { name: 'Casio', country: 'Japan', desc: 'Edifice Solar & Vintage Steel' },
-  { name: 'Breitling', country: 'Swiss', desc: 'Navitimer Aviation Chronographs' },
-  { name: 'Rado', country: 'Swiss', desc: 'Master of High-Tech Ceramic' },
-  { name: 'Fossil', country: 'USA', desc: 'Heritage Automatics & Vintage Styling' },
+export const BRAND_REFERENCE_IMAGES = {
+  titan: '/images/brands/titan.webp',
+  hmt: '/images/brands/hmt.webp',
+  fastrack: '/images/brands/fastrack.webp',
+  sonata: '/images/brands/sonata.webp',
+  tissot: '/images/brands/tissot.webp',
+  omega: '/images/brands/omega.webp',
+  seiko: '/images/brands/seiko.webp',
+  citizen: '/images/brands/citizen.webp',
+  casio: '/images/brands/casio.webp',
+  breitling: '/images/brands/breitling.webp',
+  rado: '/images/brands/rado.webp',
+  fossil: '/images/brands/fossil.webp',
+  raga: '/images/brands/raga.webp',
+  'titan raga': '/images/brands/raga.webp',
+  cartier: '/images/brands/cartier.webp',
+  'tag heuer': '/images/brands/tag-heuer.webp',
+  'tag-heuer': '/images/brands/tag-heuer.webp',
+};
+
+export const getBrandReferenceImage = (brandName, customImage) => {
+  if (customImage && typeof customImage === 'string' && customImage.trim() !== '') {
+    return customImage;
+  }
+  const key = (brandName || '').toLowerCase().trim();
+  if (BRAND_REFERENCE_IMAGES[key]) {
+    return BRAND_REFERENCE_IMAGES[key];
+  }
+  for (const [k, localPath] of Object.entries(BRAND_REFERENCE_IMAGES)) {
+    if (key.includes(k) || k.includes(key)) {
+      return localPath;
+    }
+  }
+  return '/images/brands/default.webp';
+};
+
+export const IMPORTED_BRANDS = [
+  // 1. Featured Brands (4 brands)
+  { name: 'Titan', country: 'India', category: 'featured' },
+  { name: 'Titan Raga', country: 'India', category: 'featured' },
+  { name: 'Omega', country: 'Swiss', category: 'featured' },
+  { name: 'Rado', country: 'Swiss', category: 'featured' },
+
+  // 2. Trending Brands (5 brands - Breitling moved here, nothing interchanged)
+  { name: 'Tissot', country: 'Swiss', category: 'trending' },
+  { name: 'Breitling', country: 'Swiss', category: 'trending' },
+  { name: 'Seiko', country: 'Japan', category: 'trending' },
+  { name: 'Casio', country: 'Japan', category: 'trending' },
+  { name: 'Fossil', country: 'USA', category: 'trending' },
+
+  // 3. Fresh Drop Brands (4 brands)
+  { name: 'Citizen', country: 'Japan', category: 'fresh_drop' },
+  { name: 'HMT', country: 'India', category: 'fresh_drop' },
+  { name: 'Fastrack', country: 'India', category: 'fresh_drop' },
+  { name: 'Sonata', country: 'India', category: 'fresh_drop' },
+];
+
+export const SECTIONS_CONFIG = [
+  {
+    id: 'featured',
+    label: 'Featured',
+    icon: Award,
+    gradient: 'from-[#8C6627] via-[#D4AF37] to-[#694B1B]',
+    borderGradient: 'from-[#D4AF37] via-[#E2B755]/50 to-transparent',
+    iconBg: 'from-[#E2B755] via-[#D4AF37] to-[#8C6627]',
+    iconColor: 'text-[#FDE68A]',
+  },
+  {
+    id: 'trending',
+    label: 'Trending',
+    icon: Flame,
+    gradient: 'from-[#9A3412] via-[#EA580C] to-[#C2410C]',
+    borderGradient: 'from-[#EA580C] via-[#FB923C]/50 to-transparent',
+    iconBg: 'from-[#FB923C] via-[#EA580C] to-[#9A3412]',
+    iconColor: 'text-[#FED7AA]',
+  },
+  {
+    id: 'fresh_drop',
+    label: 'Fresh Drops',
+    icon: Zap,
+    gradient: 'from-[#115E59] via-[#0D9488] to-[#059669]',
+    borderGradient: 'from-[#0D9488] via-[#2DD4BF]/50 to-transparent',
+    iconBg: 'from-[#2DD4BF] via-[#0D9488] to-[#115E59]',
+    iconColor: 'text-[#99F6E4]',
+  },
 ];
 
 export default function BrandMarquee({
-  selectedBrand,
-  onSelectBrand,
   brands,
-  watches = [],
-  contactPhone = '+91 98765 43210',
-  searchQuery = '',
-  onClearSearch,
-  wishlist = [],
-  onToggleWishlist,
-  onSelectWatch,
+  onSelectBrand,
 }) {
-  const brandList = brands && Array.isArray(brands) && brands.length > 0 ? brands : IMPORTED_BRANDS;
-  const showcaseRef = useRef(null);
+  const brandList = useMemo(() => {
+    return brands && Array.isArray(brands) && brands.length > 0
+      ? brands.map((b) => {
+        if (typeof b === 'object' && b.category) return b;
+        const bName = typeof b === 'string' ? b : b.name;
+        const match = IMPORTED_BRANDS.find(
+          (item) => item.name.toLowerCase() === (bName || '').toLowerCase()
+        );
+        return match || { name: bName, country: 'Import', category: 'featured' };
+      })
+      : IMPORTED_BRANDS;
+  }, [brands]);
 
-  // Combine store watches with comprehensive fallback data so every brand has rich watches
-  const displayWatches = useMemo(() => {
-    if (!watches || watches.length === 0) return FALLBACK_WATCHES;
-    const existingNames = new Set(watches.map((w) => (w.name || '').toLowerCase().trim()));
-    const missingFallbacks = FALLBACK_WATCHES.filter(
-      (fw) => !existingNames.has((fw.name || '').toLowerCase().trim())
-    );
-    return [...watches, ...missingFallbacks];
-  }, [watches]);
+  // Group brands into the three parts
+  const groupedBrands = useMemo(() => {
+    const groups = {
+      featured: [],
+      trending: [],
+      fresh_drop: [],
+    };
 
-  // Filter watches strictly for the active brand or active search
-  const isBrandActive = Boolean(selectedBrand && selectedBrand !== 'ALL');
-  const isSearchActive = Boolean(searchQuery && searchQuery.trim() !== '');
-  const isExpanded = isBrandActive || isSearchActive;
-
-  const filteredWatches = useMemo(() => {
-    if (isSearchActive) {
-      const q = searchQuery.toLowerCase().trim();
-      return displayWatches.filter((w) => {
-        const name = (w.name || '').toLowerCase();
-        const brand = (w.brand || '').toLowerCase();
-        const movement = (w.movement || '').toLowerCase();
-        return name.includes(q) || brand.includes(q) || movement.includes(q);
-      });
-    }
-
-    if (!isBrandActive) {
-      return [];
-    }
-
-    const sel = selectedBrand.toLowerCase().trim();
-    return displayWatches.filter((w) => {
-      const brandLower = (w.brand || '').toLowerCase().trim();
-      return (
-        brandLower.includes(sel) ||
-        sel.includes(brandLower) ||
-        (w.name || '').toLowerCase().includes(sel)
-      );
+    brandList.forEach((b) => {
+      const cat = b.category || 'featured';
+      if (groups[cat]) {
+        groups[cat].push(b);
+      } else {
+        groups.featured.push(b);
+      }
     });
-  }, [displayWatches, selectedBrand, isBrandActive, isSearchActive, searchQuery]);
 
-  // Smooth scroll into showcase when a brand is selected
-  useEffect(() => {
-    if (isExpanded && showcaseRef.current) {
-      const timer = setTimeout(() => {
-        showcaseRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
-      return () => clearTimeout(timer);
+    return groups;
+  }, [brandList]);
+
+  // Dynamic grid column class based on item count so NO blank spaces are ever left
+  const getGridClass = (count) => {
+    if (count === 5) {
+      return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4.5';
     }
-  }, [selectedBrand, isExpanded]);
+    if (count === 4) {
+      return 'grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4.5';
+    }
+    if (count === 6) {
+      return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4.5';
+    }
+    if (count === 3) {
+      return 'grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4.5';
+    }
+    return 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4.5';
+  };
+
+  // Render a small, compact, sleek brand card
+  const renderCard = (b, index, totalInGroup) => {
+    const bName = typeof b === 'string' ? b : b.name;
+    const bCountry = typeof b === 'object' ? b.country : null;
+    const bImage = typeof b === 'object' ? b.image : null;
+    const brandImg = getBrandReferenceImage(bName, bImage);
+    const slug = bName.toLowerCase().trim().replace(/\s+/g, '-');
+
+    // On mobile (2-column grid), if count is odd (like 5), the last card spans 2 columns
+    const isOddLast = totalInGroup % 2 === 1 && index === totalInGroup - 1;
+    const spanClass = isOddLast ? 'col-span-2 sm:col-span-1' : '';
+
+    return (
+      <Link
+        key={bName}
+        to={`/brand/${slug}`}
+        onClick={() => onSelectBrand && onSelectBrand(bName)}
+        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[130px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between p-3 sm:p-4 text-left no-underline block cursor-pointer ${spanClass}`}
+      >
+        {/* 1. Full-Bleed Reference Watch Image with Smooth Zoom */}
+        <img
+          src={brandImg}
+          alt={`${bName} watch`}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center transform transition-transform duration-500 ease-out group-hover:scale-108"
+          onError={(e) => {
+            e.target.src = '/images/brands/default.webp';
+          }}
+        />
+
+        {/* 2. Gradient Overlay for Clean Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 pointer-events-none group-hover:from-black/95 transition-all duration-300" />
+
+        {/* 3. Top Row: Origin Flag Pill Badge */}
+        <div className="relative z-10 flex items-center justify-between w-full pointer-events-none">
+          {bCountry && (
+            <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest bg-black/55 backdrop-blur-xs text-amber-200/90 border border-white/15 shadow-xs">
+              {bCountry === 'India'
+                ? '🇮🇳 India'
+                : bCountry === 'Swiss'
+                  ? '🇨🇭 Swiss'
+                  : bCountry === 'Japan'
+                    ? '🇯🇵 Japan'
+                    : bCountry === 'USA'
+                      ? '🇺🇸 USA'
+                      : bCountry}
+            </span>
+          )}
+          <span className="text-[10px] font-bold text-amber-300/0 group-hover:text-amber-300 transition-colors duration-300 hidden sm:inline-block">
+            View →
+          </span>
+        </div>
+
+        {/* 4. Bottom Row: Brand Name Displayed Elegantly */}
+        <div className="relative z-10 w-full pointer-events-none">
+          <h4 className="font-serif text-base sm:text-lg md:text-xl font-black tracking-wide text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] group-hover:text-amber-300 group-hover:translate-x-0.5 transition-all duration-300 truncate">
+            {bName}
+          </h4>
+        </div>
+      </Link>
+    );
+  };
 
   return (
-    <section id="brands" className="py-8 sm:py-12 border-y border-[#E8E1D5] bg-[#F6F2EB] overflow-hidden">
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mb-4 sm:mb-6">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2.5 sm:gap-3">
+    <section id="brands" className="py-10 sm:py-14 border-b border-[#E8E1D5] bg-[#F6F2EB]">
+      {/* 1. Main Header */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#DDD5C7] pb-4">
           <div>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-brass-800 font-mono">
-              The Maison Portfolio
-            </span>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] mt-0.5 sm:mt-1">
-              Indian Heritage & Global Watch Maisons
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">
+              Brands
             </h3>
+            <p className="text-xs sm:text-sm text-[#6B635B] mt-0.5">
+              Select any brand to view Men's, Women's, and Unisex collections in Gorakhpur showrooms.
+            </p>
           </div>
-          <p className="text-xs text-[#6B635B] max-w-md">
-            Click any brand to filter timepieces currently in stock across our Baldev Plaza and JalKal Building showrooms.
-          </p>
         </div>
       </div>
 
-      {/* Interactive Brand Grid */}
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-          {brandList.map((b) => {
-            const isSelected = selectedBrand?.toLowerCase() === b.name.toLowerCase();
-            return (
-              <button
-                key={b.name}
-                data-brand-btn="true"
-                onClick={() => onSelectBrand && onSelectBrand(isSelected ? 'ALL' : b.name)}
-                className={`p-4 sm:p-5 rounded-2xl text-left border transition-all duration-300 focus:outline-none cursor-pointer hover:shadow-md hover:-translate-y-0.5 ${
-                  isSelected
-                    ? 'bg-gradient-to-br from-brass-600 via-amber-600 to-brass-700 text-white border-brass-700 shadow-xl scale-[1.03]'
-                    : 'bg-white border-[#DDD5C7] hover:border-brass-600 hover:bg-[#FAF8F5] shadow-sm'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span
-                    className={`text-[10px] sm:text-xs font-mono tracking-widest uppercase font-bold ${
-                      isSelected ? 'text-amber-200' : 'text-brass-800'
-                    }`}
+      {/* 2. Equal Divided Sections Grid: No blank spaces left */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-8 sm:space-y-10">
+        {SECTIONS_CONFIG.map((sec) => {
+          const list = groupedBrands[sec.id] || [];
+          if (list.length === 0) return null;
+
+          const Icon = sec.icon;
+
+          return (
+            <div key={sec.id} className="space-y-4 sm:space-y-5">
+              {/* Attractive Section Title */}
+              <div className="relative pb-2.5 border-b border-[#E2DBD0]">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  {/* Luxury Metallic Crest */}
+                  <div
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${sec.iconBg} p-[1.5px] shadow-sm flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105`}
                   >
-                    {b.country}
-                  </span>
-                  {isSelected && <span className="w-2.5 h-2.5 rounded-full bg-white shadow-sm"></span>}
+                    <div className="w-full h-full bg-[#181614] rounded-[6.5px] flex items-center justify-center">
+                      <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${sec.iconColor}`} />
+                    </div>
+                  </div>
+
+                  {/* Section Title */}
+                  <h4 className="font-serif text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+                    {sec.label}
+                  </h4>
                 </div>
-                <h4
-                  className={`font-serif text-base sm:text-lg lg:text-xl font-bold mt-1 sm:mt-1.5 tracking-wide truncate ${
-                    isSelected ? 'text-white' : 'text-[#1A1A1A]'
-                  }`}
-                >
-                  {b.name}
-                </h4>
-                <p
-                  className={`text-xs sm:text-[13px] line-clamp-1 mt-1 ${
-                    isSelected ? 'text-amber-100' : 'text-[#6B635B]'
-                  }`}
-                >
-                  {b.desc}
-                </p>
-              </button>
-            );
-          })}
-        </div>
+
+                {/* Accent underline */}
+                <div
+                  className={`absolute -bottom-[1px] left-0 h-[2px] w-28 sm:w-40 bg-gradient-to-r ${sec.borderGradient} rounded-full`}
+                />
+              </div>
+
+              {/* Compact Small Brand Cards Grid - 100% full, no blank spaces */}
+              <div className={getGridClass(list.length)}>
+                {list.map((b, idx) => renderCard(b, idx, list.length))}
+              </div>
+            </div>
+          );
+        })}
       </div>
-
-      {/* On-Demand Showcase: Appears ONLY when a brand is clicked or search is active */}
-      {isExpanded && (
-        <div
-          ref={showcaseRef}
-          id="brand-showcase"
-          className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mt-6 sm:mt-8 animate-fade-in"
-        >
-          <div className="rounded-2xl sm:rounded-3xl bg-[#141312] border border-[#302B24] p-4 sm:p-7 text-white shadow-2xl">
-            {/* Showcase Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-mono font-extrabold uppercase tracking-widest text-amber-400">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>{isSearchActive ? 'Search Results' : 'Showroom Collection'}</span>
-                </div>
-                <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mt-0.5">
-                  {isSearchActive ? `Timepieces matching "${searchQuery}"` : `${selectedBrand} Timepieces`}
-                </h3>
-                <p className="text-xs text-stone-300 mt-1">
-                  {filteredWatches.length} authentic models currently available at Baldev Plaza & JalKal Building, Golghar
-                </p>
-              </div>
-
-              {/* Dismiss Button */}
-              <button
-                data-brand-btn="true"
-                onClick={() => {
-                  onSelectBrand && onSelectBrand('ALL');
-                  onClearSearch && onClearSearch();
-                }}
-                className="self-start sm:self-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-amber-400 hover:text-stone-950 text-stone-200 text-xs font-bold transition-all border border-white/15 cursor-pointer focus:outline-none"
-                title="Close showcase"
-              >
-                <span>Close</span>
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Watches Grid */}
-            {filteredWatches.length === 0 ? (
-              <div className="py-12 text-center text-stone-400 space-y-2">
-                <p className="font-serif text-lg text-stone-300">No timepieces currently listed for this selection</p>
-                <p className="text-xs">We source private collector references upon request at our Gorakhpur showrooms.</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 mt-6">
-                {filteredWatches.map((watch) => (
-                  <WatchCard
-                    key={watch._id || watch.id}
-                    watch={watch}
-                    onQuickView={onSelectWatch}
-                    contactPhone={contactPhone}
-                    isWishlisted={wishlist.some(
-                      (w) => (w._id || w.id) === (watch._id || watch.id)
-                    )}
-                    onToggleWishlist={onToggleWishlist}
-                  />
-                ))}
-              </div>
-            )}
-
-            {/* Bottom Dismiss Note */}
-            <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-stone-400">
-              <span>Tap any watch card to inspect specifications & showroom location</span>
-              <span className="text-amber-400/80 font-medium">Click outside or press Close to dismiss</span>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

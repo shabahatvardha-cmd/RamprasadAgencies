@@ -18,7 +18,7 @@ const STORES = [
     ],
     mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
     phone: '+91 98765 43210',
-    image: 'https://images.unsplash.com/photo-1783867872755-c998f4ab12a3?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/showrooms/baldev-plaza.webp',
   },
   {
     id: 'store-2',
@@ -35,7 +35,7 @@ const STORES = [
     ],
     mapQuery: 'JalKal+Building+Golghar+Gorakhpur',
     phone: '+91 98765 43210',
-    image: 'https://images.unsplash.com/photo-1635462684825-3621c1df5403?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/showrooms/jalkal-building.webp',
   },
 ];
 

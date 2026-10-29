@@ -8,9 +8,9 @@ const BROADCAST_CHANNEL_NAME = 'fossil_store_realtime_sync';
 // CURATED VINTAGE-INSPIRED DEFAULT DATASET (Fossil Luxury Lifestyle Aesthetic)
 // ============================================================================
 export const DEFAULT_VINTAGE_STORE_DATA = {
-  version: '3.0.0',
+  version: '6.1.0',
   brandName: 'RAM PRASAD AGENCIES',
-  tagline: 'ramprasadWatchstore.in • Golghar',
+  tagline: 'WATCHSTORE.IN',
   logo: '/logo.png',
   contactPhone: '+91 98765 43210',
   inquiryTitle: 'Bespoke Sourcing & Private Showroom Consultation',
@@ -18,6 +18,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
   footerVipBadge: 'Vintage Collectors Circle',
   footerVipTitle: 'Receive 10% Off Your First Automatic Timepiece',
   footerVipSubtitle: 'Preview limited-edition capsule drops and private showroom fittings in Gorakhpur.',
+  certificateImage: '/images/about/heritage-certificate.webp',
 
   showrooms: [
     {
@@ -27,13 +28,13 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       address: 'Baldev Plaza, Main Market, Golghar, Gorakhpur - 273001',
       landmark: 'Opposite Town Hall / Commercial Center',
       hours: '10:30 AM – 9:00 PM (All 7 Days)',
-      image: 'https://images.unsplash.com/photo-1783867872755-c998f4ab12a3?auto=format&fit=crop&w=1200&q=85',
+      image: '/images/showrooms/baldev-plaza.webp',
       mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
       specialties: [
         'Official Swiss Collections (Tissot, Rado, Longines, Victorinox)',
         'Indian Heritage Horology (Titan Edge, Titan Mechanicals, HMT Kohinoor & Janata)',
-        'Collector Import Consultations (Rolex, Omega, TAG Heuer)',
+        'Collector Import Consultations (Omega, TAG Heuer, Rado)',
         'Japanese Automatics & Presage timepieces (Seiko, Citizen)',
         'Certified watch battery, pressure testing & ultrasonic cleaning',
       ],
@@ -45,7 +46,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       address: 'Shop No. 1, JalKal Building, Golghar, Gorakhpur - 273001',
       landmark: 'Near JalKal Compound, Main Golghar Market',
       hours: '10:30 AM – 9:00 PM (All 7 Days)',
-      image: 'https://images.unsplash.com/photo-1635462684825-3621c1df5403?auto=format&fit=crop&w=1200&q=85',
+      image: '/images/showrooms/jalkal-building.webp',
       mapQuery: 'JalKal+Building+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
       specialties: [
@@ -63,10 +64,10 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     isActive: true,
     speed: 'normal',
     messages: [
-      '🇮🇳 INDIAN WATCH HERITAGE: Complete Collections for Titan, HMT, Fastrack & Sonata Available at Golghar',
+      '🇮🇳 INDIAN WATCH HERITAGE: Complete Collections for Titan, Titan Raga, HMT, Fastrack & Sonata Available at Golghar',
       '⚡ FLASH SALE: Extra 15% Off Swiss, Japanese & Indian Mechanicals • Use Code: VINTAGE15',
       'Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers',
-      'Direct Imports for Rolex, Omega & TAG Heuer with Stamped International Warranty',
+      'Direct Imports for Omega, Tissot & TAG Heuer with Stamped International Warranty',
       'Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms',
       'Free Insured Express Shipping on All Luxury Orders Across India',
     ],
@@ -102,18 +103,18 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         ctaPrimaryLink: '#brands',
         ctaSecondary: 'View Showrooms',
         ctaSecondaryLink: '#showrooms',
-        image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1600&q=85',
+        image: '/images/watches/tissot-prx-powermatic-80.webp',
       },
       {
         id: 'hero-2',
         badge: 'CERTIFIED SWISS IMPORTS',
-        headline: 'Rolex & Omega Swiss Showcase',
+        headline: 'Omega & Tissot Swiss Showcase',
         subheadline: 'Certified authentic Swiss chronometers with international warranty and stamped papers in Gorakhpur.',
-        ctaPrimary: 'Explore Maisons',
+        ctaPrimary: 'Explore Brands',
         ctaPrimaryLink: '#brands',
         ctaSecondary: 'WhatsApp Concierge',
         ctaSecondaryLink: '#inquiry',
-        image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=1600&q=85',
+        image: '/images/hero-omega-showcase.webp',
       },
       {
         id: 'hero-3',
@@ -124,7 +125,40 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         ctaPrimaryLink: '#brands',
         ctaSecondary: 'View Showrooms',
         ctaSecondaryLink: '#showrooms',
-        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=1600&q=85',
+        image: '/images/watches/seiko-presage-cocktail-time.webp',
+      },
+      {
+        id: 'hero-4',
+        badge: 'TITAN COLLECTION',
+        headline: 'Titan Edge & Regalia Heritage',
+        subheadline: 'Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guilloché timepieces by the Tata legacy.',
+        ctaPrimary: 'Explore Titan',
+        ctaPrimaryLink: '#brands',
+        ctaSecondary: 'View Showrooms',
+        ctaSecondaryLink: '#showrooms',
+        image: '/images/hero-titan-regalia.webp',
+      },
+      {
+        id: 'hero-5',
+        badge: 'HMT MECHANICAL',
+        headline: 'HMT Kohinoor & Janata Mechanicals',
+        subheadline: 'Authentic 17-jewel hand-wound mechanical calibers with timeless Devnagari dials since 1961.',
+        ctaPrimary: 'Explore HMT',
+        ctaPrimaryLink: '#brands',
+        ctaSecondary: 'WhatsApp Concierge',
+        ctaSecondaryLink: '#inquiry',
+        image: '/images/hero-hmt-kohinoor-vintage.webp',
+      },
+      {
+        id: 'hero-6',
+        badge: 'FASTRACK & SONATA',
+        headline: 'Fastrack Chronos & Sonata Classics',
+        subheadline: 'Bold youth street chronographs and dependable everyday classics crafted for Indian lifestyle, with showroom warranty in Golghar.',
+        ctaPrimary: 'Explore Collections',
+        ctaPrimaryLink: '#brands',
+        ctaSecondary: 'Visit Showrooms',
+        ctaSecondaryLink: '#showrooms',
+        image: '/images/fastrack-banner.webp',
       },
     ],
   },
@@ -141,7 +175,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 68000,
         badge: 'New Arrival',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/tissot-prx-35-ice-blue.webp',
         movement: 'Swiss Powermatic 80.111 (80-Hour Reserve)',
         caseSize: '40mm Tonneau 316L Steel',
         strap: 'Integrated 316L Stainless Steel Bracelet',
@@ -157,7 +191,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 49995,
         badge: 'Best Seller',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/seiko-presage-cocktail-time.webp',
         movement: 'Japanese Calibre 4R35 Automatic',
         caseSize: '40.5mm Polished Steel',
         strap: 'Solid Multi-Link Stainless Steel Bracelet',
@@ -166,30 +200,30 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       },
       {
         id: 'na-3',
-        name: 'Rolex Datejust 41 Two-Tone Fluted Bezel',
-        brand: 'Rolex',
+        name: 'Omega Seamaster Aqua Terra 150M Master Chronometer',
+        brand: 'Omega',
         category: 'Luxury Swiss',
-        price: 1240000,
-        originalPrice: 1310000,
+        price: 595000,
+        originalPrice: 630000,
         badge: 'Swiss Luxury',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=800&q=80',
-        movement: 'Rolex Calibre 3235 Superlative Chronometer',
-        caseSize: '41mm Oystersteel & 18 ct Yellow Gold',
-        strap: 'Five-Piece Link Jubilee Bracelet',
+        image: '/images/watches/omega-seamaster-aqua-terra.webp',
+        movement: 'Omega Co-Axial Master Chronometer 8900',
+        caseSize: '41mm Stainless Steel',
+        strap: 'Integrated Stainless Steel Bracelet',
         inStock: true,
-        description: 'Distinctive fluted 18 ct yellow gold bezel, intense black sunray dial, and iconic five-link Jubilee bracelet.',
+        description: 'Horizontal teak concept dial inspired by wooden decks of luxury yachts, date window at 6 o’clock, and certified METAS anti-magnetic precision.',
       },
       {
         id: 'na-4',
-        name: 'Citizen Tsuyosa Automatic Emerald Green 40mm',
+        name: 'Citizen Tsuyosa Automatic Emerald Sunray 40mm',
         brand: 'Citizen Automatics',
         category: 'Automatic',
         price: 32000,
         originalPrice: 36000,
         badge: 'Trending Drop',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/citizen-tsuyosa-emerald-green.webp',
         movement: 'Miyota 8210 Automatic Calibre (42H Reserve)',
         caseSize: '40mm Integrated Lugs',
         strap: 'Curved Presidential Stainless Steel Bracelet',
@@ -205,7 +239,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 620000,
         badge: 'Motorsport',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1630262174975-38bf8d42745f?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/tagheuer-carrera-glassbox.webp',
         movement: 'In-House TH20-00 Automatic Calibre (80H Reserve)',
         caseSize: '39mm Fine-Brushed Steel',
         strap: 'Perforated Black Calfskin Racing Strap',
@@ -221,7 +255,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 24000,
         badge: 'Vintage Drop',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/fossil-heritage-automatic.webp',
         movement: 'Japanese 21-Jewel Automatic Mechanical',
         caseSize: '43mm Antique Brushed Steel',
         strap: 'Vegetable-Tanned Saddle Brown Leather',
@@ -233,19 +267,19 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     collectorCapsule: [
       {
         id: 'cc-1',
-        name: 'Rolex Submariner Date 41mm Bluesy Two-Tone',
-        brand: 'Rolex',
+        name: 'Rado Captain Cook High-Tech Ceramic Diver 300m',
+        brand: 'Rado',
         category: 'Luxury Swiss',
-        price: 1480000,
-        originalPrice: 1550000,
-        badge: 'Certified Import',
+        price: 345000,
+        originalPrice: 380000,
+        badge: 'Swiss Ceramic',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
-        movement: 'Rolex Calibre 3235 Superlative Chronometer',
-        caseSize: '41mm Oystersteel & 18 ct Gold',
-        strap: 'Oyster Bracelet with Glidelock Clasp',
+        image: '/images/watches/rado-captain-cook-ceramic.webp',
+        movement: 'Rado Calibre R763 Automatic (80H Power Reserve)',
+        caseSize: '43mm Matte Plasma High-Tech Ceramic',
+        strap: 'High-Tech Ceramic Bracelet with Titanium Clasp',
         inStock: true,
-        description: 'Royal blue sunburst dial framed by a blue Cerachrom ceramic bezel and signature two-tone 18 ct yellow gold and Oystersteel bracelet.',
+        description: 'Pioneering plasma high-tech ceramic monobloc case with tinted black sapphire crystal dial, Nivachron antimagnetic hairspring, and ISO 6425 diving certification.',
       },
       {
         id: 'cc-2',
@@ -256,7 +290,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 730000,
         badge: 'Space Legend',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1556453007-ee036169934b?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/omega-speedmaster-moonwatch.webp',
         movement: 'Omega Co-Axial Master Chronometer 3861',
         caseSize: '42mm Asymmetrical Steel',
         strap: 'Brushed 5-Arched-Links-per-Row Steel',
@@ -272,7 +306,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 765000,
         badge: 'Iconic Square',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1747995525955-92010650c3ae?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/cartier-santos-dumont.webp',
         movement: 'In-House Calibre 1847 MC Automatic',
         caseSize: '39.8mm Geometric Square Steel',
         strap: 'SmartLink Stainless Steel Bracelet with QuickSwitch',
@@ -281,19 +315,19 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       },
       {
         id: 'cc-4',
-        name: 'Rolex Sea-Dweller 43mm Oystersteel Diver',
-        brand: 'Rolex',
+        name: 'Longines HydroConquest Automatic Ceramic 43mm',
+        brand: 'Longines',
         category: 'Luxury Swiss',
-        price: 1190000,
-        originalPrice: 1250000,
+        price: 195000,
+        originalPrice: 215000,
         badge: 'Swiss Diver',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=800&q=80',
-        movement: 'Rolex Calibre 3235 Superlative Chronometer',
-        caseSize: '43mm Oystersteel with Helium Valve',
-        strap: 'Solid Oystersteel Bracelet with Fliplock',
+        image: '/images/watches/longines-hydroconquest-ceramic.webp',
+        movement: 'Longines Calibre L888 Self-Winding Movement',
+        caseSize: '43mm Stainless Steel & Ceramic Bezel',
+        strap: 'Stainless Steel Double-Security Clasp Bracelet',
         inStock: true,
-        description: 'The ultra-resistant deep-sea diver with integrated helium escape valve, scratch-resistant Cerachrom bezel, and 4,000 ft water resistance.',
+        description: 'High-performance Swiss sports diver featuring a polished blue ceramic unidirectional rotating bezel, 300m water resistance, and silicon balance-spring.',
       },
       {
         id: 'cc-5',
@@ -304,7 +338,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 790000,
         badge: 'Aviation Legend',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1639564879163-a2a85682410e?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/breitling-navitimer-b01-chronograph.webp',
         movement: 'Breitling 01 Manufacture Automatic (COSC)',
         caseSize: '43mm Polished Steel',
         strap: 'Navitimer 7-Row Stainless Steel Bracelet',
@@ -323,7 +357,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 68000,
         badge: 'Everyday Luxury',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/tissot-prx-powermatic-80.webp',
         movement: 'Swiss Powermatic 80 with Nivachron Hairspring',
         caseSize: '40mm Integrated Tonneau',
         strap: 'Satin-Brushed Solid Stainless Steel',
@@ -339,7 +373,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 49995,
         badge: 'Heritage Icon',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/seiko-presage-cocktail-time.webp',
         movement: 'Seiko 4R35 Mechanical Automatic',
         caseSize: '40.5mm Polished Steel',
         strap: 'Multi-Link Fine Stainless Steel Bracelet',
@@ -348,35 +382,35 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       },
       {
         id: 'icon-3',
-        name: 'Breitling Navitimer Aviation Pilot Chronograph',
+        name: 'Breitling Top Time B01 Triumph Chronograph',
         brand: 'Breitling',
         category: 'Chronograph',
-        price: 740000,
-        originalPrice: 790000,
-        badge: 'Pilot Chrono',
-        badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1639564879163-a2a85682410e?auto=format&fit=crop&w=800&q=80',
-        movement: 'Manufacture Calibre 01 Automatic Chrono',
-        caseSize: '43mm Fluted Bezel',
-        strap: 'Solid Steel Multi-Row Bracelet',
+        price: 645000,
+        originalPrice: 695000,
+        badge: 'Racing Heritage',
+        badgeColor: 'brass',
+        image: '/images/watches/breitling-top-time-b01-chronograph.webp',
+        movement: 'Breitling Manufacture Calibre 01 Automatic (COSC)',
+        caseSize: '41mm Polished Steel',
+        strap: 'Perforated Black Racing Calfskin Strap',
         inStock: true,
-        description: 'High-altitude aviation chronograph with reverse panda dial, red chronograph second hand, and circular aeronautical slide-rule.',
+        description: 'Vintage 1960s café-racer heritage chronograph featuring an ice-blue bow-tie "Zorro" dial, contrasting black squircle subdials, and in-house COSC B01 calibre.',
       },
       {
         id: 'icon-4',
-        name: 'Rolex Sea-Dweller Professional 4000ft Diver',
-        brand: 'Rolex',
+        name: 'Tissot Seastar 2000 Professional Powermatic 80',
+        brand: 'Tissot',
         category: 'Luxury Swiss',
-        price: 1190000,
-        originalPrice: 1250000,
-        badge: 'Indestructible',
+        price: 98000,
+        originalPrice: 108000,
+        badge: 'Professional Diver',
         badgeColor: 'charcoal',
-        image: 'https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=800&q=80',
-        movement: 'Rolex Calibre 3235 Superlative Chronometer',
-        caseSize: '43mm Monobloc Oystersteel',
-        strap: 'Solid Oystersteel with Oysterlock Safety Clasp',
+        image: '/images/watches/tissot-seastar-2000-diver.webp',
+        movement: 'Swiss Powermatic 80 Automatic (80-Hour Reserve)',
+        caseSize: '46mm 316L Stainless Steel',
+        strap: 'Solid Stainless Steel Diver Bracelet with Extension',
         inStock: true,
-        description: 'Heavyweight professional diving tool watch with black Cerachrom bezel, Chromalight blue luminescence, and helium valve.',
+        description: 'ISO 6425 certified professional diver with helium escape valve, wave motif gradient dial, ceramic bezel, and 600m water resistance.',
       },
       {
         id: 'icon-5',
@@ -387,7 +421,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 17995,
         badge: 'Vintage Style',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/fossil-neutra-chronograph.webp',
         movement: 'Precision Chronograph Multi-Hand',
         caseSize: '44mm',
         strap: 'Supple Luggage Brown Saddle Leather',
@@ -399,19 +433,19 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     flashDeals: [
       {
         id: 'fd-1',
-        name: 'Citizen Tsuyosa Automatic Emerald Sunray 40mm',
+        name: 'Citizen Tsuyosa Automatic Canary Yellow 40mm',
         brand: 'Citizen Automatics',
         category: 'Automatic',
-        price: 27995,
+        price: 29995,
         originalPrice: 36000,
-        badge: '22% OFF FLASH',
+        badge: '20% OFF FLASH',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
-        movement: 'Miyota 8210 Automatic Calibre',
+        image: '/images/watches/citizen-tsuyosa-canary-yellow.webp',
+        movement: 'Miyota 8210 Automatic Calibre (42H Reserve)',
         caseSize: '40mm Integrated Lugs',
         strap: 'Presidential Curved Steel Bracelet',
         inStock: true,
-        description: 'Flash Deal: Emerald green sunray dial with cyclops date magnifier and integrated presidential bracelet at 22% off.',
+        description: 'Flash Deal: Vibrant canary yellow sunray dial with cyclops date magnifier and integrated presidential bracelet at 20% off.',
       },
       {
         id: 'fd-2',
@@ -422,7 +456,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 46000,
         badge: '20% OFF FLASH',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/seiko-presage-cocktail-time.webp',
         movement: 'Japanese 4R35 Automatic Caliber',
         caseSize: '40.5mm Polished Steel',
         strap: 'Fine Multi-Link Stainless Steel',
@@ -438,7 +472,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 21000,
         badge: '24% OFF',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/fossil-heritage-automatic.webp',
         movement: 'Japanese 21-Jewel Automatic Movement',
         caseSize: '43mm Antique Steel',
         strap: 'Genuine Vegetable-Tanned Saddle Leather',
@@ -454,7 +488,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 16000,
         badge: '25% OFF',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/fossil-townsman-automatic.webp',
         movement: 'Precision Multi-Function Chronograph',
         caseSize: '44mm',
         strap: 'Luggage Brown Saddle Leather',
@@ -465,36 +499,32 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
 
     indianIcons: [
       {
-        id: 'ind-1',
-        name: 'Titan Edge Ceramic Ultra-Slim 40mm',
+        id: 'titan-01-edge-ultra-slim',
+        name: 'Titan Edge Ultra-Slim (1696SL02)',
         brand: 'Titan',
         category: 'Dress',
-        price: 26995,
-        originalPrice: 29995,
-        badge: 'Ultra-Slim Record',
+        badge: 'Ultra-Slim Flagship',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1561634343-3a2787687046?auto=format&fit=crop&w=800&q=80',
-        movement: 'Titan In-House Ultra-Slim Quartz (4.2mm)',
-        caseSize: '40mm High-Tech Ceramic',
-        strap: 'Sapphire Crystal & Ceramic Link Bracelet',
+        image: '/images/watches/titan/01.webp',
+        movement: 'Ultra-Slim Quartz',
+        caseSize: '40mm Ceramic Composite',
+        strap: 'Slim Leather Strap',
         inStock: true,
-        description: 'One of the slimmest ceramic watches in the world. Engineered in India by Titan with scratch-resistant sapphire crystal and featherweight ceramic craftsmanship.',
+        description: "World's slimmest design philosophy targeting elite corporate professionals.",
       },
       {
-        id: 'ind-2',
-        name: 'Titan Octane Chronograph Matte Black & Bold Orange',
+        id: 'titan-02-neo-splash',
+        name: 'Titan Neo Splash (1805QM01)',
         brand: 'Titan',
-        category: 'Chronograph',
-        price: 12995,
-        originalPrice: 14995,
-        badge: 'Sport Chrono',
+        category: 'Sport',
+        badge: 'Sport Edition',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
-        movement: 'High-Precision Quartz Chronograph with Date',
-        caseSize: '44mm Black Ion-Plated Steel',
-        strap: 'Perforated Racing Black Silicone & Leather Hybrid',
+        image: '/images/watches/titan/02.webp',
+        movement: 'Quartz',
+        caseSize: '42mm Stainless Steel',
+        strap: 'Stainless Steel Bracelet',
         inStock: true,
-        description: 'Bold dual-layer tachymeter dial with high-contrast orange chronograph accents, 100M water resistance, and racing date window.',
+        description: "Rugged yet sleek styling crafted for casual weekend adventures.",
       },
       {
         id: 'ind-3',
@@ -505,7 +535,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 13500,
         badge: 'Indian Legend',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/hmt-kohinoor-mechanical.webp',
         movement: 'HMT Calibre 0231 17-Jewel Hand-Wound Mechanical',
         caseSize: '36mm Vintage Polished Steel',
         strap: 'Vintage 18mm Stainless Steel Fold-Over Bracelet',
@@ -513,20 +543,18 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         description: 'The historic pride of Indian horology since 1961. Hand-wound 17-jewel movement with audible mechanical sweep, polished steel case, and sunburst dial.',
       },
       {
-        id: 'ind-4',
-        name: 'Titan Regalia Two-Tone Gold & Steel Guilloché',
+        id: 'titan-04-regalia-classic',
+        name: 'Titan Regalia Classic (1650SM01)',
         brand: 'Titan',
         category: 'Dress',
-        price: 15495,
-        originalPrice: 17995,
         badge: 'Festive Royal',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=800&q=80',
-        movement: 'Titan Precision Three-Hand Quartz with Day-Date',
-        caseSize: '41mm Two-Tone Gold & Steel',
-        strap: 'Two-Tone 18ct Gold PVD & Stainless Steel Bracelet',
+        image: '/images/watches/titan/04.webp',
+        movement: 'Quartz',
+        caseSize: '41mm Stainless Steel',
+        strap: 'Regal Jewelry-Inspired Link Bracelet',
         inStock: true,
-        description: 'Classic royal Indian festive styling with Roman numeral hour markers, champagne guilloché dial, and two-tone gold PVD link bracelet.',
+        description: "Regal jewelry-inspired link bracelet design for festive occasions.",
       },
       {
         id: 'ind-5',
@@ -537,7 +565,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 11995,
         badge: 'Heritage Devnagari',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/hmt-janata-devnagari.webp',
         movement: 'HMT Calibre 0231 17-Jewels Hand-Wound Mechanical',
         caseSize: '35.5mm Classic Domed Acrylic Case',
         strap: 'Handcrafted Tan Top-Grain Leather Strap',
@@ -553,7 +581,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 6495,
         badge: 'Youth Street',
         badgeColor: 'rust',
-        image: 'https://images.unsplash.com/photo-1548907228-419a3f3d11d0?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/fastrack-street-diver-chrono.webp',
         movement: 'Multi-Function Sport Calibre with Dual Sub-Dials',
         caseSize: '45mm Gunmetal Ion-Plated Steel',
         strap: 'Textured Heavy-Duty All-Black Silicone Strap',
@@ -569,7 +597,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 3495,
         badge: 'Everyday Classic',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1518131672697-613becd4fab5?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/sonata-poze-sunray-gold.webp',
         movement: 'Sonata Reliable Quartz Calibre',
         caseSize: '40mm Yellow Gold Tone Case',
         strap: 'Genuine Brown Crocodile-Pattern Leather Strap',
@@ -577,20 +605,18 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         description: 'Timeless everyday Indian elegance from the Tata family. Clean champagne sunray dial with minimalist baton markers and croc-embossed leather.',
       },
       {
-        id: 'ind-8',
-        name: 'Titan Mechanical Open-Heart Automatic 43mm',
+        id: 'titan-08-automatics-neo',
+        name: 'Titan Automatics Neo (90118SL01)',
         brand: 'Titan',
-        category: 'Skeleton',
-        price: 24995,
-        originalPrice: 28995,
+        category: 'Automatic',
         badge: 'Titan Automatic',
         badgeColor: 'forest',
-        image: 'https://images.unsplash.com/photo-1773161266930-8fdbf73c0515?auto=format&fit=crop&w=800&q=80',
-        movement: 'In-House 22-Jewel Automatic Mechanical (40H Reserve)',
-        caseSize: '43mm Polished Steel',
-        strap: 'Midnight Blue Embossed Alligator Leather Strap',
+        image: '/images/watches/titan/08.webp',
+        movement: 'Automatic Skeleton',
+        caseSize: '43mm Stainless Steel',
+        strap: 'Embossed Leather Strap',
         inStock: true,
-        description: 'Titan\'s flagship automatic mechanical masterpiece with visible balance-wheel exhibition aperture at 7 o\'clock and sapphire crystal.',
+        description: "Exhibition open-heart mechanical movement at an accessible price point.",
       },
     ],
   },
@@ -603,16 +629,16 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'Titan Edge, Octane, HMT Mechanicals, Fastrack & Sonata',
       itemCount: '45+ Timepieces',
       tag: '🇮🇳 Proud Indian Horology',
-      image: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
+      image: '/images/watches/titan-octane-chronograph.webp',
       filterKey: 'Indian Brands',
     },
     {
       id: 'cat-swiss',
       title: 'Swiss Luxury & Automatics',
-      subtitle: 'Rolex, Omega, Tissot, Rado & Cartier',
+      subtitle: 'Omega, Tissot, Rado, Longines & Cartier',
       itemCount: '38 Timepieces',
       tag: 'Swiss Certified',
-      image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/swiss-luxury.webp',
       filterKey: 'Automatic',
     },
     {
@@ -621,7 +647,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'Seiko Presage, Prospex & Citizen Tsuyosa',
       itemCount: '29 Timepieces',
       tag: 'In-House Calibers',
-      image: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
+      image: '/images/watches/seiko-presage-cocktail-time.webp',
       filterKey: 'Automatic',
     },
     {
@@ -630,7 +656,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'TAG Heuer Carrera, Omega Moonwatch & Breitling',
       itemCount: '24 Chronographs',
       tag: 'Split-Second Precision',
-      image: 'https://images.unsplash.com/photo-1630262174975-38bf8d42745f?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/sport-chronographs.webp',
       filterKey: 'Chronograph',
     },
     {
@@ -639,7 +665,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'Fossil Heritage, Open Heart & 21-Jewel Automatics',
       itemCount: '19 Open-Heart Pieces',
       tag: 'Exhibition Glass',
-      image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/skeleton-openheart.webp',
       filterKey: 'Skeleton',
     },
   ],
@@ -647,32 +673,33 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
   // 6. BACKGROUND WATCH ADVERTISEMENT SHOWCASE (SIGNATURE EDITORIAL)
   editorialAd: {
     badge: 'SWISS HOROLOGY MASTERPIECE • GORAKHPUR FLAGSHIPS',
-    title: 'The Heritage of Rolex Oystersteel & 18 ct Yellow Gold',
+    title: 'The Heritage of Swiss Master Chronometer Precision',
     quote: '“A fine mechanical watch doesn’t just count hours. It preserves generations of precision engineering and personal triumphs.”',
     description: 'Ram Prasad Agencies is Eastern UP\'s authorized destination for world-renowned horological houses. Every timepiece across our Baldev Plaza and JalKal Building showrooms is 100% authentic, accompanied by official international stamped warranty cards, tamper-proof serial numbers, and lifetime battery and ultrasonic bracelet sizing support.',
-    caliber: 'Rolex Calibre 3235 Superlative Chronometer (70-Hour Reserve)',
-    material: 'Oystersteel & 18 ct Yellow Gold Rolesor with Fluted Bezel',
-    strapLeather: 'Five-Piece Link Jubilee Bracelet with Easylink Extension',
-    glass: 'Domed Scratch-Proof Sapphire Crystal with Cyclops Magnifier Lens Over Date',
-    waterResistance: '100 Meters / 330 Feet Waterproof Twinlock System',
-    image: 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=1200&q=85',
-    price: 1240000,
+    caliber: 'Omega Co-Axial Master Chronometer Calibre 3861 (50-Hour Reserve)',
+    material: '316L Stainless Steel with Hesalite & Sapphire Crystal',
+    strapLeather: 'Brushed Five-Arched-Links-per-Row Stainless Steel Bracelet',
+    glass: 'Domed Scratch-Resistant Sapphire Crystal with Anti-Reflective Treatment',
+    waterResistance: '50 Meters / 167 Feet Water Resistance',
+    image: '/images/editorial-baldev-flagship.webp',
+    price: 690000,
   },
 
   // 6B. THE MAISON PORTFOLIO BRANDS
   brands: [
     { name: 'Titan', country: 'India', desc: 'Edge, Octane & Regalia Flagships' },
+    { name: 'Titan Raga', country: 'India', desc: 'Jewelry & Floral Designer Horology' },
     { name: 'HMT', country: 'India', desc: 'Kohinoor & Janata Mechanical Heritage' },
     { name: 'Fastrack', country: 'India', desc: 'Youth Sport & Street Chronographs' },
     { name: 'Sonata', country: 'India', desc: 'Everyday Reliable Indian Horology' },
     { name: 'Tissot', country: 'Swiss', desc: 'PRX & Heritage Swiss Precision' },
-    { name: 'Rolex', country: 'Swiss', desc: 'Certified Swiss Luxury Imports' },
     { name: 'Omega', country: 'Swiss', desc: 'Moonwatch & Co-Axial Chronometers' },
     { name: 'Seiko', country: 'Japan', desc: 'Automatic & Presage Craft' },
     { name: 'Citizen', country: 'Japan', desc: 'Tsuyosa & Eco-Drive Calibers' },
     { name: 'Breitling', country: 'Swiss', desc: 'Navitimer Aviation Chronographs' },
     { name: 'Fossil', country: 'USA', desc: 'Heritage Automatics & Vintage Styling' },
     { name: 'Rado', country: 'Swiss', desc: 'Master of High-Tech Ceramic' },
+    { name: 'Casio', country: 'Japan', desc: 'G-Shock & Vintage Digital Icons' },
   ],
 
   // 6C. TRUST & AUTHENTICITY BADGES
@@ -749,7 +776,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         options: [
           'Buy / Inquire Specific Watch Model',
           'Private In-Store Showroom Fitting (Baldev Plaza / JalKal Building)',
-          'Custom Sourcing for Imported Reference (Rolex, Omega, Tissot, Seiko)',
+          'Custom Sourcing for Imported Reference (Omega, Tissot, Rado, Seiko)',
           'Watch Bracelet Sizing & Ultrasonic Cleaning',
           'Swiss Movement Servicing & Battery Replacement',
           'Corporate & Luxury Wedding Gifting Inquiry',
@@ -800,27 +827,34 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
 export const DEFAULT_INQUIRY_FORM_CONFIG = DEFAULT_VINTAGE_STORE_DATA.inquiryFormConfig;
 
 const BRAND_VERIFIED_WATCH_IMAGE = {
-  titan: 'https://images.unsplash.com/photo-1610006329898-2a4f12019450?auto=format&fit=crop&w=800&q=80',
-  hmt: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=80',
-  fastrack: 'https://images.unsplash.com/photo-1548907228-419a3f3d11d0?auto=format&fit=crop&w=800&q=80',
-  sonata: 'https://images.unsplash.com/photo-1518131672697-613becd4fab5?auto=format&fit=crop&w=800&q=80',
-  tissot: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=800&q=80',
-  rolex: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
-  omega: 'https://images.unsplash.com/photo-1556453007-ee036169934b?auto=format&fit=crop&w=800&q=80',
-  seiko: 'https://images.unsplash.com/photo-1751437786613-905dff8fe021?auto=format&fit=crop&w=800&q=80',
-  citizen: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=800&q=80',
-  casio: 'https://images.unsplash.com/photo-1605583972593-1fda24a7bea2?auto=format&fit=crop&w=800&q=80',
-  fossil: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80',
-  breitling: 'https://images.unsplash.com/photo-1639564879163-a2a85682410e?auto=format&fit=crop&w=800&q=80',
-  rado: 'https://images.unsplash.com/photo-1618337978865-f02783a02355?auto=format&fit=crop&w=800&q=80',
-  cartier: 'https://images.unsplash.com/photo-1747995525955-92010650c3ae?auto=format&fit=crop&w=800&q=80',
-  'tag heuer': 'https://images.unsplash.com/photo-1630262174975-38bf8d42745f?auto=format&fit=crop&w=800&q=80',
+  titan: '/images/watches/titan/01.webp',
+  hmt: '/images/watches/hmt/01.webp',
+  fastrack: '/images/watches/fastrack-street-diver-chrono.webp',
+  sonata: '/images/watches/sonata-poze-sunray-gold.webp',
+  tissot: '/images/watches/tissot/01.webp',
+  omega: '/images/watches/omega/01.webp',
+  seiko: '/images/watches/seiko/01.webp',
+  citizen: '/images/watches/citizen-tsuyosa-emerald-green.webp',
+  casio: '/images/watches/casio-gshock-2100-casioak.webp',
+  fossil: '/images/watches/fossil-heritage-automatic.webp',
+  breitling: '/images/watches/breitling/01.webp',
+  rado: '/images/watches/rado/01.webp',
+  cartier: '/images/watches/cartier-santos-dumont.webp',
+  'tag heuer': '/images/watches/tagheuer-carrera-glassbox.webp',
+  'titan raga': '/images/watches/titan-raga/01.webp',
+  raga: '/images/watches/titan-raga/01.webp',
 };
 
 // Check if an image URL is a known non-watch offender (makeup, shoe, bag, coffee, etc.)
 export const isOffenderImage = (url) => {
   if (!url || typeof url !== 'string') return true;
   return (
+    url.toLowerCase().includes('rolex') ||
+    url.includes('photo-1587925358603') || // Rolex Daytona close up dial
+    url.includes('photo-1670404160620-a3a86428560e') ||
+    url.includes('photo-1620625515032-6ed0c1790c75') ||
+    url.includes('photo-1639006570490-79c0c53f1080') ||
+    url.includes('photo-1526045431048-f857369baa09') ||
     url.includes('photo-1522335789203') || // Makeup & cosmetics palette
     url.includes('photo-1539185441755') || // Sneaker shoe
     url.includes('photo-1543163521') ||    // Shoes & footwear
@@ -846,20 +880,29 @@ export const getVerifiedBrandImage = (brand, fallback) => {
 export const sanitizeStoreData = (data) => {
   if (!data || typeof data !== 'object') return DEFAULT_VINTAGE_STORE_DATA;
   const rawTagline = data.tagline;
-  const cleanTagline = (!rawTagline || rawTagline.includes('Authorized & Imported') || rawTagline.includes('Vintage Horology') || rawTagline.includes('TheWatchStore.in'))
+  let cleanTagline = (!rawTagline || rawTagline.includes('Authorized & Imported') || rawTagline.includes('Vintage Horology') || rawTagline.includes('TheWatchStore.in'))
     ? DEFAULT_VINTAGE_STORE_DATA.tagline
     : rawTagline;
+  if (cleanTagline.toLowerCase().includes('ramprasadwatchstore')) {
+    cleanTagline = 'WATCHSTORE.IN';
+  }
 
   const serialized = JSON.stringify(data);
   const hasOffenders = isOffenderImage(serialized);
-  const isOldVersion = !data.version || data.version !== '3.0.0';
-  const shouldResetImagery = hasOffenders || isOldVersion;
+  const hasUnsplash = serialized.includes('unsplash.com');
+  const isOldVersion = !data.version || data.version !== '6.7.0';
+  const shouldResetImagery = hasOffenders || hasUnsplash || isOldVersion || serialized.toLowerCase().includes('rolex') || serialized.includes('1587925358603');
 
   const sanitizeWatchList = (list, defaultList) => {
     if (shouldResetImagery || !list || !Array.isArray(list) || list.length === 0) {
       return defaultList;
     }
-    return list.map((w) => {
+    const cleanList = list.filter((w) => {
+      const b = (w?.brand || '').toLowerCase();
+      const n = (w?.name || '').toLowerCase();
+      return b !== 'rolex' && !n.includes('rolex');
+    });
+    return cleanList.map((w) => {
       if (isOffenderImage(w.image)) {
         return { ...w, image: getVerifiedBrandImage(w.brand, defaultList[0]?.image || DEFAULT_VINTAGE_STORE_DATA.hero.slides[0].image) };
       }
@@ -870,7 +913,10 @@ export const sanitizeStoreData = (data) => {
   const sanitized = {
     ...DEFAULT_VINTAGE_STORE_DATA,
     ...data,
-    version: '3.0.0',
+    certificateImage: data.certificateImage
+      ? String(data.certificateImage).replace(/\.jpg$/i, '.webp')
+      : '/images/about/heritage-certificate.webp',
+    version: '6.7.0',
     tagline: cleanTagline,
     footerVipBadge: data.footerVipBadge || DEFAULT_VINTAGE_STORE_DATA.footerVipBadge,
     footerVipTitle: data.footerVipTitle || DEFAULT_VINTAGE_STORE_DATA.footerVipTitle,
@@ -892,7 +938,20 @@ export const sanitizeStoreData = (data) => {
       slides: shouldResetImagery
         ? DEFAULT_VINTAGE_STORE_DATA.hero.slides
         : (data.hero?.slides && Array.isArray(data.hero.slides) && data.hero.slides.length > 0
-          ? data.hero.slides.map((s) => (isOffenderImage(s.image) ? { ...s, image: DEFAULT_VINTAGE_STORE_DATA.hero.slides[0].image } : s))
+          ? data.hero.slides.map((s, idx) => {
+              if (s.id === 'hero-6' || s.headline?.toLowerCase().includes('fastrack')) {
+                return { ...s, image: '/images/fastrack-banner.webp' };
+              }
+              if (s.id === 'hero-5' || s.headline?.toLowerCase().includes('hmt')) {
+                return { ...s, image: '/images/hero-hmt-kohinoor-vintage.webp' };
+              }
+              if (s.id === 'hero-2' || s.headline?.toLowerCase().includes('omega')) {
+                return { ...s, image: '/images/hero-omega-showcase.webp' };
+              }
+              return isOffenderImage(s.image)
+                ? (DEFAULT_VINTAGE_STORE_DATA.hero.slides[idx]?.image || DEFAULT_VINTAGE_STORE_DATA.hero.slides[0].image)
+                : s;
+            })
           : DEFAULT_VINTAGE_STORE_DATA.hero.slides),
     },
     carousels: {
@@ -927,7 +986,7 @@ export const sanitizeStoreData = (data) => {
       ? data.showrooms
       : DEFAULT_VINTAGE_STORE_DATA.showrooms,
     brands: (data.brands && Array.isArray(data.brands) && data.brands.length > 0)
-      ? data.brands
+      ? data.brands.filter((b) => (b.name || '').toLowerCase() !== 'rolex')
       : DEFAULT_VINTAGE_STORE_DATA.brands,
     trustBadges: (data.trustBadges && Array.isArray(data.trustBadges) && data.trustBadges.length > 0)
       ? data.trustBadges
@@ -1092,6 +1151,9 @@ export function StoreProvider({ children }) {
             }
             if (settings.footerCopyright) {
               merged.footerCopyright = settings.footerCopyright;
+            }
+            if (settings.certificateImage) {
+              merged.certificateImage = String(settings.certificateImage).replace(/\.jpg$/i, '.webp');
             }
             if (settings.flashSale) {
               const fs = settings.flashSale.flashSale || settings.flashSale;
@@ -1305,7 +1367,7 @@ export function StoreProvider({ children }) {
             ctaPrimaryLink: '#new-arrivals',
             ctaSecondary: 'Learn More',
             ctaSecondaryLink: '#showrooms',
-            image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1600&q=85',
+            image: '/images/watches/tissot-prx-powermatic-80.webp',
             ...newSlide,
           },
         ],
@@ -1350,7 +1412,7 @@ export function StoreProvider({ children }) {
         originalPrice: 17995,
         badge: 'New Release',
         badgeColor: 'brass',
-        image: 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=800&q=80',
+        image: '/images/watches/default-watch.webp',
         movement: 'Japanese Automatic',
         caseSize: '42mm',
         strap: 'Italian Leather',

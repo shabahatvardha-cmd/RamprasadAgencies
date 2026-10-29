@@ -80,7 +80,7 @@ export default function HeroSlidesEditor({ heroData, onSaveHero, showToast, isSa
       ctaPrimaryLink: '#new-arrivals',
       ctaSecondary: 'View Showrooms',
       ctaSecondaryLink: '#showrooms',
-      image: 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1600&q=85',
+      image: '/images/watches/tissot-prx-powermatic-80.webp',
       specsTag: 'Automatic Caliber • 316L Surgical Steel',
     };
     const updated = [...slides, newSlide];
@@ -374,7 +374,7 @@ export default function HeroSlidesEditor({ heroData, onSaveHero, showToast, isSa
               alt="Slide Preview"
               className="absolute inset-0 w-full h-full object-cover brightness-[0.85] contrast-[1.05]"
               onError={(e) => {
-                e.target.src = 'https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=1200&q=80';
+                e.target.src = '/images/watches/tissot-prx-powermatic-80.webp';
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>

@@ -15,12 +15,12 @@ const CATEGORIES = [
 const ORIGINS = [
   { id: 'ALL', label: 'All Collections', countLabel: 'All Watches' },
   { id: 'INDIAN', label: '🇮🇳 Indian Brands', sub: 'Titan, HMT, Fastrack, Sonata' },
-  { id: 'SWISS', label: '🇨🇭 Swiss Luxury', sub: 'Rolex, Omega, Tissot, Breitling' },
+  { id: 'SWISS', label: '🇨🇭 Swiss Luxury', sub: 'Omega, Tissot, Rado, Breitling' },
   { id: 'JAPANESE', label: '🇯🇵 Japanese Precision', sub: 'Seiko Presage, Citizen' },
 ];
 
 const INDIAN_BRAND_NAMES = ['titan', 'hmt', 'fastrack', 'sonata'];
-const SWISS_BRAND_NAMES = ['rolex', 'omega', 'tissot', 'breitling', 'cartier', 'rado'];
+const SWISS_BRAND_NAMES = ['omega', 'tissot', 'breitling', 'cartier', 'rado'];
 const JAPANESE_BRAND_NAMES = ['seiko', 'citizen', 'casio', 'orient'];
 
 import { FALLBACK_WATCHES } from '../data/fallbackWatches';
@@ -46,9 +46,12 @@ export default function CatalogSection({
   // If backend catalog has watches, merge them with defaults so user gets full Indian & Swiss selection
   const displayWatches = useMemo(() => {
     if (!watches || watches.length === 0) return FALLBACK_WATCHES;
-    // Add any fallback watches not already in backend
+    const existingNames = new Set(watches.map((w) => (w.name || '').toLowerCase().trim()));
+    const existingImages = new Set(watches.map((w) => (w.image || '').trim()).filter(Boolean));
     const nonDups = FALLBACK_WATCHES.filter(
-      (fw) => !watches.some((bw) => bw.name.toLowerCase() === fw.name.toLowerCase())
+      (fw) =>
+        !existingNames.has((fw.name || '').toLowerCase().trim()) &&
+        !existingImages.has((fw.image || '').trim())
     );
     return [...watches, ...nonDups];
   }, [watches]);
@@ -85,14 +88,28 @@ export default function CatalogSection({
       // In stock filter
       const matchesStock = !inStockOnly || w.inStock;
 
-      // Text search
-      const query = (searchQuery || '').toLowerCase().trim();
-      const matchesSearch =
-        !query ||
-        w.name.toLowerCase().includes(query) ||
-        w.brand.toLowerCase().includes(query) ||
-        (w.category && w.category.toLowerCase().includes(query)) ||
-        (w.movement && w.movement.toLowerCase().includes(query));
+      // Multi-token keyword search across all watch metadata
+      const rawQuery = (searchQuery || '').toLowerCase().trim();
+      let matchesSearch = true;
+      if (rawQuery) {
+        const tokens = rawQuery.split(/\s+/).filter(Boolean);
+        const searchableFields = [
+          w.name,
+          w.brand,
+          w.category,
+          w.movement,
+          w.description,
+          w.strapType,
+          w.caseDiameter,
+          w.showroomLocation,
+        ]
+          .filter(Boolean)
+          .map((v) => String(v).toLowerCase());
+
+        matchesSearch = tokens.every((token) =>
+          searchableFields.some((field) => field.includes(token))
+        );
+      }
 
       return matchesCategory && matchesBrand && matchesStock && matchesSearch;
     });

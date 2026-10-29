@@ -23,12 +23,15 @@ export default function VisualEditorialAd({ editorialAd = {}, isEditMode, onOpen
     strapLeather = 'Top-Grain Alligator-Embossed Leather & Solid Steel Bracelet',
     glass = 'Domed Sapphire Crystal with Internal Anti-Reflective Coating',
     waterResistance = '100 Meters / 10 Bar (Certified Screw-Down Crown)',
-    image = 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=1200&q=85',
+    image = '/images/editorial-baldev-flagship.webp',
     price = 62000,
     watchModel = 'Tissot PRX Powermatic 80 / Seiko Presage',
   } = editorialAd;
 
-  const adImage = getFullImageUrl(image);
+  const rawImg = image && (image.includes('1639006570490') || image.includes('1670404160620') || image.toLowerCase().includes('rolex'))
+    ? '/images/editorial-baldev-flagship.webp'
+    : image;
+  const adImage = getFullImageUrl(rawImg);
 
   return (
     <section id="editorial-showcase" className="relative w-full py-16 sm:py-24 bg-[#FAF7F2] border-b border-[#E8E1D5] overflow-hidden">

@@ -151,7 +151,7 @@ export default function BrandingEditor({
   const handleRestoreDefaults = () => {
     setBrandName(DEFAULT_VINTAGE_STORE_DATA.brandName);
     setTagline(DEFAULT_VINTAGE_STORE_DATA.tagline);
-    setLogo(DEFAULT_VINTAGE_STORE_DATA.logo || '/logo.png');
+    setLogo(DEFAULT_VINTAGE_STORE_DATA.logo || '/logo.webp');
     setContactPhone(DEFAULT_VINTAGE_STORE_DATA.contactPhone);
     setFooterCopyright(DEFAULT_VINTAGE_STORE_DATA.footerCopyright);
     setFooterVipBadge(DEFAULT_VINTAGE_STORE_DATA.footerVipBadge || 'Vintage Collectors Circle');
@@ -400,7 +400,7 @@ export default function BrandingEditor({
                     Ram Prasad Agencies Logo
                   </label>
                   <span className="text-[10px] text-[#7C746B]">
-                    Located in public/ as logo.png or logo.jpg
+                    Located in public/ as logo.webp
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -410,7 +410,7 @@ export default function BrandingEditor({
                       type="text"
                       value={logo}
                       onChange={(e) => setLogo(e.target.value)}
-                      placeholder="/logo.png"
+                      placeholder="/logo.webp"
                       className="w-full bg-white border border-[#DDD5C7] rounded-lg px-3 py-1.5 text-xs font-mono text-[#1A1A1A] focus:outline-none focus:border-brass-600"
                     />
                     <div className="flex items-center gap-2">
@@ -418,16 +418,16 @@ export default function BrandingEditor({
                       <button
                         type="button"
                         onClick={() => setLogo('/logo.png')}
-                        className="px-2 py-0.5 rounded text-[10px] bg-white border border-[#DDD5C7] hover:border-brass-600 text-[#4A433D]"
+                        className="px-2 py-0.5 rounded text-[10px] bg-white border border-brass-600 text-brass-800 font-bold hover:bg-brass-50"
                       >
-                        /logo.png
+                        /logo.png (HD PNG)
                       </button>
                       <button
                         type="button"
-                        onClick={() => setLogo('/logo.jpg')}
-                        className="px-2 py-0.5 rounded text-[10px] bg-white border border-[#DDD5C7] hover:border-brass-600 text-[#4A433D]"
+                        onClick={() => setLogo('/logo.webp')}
+                        className="px-2 py-0.5 rounded text-[10px] bg-white border border-neutral-300 text-neutral-700 font-medium hover:bg-neutral-50"
                       >
-                        /logo.jpg
+                        /logo.webp (Optimized WebP)
                       </button>
                     </div>
                   </div>
@@ -455,11 +455,11 @@ export default function BrandingEditor({
                   type="text"
                   value={tagline}
                   onChange={(e) => setTagline(e.target.value)}
-                  placeholder="TheWatchStore.in • Golghar"
+                  placeholder="WATCHSTORE.IN"
                   className="w-full bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs font-bold text-[#1A1A1A] focus:outline-none focus:border-brass-600"
                 />
                 <p className="text-[10px] text-[#7C746B] mt-1">
-                  Appears under the brand logo in the header (e.g. TheWatchStore.in • Golghar).
+                  Appears under the brand logo in the header (e.g. WATCHSTORE.IN).
                 </p>
               </div>
 

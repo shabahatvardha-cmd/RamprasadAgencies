@@ -28,7 +28,7 @@ At the top of the screen, you will find our segmented control bar:
 Click **"Quick Edit"** in the top bar to open a clean slide-over drawer:
 - **Announcement Ticker**: Change promotional ribbons (e.g., *"Diwali Luxury Showcase — Visit our Golghar Flagships"*).
 - **Hero Banner**: Update the main headline and subtitle with live typing preview.
-- **Brand Portfolio**: Manage the list of luxury maisons shown in the marquee (Rolex, Omega, Cartier, Tissot, Seiko, Casio, etc.).
+- **Brand Portfolio**: Manage the list of luxury brands shown in the marquee (Titan, Omega, Cartier, Tissot, Seiko, Casio, etc.).
 - **Trust Badges**: Update your authenticity guarantee, master horologist service details, and flagship showroom notes.
 - **VIP Circle & Helpline**: Edit concierge phone numbers (`+91 98765 43210`) and member circle perks.
 
@@ -42,7 +42,7 @@ Click **"+ Add Watch"** or switch to the full catalog table:
 - **Details**: Model name, manufacturer brand, category (Dress, Chronograph, Diver, Automatic, etc.), and showroom availability.
 - **Pricing**: Automatically formats in proper Indian Rupees (`₹ 1,25,000`).
 - **High-Resolution Photo Upload**: Click or drag any watch image (PNG, JPG, WEBP). It is uploaded locally to our server, stored safely, and optimized for customer viewing.
-- **One-Click Quick Seeder**: Click the seed button if you ever need to load sample benchmark watches (Rolex Daytona, Omega Moonwatch, Cartier Santos, Breitling Navitimer).
+- **One-Click Quick Seeder**: Click the seed button if you ever need to load sample benchmark watches (Omega Moonwatch, Cartier Santos, Breitling Navitimer, Rado Captain Cook).
 
 ### 5. Master Factory Restore
 If you ever experiment with colors, typography, or test headlines and want to return everything back to our handcrafted luxury defaults, simply click the **Restore** button (↺) in the top bar. It will safely reset all styling and copy without deleting your uploaded watch catalog.

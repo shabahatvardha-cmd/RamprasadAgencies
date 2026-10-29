@@ -19,7 +19,7 @@ We built this experience to feel like walking into a modern haute horlogerie bou
 - Clean left (`←`) and right (`→`) arrows with bottom indicator dots allowing customers to glide through current featured timepieces at their own pace.
 
 ### 3. Interactive Brand Showcase & Filters
-- Features our authorized collections: **Rolex**, **Omega**, **Tissot**, **Seiko**, **Citizen**, **Casio Edifice**, **Fossil**, and more.
+- Features our authorized collections: **Titan**, **Omega**, **Tissot**, **Seiko**, **Citizen**, **Casio Edifice**, **Fossil**, and more.
 - Clicking any brand instantly filters the showcase so customers can view timepieces from their preferred maison.
 
 ### 4. Watch Vault & Indian Rupee (`₹`) Pricing

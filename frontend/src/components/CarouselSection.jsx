@@ -110,8 +110,7 @@ export default function CarouselSection({
                     className="w-full h-full object-contain group-hover:scale-106 transition-transform duration-500 ease-out"
                     loading="lazy"
                     onError={(e) => {
-                      e.target.src =
-                        'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=600&q=80';
+                      e.target.src = '/images/watches/default-watch.webp';
                     }}
                   />
 

@@ -169,7 +169,7 @@ export default function LifestyleEditor({
                     alt={cat.title}
                     className="w-full h-full object-cover brightness-[0.70] group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = 'https://images.unsplash.com/photo-1670404160620-a3a86428560e?auto=format&fit=crop&w=600&q=80';
+                      e.target.src = '/images/watches/default-watch.webp';
                     }}
                   />
                   <div className="absolute top-2.5 left-2.5">
@@ -453,7 +453,7 @@ export default function LifestyleEditor({
                 alt="Editorial Preview"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
-                  e.target.src = 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=1200&q=85';
+                  e.target.src = '/images/editorial-baldev-flagship.webp';
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>

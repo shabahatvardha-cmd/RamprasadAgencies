@@ -1,30 +1,51 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { StoreProvider, useStore, DEFAULT_VINTAGE_STORE_DATA } from './context/StoreContext';
 import AnnouncementBar from './components/AnnouncementBar';
 import Header from './components/Header';
-import HeroBanner from './components/HeroBanner';
-import BrandMarquee from './components/BrandMarquee';
-import DualStorefront from './components/DualStorefront';
-import CustomerInquiry from './components/CustomerInquiry';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import WishlistDrawer from './components/WishlistDrawer';
 import WatchModal from './components/WatchModal';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import BrandPage from './pages/BrandPage';
+import { FALLBACK_WATCHES } from './data/fallbackWatches';
+
+// Scroll to top or anchor on route/hash change
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const targetId = hash.replace('#', '');
+      const el = document.getElementById(targetId);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+        return;
+      }
+    }
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch {
+      try {
+        window.scrollTo(0, 0);
+      } catch {}
+    }
+  }, [pathname, hash]);
+  return null;
+}
 
 function StorefrontContent() {
   const { storeData } = useStore();
   const currentData = storeData || DEFAULT_VINTAGE_STORE_DATA;
   const carousels = currentData.carousels || DEFAULT_VINTAGE_STORE_DATA.carousels;
-  const flashSale = currentData.flashSale?.flashSale || currentData.flashSale || DEFAULT_VINTAGE_STORE_DATA.flashSale;
   const contactPhone = currentData.contactPhone || '+91 98765 43210';
-
-
 
   // Modal & Wishlist state
   const [selectedWatchForModal, setSelectedWatchForModal] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('ALL');
-  const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [wishlist, setWishlist] = useState(() => {
     try {
       const saved = localStorage.getItem('rpa_wishlist');
@@ -34,46 +55,6 @@ function StorefrontContent() {
     }
   });
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
-
-  // Global click-outside listener: if user clicked outside brand buttons/cards, deselect brand to 'ALL'
-  useEffect(() => {
-    if (!selectedBrand || selectedBrand === 'ALL') return;
-
-    const handleGlobalClick = (e) => {
-      // Don't deselect if clicking inside a brand button/card
-      if (e.target.closest('[data-brand-btn]')) {
-        return;
-      }
-      // Don't deselect if clicking inside a watch card (user wants to open the watch modal)
-      if (e.target.closest('[data-watch-card]')) {
-        return;
-      }
-      // Don't deselect if clicking inside the watch modal
-      if (e.target.closest('[data-watch-modal]')) {
-        return;
-      }
-      // Don't deselect if interacting with form inputs, selects
-      if (e.target.closest('input, select')) {
-        return;
-      }
-      // Don't deselect if clicking on wishlist button or drawer
-      if (e.target.closest('[data-wishlist-trigger]') || e.target.closest('[data-wishlist-drawer]')) {
-        return;
-      }
-
-      // Any click on background, margins, text, outside the brand button -> deselect to 'ALL'
-      setSelectedBrand('ALL');
-    };
-
-    const timer = setTimeout(() => {
-      document.addEventListener('click', handleGlobalClick);
-    }, 120);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener('click', handleGlobalClick);
-    };
-  }, [selectedBrand]);
 
   // Wishlist handlers
   const handleToggleWishlist = (item) => {
@@ -106,15 +87,7 @@ function StorefrontContent() {
     });
   };
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    const targetEl = document.getElementById('catalog');
-    if (targetEl) {
-      targetEl.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Combine all watches from store carousels into a unified collection
+  // Combine all watches from store carousels and full fallback catalog into a unified collection
   const allStoreWatches = useMemo(() => {
     const rawList = [
       ...(carousels.newArrivals || []),
@@ -122,15 +95,19 @@ function StorefrontContent() {
       ...(carousels.collectorCapsule || []),
       ...(carousels.ourIcons || []),
       ...(carousels.flashDeals || []),
+      ...FALLBACK_WATCHES,
     ];
 
-    const seen = new Set();
+    const seenNames = new Set();
+    const seenImages = new Set();
     const unique = [];
     for (const item of rawList) {
-      if (!item) continue;
-      const key = (item.name || item.id || item._id || '').toLowerCase().trim();
-      if (!key || seen.has(key)) continue;
-      seen.add(key);
+      if (!item || !item.name) continue;
+      const nameKey = item.name.toLowerCase().trim();
+      const imgKey = (item.image || '').trim();
+      if (seenNames.has(nameKey) || (imgKey && seenImages.has(imgKey))) continue;
+      seenNames.add(nameKey);
+      if (imgKey) seenImages.add(imgKey);
       unique.push(item);
     }
     return unique;
@@ -141,110 +118,127 @@ function StorefrontContent() {
   const primaryColor = appearance.primaryColor || '#C5A059';
   const backgroundColor = appearance.backgroundColor || '#FAF7F2';
   const charcoalColor = appearance.charcoalColor || '#1A1A1A';
-  const headingFont = (appearance.headingFont && appearance.headingFont !== 'Playfair Display') ? appearance.headingFont : 'Plus Jakarta Sans';
+  const headingFont =
+    appearance.headingFont && appearance.headingFont !== 'Playfair Display'
+      ? appearance.headingFont
+      : 'Plus Jakarta Sans';
   const bodyFont = appearance.bodyFont || 'Plus Jakarta Sans';
-  const fontSizeBase = appearance.fontSizeScale === 'large' ? '17px' : appearance.fontSizeScale === 'small' ? '15px' : '16px';
+  const fontSizeBase =
+    appearance.fontSizeScale === 'large'
+      ? '17px'
+      : appearance.fontSizeScale === 'small'
+      ? '15px'
+      : '16px';
 
   return (
-    <div
-      style={{
-        backgroundColor: backgroundColor,
-        color: charcoalColor,
-        fontFamily: `'${bodyFont}', sans-serif`,
-        fontSize: fontSizeBase,
-      }}
-      className="w-full min-h-screen overflow-x-clip font-sans selection:bg-brass-500 selection:text-white"
-    >
-      <style>{`
-        :root {
-          --color-primary: ${primaryColor};
-          --color-bg: ${backgroundColor};
-          --color-charcoal: ${charcoalColor};
-          --font-heading: '${headingFont}', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          --font-body: '${bodyFont}', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-        .font-serif {
-          font-family: '${headingFont}', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-          letter-spacing: -0.025em;
-        }
-        .font-sans {
-          font-family: '${bodyFont}', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        }
-      `}</style>
-
-      {/* 0. Top Scrolling Marquee Announcement Ticker */}
-      <AnnouncementBar />
-
-      {/* 1. Vintage Luxury Sticky Navigation Header */}
-      <Header
-        wishlistCount={wishlist.length}
-        onOpenWishlist={() => setIsWishlistOpen(true)}
-        searchQuery={searchQuery}
-        onSearch={setSearchQuery}
-      />
-
-      {/* 2. Hero Watch Photography Showcase */}
-      <HeroBanner />
-
-      {/* 3. The Maison Portfolio & On-Demand Timepiece Showcase */}
-      <BrandMarquee
-        brands={currentData.brands}
-        selectedBrand={selectedBrand}
-        onSelectBrand={setSelectedBrand}
-        watches={allStoreWatches}
-        contactPhone={contactPhone}
-        searchQuery={searchQuery}
-        onClearSearch={() => setSearchQuery('')}
-        wishlist={wishlist}
-        onToggleWishlist={handleToggleWishlist}
-        onSelectWatch={setSelectedWatchForModal}
-      />
-
-      {/* 5. Dual Showroom Experience Stores (Baldev Plaza & JalKal Building, Golghar) */}
-      <div id="showrooms">
-        <DualStorefront
-          contactPhone={contactPhone}
-          showrooms={currentData.showrooms}
-        />
-      </div>
-
-      {/* 6. Bespoke Inquiries & Consultation Form */}
-      <div id="inquiry">
-        <CustomerInquiry
-          contactPhone={contactPhone}
-          inquiryTitle={currentData.inquiryTitle || "Showroom Consultation & Inquiries"}
-          inquirySubtitle={currentData.inquirySubtitle || "Looking for a specific vintage reference, limited edition release, or looking to schedule a private fitting at Baldev Plaza or JalKal Building? Connect with our horology team."}
-        />
-      </div>
-
-      {/* 14. Wishlist Sliding Drawer */}
-      <WishlistDrawer
-        isOpen={isWishlistOpen}
-        onClose={() => setIsWishlistOpen(false)}
-        wishlist={wishlist}
-        onRemoveFromWishlist={handleRemoveFromWishlist}
-        contactPhone={contactPhone}
-        onSelectWatch={(item) => {
-          setSelectedWatchForModal(item);
-          setIsWishlistOpen(false);
+    <BrowserRouter>
+      <ScrollToTop />
+      <div
+        style={{
+          backgroundColor: backgroundColor,
+          color: charcoalColor,
+          fontFamily: `'${bodyFont}', sans-serif`,
+          fontSize: fontSizeBase,
         }}
-      />
+        className="w-full min-h-screen overflow-x-clip font-sans selection:bg-brass-500 selection:text-white flex flex-col justify-between"
+      >
+        <style>{`
+          :root {
+            --color-primary: ${primaryColor};
+            --color-bg: ${backgroundColor};
+            --color-charcoal: ${charcoalColor};
+            --font-heading: '${headingFont}', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-body: '${bodyFont}', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          }
+          .font-serif {
+            font-family: '${headingFont}', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            letter-spacing: -0.025em;
+          }
+          .font-sans {
+            font-family: '${bodyFont}', -apple-system, BlinkMacSystemFont, sans-serif !important;
+          }
+        `}</style>
 
-      {/* 15. Quick View Watch Specifications Modal */}
-      {selectedWatchForModal && (
-        <WatchModal
-          watch={selectedWatchForModal}
-          onClose={() => setSelectedWatchForModal(null)}
-          contactPhone={contactPhone}
+        {/* 0. Top Scrolling Marquee Announcement Ticker */}
+        <AnnouncementBar />
+
+        {/* 1. Vintage Luxury Sticky Navigation Header */}
+        <Header
+          wishlistCount={wishlist.length}
+          onOpenWishlist={() => setIsWishlistOpen(true)}
+          allWatches={allStoreWatches}
+          onSelectWatch={setSelectedWatchForModal}
+          searchQuery={searchQuery}
+          onSearch={setSearchQuery}
         />
-      )}
 
-      {/* 16. Floating WhatsApp Concierge */}
-      <FloatingWhatsApp contactPhone={contactPhone} />
+        {/* 2. Page Routes */}
+        <div className="flex-1">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  storeData={currentData}
+                  contactPhone={contactPhone}
+                  onSelectBrand={setSelectedBrand}
+                />
+              }
+            />
+            <Route
+              path="/brand/:brandSlug"
+              element={
+                <BrandPage
+                  watches={allStoreWatches}
+                  contactPhone={contactPhone}
+                  wishlist={wishlist}
+                  onToggleWishlist={handleToggleWishlist}
+                  onSelectWatch={setSelectedWatchForModal}
+                />
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <HomePage
+                  storeData={currentData}
+                  contactPhone={contactPhone}
+                  onSelectBrand={setSelectedBrand}
+                />
+              }
+            />
+          </Routes>
+        </div>
 
-      {/* 17. Vintage Lifestyle Brand Footer */}
-      <Footer />
-    </div>
+        {/* 3. Wishlist Sliding Drawer */}
+        <WishlistDrawer
+          isOpen={isWishlistOpen}
+          onClose={() => setIsWishlistOpen(false)}
+          wishlist={wishlist}
+          onRemoveFromWishlist={handleRemoveFromWishlist}
+          contactPhone={contactPhone}
+          onSelectWatch={(item) => {
+            setSelectedWatchForModal(item);
+            setIsWishlistOpen(false);
+          }}
+        />
+
+        {/* 4. Quick View Watch Specifications Modal */}
+        {selectedWatchForModal && (
+          <WatchModal
+            watch={selectedWatchForModal}
+            onClose={() => setSelectedWatchForModal(null)}
+            contactPhone={contactPhone}
+          />
+        )}
+
+        {/* 5. Floating WhatsApp Concierge */}
+        <FloatingWhatsApp contactPhone={contactPhone} />
+
+        {/* 6. Vintage Lifestyle Brand Footer */}
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
@@ -265,7 +259,7 @@ class ErrorBoundary extends React.Component {
   handleReset = () => {
     try {
       localStorage.removeItem('fossil_storefront_state_v2');
-    } catch { }
+    } catch {}
     window.location.reload();
   };
 

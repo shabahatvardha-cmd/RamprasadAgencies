@@ -100,9 +100,10 @@ export default function Footer() {
                   {storeData?.tagline &&
                   !storeData.tagline.includes('Vintage Horology') &&
                   !storeData.tagline.includes('Authorized & Imported') &&
-                  !storeData.tagline.includes('TheWatchStore.in')
+                  !storeData.tagline.includes('TheWatchStore.in') &&
+                  !storeData.tagline.toLowerCase().includes('ramprasadwatchstore')
                     ? storeData.tagline
-                    : 'ramprasadWatchstore.in • Golghar'}
+                    : 'WATCHSTORE.IN'}
                 </p>
               </div>
             </div>

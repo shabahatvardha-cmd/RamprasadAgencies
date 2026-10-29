@@ -34,12 +34,11 @@ export default function VisualHeader({
   const [activeMessageIndex, setActiveMessageIndex] = useState(0);
 
   const navLinks = [
-    { label: 'New Arrivals', href: '#new-arrivals' },
-    { label: 'Collector Capsule', href: '#collector-capsule' },
-    { label: 'Categories', href: '#categories' },
-    { label: 'Our Icons', href: '#our-icons' },
-    ...(flashSale.isActive ? [{ label: '⚡ Flash Deals', href: '#flash-deals', isHighlight: true }] : []),
-    { label: 'Showrooms', href: '#showrooms' },
+    { label: 'Home', href: '#top' },
+    { label: 'About', href: '#about' },
+    { label: 'Brand', href: '#brands' },
+    { label: 'Store Locator', href: '#showrooms' },
+    { label: 'Contact Us', href: '#contact' },
   ];
 
   return (
@@ -67,23 +66,27 @@ export default function VisualHeader({
       </div>
 
       {/* 2. Main Sticky Navigation Header */}
-      <header className="bg-[#FAF8F5]/98 backdrop-blur-2xl transition-all font-sans text-[#1A1A1A]">
+      <header
+        className="bg-[#FAF8F5] border-b border-[#E8E1D5] shadow-sm transition-all font-sans text-[#1A1A1A]"
+        style={{ backgroundColor: '#FAF8F5' }}
+      >
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
           <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
             {/* Brand Logo & Name */}
             <a href="#" className="flex items-center gap-3 shrink-0 group">
               <BrandLogo customSrc={storeData?.logo} className="w-9 h-9 sm:w-11 sm:h-11" />
               <div>
-                <span className="font-serif text-xs sm:text-base md:text-lg font-bold tracking-wider text-[#1A1A1A] block leading-tight">
+                <span className="font-serif text-xs sm:text-base md:text-lg font-black tracking-wider text-[#111111] block leading-tight">
                   {brandName}
                 </span>
-                <p className="text-[8px] sm:text-[9.5px] uppercase tracking-widest text-brass-700 font-bold truncate">
+                <p className="text-[8.5px] sm:text-[10px] uppercase tracking-widest text-brass-700 font-extrabold truncate mt-0.5">
                   {tagline &&
                   !tagline.includes('Vintage Horology') &&
                   !tagline.includes('Authorized & Imported') &&
-                  !tagline.includes('TheWatchStore.in')
+                  !tagline.includes('TheWatchStore.in') &&
+                  !tagline.toLowerCase().includes('ramprasadwatchstore')
                     ? tagline
-                    : 'ramprasadWatchstore.in • Golghar'}
+                    : 'WATCHSTORE.IN'}
                 </p>
               </div>
             </a>
