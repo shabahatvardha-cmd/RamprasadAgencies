@@ -232,6 +232,13 @@ function updateSettings(updateFields) {
     };
   }
 
+  // Ensure dynamic brands portfolio is persisted across both top-level and vintageStoreData
+  if (updateFields.brands && Array.isArray(updateFields.brands)) {
+    updated.brands = updateFields.brands;
+    if (!updated.vintageStoreData) updated.vintageStoreData = {};
+    updated.vintageStoreData.brands = updateFields.brands;
+  }
+
   writeSettingsFile(updated);
   return updated;
 }

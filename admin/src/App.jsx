@@ -541,6 +541,7 @@ function App() {
       {/* Watch Create / Edit Modal */}
       <WatchEditModal
         watch={selectedWatchForEdit}
+        brands={currentStoreData.brands}
         isOpen={isWatchModalOpen}
         onClose={() => {
           setIsWatchModalOpen(false);

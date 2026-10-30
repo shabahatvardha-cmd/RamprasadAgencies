@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Plus,
   Trash2,
+  Edit2,
   Globe,
   Sliders,
   Layers,
@@ -27,6 +28,7 @@ import BrandLogo from './BrandLogo';
 export default function BrandingEditor({
   storeData,
   brandingData,
+  initialTab,
   onSaveBranding,
   showToast,
   isSaving,
@@ -34,7 +36,7 @@ export default function BrandingEditor({
   const current = storeData || brandingData || {};
 
   // Active sub-tab: 'identity' | 'announcements' | 'brands' | 'trustBadges'
-  const [activeTab, setActiveTab] = useState('identity');
+  const [activeTab, setActiveTab] = useState(initialTab || 'identity');
 
   // 1. Identity & Contact
   const [brandName, setBrandName] = useState(current.brandName || DEFAULT_VINTAGE_STORE_DATA.brandName);
@@ -66,7 +68,7 @@ export default function BrandingEditor({
   );
   const [newMessage, setNewMessage] = useState('');
 
-  // 3. Brands Portfolio
+  // 3. Brands Portfolio & Maison Studio
   const [brands, setBrands] = useState(
     current.brands && Array.isArray(current.brands) && current.brands.length > 0
       ? current.brands
@@ -74,7 +76,11 @@ export default function BrandingEditor({
   );
   const [newBrandName, setNewBrandName] = useState('');
   const [newBrandCountry, setNewBrandCountry] = useState('India');
+  const [newBrandCategory, setNewBrandCategory] = useState('featured');
   const [newBrandDesc, setNewBrandDesc] = useState('');
+  const [newBrandImage, setNewBrandImage] = useState('');
+  const [newBrandStory, setNewBrandStory] = useState('');
+  const [editingBrandIndex, setEditingBrandIndex] = useState(null);
 
   // 4. Trust Badges
   const [trustBadges, setTrustBadges] = useState(
@@ -108,24 +114,95 @@ export default function BrandingEditor({
   };
 
   // Brand helpers
-  const handleAddBrand = (e) => {
+  const handleAddOrUpdateBrand = (e) => {
     e?.preventDefault();
-    if (!newBrandName.trim()) return;
-    setBrands((prev) => [
-      ...prev,
-      {
-        name: newBrandName.trim(),
-        country: newBrandCountry.trim() || 'Global',
-        desc: newBrandDesc.trim() || 'Curated Horological Maison',
-      },
-    ]);
+    if (!newBrandName.trim()) {
+      showToast && showToast({ type: 'error', title: 'Missing Name', message: 'Brand name is required.' });
+      return;
+    }
+
+    const brandPayload = {
+      name: newBrandName.trim(),
+      country: newBrandCountry.trim() || 'Global',
+      category: newBrandCategory || 'featured',
+      desc: newBrandDesc.trim() || 'Curated Horological Maison',
+      image: newBrandImage.trim() || undefined,
+      story: newBrandStory.trim() || undefined,
+    };
+
+    if (editingBrandIndex !== null) {
+      setBrands((prev) => {
+        const copy = [...prev];
+        copy[editingBrandIndex] = { ...copy[editingBrandIndex], ...brandPayload };
+        return copy;
+      });
+      showToast && showToast({
+        type: 'success',
+        title: 'Brand Updated',
+        message: `${brandPayload.name} updated. Click Save All Changes to apply.`,
+      });
+      setEditingBrandIndex(null);
+    } else {
+      const exists = brands.some(
+        (b) => (b.name || '').toLowerCase().trim() === brandPayload.name.toLowerCase()
+      );
+      if (exists) {
+        showToast && showToast({
+          type: 'warning',
+          title: 'Duplicate Brand',
+          message: `A brand named "${brandPayload.name}" already exists in the portfolio.`,
+        });
+        return;
+      }
+      setBrands((prev) => [...prev, brandPayload]);
+      showToast && showToast({
+        type: 'success',
+        title: 'Brand Added',
+        message: `${brandPayload.name} added to portfolio. Click Save All Changes to publish.`,
+      });
+    }
+
     setNewBrandName('');
     setNewBrandCountry('India');
+    setNewBrandCategory('featured');
     setNewBrandDesc('');
+    setNewBrandImage('');
+    setNewBrandStory('');
+  };
+
+  const startEditBrand = (index) => {
+    const b = brands[index];
+    if (!b) return;
+    setEditingBrandIndex(index);
+    setNewBrandName(b.name || '');
+    setNewBrandCountry(b.country || 'India');
+    setNewBrandCategory(b.category || 'featured');
+    setNewBrandDesc(b.desc || '');
+    setNewBrandImage(b.image || '');
+    setNewBrandStory(b.story || b.history || '');
+  };
+
+  const cancelEditBrand = () => {
+    setEditingBrandIndex(null);
+    setNewBrandName('');
+    setNewBrandCountry('India');
+    setNewBrandCategory('featured');
+    setNewBrandDesc('');
+    setNewBrandImage('');
+    setNewBrandStory('');
   };
 
   const handleRemoveBrand = (index) => {
+    const b = brands[index];
     setBrands((prev) => prev.filter((_, idx) => idx !== index));
+    if (editingBrandIndex === index) {
+      cancelEditBrand();
+    }
+    showToast && showToast({
+      type: 'info',
+      title: 'Brand Removed',
+      message: `${b?.name || 'Brand'} removed from list. Click Save All Changes to apply.`,
+    });
   };
 
   // Trust badge helpers
@@ -616,118 +693,280 @@ export default function BrandingEditor({
       )}
 
       {/* =================================================================== */}
-      {/* TAB 3: BRAND PORTFOLIO */}
+      {/* TAB 3: BRAND PORTFOLIO & MAISON STUDIO */}
       {/* =================================================================== */}
       {activeTab === 'brands' && (
         <div className="space-y-6 animate-fade-in">
-          <div className="p-6 rounded-2xl bg-white border border-[#DDD5C7] shadow-sm space-y-5">
+          <div className="p-6 rounded-2xl bg-white border border-[#DDD5C7] shadow-sm space-y-6">
             <div className="pb-4 border-b border-[#E8E1D5] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h3 className="font-serif text-base font-bold text-[#1A1A1A]">
-                  Authorized Brand Portfolios & Heritage Maisons
-                </h3>
-                <p className="text-xs text-[#6B635B]">
-                  Manage the brands displayed in the interactive filter marquee and brand grid across the homepage.
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4 text-brass-700" />
+                  <h3 className="font-serif text-base font-bold text-[#1A1A1A]">
+                    Authorized Brand Portfolios & Maison Studio
+                  </h3>
+                </div>
+                <p className="text-xs text-[#6B635B] mt-0.5">
+                  Create new brands, assign them to storefront rows (Featured, Trending, Fresh Drops), and automatically generate dedicated showroom pages (<code className="text-[11px] font-mono bg-stone-100 px-1 py-0.5 rounded">/brand/:slug</code>).
                 </p>
               </div>
 
-              <span className="text-xs font-mono font-bold text-brass-800 bg-brass-500/15 px-3 py-1 rounded-full border border-brass-600/30">
-                {brands.length} Maisons Configured
+              <span className="text-xs font-mono font-bold text-brass-800 bg-brass-500/15 px-3 py-1 rounded-full border border-brass-600/30 shrink-0">
+                {brands.length} Maisons Active
               </span>
             </div>
 
-            {/* Add New Brand Form */}
-            <form
-              onSubmit={handleAddBrand}
-              className="p-4 rounded-xl bg-[#FAF7F2] border border-[#DDD5C7] grid grid-cols-1 sm:grid-cols-4 gap-3 items-end"
-            >
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
-                  Brand Name *
-                </label>
-                <input
-                  type="text"
-                  value={newBrandName}
-                  onChange={(e) => setNewBrandName(e.target.value)}
-                  placeholder="e.g. Victorinox, Longines"
-                  className="w-full bg-white border border-[#DDD5C7] rounded-lg px-3 py-1.5 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600 font-bold"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
-                  Origin Country
-                </label>
-                <select
-                  value={newBrandCountry}
-                  onChange={(e) => setNewBrandCountry(e.target.value)}
-                  className="w-full bg-white border border-[#DDD5C7] rounded-lg px-3 py-1.5 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600 font-medium"
-                >
-                  <option value="India">India</option>
-                  <option value="Swiss">Swiss</option>
-                  <option value="Japan">Japan</option>
-                  <option value="USA">USA</option>
-                  <option value="Germany">Germany</option>
-                  <option value="Italy">Italy</option>
-                  <option value="Global">Global</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
-                  Tagline / Specialization
-                </label>
-                <input
-                  type="text"
-                  value={newBrandDesc}
-                  onChange={(e) => setNewBrandDesc(e.target.value)}
-                  placeholder="e.g. Swiss Automatic Chronometers"
-                  className="w-full bg-white border border-[#DDD5C7] rounded-lg px-3 py-1.5 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-brass-600 hover:bg-brass-500 text-white shadow-sm transition-all"
-              >
-                <Plus className="w-3.5 h-3.5" />
-                <span>Add Maison</span>
-              </button>
-            </form>
-
-            {/* Current Brands Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {brands.map((b, idx) => (
-                <div
-                  key={idx}
-                  className="p-3 rounded-xl bg-[#FAF7F2] border border-[#DDD5C7] flex items-center justify-between gap-3 group hover:border-brass-600 transition-colors"
-                >
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="font-serif font-bold text-xs text-[#1A1A1A] truncate">
-                        {b.name}
-                      </span>
-                      <span className="text-[9px] font-mono font-semibold uppercase px-1.5 py-0.2 rounded bg-[#EAE3D6] text-brass-800 shrink-0">
-                        {b.country}
-                      </span>
-                    </div>
-                    {b.desc && (
-                      <p className="text-[10px] text-[#6B635B] truncate mt-0.5">
-                        {b.desc}
-                      </p>
-                    )}
-                  </div>
-
+            {/* Brand Creator / Editor Form Card */}
+            <div className="p-5 rounded-2xl bg-[#FAF7F2] border border-[#DDD5C7] shadow-inner space-y-4">
+              <div className="flex items-center justify-between pb-2 border-b border-[#E8E1D5]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#1A1A1A]">
+                    {editingBrandIndex !== null
+                      ? `Edit Maison: ${brands[editingBrandIndex]?.name}`
+                      : 'Create New Brand / Maison'}
+                  </h4>
+                </div>
+                {editingBrandIndex !== null && (
                   <button
                     type="button"
-                    onClick={() => handleRemoveBrand(idx)}
-                    className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors shrink-0 opacity-70 group-hover:opacity-100"
-                    title={`Remove ${b.name}`}
+                    onClick={cancelEditBrand}
+                    className="text-xs text-stone-500 hover:text-stone-800 font-semibold underline cursor-pointer"
                   >
-                    <Trash2 className="w-3.5 h-3.5" />
+                    Cancel Editing
                   </button>
+                )}
+              </div>
+
+              <form onSubmit={handleAddOrUpdateBrand} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                  {/* 1. Brand Name */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                      Brand Name *
+                    </label>
+                    <input
+                      type="text"
+                      value={newBrandName}
+                      onChange={(e) => setNewBrandName(e.target.value)}
+                      placeholder="e.g. Casio, Cartier, Hublot"
+                      className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] font-bold focus:outline-none focus:border-brass-600"
+                    />
+                  </div>
+
+                  {/* 2. Origin Country */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                      Origin Country
+                    </label>
+                    <select
+                      value={newBrandCountry}
+                      onChange={(e) => setNewBrandCountry(e.target.value)}
+                      className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] font-semibold focus:outline-none focus:border-brass-600"
+                    >
+                      <option value="India">🇮🇳 India</option>
+                      <option value="Swiss">🇨🇭 Switzerland</option>
+                      <option value="Japan">🇯🇵 Japan</option>
+                      <option value="USA">🇺🇸 United States</option>
+                      <option value="Germany">🇩🇪 Germany</option>
+                      <option value="France">🇫🇷 France</option>
+                      <option value="Italy">🇮🇹 Italy</option>
+                      <option value="UK">🇬🇧 United Kingdom</option>
+                      <option value="Global">🌐 Global / Import</option>
+                    </select>
+                  </div>
+
+                  {/* 3. Placement Category (Row) */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                      Storefront Row Placement
+                    </label>
+                    <select
+                      value={newBrandCategory}
+                      onChange={(e) => setNewBrandCategory(e.target.value)}
+                      className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] font-semibold focus:outline-none focus:border-brass-600"
+                    >
+                      <option value="featured">⭐ Featured Brands (Row 1)</option>
+                      <option value="trending">🔥 Trending Brands (Row 2)</option>
+                      <option value="fresh_drop">⚡ Fresh Drops (Row 3)</option>
+                    </select>
+                  </div>
                 </div>
-              ))}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  {/* 4. Tagline */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                      Tagline / Specialization
+                    </label>
+                    <input
+                      type="text"
+                      value={newBrandDesc}
+                      onChange={(e) => setNewBrandDesc(e.target.value)}
+                      placeholder="e.g. G-Shock Tough Solar & Vintage Chronographs"
+                      className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600"
+                    />
+                  </div>
+
+                  {/* 5. Reference Image */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                      Card / Reference Image Path or URL
+                    </label>
+                    <input
+                      type="text"
+                      value={newBrandImage}
+                      onChange={(e) => setNewBrandImage(e.target.value)}
+                      placeholder="e.g. /images/watches/casio/01.webp or /images/brands/casio.webp"
+                      className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600 font-mono text-[11px]"
+                    />
+                  </div>
+                </div>
+
+                {/* 6. Heritage Story for Brand Page */}
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                    Heritage Story & Boutique Notes (Displayed on /brand/:slug)
+                  </label>
+                  <textarea
+                    rows={2}
+                    value={newBrandStory}
+                    onChange={(e) => setNewBrandStory(e.target.value)}
+                    placeholder="e.g. Founded in Tokyo in 1946, Casio revolutionized modern digital horology with G-Shock shock-resistance and iconic retro steel digital timepieces."
+                    className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600 leading-relaxed"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between pt-2">
+                  <p className="text-[11px] text-[#7C746B] italic">
+                    {editingBrandIndex !== null
+                      ? 'Updating this brand will update its position, details, and dedicated page.'
+                      : 'After adding, remember to click "Save All Changes" below to publish.'}
+                  </p>
+
+                  <div className="flex items-center gap-2">
+                    {editingBrandIndex !== null && (
+                      <button
+                        type="button"
+                        onClick={cancelEditBrand}
+                        className="px-4 py-2 rounded-xl text-xs font-bold text-stone-600 hover:bg-stone-200 transition-all cursor-pointer"
+                      >
+                        Cancel
+                      </button>
+                    )}
+                    <button
+                      type="submit"
+                      className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-brass-600 hover:bg-brass-500 text-white shadow-md transition-all cursor-pointer"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>{editingBrandIndex !== null ? 'Update Maison' : '+ Add Maison to Portfolio'}</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            {/* Current Brands Grid (Interactive Cards) */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#5A524A]">
+                  Configured Storefront Brands ({brands.length})
+                </label>
+                <span className="text-[10px] text-stone-500">
+                  Tip: Click "Edit" on any brand to change its row or update details
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+                {brands.map((b, idx) => {
+                  const bName = typeof b === 'string' ? b : b.name;
+                  const bCountry = typeof b === 'object' ? b.country : 'Global';
+                  const bCat = typeof b === 'object' ? b.category : 'featured';
+                  const bDesc = typeof b === 'object' ? b.desc : '';
+                  const isCurrentEditing = editingBrandIndex === idx;
+
+                  const catBadge =
+                    bCat === 'trending'
+                      ? { label: 'Trending', color: 'bg-orange-100 text-orange-800 border-orange-300' }
+                      : bCat === 'fresh_drop'
+                      ? { label: 'Fresh Drops', color: 'bg-teal-100 text-teal-800 border-teal-300' }
+                      : { label: 'Featured', color: 'bg-amber-100 text-amber-900 border-amber-300' };
+
+                  const countryFlag =
+                    bCountry === 'India'
+                      ? '🇮🇳 India'
+                      : bCountry === 'Swiss'
+                      ? '🇨🇭 Swiss'
+                      : bCountry === 'Japan'
+                      ? '🇯🇵 Japan'
+                      : bCountry === 'USA'
+                      ? '🇺🇸 USA'
+                      : bCountry === 'Germany'
+                      ? '🇩🇪 Germany'
+                      : bCountry === 'France'
+                      ? '🇫🇷 France'
+                      : bCountry === 'Italy'
+                      ? '🇮🇹 Italy'
+                      : bCountry === 'UK'
+                      ? '🇬🇧 UK'
+                      : `🌐 ${bCountry || 'Global'}`;
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`p-3.5 rounded-2xl bg-[#FAF7F2] border transition-all flex flex-col justify-between gap-3 group ${
+                        isCurrentEditing
+                          ? 'border-brass-600 ring-2 ring-brass-400 bg-amber-50/40 shadow-md'
+                          : 'border-[#DDD5C7] hover:border-brass-500 hover:shadow-sm'
+                      }`}
+                    >
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-serif font-bold text-sm text-[#1A1A1A] truncate group-hover:text-brass-800">
+                            {bName}
+                          </span>
+                          <span
+                            className={`text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded-full border shrink-0 ${catBadge.color}`}
+                          >
+                            {catBadge.label}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono font-semibold uppercase px-2 py-0.5 rounded-md bg-[#EAE3D6] text-stone-700 shrink-0">
+                            {countryFlag}
+                          </span>
+                          {bDesc && (
+                            <p className="text-[10px] text-[#6B635B] truncate flex-1" title={bDesc}>
+                              {bDesc}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#E8E1D5]">
+                        <button
+                          type="button"
+                          onClick={() => startEditBrand(idx)}
+                          className="px-2.5 py-1 rounded-lg text-[11px] font-bold text-brass-700 hover:bg-brass-100 hover:text-brass-900 transition-colors flex items-center gap-1 cursor-pointer"
+                        >
+                          <Edit2 className="w-3 h-3" />
+                          <span>Edit</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveBrand(idx)}
+                          className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors shrink-0 opacity-70 group-hover:opacity-100 cursor-pointer"
+                          title={`Remove ${bName}`}
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

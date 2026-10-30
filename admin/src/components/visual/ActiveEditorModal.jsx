@@ -30,9 +30,10 @@ export default function ActiveEditorModal({
         return '4 Horology Pillars & Craftsmanship Showcase Editor';
       case 'showrooms':
         return 'Boutique Showrooms Editor';
+      case 'brands':
+        return 'Brand Portfolio & Maison Creator Studio';
       case 'branding':
       case 'announcements':
-      case 'brands':
         return 'Footer VIP Circle, Helpline & Branding Editor';
       case 'inquiry':
       case 'inquiryForm':
@@ -113,6 +114,7 @@ export default function ActiveEditorModal({
           {(activeModal === 'branding' || activeModal === 'announcements' || activeModal === 'brands') && (
             <BrandingEditor
               storeData={storeData}
+              initialTab={activeModal === 'brands' ? 'brands' : activeModal === 'announcements' ? 'announcements' : 'identity'}
               onSaveBranding={(brandingData) => onSaveSection(brandingData, 'Branding & Maisons')}
               showToast={showToast}
               isSaving={isSaving}

@@ -101,23 +101,43 @@ export default function VisualBrandMarquee({
 
   const brandList = useMemo(() => {
     if (brands && Array.isArray(brands) && brands.length > 0) {
-      const filtered = [];
+      const result = [];
       const seen = new Set();
       brands.forEach((b) => {
         const bName = typeof b === 'string' ? b : b?.name;
         if (!bName) return;
         const norm = bName.toLowerCase().trim();
         if (seen.has(norm)) return;
+        seen.add(norm);
+
         const match = IMPORTED_BRANDS.find(
           (item) => item.name.toLowerCase() === norm
         );
+
         if (match) {
-          seen.add(norm);
-          filtered.push({ ...match, ...(typeof b === 'object' ? b : {}) });
+          result.push({
+            ...match,
+            ...(typeof b === 'object' ? b : {}),
+          });
+        } else if (typeof b === 'object') {
+          result.push({
+            name: b.name,
+            country: b.country || 'Global',
+            category: b.category || 'featured',
+            desc: b.desc || '',
+            image: b.image || null,
+            ...b,
+          });
+        } else {
+          result.push({
+            name: bName,
+            country: 'Global',
+            category: 'featured',
+          });
         }
       });
-      if (filtered.length === IMPORTED_BRANDS.length) {
-        return filtered;
+      if (result.length > 0) {
+        return result;
       }
     }
     return IMPORTED_BRANDS;
@@ -304,17 +324,28 @@ export default function VisualBrandMarquee({
           </div>
 
           {/* Action & Filter Cluster */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {isEditMode && onOpenEdit && (
-              <button
-                type="button"
-                onClick={() => onOpenEdit('branding')}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm text-xs font-bold bg-brass-600 hover:bg-brass-500 text-white shadow-md hover:scale-105 transition-all border border-white/30 cursor-pointer"
-                title="Edit Authorized Brands Portfolio"
-              >
-                <Edit2 className="w-3.5 h-3.5" />
-                <span>Edit Brands List</span>
-              </button>
+              <>
+                <button
+                  type="button"
+                  onClick={() => onOpenEdit('brands')}
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm text-xs font-bold bg-amber-600 hover:bg-amber-500 text-white shadow-md hover:scale-105 transition-all border border-amber-300/40 cursor-pointer"
+                  title="Add a new brand to the store portfolio"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>+ Add New Brand</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onOpenEdit('branding')}
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm text-xs font-bold bg-[#2A2622] hover:bg-[#3D3731] text-amber-200 shadow-md hover:scale-105 transition-all border border-amber-400/30 cursor-pointer"
+                  title="Edit Authorized Brands Portfolio"
+                >
+                  <Edit2 className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Manage Brands</span>
+                </button>
+              </>
             )}
           </div>
         </div>

@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "name": "Rohan",
+    "phone": "+91 7868546787",
+    "email": "shabahatvardha@gmail.com",
+    "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
+    "inquiryType": "Buy / Inquire Specific Watch Model",
+    "watchName": "",
+    "message": "helloo..",
+    "customFields": {
+      "Expected Budget Range": "Under ₹15,000 (Casual & Daily Wear)",
+      "Preferred Showroom Visit Date / Timing": ""
+    },
+    "status": "New",
+    "source": "Storefront Inquiry Form",
+    "_id": "lead-1793362470951",
+    "createdAt": "2026-10-30T12:14:30.951Z",
+    "updatedAt": "2026-10-30T12:14:30.952Z"
+  }
+]

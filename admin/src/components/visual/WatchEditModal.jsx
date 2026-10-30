@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   X,
   Upload,
@@ -47,6 +47,7 @@ const CATEGORIES = [
 
 export default function WatchEditModal({
   watch = null,
+  brands = [],
   isOpen,
   onClose,
   onSave,
@@ -54,6 +55,19 @@ export default function WatchEditModal({
   showToast,
 }) {
   const isEditing = Boolean(watch && (watch.id || watch._id));
+
+  const availableBrands = useMemo(() => {
+    const list = [...POPULAR_BRANDS];
+    if (brands && Array.isArray(brands)) {
+      brands.forEach((b) => {
+        const name = typeof b === 'string' ? b : b?.name;
+        if (name && !list.some((existing) => existing.toLowerCase() === name.toLowerCase())) {
+          list.push(name);
+        }
+      });
+    }
+    return list;
+  }, [brands]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -210,14 +224,14 @@ export default function WatchEditModal({
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD5C7] bg-[#FAF7F2] text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600 focus:bg-white"
               />
               <datalist id="brands-list">
-                {POPULAR_BRANDS.map((b) => (
+                {availableBrands.map((b) => (
                   <option key={b} value={b} />
                 ))}
               </datalist>
 
               {/* Quick Brand Selector Chips */}
-              <div className="flex flex-wrap gap-1 mt-1.5">
-                {['Titan', 'Titan Raga', 'HMT', 'Fastrack', 'Sonata', 'Tissot', 'Omega', 'Seiko', 'Citizen', 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=1200&q=85', 'Rado'].map((b) => (
+              <div className="flex flex-wrap gap-1 mt-1.5 max-h-24 overflow-y-auto">
+                {availableBrands.map((b) => (
                   <button
                     key={b}
                     type="button"

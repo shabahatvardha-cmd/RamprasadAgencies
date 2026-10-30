@@ -1,5 +1,27 @@
 [
   {
+    "name": "Hello",
+    "brand": "Citizen",
+    "category": "Automatic",
+    "collectionName": "newArrivals",
+    "price": 14995,
+    "originalPrice": 17995,
+    "badge": "out of stock",
+    "movement": "Japanese 21-Jewel Automatic",
+    "caseDiameter": "42mm",
+    "strapType": "Top-Grain Vintage Saddle Leather",
+    "waterResistance": "50m / 5 Bar",
+    "inStock": true,
+    "featured": true,
+    "image": "/uploads/watch-1793362547672-290094889.webp",
+    "description": "Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.",
+    "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
+    "id": "watch-1793362598713",
+    "_id": "watch-1793362598713",
+    "createdAt": "2026-10-30T12:16:38.713Z",
+    "updatedAt": "2026-10-30T12:21:36.682Z"
+  },
+  {
     "_id": "titan-01-edge-ultra-slim",
     "name": "Titan Edge Ultra-Slim (1696SL02)",
     "brand": "Titan",

@@ -968,5 +968,67 @@
     }
   },
   "announcementText": "Complimentary watch inspection & battery health checks available this week at both Golghar showrooms.",
-  "updatedAt": "2026-10-30T07:31:50.655Z"
+  "updatedAt": "2026-10-30T07:31:50.655Z",
+  "brands": [
+    {
+      "name": "Titan",
+      "country": "India",
+      "desc": "Edge, Octane & Regalia Flagships"
+    },
+    {
+      "name": "Titan Raga",
+      "country": "India",
+      "desc": "Jewelry & Floral Designer Horology"
+    },
+    {
+      "name": "HMT",
+      "country": "India",
+      "desc": "Kohinoor & Janata Mechanical Heritage"
+    },
+    {
+      "name": "Fastrack",
+      "country": "India",
+      "desc": "Youth Sport & Street Chronographs"
+    },
+    {
+      "name": "Sonata",
+      "country": "India",
+      "desc": "Everyday Reliable Indian Horology"
+    },
+    {
+      "name": "Tissot",
+      "country": "Swiss",
+      "desc": "PRX & Heritage Swiss Precision"
+    },
+    {
+      "name": "Omega",
+      "country": "Swiss",
+      "desc": "Moonwatch & Co-Axial Chronometers"
+    },
+    {
+      "name": "Seiko",
+      "country": "Japan",
+      "desc": "Automatic & Presage Craft"
+    },
+    {
+      "name": "Citizen",
+      "country": "Japan",
+      "desc": "Tsuyosa & Eco-Drive Calibers"
+    },
+    {
+      "name": "Breitling",
+      "country": "Swiss",
+      "desc": "Navitimer Aviation Chronographs"
+    },
+    {
+      "name": "Fossil",
+      "country": "USA",
+      "desc": "Heritage Automatics & Vintage Styling"
+    },
+    {
+      "name": "Rado",
+      "country": "Swiss",
+      "desc": "Master of High-Tech Ceramic"
+    }
+  ]
 }
