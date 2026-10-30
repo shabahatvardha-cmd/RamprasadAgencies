@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+mongoose.set('bufferCommands', false);
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
@@ -67,7 +68,7 @@ app.get('/', (req, res) => {
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'UP',
-    database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
+    database: mongoose.connection.readyState === 1 ? 'Connected' : 'Active (Local Persistent JSON Storage)',
     timestamp: new Date().toISOString(),
   });
 });

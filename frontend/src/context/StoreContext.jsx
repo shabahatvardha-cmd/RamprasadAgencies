@@ -1033,6 +1033,7 @@ export function StoreProvider({ children }) {
 
   const [lastSyncTime, setLastSyncTime] = useState(Date.now());
   const [syncStatus, setSyncStatus] = useState('synchronized'); // 'synchronized' | 'saving' | 'synced-external'
+  const [liveWatches, setLiveWatches] = useState([]);
   const broadcastChannelRef = useRef(null);
 
   // Initialize BroadcastChannel for instant cross-tab real-time updates
@@ -1088,6 +1089,10 @@ export function StoreProvider({ children }) {
           fetchSettings().catch(() => null),
           fetchWatches().catch(() => null),
         ]);
+
+        if (backendWatches && Array.isArray(backendWatches) && backendWatches.length > 0) {
+          setLiveWatches(backendWatches);
+        }
 
         setStoreData((prev) => {
           let merged = { ...prev };
@@ -1483,6 +1488,7 @@ export function StoreProvider({ children }) {
 
   const value = {
     storeData,
+    liveWatches,
     lastSyncTime,
     syncStatus,
     commitStoreData,

@@ -1,96 +1,10 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Award, Edit2, Sparkles, X, Plus, Trash2, Eye, Flame, Zap } from 'lucide-react';
+import { Award, Edit2, Sparkles, X, Plus, Trash2, Eye, Flame, Zap, Check } from 'lucide-react';
 import { DEFAULT_VINTAGE_STORE_DATA } from '../../utils/defaults';
 import { FALLBACK_WATCHES } from '../../data/fallbackWatches';
 import { getFullImageUrl } from '../../utils/api';
 
-const DEFAULT_BRANDS = [
-  // 1. Featured Brands
-  {
-    name: 'Titan',
-    country: 'India',
-    desc: 'Edge Ceramic, Octane & Regalia Flagships',
-    category: 'featured',
-  },
-  {
-    name: 'Titan Raga',
-    country: 'India',
-    desc: 'Jewelry & Floral Designer Horology',
-    category: 'featured',
-  },
-  {
-    name: 'Omega',
-    country: 'Swiss',
-    desc: 'Moonwatch & Co-Axial Master Chronometers',
-    category: 'featured',
-  },
-  {
-    name: 'Rado',
-    country: 'Swiss',
-    desc: 'Master of High-Tech Ceramic & Captain Cook',
-    category: 'featured',
-  },
-
-  // 2. Trending Brands (5 brands - Breitling moved here)
-  {
-    name: 'Tissot',
-    country: 'Swiss',
-    desc: 'PRX & Heritage Swiss Precision',
-    category: 'trending',
-  },
-  {
-    name: 'Breitling',
-    country: 'Swiss',
-    desc: 'Navitimer Aviation Chronographs & Superocean',
-    category: 'trending',
-  },
-  {
-    name: 'Seiko',
-    country: 'Japan',
-    desc: 'Automatic & Presage Craft',
-    category: 'trending',
-  },
-  {
-    name: 'Casio',
-    country: 'Japan',
-    desc: 'Edifice Solar & Vintage Steel Chronos',
-    category: 'trending',
-  },
-  {
-    name: 'Fossil',
-    country: 'USA',
-    desc: 'Heritage Automatics & Vintage Styling',
-    category: 'trending',
-  },
-
-  // 3. Fresh Drop Brands (4 brands)
-  {
-    name: 'Citizen',
-    country: 'Japan',
-    desc: 'Tsuyosa Automatics & Eco-Drive Calibers',
-    category: 'fresh_drop',
-  },
-  {
-    name: 'HMT',
-    country: 'India',
-    desc: 'Kohinoor & Janata Mechanical Heritage',
-    category: 'fresh_drop',
-  },
-  {
-    name: 'Fastrack',
-    country: 'India',
-    desc: 'Youth Sport & Street Chronographs',
-    category: 'fresh_drop',
-  },
-  {
-    name: 'Sonata',
-    country: 'India',
-    desc: 'Everyday Reliable Indian Horology',
-    category: 'fresh_drop',
-  },
-];
-
-const BRAND_REFERENCE_IMAGES = {
+export const BRAND_REFERENCE_IMAGES = {
   titan: '/images/brands/titan.webp',
   hmt: '/images/brands/hmt.webp',
   fastrack: '/images/brands/fastrack.webp',
@@ -105,9 +19,12 @@ const BRAND_REFERENCE_IMAGES = {
   fossil: '/images/brands/fossil.webp',
   raga: '/images/brands/raga.webp',
   'titan raga': '/images/brands/raga.webp',
+  cartier: '/images/brands/cartier.webp',
+  'tag heuer': '/images/brands/tag-heuer.webp',
+  'tag-heuer': '/images/brands/tag-heuer.webp',
 };
 
-const getBrandReferenceImage = (brandName, customImage) => {
+export const getBrandReferenceImage = (brandName, customImage) => {
   if (customImage && typeof customImage === 'string' && customImage.trim() !== '') {
     return customImage;
   }
@@ -123,7 +40,28 @@ const getBrandReferenceImage = (brandName, customImage) => {
   return '/images/brands/default.webp';
 };
 
-const SECTIONS_CONFIG = [
+export const IMPORTED_BRANDS = [
+  // 1. Featured Brands (4 brands)
+  { name: 'Titan', country: 'India', category: 'featured' },
+  { name: 'Titan Raga', country: 'India', category: 'featured' },
+  { name: 'Omega', country: 'Swiss', category: 'featured' },
+  { name: 'Rado', country: 'Swiss', category: 'featured' },
+
+  // 2. Trending Brands (5 brands)
+  { name: 'Tissot', country: 'Swiss', category: 'trending' },
+  { name: 'Breitling', country: 'Swiss', category: 'trending' },
+  { name: 'Seiko', country: 'Japan', category: 'trending' },
+  { name: 'Casio', country: 'Japan', category: 'trending' },
+  { name: 'Fossil', country: 'USA', category: 'trending' },
+
+  // 3. Fresh Drop Brands (4 brands)
+  { name: 'Citizen', country: 'Japan', category: 'fresh_drop' },
+  { name: 'HMT', country: 'India', category: 'fresh_drop' },
+  { name: 'Fastrack', country: 'India', category: 'fresh_drop' },
+  { name: 'Sonata', country: 'India', category: 'fresh_drop' },
+];
+
+export const SECTIONS_CONFIG = [
   {
     id: 'featured',
     label: 'Featured',
@@ -171,12 +109,12 @@ export default function VisualBrandMarquee({
       ? brands.map((b) => {
         if (typeof b === 'object' && b.category) return b;
         const bName = typeof b === 'string' ? b : b.name;
-        const match = DEFAULT_BRANDS.find(
+        const match = IMPORTED_BRANDS.find(
           (item) => item.name.toLowerCase() === (bName || '').toLowerCase()
         );
-        return match || { name: bName, country: 'Import', desc: 'Showroom Collection', category: 'featured' };
+        return match || { name: bName, country: 'Import', category: 'featured' };
       })
-      : DEFAULT_BRANDS;
+      : IMPORTED_BRANDS;
   }, [brands]);
 
   // Group brands into the three parts
@@ -199,14 +137,48 @@ export default function VisualBrandMarquee({
     return groups;
   }, [brandList]);
 
+  // Dynamic grid column class based on item count so NO blank spaces are ever left
+  const getGridClass = (count) => {
+    if (count === 5) {
+      return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4.5';
+    }
+    if (count === 4) {
+      return 'grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4.5';
+    }
+    if (count === 6) {
+      return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4.5';
+    }
+    if (count === 3) {
+      return 'grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4.5';
+    }
+    return 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4.5';
+  };
+
   // Combine store watches with comprehensive fallback data so every brand has rich watches
   const displayWatches = useMemo(() => {
     if (!watches || watches.length === 0) return FALLBACK_WATCHES;
-    const existingNames = new Set(watches.map((w) => (w.name || '').toLowerCase().trim()));
-    const missingFallbacks = FALLBACK_WATCHES.filter(
-      (fw) => !existingNames.has((fw.name || '').toLowerCase().trim())
-    );
-    return [...watches, ...missingFallbacks];
+    const existingIds = new Set();
+    const existingNames = new Set();
+    const merged = [];
+
+    // Prioritize watches from props (includes live edits from backend)
+    watches.forEach((w) => {
+      if (w.id) existingIds.add(w.id);
+      if (w._id) existingIds.add(w._id);
+      if (w.name) existingNames.add(w.name.toLowerCase().trim());
+      merged.push(w);
+    });
+
+    // Supplement with fallbackWatches
+    FALLBACK_WATCHES.forEach((fw) => {
+      const idMatch = (fw.id && existingIds.has(fw.id)) || (fw._id && existingIds.has(fw._id));
+      const nameMatch = fw.name && existingNames.has(fw.name.toLowerCase().trim());
+      if (!idMatch && !nameMatch) {
+        merged.push(fw);
+      }
+    });
+
+    return merged;
   }, [watches]);
 
   const isBrandActive = Boolean(selectedBrand && selectedBrand !== 'ALL');
@@ -216,35 +188,13 @@ export default function VisualBrandMarquee({
     if (!isBrandActive) return [];
     const sel = selectedBrand.toLowerCase().trim();
     return displayWatches.filter((w) => {
-      const brandLower = (w.brand || '').toLowerCase().trim();
-      return (
-        brandLower.includes(sel) ||
-        sel.includes(brandLower) ||
-        (w.name || '').toLowerCase().includes(sel)
-      );
+      const b = (w.brand || '').toLowerCase().trim();
+      if (sel === 'titan') return b === 'titan';
+      if (sel === 'titan raga' || sel === 'raga') return b === 'titan raga' || b === 'raga';
+      if (sel === 'tag heuer' || sel === 'tag-heuer') return b === 'tag heuer' || b === 'tag-heuer';
+      return b === sel || b.replace(/\s+/g, '-') === sel || (w.name || '').toLowerCase().includes(sel);
     });
   }, [displayWatches, selectedBrand, isBrandActive]);
-
-  // Click-outside listener to deselect brand back to 'ALL'
-  useEffect(() => {
-    if (!isBrandActive) return;
-
-    const handleGlobalClick = (e) => {
-      if (e.target.closest('[data-brand-btn]')) return;
-      if (e.target.closest('[data-watch-card]')) return;
-      if (e.target.closest('input, select, textarea, button')) return;
-      setSelectedBrand('ALL');
-    };
-
-    const timer = setTimeout(() => {
-      document.addEventListener('click', handleGlobalClick);
-    }, 120);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener('click', handleGlobalClick);
-    };
-  }, [isBrandActive]);
 
   // Smooth scroll into showcase when brand selected
   useEffect(() => {
@@ -256,74 +206,101 @@ export default function VisualBrandMarquee({
     }
   }, [selectedBrand, isBrandActive]);
 
-  // Render a single large, clean watch card with ONLY the brand name
-  const renderCard = (b) => {
+  // Render a small, compact, sleek brand card (IDENTICAL TO FRONTEND STOREFRONT)
+  const renderCard = (b, index, totalInGroup) => {
     const bName = typeof b === 'string' ? b : b.name;
+    const bCountry = typeof b === 'object' ? b.country : null;
     const bImage = typeof b === 'object' ? b.image : null;
     const isSelected = selectedBrand?.toLowerCase() === bName.toLowerCase();
     const brandImg = getBrandReferenceImage(bName, bImage);
+    const slug = bName.toLowerCase().trim().replace(/\s+/g, '-');
+
+    // On mobile (2-column grid), if count is odd (like 5), the last card spans 2 columns
+    const isOddLast = totalInGroup % 2 === 1 && index === totalInGroup - 1;
+    const spanClass = isOddLast ? 'col-span-2 sm:col-span-1' : '';
 
     return (
-      <button
+      <div
         key={bName}
-        data-brand-btn="true"
-        type="button"
         onClick={() => setSelectedBrand(isSelected ? 'ALL' : bName)}
-        className={`group relative w-full aspect-[3/4] sm:min-h-[460px] lg:min-h-[500px] rounded-lg overflow-hidden bg-[#141312] border transition-all duration-500 hover:-translate-y-2 flex flex-col justify-end text-center cursor-pointer focus:outline-none ${isSelected
+        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[130px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between p-3 sm:p-4 text-left cursor-pointer ${spanClass} ${
+          isSelected
             ? 'ring-4 ring-amber-400 border-amber-400 shadow-2xl scale-[1.02]'
-            : 'border-[#DDD5C7]/80 hover:border-brass-600 shadow-lg hover:shadow-2xl'
-          }`}
+            : 'border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl'
+        }`}
       >
         {/* 1. Full-Bleed Reference Watch Image with Smooth Zoom */}
         <img
           src={brandImg}
-          alt={`${bName} reference watch`}
+          alt={`${bName} watch`}
           loading="lazy"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-110"
+          className="absolute inset-0 w-full h-full object-cover object-center transform transition-transform duration-500 ease-out group-hover:scale-108"
           onError={(e) => {
-            e.target.style.opacity = '0.6';
+            e.target.src = '/images/brands/default.webp';
           }}
         />
 
         {/* 2. Gradient Overlay for Clean Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none group-hover:from-black/90 group-hover:via-black/35 transition-all duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 pointer-events-none group-hover:from-black/95 transition-all duration-300" />
 
-        {/* 3. Selected Badge (Admin visual indicator only) */}
-        {isSelected && (
-          <div className="absolute top-4 right-4 z-20">
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-400 text-stone-950 text-xs font-bold shadow-lg ring-2 ring-white">
-              ✓
+        {/* 3. Top Row: Origin Flag Pill Badge + Manage/Select Pill */}
+        <div className="relative z-10 flex items-center justify-between w-full pointer-events-none">
+          {bCountry && (
+            <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest bg-black/55 backdrop-blur-xs text-amber-200/90 border border-white/15 shadow-xs">
+              {bCountry === 'India'
+                ? '🇮🇳 India'
+                : bCountry === 'Swiss'
+                  ? '🇨🇭 Swiss'
+                  : bCountry === 'Japan'
+                    ? '🇯🇵 Japan'
+                    : bCountry === 'USA'
+                      ? '🇺🇸 USA'
+                      : bCountry}
             </span>
-          </div>
-        )}
+          )}
+          <span
+            className={`text-[10px] font-bold px-2 py-0.5 rounded-full transition-all ${
+              isSelected
+                ? 'bg-amber-400 text-stone-950 font-black'
+                : 'text-amber-300/80 bg-black/40 border border-white/15 group-hover:bg-amber-400 group-hover:text-stone-950'
+            }`}
+          >
+            {isSelected ? 'Selected ✓' : 'Manage 20 Watches →'}
+          </span>
+        </div>
 
-        {/* 4. ONLY Brand Name Displayed Downward on the Image */}
-        <div className="relative z-10 w-full p-6 sm:p-8 flex flex-col items-center justify-end pointer-events-none">
-          <h4 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-wide text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] group-hover:text-amber-300 group-hover:scale-105 transition-all duration-300">
+        {/* 4. Bottom Row: Brand Name Displayed Elegantly */}
+        <div className="relative z-10 w-full pointer-events-none">
+          <h4 className="font-serif text-base sm:text-lg md:text-xl font-black tracking-wide text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] group-hover:text-amber-300 group-hover:translate-x-0.5 transition-all duration-300 truncate">
             {bName}
           </h4>
         </div>
-      </button>
+      </div>
     );
   };
 
   return (
-    <section id="brands" className="relative group/brands w-full py-10 sm:py-16 border-y border-[#E8E1D5] bg-[#F6F2EB] overflow-hidden">
-      {/* 1. Top Header Row */}
+    <section id="brands" className="py-10 sm:py-14 border-b border-[#E8E1D5] bg-[#F6F2EB]">
+      {/* 1. Main Header */}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mb-6 sm:mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#DDD5C7] pb-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#DDD5C7] pb-4">
           <div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">
-              Brands
-            </h3>
+            <div className="flex items-center gap-2">
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">
+                Brands
+              </h3>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-400/20 text-amber-900 border border-amber-400/40">
+                Live Studio
+              </span>
+            </div>
             <p className="text-xs sm:text-sm text-[#6B635B] mt-0.5">
-              Select any brand to preview models or manage watches in your showrooms.
+              Click any brand to manage its flagship models, edit prices, descriptions, and view live storefront pages.
             </p>
           </div>
 
           {/* Action & Filter Cluster */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <div className="flex items-center gap-3">
             {isEditMode && onOpenEdit && (
               <button
                 type="button"
@@ -332,15 +309,15 @@ export default function VisualBrandMarquee({
                 title="Edit Authorized Brands Portfolio"
               >
                 <Edit2 className="w-3.5 h-3.5" />
-                <span>Edit Brands</span>
+                <span>Edit Brands List</span>
               </button>
             )}
           </div>
         </div>
       </div>
 
-      {/* 2. Three Divided Sections Grid */}
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-10 sm:space-y-12">
+      {/* 2. Three Divided Sections Grid (MATCHES FRONTEND EXACTLY) */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-8 sm:space-y-10">
         {SECTIONS_CONFIG.map((sec) => {
           const list = groupedBrands[sec.id] || [];
           if (list.length === 0) return null;
@@ -348,93 +325,92 @@ export default function VisualBrandMarquee({
           const Icon = sec.icon;
 
           return (
-            <div key={sec.id} className="space-y-6 sm:space-y-8">
+            <div key={sec.id} className="space-y-3.5 sm:space-y-4">
               {/* Stylish & Attractive Section Title */}
-              <div className="relative pb-3.5 border-b border-[#E2DBD0]">
-                <div className="flex items-center gap-3 sm:gap-4">
+              <div className="relative pb-2.5 border-b border-[#E2DBD0]">
+                <div className="flex items-center gap-2.5 sm:gap-3">
                   {/* Luxury Metallic Crest */}
                   <div
-                    className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br ${sec.iconBg} p-[1.5px] shadow-sm flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105`}
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${sec.iconBg} p-[1px] shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105`}
                   >
-                    <div className="w-full h-full bg-[#181614] rounded-[9.5px] flex items-center justify-center">
-                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${sec.iconColor}`} />
+                    <div className="w-full h-full bg-[#181614] rounded-[7px] flex items-center justify-center">
+                      <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${sec.iconColor}`} />
                     </div>
                   </div>
 
                   {/* The Stylish Word */}
-                  <h4 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-black text-stone-900 tracking-tight">
+                  <h4 className="font-serif text-lg sm:text-xl lg:text-2xl font-black text-stone-900 tracking-tight">
                     {sec.label}
                   </h4>
                 </div>
 
                 {/* Luminous accent underline directly anchored beneath the title */}
                 <div
-                  className={`absolute -bottom-[1px] left-0 h-[2.5px] w-36 sm:w-52 bg-gradient-to-r ${sec.borderGradient} rounded-full`}
+                  className={`absolute -bottom-[1px] left-0 h-[2px] w-28 sm:w-40 bg-gradient-to-r ${sec.borderGradient} rounded-full`}
                 />
               </div>
 
-              {/* Responsive Large 3-Column Watch Cards Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-                {list.map((b) => renderCard(b))}
+              {/* Dynamic Grid: Auto-fills columns so NO blank space is ever left */}
+              <div className={getGridClass(list.length)}>
+                {list.map((b, idx) => renderCard(b, idx, list.length))}
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* 3. On-Demand Showcase: Appears ONLY when a brand is clicked */}
+      {/* 3. On-Demand Showcase: Appears when a brand is clicked */}
       {isBrandActive && (
         <div
           ref={showcaseRef}
           id="brand-showcase"
           className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mt-10 sm:mt-14 animate-fade-in"
         >
-          <div className="rounded-xl bg-[#141312] border border-[#302B24] p-5 sm:p-8 text-white shadow-2xl">
+          <div className="rounded-2xl bg-[#141312] border border-[#302B24] p-5 sm:p-8 text-white shadow-2xl">
             {/* Showcase Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
               <div>
                 <div className="flex items-center gap-2 text-xs font-mono font-extrabold uppercase tracking-widest text-amber-400">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Gorakhpur Showroom Collection</span>
+                  <span>Gorakhpur Showroom Flagship Collection</span>
                 </div>
                 <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white mt-1">
-                  {selectedBrand} Timepieces ({filteredWatches.length} Models)
+                  {selectedBrand} ({filteredWatches.length} Official Models)
                 </h3>
                 <p className="text-xs text-stone-300 mt-1">
-                  Timepieces in stock at Baldev Plaza & JalKal Building showrooms
+                  Click on any timepiece to edit specifications, change strap/calibre, update stock, or view live storefront.
                 </p>
               </div>
 
               {/* Action Buttons: Open Page + Add Watch + Close */}
-              <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+              <div className="flex items-center gap-2.5 self-start sm:self-auto flex-wrap">
                 <a
-                  href={`http://localhost:5173/brand/${selectedBrand.toLowerCase()}`}
+                  href={`http://localhost:5173/brand/${selectedBrand.toLowerCase().trim().replace(/\s+/g, '-')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm bg-amber-400 hover:bg-amber-300 text-stone-950 text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer no-underline"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer no-underline"
                   title={`View dedicated ${selectedBrand} page in storefront`}
                 >
                   <Eye className="w-3.5 h-3.5" />
-                  <span>Open Dedicated Page ↗</span>
+                  <span>View on Main Storefront ↗</span>
                 </a>
 
                 {isEditMode && (
                   <button
                     type="button"
                     onClick={() => onAddWatch && onAddWatch({ brand: selectedBrand, category: 'Automatic' })}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm bg-brass-600 hover:bg-brass-500 text-white text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brass-600 hover:bg-brass-500 text-white text-xs font-bold transition-all shadow-md active:scale-95 cursor-pointer"
                     title={`Add new ${selectedBrand} timepiece`}
                   >
                     <Plus className="w-3.5 h-3.5" />
-                    <span>Add {selectedBrand} Watch</span>
+                    <span>Add {selectedBrand} Model</span>
                   </button>
                 )}
 
                 <button
                   type="button"
-                  data-brand-btn="true"
                   onClick={() => setSelectedBrand('ALL')}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm bg-white/10 hover:bg-amber-400 hover:text-stone-950 text-stone-200 text-xs font-bold transition-all border border-white/15 cursor-pointer focus:outline-none"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-stone-200 text-xs font-bold transition-all border border-white/15 cursor-pointer focus:outline-none"
                   title="Close showcase"
                 >
                   <span>Close</span>
@@ -448,148 +424,79 @@ export default function VisualBrandMarquee({
               <div className="py-12 text-center text-stone-400 space-y-3">
                 <p className="font-serif text-lg text-stone-300">No timepieces currently listed for {selectedBrand}</p>
                 <p className="text-xs">Add a timepiece using the button above or browse other brands.</p>
-                {isEditMode && (
-                  <button
-                    type="button"
-                    onClick={() => onAddWatch && onAddWatch({ brand: selectedBrand, category: 'Automatic' })}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm bg-brass-600 hover:bg-brass-500 text-white text-xs font-bold transition-all"
-                  >
-                    <Plus className="w-4 h-4" />
-                    <span>Add First {selectedBrand} Watch</span>
-                  </button>
-                )}
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
-                {filteredWatches.map((watch) => (
-                  <div
-                    key={watch._id || watch.id}
-                    data-watch-card="true"
-                    className="group relative flex flex-col rounded-lg bg-white border border-[#DDD5C7] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1 text-[#1A1A1A]"
-                  >
-                    {/* Watch Photography */}
-                    <div className="relative aspect-square bg-[#FAF7F2] p-4 flex items-center justify-center overflow-hidden">
-                      <img
-                        src={getFullImageUrl(watch.image)}
-                        alt={watch.name}
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.src = '/images/watches/default-watch.webp';
-                        }}
-                      />
-
-                      {/* In Stock Badge */}
-                      <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-sm text-[9px] font-bold uppercase tracking-wider ${watch.inStock !== false ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'
-                          }`}>
-                          <span className={`w-1.5 h-1.5 rounded-full ${watch.inStock !== false ? 'bg-emerald-500' : 'bg-rose-500'}`}></span>
-                          {watch.inStock !== false ? 'In Stock' : 'Special Order'}
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 pt-6">
+                {filteredWatches.map((w, idx) => {
+                  const watchImg = getFullImageUrl(w.image);
+                  return (
+                    <div
+                      key={w._id || w.id || idx}
+                      className="group relative rounded-xl overflow-hidden bg-[#1E1C1A] border border-[#3E3830] hover:border-amber-400 p-3 sm:p-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
+                    >
+                      {/* Top Badges */}
+                      <div className="flex items-center justify-between gap-1 mb-2">
+                        <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-black/60 text-amber-300 border border-white/10">
+                          #{String(idx + 1).padStart(2, '0')}
+                        </span>
+                        <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-emerald-950/80 text-emerald-300 border border-emerald-500/30">
+                          {w.inStock !== false ? 'In Stock' : 'Sourcing'}
                         </span>
                       </div>
 
-                      {/* Admin Action Buttons */}
-                      {isEditMode && (
-                        <div className="absolute top-2.5 right-2.5 flex items-center gap-1 z-20">
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onEditWatch && onEditWatch(watch);
-                            }}
-                            className="p-1.5 rounded-sm bg-brass-600 hover:bg-brass-500 text-white shadow-md hover:scale-110 transition-transform"
-                            title="Edit this watch details, price & photo"
-                          >
-                            <Edit2 className="w-3.5 h-3.5" />
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onDeleteWatch && onDeleteWatch(watch);
-                            }}
-                            className="p-1.5 rounded-sm bg-rose-600 hover:bg-rose-500 text-white shadow-md hover:scale-110 transition-transform"
-                            title="Delete this watch"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Card Details */}
-                    <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between space-y-2 bg-white">
-                      <div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-brass-800 font-bold block">
-                          {watch.brand}
-                        </span>
-                        <h4 className="font-serif text-xs sm:text-sm font-bold text-[#1A1A1A] line-clamp-1 mt-0.5">
-                          {watch.name}
-                        </h4>
-                        <p className="text-[11px] text-[#6B635B] line-clamp-2 mt-1 leading-relaxed">
-                          {watch.description || `${watch.movement || 'Automatic Movement'} • ${watch.strapType || watch.strap || 'Leather Strap'}`}
-                        </p>
+                      {/* Watch Image */}
+                      <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-black/40 flex items-center justify-center p-2 mb-3">
+                        <img
+                          src={watchImg}
+                          alt={w.name}
+                          className="w-full h-full object-contain transform transition-transform duration-500 group-hover:scale-105"
+                          onError={(e) => {
+                            e.target.src = '/images/brands/default.webp';
+                          }}
+                        />
                       </div>
 
-                      <div className="pt-2 border-t border-[#E8E1D5] flex items-center justify-between">
-                        <div>
-                          <span className="font-serif text-xs sm:text-sm font-bold text-[#1A1A1A] block">
-                            ₹{watch.price?.toLocaleString('en-IN') || 'Price On Request'}
+                      {/* Watch Details */}
+                      <div className="space-y-1 mb-3">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-brass-400 block truncate">
+                          {w.movement || w.category || 'Luxury Movement'}
+                        </span>
+                        <h5 className="font-serif text-xs sm:text-sm font-bold text-white line-clamp-2 leading-snug group-hover:text-amber-200">
+                          {w.name}
+                        </h5>
+                        {w.sku && (
+                          <span className="text-[10px] font-mono text-stone-400 block truncate">
+                            Ref: {w.sku}
                           </span>
-                          <span className="text-[9px] uppercase tracking-wider text-emerald-700 font-semibold block">
-                            ✓ Golghar Showrooms
-                          </span>
-                        </div>
+                        )}
+                      </div>
 
-                        {isEditMode ? (
+                      {/* Action Buttons */}
+                      <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+                        <button
+                          type="button"
+                          onClick={() => onEditWatch && onEditWatch(w)}
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 py-1.5 rounded-lg bg-brass-600 hover:bg-brass-500 text-white text-[11px] font-bold transition-all cursor-pointer"
+                        >
+                          <Edit2 className="w-3 h-3" />
+                          <span>Edit</span>
+                        </button>
+                        {onDeleteWatch && (
                           <button
                             type="button"
-                            onClick={() => onEditWatch && onEditWatch(watch)}
-                            className="px-2.5 py-1 rounded-sm text-xs font-bold text-brass-700 bg-brass-500/10 hover:bg-brass-500/20 border border-brass-600/30 transition-all flex items-center gap-1"
+                            onClick={() => onDeleteWatch(w)}
+                            className="p-1.5 rounded-lg bg-red-950/40 hover:bg-red-800 text-red-300 hover:text-white border border-red-500/30 transition-all cursor-pointer"
+                            title="Delete watch"
                           >
-                            <Edit2 className="w-3 h-3" />
-                            <span>Edit</span>
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() => onQuickView && onQuickView(watch)}
-                            className="px-2.5 py-1 rounded-sm text-xs font-semibold text-[#1A1A1A] bg-[#F5F2EB] hover:bg-[#EAE4D7] border border-[#DDD5C7] transition-all"
-                          >
-                            Specs
+                            <Trash2 className="w-3 h-3" />
                           </button>
                         )}
                       </div>
                     </div>
-                  </div>
-                ))}
-
-                {/* Add Watch Card at end of grid */}
-                {isEditMode && (
-                  <div
-                    onClick={() => onAddWatch && onAddWatch({ brand: selectedBrand, category: 'Automatic' })}
-                    className="min-h-[260px] rounded-lg border-2 border-dashed border-white/20 hover:border-amber-400 bg-white/5 hover:bg-white/10 transition-all p-5 flex flex-col items-center justify-center text-center cursor-pointer group"
-                  >
-                    <div className="w-10 h-10 rounded-sm bg-amber-400/20 group-hover:bg-amber-400 group-hover:text-stone-950 text-amber-300 flex items-center justify-center mb-2 transition-colors shadow-sm">
-                      <Plus className="w-5 h-5" />
-                    </div>
-                    <span className="font-serif text-xs sm:text-sm font-bold text-white group-hover:text-amber-300 transition-colors">
-                      Add {selectedBrand} Watch
-                    </span>
-                    <p className="text-[10px] text-stone-400 mt-0.5">
-                      Add a new timepiece to this showroom collection
-                    </p>
-                  </div>
-                )}
+                  );
+                })}
               </div>
             )}
-
-            {/* Bottom Helper Bar */}
-            <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-stone-400">
-              <span>{isEditMode ? 'Hover over any card to Edit or Delete • Changes save instantly' : 'Tap any watch card to inspect specifications & showroom location'}</span>
-              <span className="text-amber-400/80 font-medium">Click outside or press Close to dismiss</span>
-            </div>
           </div>
         </div>
       )}

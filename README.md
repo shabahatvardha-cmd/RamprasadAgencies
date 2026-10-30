@@ -121,3 +121,16 @@ Because `.in` is a custom domain, Windows just needs one quick approval to resol
 ## 🤝 Need Help or Customizations?
 
 If you ever need to adjust colors, add new consultation fields, or update store phone numbers, simply use the Live Visual Editor inside the Admin Studio. Everything is designed to be easily managed by anyone on the store team.
+
+
+
+
+<"Next brand is [Brand Name]" (along with the image/table for that brand)
+
+I will immediately:
+
+Remember all 12 completed brands (Titan, Titan Raga, Omega, Rado, HMT, Tissot, Seiko, Breitling, Fossil, Fastrack, Sonata, Citizen).
+Maintain the strict 20-watches-per-brand rule (zero leaks).
+Keep all prices hidden (price: null).
+Set up the images as 01.webp through 20.webp.
+Verify everything across both frontend and admin!>

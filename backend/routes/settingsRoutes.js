@@ -1,20 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const Settings = require('../models/Settings');
+const storage = require('../storage');
 
 // GET /api/settings - Fetch current site settings
 router.get('/', async (req, res) => {
   try {
-    const settings = await Settings.getSingleton();
-    res.status(200).json({
+    if (storage.isMongoConnected()) {
+      const settings = await Settings.getSingleton();
+      return res.status(200).json({
+        success: true,
+        data: settings,
+      });
+    }
+    const settings = storage.getSettings();
+    return res.status(200).json({
       success: true,
       data: settings,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Failed to fetch settings',
-      error: error.message,
+    // Resilient fallback to local storage
+    const settings = storage.getSettings();
+    return res.status(200).json({
+      success: true,
+      data: settings,
     });
   }
 });
@@ -26,12 +35,20 @@ router.put('/', async (req, res) => {
     delete updateFields._id;
     delete updateFields.__v;
 
-    // Use findOneAndUpdate with upsert
-    const updatedSettings = await Settings.findOneAndUpdate(
-      {},
-      { $set: updateFields },
-      { new: true, upsert: true, runValidators: false, setDefaultsOnInsert: true }
-    );
+    // Always persist to local file storage for instant zero-latency reactivity
+    const updatedSettings = storage.updateSettings(updateFields);
+
+    if (storage.isMongoConnected()) {
+      try {
+        await Settings.findOneAndUpdate(
+          {},
+          { $set: updateFields },
+          { new: true, upsert: true, runValidators: false, setDefaultsOnInsert: true }
+        );
+      } catch (mErr) {
+        console.warn('Mongo sync warning in PUT /settings:', mErr.message);
+      }
+    }
 
     res.status(200).json({
       success: true,
@@ -50,7 +67,14 @@ router.put('/', async (req, res) => {
 // POST /api/settings/reset - Reset settings to factory defaults
 router.post('/reset', async (req, res) => {
   try {
-    const resetData = await Settings.resetDefaults();
+    const resetData = storage.resetSettings();
+    if (storage.isMongoConnected()) {
+      try {
+        await Settings.resetDefaults();
+      } catch (mErr) {
+        console.warn('Mongo sync warning in reset:', mErr.message);
+      }
+    }
     res.status(200).json({
       success: true,
       message: 'Settings successfully reset to factory defaults',

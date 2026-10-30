@@ -30,14 +30,14 @@ function ScrollToTop() {
     } catch {
       try {
         window.scrollTo(0, 0);
-      } catch {}
+      } catch { }
     }
   }, [pathname, hash]);
   return null;
 }
 
 function StorefrontContent() {
-  const { storeData } = useStore();
+  const { storeData, liveWatches } = useStore();
   const currentData = storeData || DEFAULT_VINTAGE_STORE_DATA;
   const carousels = currentData.carousels || DEFAULT_VINTAGE_STORE_DATA.carousels;
   const contactPhone = currentData.contactPhone || '+91 98765 43210';
@@ -87,9 +87,12 @@ function StorefrontContent() {
     });
   };
 
-  // Combine all watches from store carousels and full fallback catalog into a unified collection
+  // Combine all watches from backend live updates, store carousels, and full fallback catalog
   const allStoreWatches = useMemo(() => {
+    const backendList = Array.isArray(liveWatches) && liveWatches.length > 0 ? liveWatches : [];
+
     const rawList = [
+      ...backendList,
       ...(carousels.newArrivals || []),
       ...(carousels.indianIcons || []),
       ...(carousels.collectorCapsule || []),
@@ -99,19 +102,19 @@ function StorefrontContent() {
     ];
 
     const seenNames = new Set();
-    const seenImages = new Set();
+    const seenIds = new Set();
     const unique = [];
     for (const item of rawList) {
       if (!item || !item.name) continue;
+      const idKey = (item._id || item.id || '').trim();
       const nameKey = item.name.toLowerCase().trim();
-      const imgKey = (item.image || '').trim();
-      if (seenNames.has(nameKey) || (imgKey && seenImages.has(imgKey))) continue;
+      if ((idKey && seenIds.has(idKey)) || seenNames.has(nameKey)) continue;
+      if (idKey) seenIds.add(idKey);
       seenNames.add(nameKey);
-      if (imgKey) seenImages.add(imgKey);
       unique.push(item);
     }
     return unique;
-  }, [carousels]);
+  }, [liveWatches, carousels]);
 
   // Dynamic appearance variables from Admin Appearance Studio
   const appearance = currentData.appearance || {};
@@ -127,8 +130,8 @@ function StorefrontContent() {
     appearance.fontSizeScale === 'large'
       ? '17px'
       : appearance.fontSizeScale === 'small'
-      ? '15px'
-      : '16px';
+        ? '15px'
+        : '16px';
 
   return (
     <BrowserRouter>
@@ -259,7 +262,7 @@ class ErrorBoundary extends React.Component {
   handleReset = () => {
     try {
       localStorage.removeItem('fossil_storefront_state_v2');
-    } catch {}
+    } catch { }
     window.location.reload();
   };
 

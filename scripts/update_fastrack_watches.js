@@ -1,0 +1,675 @@
+const fs = require('fs');
+const path = require('path');
+
+const officialFastrackWatches = [
+  {
+    id: "fastrack-01-neon-disco",
+    _id: "fastrack-01-neon-disco",
+    name: "Fastrack Neon Disco (3206SL01)",
+    sku: "3206SL01",
+    brand: "Fastrack",
+    collection: "Neon Disco",
+    category: "Casual Sport",
+    movement: "Quartz",
+    dialColor: "Neon Green Accent",
+    caseMaterial: "Black Plastic",
+    strapType: "High-Grip Black Silicone Strap",
+    caseDiameter: "42mm",
+    description: "Vibrant youth-centric watch inspired by Formula 1 racing tracks.",
+    appeal: "Vibrant youth-centric watch inspired by Formula 1 racing tracks.",
+    image: "/images/watches/fastrack/01.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: true,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Neon F1 Racing",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-02-reflex-vox-smartwatch",
+    _id: "fastrack-02-reflex-vox-smartwatch",
+    name: "Fastrack Reflex Vox Smartwatch (38064AP01)",
+    sku: "38064AP01",
+    brand: "Fastrack",
+    collection: "Reflex Vox",
+    category: "Smartwatch",
+    movement: "Smart-Hybrid",
+    dialColor: "Touch Display",
+    caseMaterial: "Aluminum",
+    strapType: "Interchangeable Black Sport Silicone Band",
+    caseDiameter: "44mm",
+    description: "Feature-packed smartwatch with Alexa built-in and 10-day battery life.",
+    appeal: "Feature-packed smartwatch with Alexa built-in and 10-day battery life.",
+    image: "/images/watches/fastrack/02.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: true,
+    gender: "Unisex",
+    price: null,
+    originalPrice: null,
+    badge: "Alexa Smartwatch",
+    isAvailable: true,
+    warranty: "1-Year Fastrack Smartwatch Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-03-edge-metallic",
+    _id: "fastrack-03-edge-metallic",
+    name: "Fastrack Edge Metallic (3120SM01)",
+    sku: "3120SM01",
+    brand: "Fastrack",
+    collection: "Edge",
+    category: "Casual",
+    movement: "Quartz",
+    dialColor: "Gunmetal",
+    caseMaterial: "Stainless Steel",
+    strapType: "Angular Gunmetal Stainless Steel Bracelet",
+    caseDiameter: "40mm",
+    description: "Sleek, angular metallic geometry designed for college and streetwear.",
+    appeal: "Sleek, angular metallic geometry designed for college and streetwear.",
+    image: "/images/watches/fastrack/03.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: true,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Metallic Streetwear",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-04-trendies-casual",
+    _id: "fastrack-04-trendies-casual",
+    name: "Fastrack Trendies Casual (38024PP01)",
+    sku: "38024PP01",
+    brand: "Fastrack",
+    collection: "Trendies",
+    category: "Casual Sport",
+    movement: "Quartz",
+    dialColor: "Bright Orange",
+    caseMaterial: "Polyurethane",
+    strapType: "Bright Orange Flexible Polyurethane Band",
+    caseDiameter: "38mm",
+    description: "Lightweight, water-resistant casual watch built for active teenagers.",
+    appeal: "Lightweight, water-resistant casual watch built for active teenagers.",
+    image: "/images/watches/fastrack/04.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Unisex",
+    price: null,
+    originalPrice: null,
+    badge: "Youth Trendies",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-05-economy-casual",
+    _id: "fastrack-05-economy-casual",
+    name: "Fastrack Economy Casual (3289SM01)",
+    sku: "3289SM01",
+    brand: "Fastrack",
+    collection: "Casual",
+    category: "Daily Wear",
+    movement: "Quartz",
+    dialColor: "Silver",
+    caseMaterial: "Stainless Steel",
+    strapType: "Classic Stainless Steel Link Bracelet",
+    caseDiameter: "40mm",
+    description: "Clean, durable metal bracelet watch for everyday college commuting.",
+    appeal: "Clean, durable metal bracelet watch for everyday college commuting.",
+    image: "/images/watches/fastrack/05.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "College Commuter",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-06-tees-graphic",
+    _id: "fastrack-06-tees-graphic",
+    name: "Fastrack Tees Graphic (3039PP01)",
+    sku: "3039PP01",
+    brand: "Fastrack",
+    collection: "Tees",
+    category: "Casual",
+    movement: "Quartz",
+    dialColor: "Graphic Art",
+    caseMaterial: "Silicone Strap",
+    strapType: "Interchangeable Printed Graphic Silicone Strap",
+    caseDiameter: "38mm",
+    description: "Fun, interchangeable graphic silicone strap watches for festival wear.",
+    appeal: "Fun, interchangeable graphic silicone strap watches for festival wear.",
+    image: "/images/watches/fastrack/06.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: true,
+    gender: "Unisex",
+    price: null,
+    originalPrice: null,
+    badge: "Festival Graphic",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-07-bare-essentials",
+    _id: "fastrack-07-bare-essentials",
+    name: "Fastrack Bare Essentials (3142SL01)",
+    sku: "3142SL01",
+    brand: "Fastrack",
+    collection: "Essentials",
+    category: "Minimalist",
+    movement: "Quartz",
+    dialColor: "Minimal White",
+    caseMaterial: "Leather Strap",
+    strapType: "Soft Genuine Black Leather Strap",
+    caseDiameter: "39mm",
+    description: "Minimalist slim dial paired with soft leather for understated style.",
+    appeal: "Minimalist slim dial paired with soft leather for understated style.",
+    image: "/images/watches/fastrack/07.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Bare Essentials",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-08-streetwear-chrono",
+    _id: "fastrack-08-streetwear-chrono",
+    name: "Fastrack Streetwear Chrono (38012AP01)",
+    sku: "38012AP01",
+    brand: "Fastrack",
+    collection: "Streetwear",
+    category: "Chronograph",
+    movement: "Quartz Chrono",
+    dialColor: "Black & Neon Blue",
+    caseMaterial: "Steel",
+    strapType: "Matte Black Stainless Steel Link Bracelet",
+    caseDiameter: "44mm",
+    description: "Bold urban multi-dial chronograph capturing street fashion trends.",
+    appeal: "Bold urban multi-dial chronograph capturing street fashion trends.",
+    image: "/images/watches/fastrack/08.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: true,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Urban Chrono",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-09-stunners-party-watch",
+    _id: "fastrack-09-stunners-party-watch",
+    name: "Fastrack Stunners Party Watch (6078QM01)",
+    sku: "6078QM01",
+    brand: "Fastrack",
+    collection: "Stunners",
+    category: "Party Wear",
+    movement: "Quartz",
+    dialColor: "Rose Gold",
+    caseMaterial: "Brass-Steel",
+    strapType: "Rose Gold-Toned Shimmer Mesh Bracelet",
+    caseDiameter: "34mm",
+    description: "Glamorous party-wear watch embellished with sparkling crystals.",
+    appeal: "Glamorous party-wear watch embellished with sparkling crystals.",
+    image: "/images/watches/fastrack/09.webp",
+    storeLocation: "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
+    inStock: true,
+    featured: true,
+    gender: "Women",
+    price: null,
+    originalPrice: null,
+    badge: "Party Glamour",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-10-economy-metal",
+    _id: "fastrack-10-economy-metal",
+    name: "Fastrack Economy Metal (9288SP01)",
+    sku: "9288SP01",
+    brand: "Fastrack",
+    collection: "Economy",
+    category: "Daily Wear",
+    movement: "Quartz",
+    dialColor: "Matte Black",
+    caseMaterial: "Stainless Steel",
+    strapType: "Black Ion-Plated Metal Bracelet",
+    caseDiameter: "41mm",
+    description: "Edgy black-coated metal watch designed for bold casual outfits.",
+    appeal: "Edgy black-coated metal watch designed for bold casual outfits.",
+    image: "/images/watches/fastrack/10.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Stealth Metal",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-11-occupational-casual",
+    _id: "fastrack-11-occupational-casual",
+    name: "Fastrack Occupational Casual (3011TL01)",
+    sku: "3011TL01",
+    brand: "Fastrack",
+    collection: "Casual",
+    category: "Casual Dress",
+    movement: "Quartz",
+    dialColor: "Tan Leather",
+    caseMaterial: "Stainless Steel",
+    strapType: "Distressed Tan Brown Leather Strap",
+    caseDiameter: "40mm",
+    description: "Dual-finish leather strap watch offering vintage-meets-modern appeal.",
+    appeal: "Dual-finish leather strap watch offering vintage-meets-modern appeal.",
+    image: "/images/watches/fastrack/11.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Dual-Finish Casual",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-12-reflex-play-smartwatch",
+    _id: "fastrack-12-reflex-play-smartwatch",
+    name: "Fastrack Reflex Play Smartwatch (38087AP01)",
+    sku: "38087AP01",
+    brand: "Fastrack",
+    collection: "Reflex Play",
+    category: "Smartwatch",
+    movement: "Smart-Hybrid",
+    dialColor: "AMOLED Display",
+    caseMaterial: "Silicone",
+    strapType: "Ergonomic Sports Silicone Strap",
+    caseDiameter: "43mm",
+    description: "Advanced fitness tracker featuring Bluetooth calling and AMOLED screen.",
+    appeal: "Advanced fitness tracker featuring Bluetooth calling and AMOLED screen.",
+    image: "/images/watches/fastrack/12.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: true,
+    gender: "Unisex",
+    price: null,
+    originalPrice: null,
+    badge: "AMOLED Smartwatch",
+    isAvailable: true,
+    warranty: "1-Year Fastrack Smartwatch Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-13-work-casual-steel",
+    _id: "fastrack-13-work-casual-steel",
+    name: "Fastrack Work-Casual Steel (3180SM02)",
+    sku: "3180SM02",
+    brand: "Fastrack",
+    collection: "Work Casual",
+    category: "Formal Casual",
+    movement: "Quartz",
+    dialColor: "Blue Sunburst",
+    caseMaterial: "Stainless Steel",
+    strapType: "Solid Stainless Steel Link Bracelet",
+    caseDiameter: "41mm",
+    description: "Professional-looking steel watch priced accessibly for first-time job seekers.",
+    appeal: "Professional-looking steel watch priced accessibly for first-time job seekers.",
+    image: "/images/watches/fastrack/13.webp",
+    storeLocation: "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
+    inStock: true,
+    featured: false,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Work Essentials",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-14-un-form-asymmetric",
+    _id: "fastrack-14-un-form-asymmetric",
+    name: "Fastrack Un-Form Asymmetric (3092SM01)",
+    sku: "3092SM01",
+    brand: "Fastrack",
+    collection: "Un-Form",
+    category: "Avant-Garde",
+    movement: "Quartz",
+    dialColor: "Asymmetric Dial",
+    caseMaterial: "Steel",
+    strapType: "Custom Asymmetric Stainless Steel Bracelet",
+    caseDiameter: "42mm",
+    description: "Avant-garde asymmetric case geometry defying conventional watch design.",
+    appeal: "Avant-garde asymmetric case geometry defying conventional watch design.",
+    image: "/images/watches/fastrack/14.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: true,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Asymmetric Design",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-15-next-gen-digital",
+    _id: "fastrack-15-next-gen-digital",
+    name: "Fastrack Next-Gen Digital (38045PP01)",
+    sku: "38045PP01",
+    brand: "Fastrack",
+    collection: "Digital",
+    category: "Digital Sports",
+    movement: "Digital Quartz",
+    dialColor: "Neon Yellow",
+    caseMaterial: "Resin Strap",
+    strapType: "Flexible Neon Yellow Polyurethane Strap",
+    caseDiameter: "42mm",
+    description: "Retro digital sports watch featuring stopwatch and backlight illumination.",
+    appeal: "Retro digital sports watch featuring stopwatch and backlight illumination.",
+    image: "/images/watches/fastrack/15.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Unisex",
+    price: null,
+    originalPrice: null,
+    badge: "Retro Digital",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-16-economy-minimal",
+    _id: "fastrack-16-economy-minimal",
+    name: "Fastrack Economy Minimal (3112SL02)",
+    sku: "3112SL02",
+    brand: "Fastrack",
+    collection: "Minimal",
+    category: "Minimalist",
+    movement: "Quartz",
+    dialColor: "Brown Leather",
+    caseMaterial: "Minimal Dial",
+    strapType: "Clean Stitchless Brown Leather Strap",
+    caseDiameter: "38mm",
+    description: "Slim, understated everyday watch for clean, clutter-free aesthetics.",
+    appeal: "Slim, understated everyday watch for clean, clutter-free aesthetics.",
+    image: "/images/watches/fastrack/16.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Clutter-Free Minimal",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-17-military-field",
+    _id: "fastrack-17-military-field",
+    name: "Fastrack Military Field (3165SL01)",
+    sku: "3165SL01",
+    brand: "Fastrack",
+    collection: "Field",
+    category: "Field Watch",
+    movement: "Quartz",
+    dialColor: "Khaki Canvas",
+    caseMaterial: "Steel Case",
+    strapType: "Heavy-Duty Khaki Military Canvas Strap",
+    caseDiameter: "41mm",
+    description: "Rugged canvas strap watch styled after military field instruments.",
+    appeal: "Rugged canvas strap watch styled after military field instruments.",
+    image: "/images/watches/fastrack/17.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Men",
+    price: null,
+    originalPrice: null,
+    badge: "Military Field",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-18-duo-couple-set",
+    _id: "fastrack-18-duo-couple-set",
+    name: "Fastrack Duo Couple Set (3006TM01)",
+    sku: "3006TM01",
+    brand: "Fastrack",
+    collection: "Duo",
+    category: "Couple Set",
+    movement: "Quartz",
+    dialColor: "Matching Metallic",
+    caseMaterial: "Steel",
+    strapType: "Matching Metallic Stainless Steel Bracelets",
+    caseDiameter: "40mm & 30mm Pair",
+    description: "Popular matching pair watch set designed for young couples.",
+    appeal: "Popular matching pair watch set designed for young couples.",
+    image: "/images/watches/fastrack/18.webp",
+    storeLocation: "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
+    inStock: true,
+    featured: true,
+    gender: "Unisex",
+    price: null,
+    originalPrice: null,
+    badge: "Couple Duo",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-19-fastfit-sport",
+    _id: "fastrack-19-fastfit-sport",
+    name: "Fastrack Fastfit Sport (3190PP03)",
+    sku: "3190PP03",
+    brand: "Fastrack",
+    collection: "Sport",
+    category: "Sports",
+    movement: "Quartz",
+    dialColor: "Electric Blue",
+    caseMaterial: "Silicone",
+    strapType: "Sweat-Proof Electric Blue Silicone Band",
+    caseDiameter: "40mm",
+    description: "Sweat-proof silicone sports watch built for gym workouts and running.",
+    appeal: "Sweat-proof silicone sports watch built for gym workouts and running.",
+    image: "/images/watches/fastrack/19.webp",
+    storeLocation: "Shop No. 1, JalKal Building, Golghar",
+    inStock: true,
+    featured: false,
+    gender: "Unisex",
+    price: null,
+    originalPrice: null,
+    badge: "Sweat-Proof Sport",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  },
+  {
+    id: "fastrack-20-gradient-chic",
+    _id: "fastrack-20-gradient-chic",
+    name: "Fastrack Gradient Chic (3155SL01)",
+    sku: "3155SL01",
+    brand: "Fastrack",
+    collection: "Chic",
+    category: "Fashion",
+    movement: "Quartz",
+    dialColor: "Gradient Purple",
+    caseMaterial: "Leather",
+    strapType: "Deep Indigo Genuine Leather Strap",
+    caseDiameter: "34mm",
+    description: "Trendy gradient dial transitioning smoothly from violet to deep indigo.",
+    appeal: "Trendy gradient dial transitioning smoothly from violet to deep indigo.",
+    image: "/images/watches/fastrack/20.webp",
+    storeLocation: "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
+    inStock: true,
+    featured: false,
+    gender: "Women",
+    price: null,
+    originalPrice: null,
+    badge: "Gradient Chic",
+    isAvailable: true,
+    warranty: "2-Year Fastrack International Warranty",
+    authorizedRetailer: "Ram Prasad & Sons Authorized Fastrack Retailer",
+    officialStock: "Official Authorized Stock • Stamped Warranty"
+  }
+];
+
+// Helper to set up images
+function setupFastrackImages() {
+  const dirs = [
+    path.join(__dirname, '..', 'frontend', 'public', 'images', 'watches', 'fastrack'),
+    path.join(__dirname, '..', 'admin', 'public', 'images', 'watches', 'fastrack'),
+  ];
+
+  dirs.forEach(d => {
+    if (!fs.existsSync(d)) {
+      fs.mkdirSync(d, { recursive: true });
+      console.log(`Created directory: ${d}`);
+    }
+  });
+
+  const sourceMap = {
+    '01.webp': 'fastrack-animal-print-street-chrono.webp',
+    '02.webp': 'fastrack-glitch-digital-chrono-44.webp',
+    '03.webp': 'fastrack-limitless-bold-gunmetal-45.webp',
+    '04.webp': 'fastrack-tees-silicon-red-black.webp',
+    '05.webp': 'fastrack-street-minimalist-unisex.webp',
+    '06.webp': 'fastrack-vyb-neon-streetwear-43.webp',
+    '07.webp': 'fastrack-casuals-blue-brown-leather.webp',
+    '08.webp': 'fastrack-after-dark-gunmetal-blue.webp',
+    '09.webp': 'fastrack-stunners-black-gold-sport.webp',
+    '10.webp': 'fastrack-bikers-gear-tachymeter-chrono.webp',
+    '11.webp': 'fastrack-monochrome-matte-white-40.webp',
+    '12.webp': 'fastrack-glitch-digital-chrono-44.webp',
+    '13.webp': 'fastrack-street-minimalist-unisex.webp',
+    '14.webp': 'fastrack-animal-print-street-chrono.webp',
+    '15.webp': 'fastrack-vyb-neon-streetwear-43.webp',
+    '16.webp': 'fastrack-casuals-blue-brown-leather.webp',
+    '17.webp': 'fastrack-bikers-gear-tachymeter-chrono.webp',
+    '18.webp': 'fastrack-street-minimalist-unisex.webp',
+    '19.webp': 'fastrack-tees-silicon-red-black.webp',
+    '20.webp': 'fastrack-ruffles-lilac-women.webp',
+  };
+
+  const defaultBrandImg = path.join(__dirname, '..', 'frontend', 'public', 'images', 'brands', 'fastrack.webp');
+
+  dirs.forEach(dir => {
+    for (let i = 1; i <= 20; i++) {
+      const numStr = String(i).padStart(2, '0') + '.webp';
+      const targetPath = path.join(dir, numStr);
+      const srcName = sourceMap[numStr];
+      const candidateSrc = path.join(__dirname, '..', 'frontend', 'public', 'images', 'watches', srcName);
+
+      let copyFrom = defaultBrandImg;
+      if (srcName && fs.existsSync(candidateSrc)) {
+        copyFrom = candidateSrc;
+      }
+
+      if (fs.existsSync(copyFrom)) {
+        fs.copyFileSync(copyFrom, targetPath);
+      }
+    }
+  });
+  console.log('Successfully set up 01.webp through 20.webp in both frontend and admin fastrack directories.');
+}
+
+// Helper to update dataset files
+function updateDataset(filePath) {
+  let content = fs.readFileSync(filePath, 'utf8');
+
+  // 1. Remove 3 early stray Fastrack watches between HMT and Sonata
+  const earlyStrayStart = '  {\n    "_id": "ind-fastrack-1"';
+  const earlyStrayEnd = '  {\n    "_id": "ind-sonata-1"';
+  const esIdx = content.indexOf(earlyStrayStart);
+  const eeIdx = content.indexOf(earlyStrayEnd);
+  if (esIdx !== -1 && eeIdx !== -1 && eeIdx > esIdx) {
+    content = content.substring(0, esIdx) + content.substring(eeIdx);
+    console.log(`[${filePath}] Removed 3 early stray Fastrack watches before Sonata`);
+  }
+
+  // 2. Remove 2 stray Fastrack watches between Titan Raga and Sonata
+  const strayStart = '  {\n    "_id": "ind-fastrack-glitch-women"';
+  const strayEnd = '  {\n    "_id": "ind-sonata-poise-women"';
+  const sIdx = content.indexOf(strayStart);
+  const eIdx = content.indexOf(strayEnd);
+  if (sIdx !== -1 && eIdx !== -1 && eIdx > sIdx) {
+    content = content.substring(0, sIdx) + content.substring(eIdx);
+    console.log(`[${filePath}] Removed 2 stray Fastrack watches before Sonata`);
+  }
+
+  // 3. Replace main Fastrack section between citizen and sonata
+  const startStr = '// 🇮🇳 Indian Youth Horology: Fastrack (20 Curated Official Timepieces)';
+  const endStr = '{\n    "id": "sonata-utsav-royal-blue-gold"';
+
+  let startIdx = content.indexOf(startStr);
+  if (startIdx === -1) {
+    startIdx = content.indexOf('{\n    "id": "fastrack-animal-print-street-chrono"');
+  }
+  const endIdx = content.indexOf(endStr);
+
+  if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+    const fastrackReplacement = '// 🇮🇳 Indian Youth Horology: Fastrack (20 Curated Official Timepieces)\n' +
+      officialFastrackWatches.map(w => '  ' + JSON.stringify(w, null, 2).replace(/\n/g, '\n  ')).join(',\n') + ',\n  ';
+
+    content = content.substring(0, startIdx) + fastrackReplacement + content.substring(endIdx);
+    fs.writeFileSync(filePath, content, 'utf8');
+    console.log(`[${filePath}] Successfully updated official Fastrack section!`);
+  } else {
+    console.error(`[${filePath}] Could not find startStr or endStr: startIdx=${startIdx}, endIdx=${endIdx}`);
+  }
+}
+
+setupFastrackImages();
+updateDataset('frontend/src/data/fallbackWatches.js');
+updateDataset('admin/src/data/fallbackWatches.js');
+console.log('Fastrack update complete.');

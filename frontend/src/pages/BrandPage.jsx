@@ -471,15 +471,47 @@ export default function BrandPage({
     };
   }, [cleanSlug, meta.name]);
 
-  // Filter watches strictly for this brand: authoritative curated list ensures exact 20 per brand
+  // Filter watches strictly for this brand: merges live updates from admin/backend with the curated collection
   const brandWatches = useMemo(() => {
-    // 1. Authoritative curated catalog for this brand
     const curated = FALLBACK_WATCHES.filter((w) => isWatchInBrand(w, cleanSlug));
-    if (curated.length > 0) {
+    const liveList = (watches || []).filter((w) => isWatchInBrand(w, cleanSlug));
+
+    if (liveList.length === 0) {
       return curated;
     }
-    // 2. Fallback to passed watches
-    return (watches || []).filter((w) => isWatchInBrand(w, cleanSlug));
+
+    // Index live updates by id and name for instant reactivity
+    const liveById = new Map();
+    const liveByName = new Map();
+    liveList.forEach((w) => {
+      if (w.id) liveById.set(w.id, w);
+      if (w._id) liveById.set(w._id, w);
+      if (w.name) liveByName.set(w.name.toLowerCase().trim(), w);
+    });
+
+    // Merge: live updates override curated base fields
+    const merged = curated.map((base) => {
+      const match =
+        (base.id && liveById.get(base.id)) ||
+        (base._id && liveById.get(base._id)) ||
+        (base.name && liveByName.get(base.name.toLowerCase().trim()));
+      return match ? { ...base, ...match } : base;
+    });
+
+    // Also include any new brand timepieces added via admin studio
+    liveList.forEach((lw) => {
+      const alreadyIncluded = merged.some(
+        (m) =>
+          (m.id && (m.id === lw.id || m.id === lw._id)) ||
+          (m._id && (m._id === lw.id || m._id === lw._id)) ||
+          (m.name && lw.name && m.name.toLowerCase().trim() === lw.name.toLowerCase().trim())
+      );
+      if (!alreadyIncluded) {
+        merged.push(lw);
+      }
+    });
+
+    return merged;
   }, [cleanSlug, watches]);
 
   // Gender counts within this brand
