@@ -8,7 +8,7 @@ const BROADCAST_CHANNEL_NAME = 'fossil_store_realtime_sync';
 // CURATED VINTAGE-INSPIRED DEFAULT DATASET (Fossil Luxury Lifestyle Aesthetic)
 // ============================================================================
 export const DEFAULT_VINTAGE_STORE_DATA = {
-  version: '6.1.0',
+  version: '7.0.0',
   brandName: 'RAM PRASAD AGENCIES',
   tagline: 'WATCHSTORE.IN',
   logo: '/logo.png',
@@ -32,9 +32,9 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
       specialties: [
-        'Official Swiss Collections (Tissot, Rado, Longines, Victorinox)',
+        'Official Swiss Collections (Tissot, Rado, Breitling, Omega)',
         'Indian Heritage Horology (Titan Edge, Titan Mechanicals, HMT Kohinoor & Janata)',
-        'Collector Import Consultations (Omega, TAG Heuer, Rado)',
+        'Collector Import Consultations (Omega, Breitling, Rado)',
         'Japanese Automatics & Presage timepieces (Seiko, Citizen)',
         'Certified watch battery, pressure testing & ultrasonic cleaning',
       ],
@@ -51,8 +51,8 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       phone: '+91 98765 43210',
       specialties: [
         'Indian Youth & Daily Wear (Titan Octane, Fastrack Chronos, Sonata Poze)',
-        'Casual Luxury & Chronographs (Fossil, Casio Edifice, G-Shock)',
-        'Designer horology collections (Emporio Armani, Tommy Hilfiger)',
+        'Casual Luxury & Chronographs (Fossil, Fastrack, Sonata)',
+        'Designer horology collections (Titan Raga, Fossil Heritage)',
         'Genuine leather straps, steel bracelets & horology accessories',
         'Instant watch bracelet sizing & movement health diagnostics',
       ],
@@ -67,7 +67,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       '🇮🇳 INDIAN WATCH HERITAGE: Complete Collections for Titan, Titan Raga, HMT, Fastrack & Sonata Available at Golghar',
       '⚡ FLASH SALE: Extra 15% Off Swiss, Japanese & Indian Mechanicals • Use Code: VINTAGE15',
       'Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers',
-      'Direct Imports for Omega, Tissot & TAG Heuer with Stamped International Warranty',
+      'Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty',
       'Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms',
       'Free Insured Express Shipping on All Luxury Orders Across India',
     ],
@@ -232,19 +232,19 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       },
       {
         id: 'na-5',
-        name: 'TAG Heuer Carrera Chronograph Glassbox 39mm',
-        brand: 'TAG Heuer',
+        name: 'Breitling Navitimer B01 Chronograph 43mm',
+        brand: 'Breitling',
         category: 'Chronograph',
-        price: 585000,
-        originalPrice: 620000,
-        badge: 'Motorsport',
+        price: 785000,
+        originalPrice: 820000,
+        badge: 'Aviation Icon',
         badgeColor: 'rust',
-        image: '/images/watches/tagheuer-carrera-glassbox.webp',
-        movement: 'In-House TH20-00 Automatic Calibre (80H Reserve)',
-        caseSize: '39mm Fine-Brushed Steel',
-        strap: 'Perforated Black Calfskin Racing Strap',
+        image: '/images/watches/breitling/01.webp',
+        movement: 'Manufacture Breitling Caliber 01 Automatic',
+        caseSize: '43mm Stainless Steel',
+        strap: 'Seven-Row Stainless Steel Navitimer Bracelet',
         inStock: true,
-        description: 'Signature domed Glassbox sapphire crystal seamlessly sweeping over the curved tachymetric scale, powered by the TH20-00 manufacture chronograph movement.',
+        description: 'Iconic circular slide rule bezel with column-wheel chronograph movement, contrasting sub-dials, and sapphire crystal exhibition caseback.',
       },
       {
         id: 'na-6',
@@ -299,35 +299,35 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       },
       {
         id: 'cc-3',
-        name: 'Cartier Santos de Cartier Large Model Automatic',
-        brand: 'Cartier',
-        category: 'Luxury Swiss',
-        price: 725000,
-        originalPrice: 765000,
-        badge: 'Iconic Square',
+        name: 'Titan Edge Ceramic Slimmest Quartz',
+        brand: 'Titan',
+        category: 'Dress',
+        price: 29995,
+        originalPrice: 34995,
+        badge: 'Slimmest Ceramic',
         badgeColor: 'brass',
-        image: '/images/watches/cartier-santos-dumont.webp',
-        movement: 'In-House Calibre 1847 MC Automatic',
-        caseSize: '39.8mm Geometric Square Steel',
-        strap: 'SmartLink Stainless Steel Bracelet with QuickSwitch',
+        image: '/images/watches/titan/01.webp',
+        movement: 'In-House Titan T9081 Slim Quartz Movement',
+        caseSize: '40mm Ultra-Slim Ceramic',
+        strap: 'High-Tech Scratch-Resistant Ceramic Bracelet',
         inStock: true,
-        description: 'Iconic 1904 aviator design with square bezel, visible screws, blued sword hands, and QuickSwitch interchangeable bracelet system.',
+        description: 'World-renowned ultra-slim design engineering with full high-tech ceramic construction and sapphire glass.',
       },
       {
         id: 'cc-4',
-        name: 'Longines HydroConquest Automatic Ceramic 43mm',
-        brand: 'Longines',
-        category: 'Luxury Swiss',
-        price: 195000,
-        originalPrice: 215000,
-        badge: 'Swiss Diver',
+        name: 'Seiko Presage Cocktail Time Automatic',
+        brand: 'Seiko',
+        category: 'Automatic',
+        price: 45000,
+        originalPrice: 49500,
+        badge: 'Japanese Craft',
         badgeColor: 'forest',
-        image: '/images/watches/longines-hydroconquest-ceramic.webp',
-        movement: 'Longines Calibre L888 Self-Winding Movement',
-        caseSize: '43mm Stainless Steel & Ceramic Bezel',
-        strap: 'Stainless Steel Double-Security Clasp Bracelet',
+        image: '/images/watches/seiko/01.webp',
+        movement: 'Seiko 4R35 Automatic Hand-Winding Movement',
+        caseSize: '40.5mm Stainless Steel',
+        strap: 'Polished Multi-Link Stainless Steel Bracelet',
         inStock: true,
-        description: 'High-performance Swiss sports diver featuring a polished blue ceramic unidirectional rotating bezel, 300m water resistance, and silicon balance-spring.',
+        description: 'Deep sunburst radial pattern dial inspired by vintage cocktail bars with box-shaped Hardlex crystal and exhibition caseback.',
       },
       {
         id: 'cc-5',
@@ -635,7 +635,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     {
       id: 'cat-swiss',
       title: 'Swiss Luxury & Automatics',
-      subtitle: 'Omega, Tissot, Rado, Longines & Cartier',
+      subtitle: 'Omega, Tissot, Rado & Breitling',
       itemCount: '38 Timepieces',
       tag: 'Swiss Certified',
       image: '/images/categories/swiss-luxury.webp',
@@ -653,7 +653,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     {
       id: 'cat-chronos',
       title: 'Racing Chronographs & Aviators',
-      subtitle: 'TAG Heuer Carrera, Omega Moonwatch & Breitling',
+      subtitle: 'Breitling Navitimer, Omega Moonwatch & Tissot',
       itemCount: '24 Chronographs',
       tag: 'Split-Second Precision',
       image: '/images/categories/sport-chronographs.webp',
@@ -699,7 +699,6 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     { name: 'Breitling', country: 'Swiss', desc: 'Navitimer Aviation Chronographs' },
     { name: 'Fossil', country: 'USA', desc: 'Heritage Automatics & Vintage Styling' },
     { name: 'Rado', country: 'Swiss', desc: 'Master of High-Tech Ceramic' },
-    { name: 'Casio', country: 'Japan', desc: 'G-Shock & Vintage Digital Icons' },
   ],
 
   // 6C. TRUST & AUTHENTICITY BADGES
@@ -835,12 +834,9 @@ const BRAND_VERIFIED_WATCH_IMAGE = {
   omega: '/images/watches/omega/01.webp',
   seiko: '/images/watches/seiko/01.webp',
   citizen: '/images/watches/citizen-tsuyosa-emerald-green.webp',
-  casio: '/images/watches/casio-gshock-2100-casioak.webp',
   fossil: '/images/watches/fossil-heritage-automatic.webp',
   breitling: '/images/watches/breitling/01.webp',
   rado: '/images/watches/rado/01.webp',
-  cartier: '/images/watches/cartier-santos-dumont.webp',
-  'tag heuer': '/images/watches/tagheuer-carrera-glassbox.webp',
   'titan raga': '/images/watches/titan-raga/01.webp',
   raga: '/images/watches/titan-raga/01.webp',
 };
@@ -890,8 +886,9 @@ export const sanitizeStoreData = (data) => {
   const serialized = JSON.stringify(data);
   const hasOffenders = isOffenderImage(serialized);
   const hasUnsplash = serialized.includes('unsplash.com');
-  const isOldVersion = !data.version || data.version !== '6.7.0';
-  const shouldResetImagery = hasOffenders || hasUnsplash || isOldVersion || serialized.toLowerCase().includes('rolex') || serialized.includes('1587925358603');
+  const isOldVersion = !data.version || data.version !== '7.0.0';
+  const hasStrayBrands = serialized.toLowerCase().includes('casio') || serialized.toLowerCase().includes('cartier') || serialized.toLowerCase().includes('tag heuer');
+  const shouldResetImagery = hasOffenders || hasUnsplash || isOldVersion || hasStrayBrands || serialized.toLowerCase().includes('rolex') || serialized.includes('1587925358603');
 
   const sanitizeWatchList = (list, defaultList) => {
     if (shouldResetImagery || !list || !Array.isArray(list) || list.length === 0) {
@@ -985,9 +982,13 @@ export const sanitizeStoreData = (data) => {
     showrooms: (data.showrooms && Array.isArray(data.showrooms) && data.showrooms.length > 0 && Array.isArray(data.showrooms[0]?.specialties))
       ? data.showrooms
       : DEFAULT_VINTAGE_STORE_DATA.showrooms,
-    brands: (data.brands && Array.isArray(data.brands) && data.brands.length > 0)
-      ? data.brands.filter((b) => (b.name || '').toLowerCase() !== 'rolex')
-      : DEFAULT_VINTAGE_STORE_DATA.brands,
+    brands: (() => {
+      const allowed = ['titan', 'titan raga', 'hmt', 'fastrack', 'sonata', 'tissot', 'omega', 'seiko', 'citizen', 'breitling', 'fossil', 'rado'];
+      const filtered = (data.brands && Array.isArray(data.brands))
+        ? data.brands.filter((b) => allowed.includes((b.name || '').toLowerCase().trim()))
+        : [];
+      return filtered.length === 12 ? filtered : DEFAULT_VINTAGE_STORE_DATA.brands;
+    })(),
     trustBadges: (data.trustBadges && Array.isArray(data.trustBadges) && data.trustBadges.length > 0)
       ? data.trustBadges
       : DEFAULT_VINTAGE_STORE_DATA.trustBadges,
@@ -1137,7 +1138,9 @@ export function StoreProvider({ children }) {
               merged.showrooms = settings.showrooms;
             }
             if (settings.brands && Array.isArray(settings.brands) && settings.brands.length > 0) {
-              merged.brands = settings.brands;
+              const allowed = ['titan', 'titan raga', 'hmt', 'fastrack', 'sonata', 'tissot', 'omega', 'seiko', 'citizen', 'breitling', 'fossil', 'rado'];
+              const filteredB = settings.brands.filter((b) => allowed.includes((b.name || '').toLowerCase().trim()));
+              merged.brands = filteredB.length === 12 ? filteredB : DEFAULT_VINTAGE_STORE_DATA.brands;
             }
             if (settings.trustBadges && Array.isArray(settings.trustBadges) && settings.trustBadges.length > 0) {
               merged.trustBadges = settings.trustBadges;

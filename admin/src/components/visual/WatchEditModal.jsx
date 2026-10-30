@@ -14,20 +14,16 @@ import { getVerifiedBrandImage, BRAND_VERIFIED_WATCH_IMAGE } from '../../utils/d
 const POPULAR_BRANDS = [
   'Titan',
   'Titan Raga',
+  'Omega',
+  'Rado',
   'HMT',
+  'Tissot',
+  'Seiko',
+  'Breitling',
+  'Fossil',
   'Fastrack',
   'Sonata',
-  'Tissot Swiss',
-  'Omega',
-  'Seiko Presage',
-  'Citizen Automatics',
-  'Casio Edifice',
-  'Fossil Heritage',
-  'Breitling',
-  'Rado Swiss',
-  'Cartier',
-  'TAG Heuer',
-  'Vintage Horology',
+  'Citizen',
 ];
 
 const CAROUSEL_OPTIONS = [
@@ -221,7 +217,7 @@ export default function WatchEditModal({
 
               {/* Quick Brand Selector Chips */}
               <div className="flex flex-wrap gap-1 mt-1.5">
-                {['Titan', 'Titan Raga', 'HMT', 'Fastrack', 'Sonata', 'Tissot', 'Omega', 'Seiko', 'Citizen', 'Casio', 'Rado'].map((b) => (
+                {['Titan', 'Titan Raga', 'HMT', 'Fastrack', 'Sonata', 'Tissot', 'Omega', 'Seiko', 'Citizen', 'https://images.unsplash.com/photo-1639006570490-79c0c53f1080?auto=format&fit=crop&w=1200&q=85', 'Rado'].map((b) => (
                   <button
                     key={b}
                     type="button"
@@ -233,11 +229,10 @@ export default function WatchEditModal({
                         image: verifiedImg,
                       }));
                     }}
-                    className={`px-2 py-0.5 rounded text-[10px] font-semibold border transition-all ${
-                      formData.brand?.toLowerCase() === b.toLowerCase()
-                        ? 'bg-brass-600 text-white border-brass-700 shadow-sm'
-                        : 'bg-[#FAF7F2] text-[#5A524A] border-[#DDD5C7] hover:border-brass-600'
-                    }`}
+                    className={`px-2 py-0.5 rounded text-[10px] font-semibold border transition-all ${formData.brand?.toLowerCase() === b.toLowerCase()
+                      ? 'bg-brass-600 text-white border-brass-700 shadow-sm'
+                      : 'bg-[#FAF7F2] text-[#5A524A] border-[#DDD5C7] hover:border-brass-600'
+                      }`}
                   >
                     {b}
                   </button>
@@ -440,11 +435,10 @@ export default function WatchEditModal({
                         brand: prev.brand || (bKey.charAt(0).toUpperCase() + bKey.slice(1)),
                       }));
                     }}
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] font-medium shrink-0 transition-all ${
-                      formData.image === bImg
-                        ? 'bg-brass-600 text-white border-brass-700 shadow-sm'
-                        : 'bg-white text-[#5A524A] border-[#DDD5C7] hover:border-brass-600'
-                    }`}
+                    className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-[10px] font-medium shrink-0 transition-all ${formData.image === bImg
+                      ? 'bg-brass-600 text-white border-brass-700 shadow-sm'
+                      : 'bg-white text-[#5A524A] border-[#DDD5C7] hover:border-brass-600'
+                      }`}
                     title={`Select authentic ${bKey} watch photo`}
                   >
                     <img src={bImg} alt={bKey} className="w-3.5 h-3.5 rounded-full object-cover" />

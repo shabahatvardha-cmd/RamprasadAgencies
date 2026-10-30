@@ -28,8 +28,8 @@ const STORES = [
     landmark: 'Near JalKal Compound, Main Golghar Market',
     hours: '10:30 AM – 9:00 PM (Monday to Sunday)',
     specialties: [
-      'Casual Luxury & Chronographs (Fossil, Casio Edifice)',
-      'Designer & lifestyle collections (Tommy Hilfiger, Armani)',
+      'Casual Luxury & Chronographs (Fossil, Fastrack, Sonata)',
+      'Designer horology collections (Titan Raga, Fossil Heritage)',
       'Genuine leather straps, steel bracelets & horology accessories',
       'Instant watch battery replacement & ultrasonic cleaning',
     ],

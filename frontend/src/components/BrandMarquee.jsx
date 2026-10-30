@@ -11,15 +11,11 @@ export const BRAND_REFERENCE_IMAGES = {
   omega: '/images/brands/omega.webp',
   seiko: '/images/brands/seiko.webp',
   citizen: '/images/brands/citizen.webp',
-  casio: '/images/brands/casio.webp',
   breitling: '/images/brands/breitling.webp',
   rado: '/images/brands/rado.webp',
   fossil: '/images/brands/fossil.webp',
   raga: '/images/brands/raga.webp',
   'titan raga': '/images/brands/raga.webp',
-  cartier: '/images/brands/cartier.webp',
-  'tag heuer': '/images/brands/tag-heuer.webp',
-  'tag-heuer': '/images/brands/tag-heuer.webp',
 };
 
 export const getBrandReferenceImage = (brandName, customImage) => {
@@ -93,16 +89,27 @@ export default function BrandMarquee({
   onSelectBrand,
 }) {
   const brandList = useMemo(() => {
-    return brands && Array.isArray(brands) && brands.length > 0
-      ? brands.map((b) => {
-        if (typeof b === 'object' && b.category) return b;
-        const bName = typeof b === 'string' ? b : b.name;
+    if (brands && Array.isArray(brands) && brands.length > 0) {
+      const filtered = [];
+      const seen = new Set();
+      brands.forEach((b) => {
+        const bName = typeof b === 'string' ? b : b?.name;
+        if (!bName) return;
+        const norm = bName.toLowerCase().trim();
+        if (seen.has(norm)) return;
         const match = IMPORTED_BRANDS.find(
-          (item) => item.name.toLowerCase() === (bName || '').toLowerCase()
+          (item) => item.name.toLowerCase() === norm
         );
-        return match || { name: bName, country: 'Import', category: 'featured' };
-      })
-      : IMPORTED_BRANDS;
+        if (match) {
+          seen.add(norm);
+          filtered.push({ ...match, ...(typeof b === 'object' ? b : {}) });
+        }
+      });
+      if (filtered.length === IMPORTED_BRANDS.length) {
+        return filtered;
+      }
+    }
+    return IMPORTED_BRANDS;
   }, [brands]);
 
   // Group brands into the three parts

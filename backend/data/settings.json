@@ -22,8 +22,8 @@
         "mapQuery": "Baldev+Plaza+Golghar+Gorakhpur",
         "phone": "+91 98765 43210",
         "specialties": [
-          "Official Swiss Collections (Tissot, Rado, Longines, Victorinox)",
-          "Collector Import Consultations (Omega, TAG Heuer, Rado)",
+          "Official Swiss Collections (Tissot, Rado, Breitling, Omega)",
+          "Collector Import Consultations (Omega, Breitling, Rado)",
           "Japanese Automatics & Presage timepieces (Seiko, Citizen)",
           "Certified watch battery, pressure testing & ultrasonic cleaning"
         ]
@@ -39,8 +39,8 @@
         "mapQuery": "JalKal+Building+Golghar+Gorakhpur",
         "phone": "+91 98765 43210",
         "specialties": [
-          "Casual Luxury & Chronographs (Fossil, Casio Edifice, G-Shock)",
-          "Designer horology collections (Emporio Armani, Tommy Hilfiger)",
+          "Casual Luxury & Chronographs (Fossil, Fastrack, Sonata)",
+          "Designer horology collections (Titan Raga, Fossil Heritage)",
           "Genuine leather straps, steel bracelets & horology accessories",
           "Instant watch bracelet sizing & movement health diagnostics"
         ]
@@ -54,7 +54,7 @@
       "🇮🇳 INDIAN WATCH HERITAGE: Complete Collections for Titan, Titan Raga, HMT, Fastrack & Sonata Available at Golghar",
       "⚡ FLASH SALE: Extra 15% Off Swiss, Japanese & Indian Mechanicals • Use Code: VINTAGE15",
       "Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers",
-      "Direct Imports for Omega, Tissot & TAG Heuer with Stamped International Warranty",
+      "Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty",
       "Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms",
       "Free Insured Express Shipping on All Luxury Orders Across India"
     ]
@@ -132,8 +132,8 @@
           "mapQuery": "Baldev+Plaza+Golghar+Gorakhpur",
           "phone": "+91 98765 43210",
           "specialties": [
-            "Official Swiss Collections (Tissot, Rado, Longines, Victorinox)",
-            "Collector Import Consultations (Omega, TAG Heuer, Rado)",
+            "Official Swiss Collections (Tissot, Rado, Breitling, Omega)",
+            "Collector Import Consultations (Omega, Breitling, Rado)",
             "Japanese Automatics & Presage timepieces (Seiko, Citizen)",
             "Certified watch battery, pressure testing & ultrasonic cleaning"
           ]
@@ -149,8 +149,8 @@
           "mapQuery": "JalKal+Building+Golghar+Gorakhpur",
           "phone": "+91 98765 43210",
           "specialties": [
-            "Casual Luxury & Chronographs (Fossil, Casio Edifice, G-Shock)",
-            "Designer horology collections (Emporio Armani, Tommy Hilfiger)",
+            "Casual Luxury & Chronographs (Fossil, Fastrack, Sonata)",
+            "Designer horology collections (Titan Raga, Fossil Heritage)",
             "Genuine leather straps, steel bracelets & horology accessories",
             "Instant watch bracelet sizing & movement health diagnostics"
           ]
@@ -163,7 +163,7 @@
       "messages": [
         "⚡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics • Use Code: VINTAGE15",
         "Authorized Luxury Specialist for Tissot, Seiko, Rado, Citizen, Fossil & Swiss Calibers",
-        "Direct Imports for Omega, Tissot & TAG Heuer with Stamped International Warranty",
+        "Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty",
         "Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms",
         "Free Insured Express Shipping on All Luxury Orders Across India"
       ]
@@ -328,19 +328,19 @@
         },
         {
           "id": "na-5",
-          "name": "TAG Heuer Carrera Chronograph Glassbox 39mm",
-          "brand": "TAG Heuer",
+          "name": "Breitling Navitimer B01 Chronograph 43mm",
+          "brand": "Breitling",
           "category": "Chronograph",
-          "price": 585000,
-          "originalPrice": 620000,
-          "badge": "Motorsport",
+          "price": 785000,
+          "originalPrice": 820000,
+          "badge": "Aviation Icon",
           "badgeColor": "rust",
-          "image": "/images/watches/tagheuer-carrera-glassbox.webp",
-          "movement": "In-House TH20-00 Automatic Calibre (80H Reserve)",
-          "caseSize": "39mm Fine-Brushed Steel",
-          "strap": "Perforated Black Calfskin Racing Strap",
+          "image": "/images/watches/breitling/01.webp",
+          "movement": "Manufacture Breitling Caliber 01 Automatic",
+          "caseSize": "43mm Stainless Steel",
+          "strap": "Seven-Row Stainless Steel Navitimer Bracelet",
           "inStock": true,
-          "description": "Signature domed Glassbox sapphire crystal seamlessly sweeping over the curved tachymetric scale, powered by the TH20-00 manufacture chronograph movement."
+          "description": "Iconic circular slide rule bezel with column-wheel chronograph movement, contrasting sub-dials, and sapphire crystal exhibition caseback."
         },
         {
           "id": "na-6",
@@ -394,19 +394,19 @@
         },
         {
           "id": "cc-3",
-          "name": "Cartier Santos de Cartier Large Model Automatic",
-          "brand": "Cartier",
-          "category": "Luxury Swiss",
-          "price": 725000,
-          "originalPrice": 765000,
-          "badge": "Iconic Square",
+          "name": "Titan Edge Ceramic Slimmest Quartz",
+          "brand": "Titan",
+          "category": "Dress",
+          "price": 29995,
+          "originalPrice": 34995,
+          "badge": "Slimmest Ceramic",
           "badgeColor": "brass",
-          "image": "/images/watches/cartier-santos-dumont.webp",
-          "movement": "In-House Calibre 1847 MC Automatic",
-          "caseSize": "39.8mm Geometric Square Steel",
-          "strap": "SmartLink Stainless Steel Bracelet with QuickSwitch",
+          "image": "/images/watches/titan/01.webp",
+          "movement": "In-House Titan T9081 Slim Quartz Movement",
+          "caseSize": "40mm Ultra-Slim Ceramic",
+          "strap": "High-Tech Scratch-Resistant Ceramic Bracelet",
           "inStock": true,
-          "description": "Iconic 1904 aviator design with square bezel, visible screws, blued sword hands, and QuickSwitch interchangeable bracelet system."
+          "description": "World-renowned ultra-slim design engineering with full high-tech ceramic construction and sapphire glass."
         },
         {
           "id": "cc-4",
@@ -733,7 +733,7 @@
       {
         "id": "cat-swiss",
         "title": "Swiss Luxury & Automatics",
-        "subtitle": "Omega, Tissot, Rado, Longines & Cartier",
+        "subtitle": "Omega, Tissot, Rado & Breitling",
         "itemCount": "38 Timepieces",
         "tag": "Swiss Certified",
         "image": "/images/categories/swiss-luxury.webp",
@@ -751,7 +751,7 @@
       {
         "id": "cat-chronos",
         "title": "Racing Chronographs & Aviators",
-        "subtitle": "TAG Heuer Carrera, Omega Moonwatch & Breitling",
+        "subtitle": "Breitling Navitimer, Omega Moonwatch & Tissot",
         "itemCount": "24 Chronographs",
         "tag": "Split-Second Precision",
         "image": "/images/categories/sport-chronographs.webp",

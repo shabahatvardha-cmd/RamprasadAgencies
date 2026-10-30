@@ -26,7 +26,7 @@ export default function CampaignsManager({ settings, onRefresh, showToast }) {
   const [title, setTitle] = useState('');
   const [celebrity, setCelebrity] = useState('');
   const [tagline, setTagline] = useState('');
-  const [brand, setBrand] = useState('TAG Heuer');
+  const [brand, setBrand] = useState('Omega');
   const [watchModel, setWatchModel] = useState('');
   const [storeLocation, setStoreLocation] = useState('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
   const [isActive, setIsActive] = useState(true);
@@ -68,7 +68,7 @@ export default function CampaignsManager({ settings, onRefresh, showToast }) {
     setTitle('');
     setCelebrity('');
     setTagline('');
-    setBrand('TAG Heuer');
+    setBrand('Omega');
     setWatchModel('');
     setStoreLocation('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
     setIsActive(true);

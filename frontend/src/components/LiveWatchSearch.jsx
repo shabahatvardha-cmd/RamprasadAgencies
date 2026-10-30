@@ -22,10 +22,7 @@ const KNOWN_BRANDS = [
   { name: 'Seiko', slug: 'seiko' },
   { name: 'Citizen', slug: 'citizen' },
   { name: 'Breitling', slug: 'breitling' },
-  { name: 'Casio', slug: 'casio' },
   { name: 'Fossil', slug: 'fossil' },
-  { name: 'Cartier', slug: 'cartier' },
-  { name: 'TAG Heuer', slug: 'tag-heuer' },
 ];
 
 export default function LiveWatchSearch({

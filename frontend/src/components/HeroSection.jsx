@@ -24,12 +24,12 @@ const HERO_SLIDES = [
   },
   {
     badge: 'Maison Ambassadors Series',
-    headline: 'As Seen on Global Icons & Racers',
-    subheadline: 'Explore iconic timepieces worn by legends of sport and cinema. Featuring TAG Heuer Carrera Chronographs, Omega Moonwatch, and Rado Captain Cook ceramics.',
+    headline: 'As Seen on Global Icons & Aviators',
+    subheadline: 'Explore iconic timepieces worn by legends of aviation, diving, and cinema. Featuring Breitling Navitimer Chronographs, Omega Moonwatch, and Rado Captain Cook ceramics.',
     ctaPrimary: 'View Ambassador Series',
     ctaSecondary: 'Inquire on WhatsApp',
-    image: '/images/hero-cartier-santos.webp',
-    tag: 'TAG Heuer • Omega • Rado',
+    image: '/images/watches/breitling/01.webp',
+    tag: 'Breitling • Omega • Rado',
   },
   {
     badge: 'Showroom Fitting Experience',

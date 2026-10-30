@@ -86,14 +86,6 @@ const BRAND_METADATA = {
       'Pioneers of light-powered Eco-Drive technology that never requires battery replacement, alongside the viral Tsuyosa integrated automatic sports series.',
     showrooms: 'Baldev Plaza & JalKal Building, Golghar',
   },
-  casio: {
-    name: 'Casio',
-    country: 'Japan',
-    tagline: 'Edifice Solar & Vintage Steel',
-    history:
-      'From cult 1980s retro digital classics to Bluetooth-connected Edifice solar racing chronographs, engineering legendary durability and utilitarian design.',
-    showrooms: 'Shop No. 1, JalKal Building, Golghar',
-  },
   breitling: {
     name: 'Breitling',
     country: 'Swiss',
@@ -141,30 +133,6 @@ const BRAND_METADATA = {
     history:
       'Designed for the modern Indian woman, Titan Raga transforms timepieces into exquisite wearable jewelry. Featuring mother-of-pearl dials, faceted mineral crystals, rose gold PVD finishes, and delicate asymmetric link bracelets inspired by nature and Indian couture.',
     showrooms: 'Baldev Plaza & JalKal Building, Golghar',
-  },
-  cartier: {
-    name: 'Cartier',
-    country: 'Swiss',
-    tagline: 'Santos, Tank & Parisian Haute Horlogerie',
-    history:
-      'Founded in Paris in 1847, the jeweler of kings and the king of jewelers. Renowned for inventing the modern men’s wristwatch with the Santos in 1904, iconic Roman dials, and blue sapphire cabochon crowns.',
-    showrooms: 'Baldev Plaza Flagship Showroom, Golghar',
-  },
-  'tag-heuer': {
-    name: 'TAG Heuer',
-    country: 'Swiss',
-    tagline: 'Carrera, Monaco & Swiss Avant-Garde',
-    history:
-      'Swiss precision sports timekeeping since 1860, world-famous for motor racing chronographs, Carrera Glassbox dials, and unwavering avant-garde engineering.',
-    showrooms: 'Baldev Plaza Flagship Showroom, Golghar',
-  },
-  'tag heuer': {
-    name: 'TAG Heuer',
-    country: 'Swiss',
-    tagline: 'Carrera, Monaco & Swiss Avant-Garde',
-    history:
-      'Swiss precision sports timekeeping since 1860, world-famous for motor racing chronographs, Carrera Glassbox dials, and unwavering avant-garde engineering.',
-    showrooms: 'Baldev Plaza Flagship Showroom, Golghar',
   },
 };
 
@@ -391,9 +359,6 @@ export const isWatchInBrand = (w, slug) => {
   }
   if (clean === 'titan-raga' || clean === 'raga' || clean === 'titan raga') {
     return b === 'titan raga' || b === 'raga';
-  }
-  if (clean === 'tag-heuer' || clean === 'tag heuer') {
-    return b === 'tag heuer' || b === 'tag-heuer';
   }
   return b === clean || b.replace(/\s+/g, '-') === clean;
 };

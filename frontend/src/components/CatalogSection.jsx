@@ -19,9 +19,9 @@ const ORIGINS = [
   { id: 'JAPANESE', label: '🇯🇵 Japanese Precision', sub: 'Seiko Presage, Citizen' },
 ];
 
-const INDIAN_BRAND_NAMES = ['titan', 'hmt', 'fastrack', 'sonata'];
-const SWISS_BRAND_NAMES = ['omega', 'tissot', 'breitling', 'cartier', 'rado'];
-const JAPANESE_BRAND_NAMES = ['seiko', 'citizen', 'casio', 'orient'];
+const INDIAN_BRAND_NAMES = ['titan', 'titan raga', 'titan-raga', 'raga', 'hmt', 'fastrack', 'sonata'];
+const SWISS_BRAND_NAMES = ['omega', 'tissot', 'breitling', 'rado'];
+const JAPANESE_BRAND_NAMES = ['seiko', 'citizen'];
 
 import { FALLBACK_WATCHES } from '../data/fallbackWatches';
 

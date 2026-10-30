@@ -13,15 +13,11 @@ export const BRAND_REFERENCE_IMAGES = {
   omega: '/images/brands/omega.webp',
   seiko: '/images/brands/seiko.webp',
   citizen: '/images/brands/citizen.webp',
-  casio: '/images/brands/casio.webp',
   breitling: '/images/brands/breitling.webp',
   rado: '/images/brands/rado.webp',
   fossil: '/images/brands/fossil.webp',
   raga: '/images/brands/raga.webp',
   'titan raga': '/images/brands/raga.webp',
-  cartier: '/images/brands/cartier.webp',
-  'tag heuer': '/images/brands/tag-heuer.webp',
-  'tag-heuer': '/images/brands/tag-heuer.webp',
 };
 
 export const getBrandReferenceImage = (brandName, customImage) => {
@@ -104,16 +100,27 @@ export default function VisualBrandMarquee({
   const showcaseRef = useRef(null);
 
   const brandList = useMemo(() => {
-    return brands && Array.isArray(brands) && brands.length > 0
-      ? brands.map((b) => {
-        if (typeof b === 'object' && b.category) return b;
-        const bName = typeof b === 'string' ? b : b.name;
+    if (brands && Array.isArray(brands) && brands.length > 0) {
+      const filtered = [];
+      const seen = new Set();
+      brands.forEach((b) => {
+        const bName = typeof b === 'string' ? b : b?.name;
+        if (!bName) return;
+        const norm = bName.toLowerCase().trim();
+        if (seen.has(norm)) return;
         const match = IMPORTED_BRANDS.find(
-          (item) => item.name.toLowerCase() === (bName || '').toLowerCase()
+          (item) => item.name.toLowerCase() === norm
         );
-        return match || { name: bName, country: 'Import', category: 'featured' };
-      })
-      : IMPORTED_BRANDS;
+        if (match) {
+          seen.add(norm);
+          filtered.push({ ...match, ...(typeof b === 'object' ? b : {}) });
+        }
+      });
+      if (filtered.length === IMPORTED_BRANDS.length) {
+        return filtered;
+      }
+    }
+    return IMPORTED_BRANDS;
   }, [brands]);
 
   // Group brands into the three parts
@@ -222,11 +229,10 @@ export default function VisualBrandMarquee({
       <div
         key={bName}
         onClick={() => setSelectedBrand(isSelected ? 'ALL' : bName)}
-        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[130px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between p-3 sm:p-4 text-left cursor-pointer ${spanClass} ${
-          isSelected
-            ? 'ring-4 ring-amber-400 border-amber-400 shadow-2xl scale-[1.02]'
-            : 'border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl'
-        }`}
+        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[130px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between p-3 sm:p-4 text-left cursor-pointer ${spanClass} ${isSelected
+          ? 'ring-4 ring-amber-400 border-amber-400 shadow-2xl scale-[1.02]'
+          : 'border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl'
+          }`}
       >
         {/* 1. Full-Bleed Reference Watch Image with Smooth Zoom */}
         <img
@@ -259,11 +265,10 @@ export default function VisualBrandMarquee({
             </span>
           )}
           <span
-            className={`text-[10px] font-bold px-2 py-0.5 rounded-full transition-all ${
-              isSelected
-                ? 'bg-amber-400 text-stone-950 font-black'
-                : 'text-amber-300/80 bg-black/40 border border-white/15 group-hover:bg-amber-400 group-hover:text-stone-950'
-            }`}
+            className={`text-[10px] font-bold px-2 py-0.5 rounded-full transition-all ${isSelected
+              ? 'bg-amber-400 text-stone-950 font-black'
+              : 'text-amber-300/80 bg-black/40 border border-white/15 group-hover:bg-amber-400 group-hover:text-stone-950'
+              }`}
           >
             {isSelected ? 'Selected ✓' : 'Manage 20 Watches →'}
           </span>
