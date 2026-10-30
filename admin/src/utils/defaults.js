@@ -704,7 +704,6 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     { name: 'Breitling', country: 'Swiss', desc: 'Navitimer Aviation Chronographs' },
     { name: 'Fossil', country: 'USA', desc: 'Heritage Automatics & Vintage Styling' },
     { name: 'Rado', country: 'Swiss', desc: 'Master of High-Tech Ceramic' },
-    { name: 'Casio', country: 'Japan', desc: 'G-Shock & Vintage Digital Icons' },
   ],
 
   // 6C. TRUST & AUTHENTICITY BADGES

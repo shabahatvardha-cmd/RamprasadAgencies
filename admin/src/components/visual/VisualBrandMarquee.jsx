@@ -47,11 +47,10 @@ export const IMPORTED_BRANDS = [
   { name: 'Omega', country: 'Swiss', category: 'featured' },
   { name: 'Rado', country: 'Swiss', category: 'featured' },
 
-  // 2. Trending Brands (5 brands)
+  // 2. Trending Brands (4 brands)
   { name: 'Tissot', country: 'Swiss', category: 'trending' },
   { name: 'Breitling', country: 'Swiss', category: 'trending' },
   { name: 'Seiko', country: 'Japan', category: 'trending' },
-  { name: 'Casio', country: 'Japan', category: 'trending' },
   { name: 'Fossil', country: 'USA', category: 'trending' },
 
   // 3. Fresh Drop Brands (4 brands)

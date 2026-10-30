@@ -2536,12 +2536,19 @@
     "dialColor": "Champagne",
     "caseMaterial": "Crystal-Embellished Steel",
     "strapType": "Polished Rose Gold & Steel Link Bracelet",
-    "description": "Faceted cut-glass crystal bezel reflecting light like precious diamonds.",
+    "description": "round square",
     "image": "/images/watches/titan-raga/02.webp",
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "collectionName": "newArrivals",
+    "price": 14995,
+    "originalPrice": 0,
+    "badge": "Featured Drop",
+    "waterResistance": "50m / 5 Bar",
+    "id": "raga-02-facets",
+    "updatedAt": "2026-10-30T08:04:26.314Z"
   },
   {
     "_id": "raga-03-moments-of-joy",
