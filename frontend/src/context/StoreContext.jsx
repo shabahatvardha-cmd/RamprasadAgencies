@@ -887,8 +887,7 @@ export const sanitizeStoreData = (data) => {
   const hasOffenders = isOffenderImage(serialized);
   const hasUnsplash = serialized.includes('unsplash.com');
   const isOldVersion = !data.version || data.version !== '7.0.0';
-  const hasStrayBrands = serialized.toLowerCase().includes('casio') || serialized.toLowerCase().includes('cartier') || serialized.toLowerCase().includes('tag heuer');
-  const shouldResetImagery = hasOffenders || hasUnsplash || isOldVersion || hasStrayBrands || serialized.toLowerCase().includes('rolex') || serialized.includes('1587925358603');
+  const shouldResetImagery = hasOffenders || hasUnsplash || isOldVersion || serialized.toLowerCase().includes('rolex') || serialized.includes('1587925358603');
 
   const sanitizeWatchList = (list, defaultList) => {
     if (shouldResetImagery || !list || !Array.isArray(list) || list.length === 0) {
@@ -983,11 +982,14 @@ export const sanitizeStoreData = (data) => {
       ? data.showrooms
       : DEFAULT_VINTAGE_STORE_DATA.showrooms,
     brands: (() => {
-      const allowed = ['titan', 'titan raga', 'hmt', 'fastrack', 'sonata', 'tissot', 'omega', 'seiko', 'citizen', 'breitling', 'fossil', 'rado'];
-      const filtered = (data.brands && Array.isArray(data.brands))
-        ? data.brands.filter((b) => allowed.includes((b.name || '').toLowerCase().trim()))
-        : [];
-      return filtered.length === 12 ? filtered : DEFAULT_VINTAGE_STORE_DATA.brands;
+      if (data.brands && Array.isArray(data.brands) && data.brands.length > 0) {
+        const valid = data.brands.filter((b) => {
+          const name = (typeof b === 'string' ? b : b?.name || '').toLowerCase().trim();
+          return name && name !== 'rolex';
+        });
+        if (valid.length > 0) return valid;
+      }
+      return DEFAULT_VINTAGE_STORE_DATA.brands;
     })(),
     trustBadges: (data.trustBadges && Array.isArray(data.trustBadges) && data.trustBadges.length > 0)
       ? data.trustBadges
@@ -1137,10 +1139,15 @@ export function StoreProvider({ children }) {
             if (settings.showrooms && Array.isArray(settings.showrooms) && settings.showrooms.length > 0) {
               merged.showrooms = settings.showrooms;
             }
-            if (settings.brands && Array.isArray(settings.brands) && settings.brands.length > 0) {
-              const allowed = ['titan', 'titan raga', 'hmt', 'fastrack', 'sonata', 'tissot', 'omega', 'seiko', 'citizen', 'breitling', 'fossil', 'rado'];
-              const filteredB = settings.brands.filter((b) => allowed.includes((b.name || '').toLowerCase().trim()));
-              merged.brands = filteredB.length === 12 ? filteredB : DEFAULT_VINTAGE_STORE_DATA.brands;
+            const dynamicBrands = settings.brands || settings.vintageStoreData?.brands;
+            if (dynamicBrands && Array.isArray(dynamicBrands) && dynamicBrands.length > 0) {
+              const valid = dynamicBrands.filter((b) => {
+                const name = (typeof b === 'string' ? b : b?.name || '').toLowerCase().trim();
+                return name && name !== 'rolex';
+              });
+              if (valid.length > 0) {
+                merged.brands = valid;
+              }
             }
             if (settings.trustBadges && Array.isArray(settings.trustBadges) && settings.trustBadges.length > 0) {
               merged.trustBadges = settings.trustBadges;

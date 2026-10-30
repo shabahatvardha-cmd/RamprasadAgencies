@@ -9,6 +9,7 @@ import {
   Clock,
 } from 'lucide-react';
 import { getFullImageUrl } from '../utils/api';
+import { useStore } from '../context/StoreContext';
 
 const KNOWN_BRANDS = [
   { name: 'Titan', slug: 'titan' },
@@ -41,6 +42,25 @@ export default function LiveWatchSearch({
   const listRef = useRef(null);
   const navigate = useNavigate();
 
+  const storeContext = useStore ? useStore() : null;
+  const storeBrands = storeContext?.storeData?.brands || [];
+
+  const availableBrands = useMemo(() => {
+    const list = [...KNOWN_BRANDS];
+    if (storeBrands && Array.isArray(storeBrands)) {
+      storeBrands.forEach((b) => {
+        const name = typeof b === 'string' ? b : b?.name;
+        if (name && !list.some((existing) => existing.name.toLowerCase() === name.toLowerCase())) {
+          list.push({
+            name,
+            slug: name.toLowerCase().trim().replace(/\s+/g, '-'),
+          });
+        }
+      });
+    }
+    return list;
+  }, [storeBrands]);
+
   const cleanQuery = query.toLowerCase().trim();
   const queryTokens = useMemo(
     () => cleanQuery.split(/\s+/).filter(Boolean),
@@ -66,13 +86,13 @@ export default function LiveWatchSearch({
   // Check if query matches a known brand
   const matchedBrand = useMemo(() => {
     if (!cleanQuery || cleanQuery.length < 2) return null;
-    return KNOWN_BRANDS.find(
+    return availableBrands.find(
       (b) =>
         b.name.toLowerCase() === cleanQuery ||
         cleanQuery.includes(b.name.toLowerCase()) ||
         b.name.toLowerCase().includes(cleanQuery)
     );
-  }, [cleanQuery]);
+  }, [cleanQuery, availableBrands]);
 
   // 1. Smart Query Auto-Complete Suggestions (like Google / Amazon search bars)
   const querySuggestions = useMemo(() => {
@@ -82,7 +102,7 @@ export default function LiveWatchSearch({
     const seen = new Set();
 
     // Check brand matches
-    for (const b of KNOWN_BRANDS) {
+    for (const b of availableBrands) {
       const bLower = b.name.toLowerCase();
       if (bLower.includes(cleanQuery) && !seen.has(bLower)) {
         suggestions.push({ text: b.name, type: 'brand', slug: b.slug });

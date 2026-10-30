@@ -90,23 +90,43 @@ export default function BrandMarquee({
 }) {
   const brandList = useMemo(() => {
     if (brands && Array.isArray(brands) && brands.length > 0) {
-      const filtered = [];
+      const result = [];
       const seen = new Set();
       brands.forEach((b) => {
         const bName = typeof b === 'string' ? b : b?.name;
         if (!bName) return;
         const norm = bName.toLowerCase().trim();
         if (seen.has(norm)) return;
+        seen.add(norm);
+
         const match = IMPORTED_BRANDS.find(
           (item) => item.name.toLowerCase() === norm
         );
+
         if (match) {
-          seen.add(norm);
-          filtered.push({ ...match, ...(typeof b === 'object' ? b : {}) });
+          result.push({
+            ...match,
+            ...(typeof b === 'object' ? b : {}),
+          });
+        } else if (typeof b === 'object') {
+          result.push({
+            name: b.name,
+            country: b.country || 'Global',
+            category: b.category || 'featured',
+            desc: b.desc || '',
+            image: b.image || null,
+            ...b,
+          });
+        } else {
+          result.push({
+            name: bName,
+            country: 'Global',
+            category: 'featured',
+          });
         }
       });
-      if (filtered.length === IMPORTED_BRANDS.length) {
-        return filtered;
+      if (result.length > 0) {
+        return result;
       }
     }
     return IMPORTED_BRANDS;

@@ -20,6 +20,7 @@ import WatchCard from '../components/WatchCard';
 import { FALLBACK_WATCHES, getWatchGender } from '../data/fallbackWatches';
 import { getBrandReferenceImage } from '../components/BrandMarquee';
 import { getWhatsAppLink, getStoredCustomerProfile } from '../utils/api';
+import { useStore } from '../context/StoreContext';
 
 const BRAND_METADATA = {
   titan: {
@@ -372,19 +373,37 @@ export default function BrandPage({
 }) {
   const { brandSlug } = useParams();
   const navigate = useNavigate();
+  const storeContext = useStore ? useStore() : null;
+  const storeBrands = storeContext?.storeData?.brands || [];
 
   // Normalize slug & retrieve brand details first
   const cleanSlug = (brandSlug || '').toLowerCase().trim();
+
+  // Look up custom brand dynamically configured by admin
+  const customBrand = storeBrands.find((b) => {
+    const bName = typeof b === 'string' ? b : b?.name;
+    if (!bName) return false;
+    const s = bName.toLowerCase().trim().replace(/\s+/g, '-');
+    return s === cleanSlug || bName.toLowerCase().trim() === cleanSlug;
+  });
+
   const meta =
-    BRAND_METADATA[cleanSlug] || {
+    BRAND_METADATA[cleanSlug] || (customBrand ? {
+      name: customBrand.name,
+      country: customBrand.country || 'Global',
+      tagline: customBrand.desc || customBrand.tagline || `${customBrand.name} Authorized Collection`,
+      history: customBrand.story || customBrand.history || `Official collections of ${customBrand.name} available at Ram Prasad Agencies authorized showroom in Gorakhpur.`,
+      showrooms: customBrand.showrooms || 'Baldev Plaza & JalKal Building, Golghar',
+      image: customBrand.image || null,
+    } : {
       name: (brandSlug || 'Maison').toUpperCase(),
       country: 'Global',
       tagline: 'Authorized Gorakhpur Showroom Showcase',
       history: 'Exclusive luxury timepiece collection available at Ram Prasad Agencies, Gorakhpur.',
       showrooms: 'Baldev Plaza & JalKal Building, Golghar',
-    };
+    });
 
-  const brandImage = getBrandReferenceImage(meta.name);
+  const brandImage = customBrand?.image || getBrandReferenceImage(meta.name);
 
   // Selected gender filter: 'ALL' | 'Men' | 'Women' | 'Unisex'
   const [selectedGender, setSelectedGender] = useState('ALL');
