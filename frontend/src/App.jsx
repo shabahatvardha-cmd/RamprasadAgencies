@@ -4,7 +4,6 @@ import { StoreProvider, useStore, DEFAULT_VINTAGE_STORE_DATA } from './context/S
 import AnnouncementBar from './components/AnnouncementBar';
 import Header from './components/Header';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
-import WishlistDrawer from './components/WishlistDrawer';
 import WatchModal from './components/WatchModal';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -17,13 +16,18 @@ function ScrollToTop() {
   useEffect(() => {
     if (hash) {
       const targetId = hash.replace('#', '');
-      const el = document.getElementById(targetId);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 120);
-        return;
-      }
+      let attempts = 0;
+      const checkAndScroll = () => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (attempts < 10) {
+          attempts++;
+          setTimeout(checkAndScroll, 70);
+        }
+      };
+      setTimeout(checkAndScroll, 50);
+      return;
     }
     try {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -42,79 +46,18 @@ function StorefrontContent() {
   const carousels = currentData.carousels || DEFAULT_VINTAGE_STORE_DATA.carousels;
   const contactPhone = currentData.contactPhone || '+91 98765 43210';
 
-  // Modal & Wishlist state
+  // Modal & Search state
   const [selectedWatchForModal, setSelectedWatchForModal] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('ALL');
-  const [wishlist, setWishlist] = useState(() => {
-    try {
-      const saved = localStorage.getItem('rpa_wishlist');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
-  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
-  // Wishlist handlers
-  const handleToggleWishlist = (item) => {
-    setWishlist((prev) => {
-      const exists = prev.some((w) => w.id === item.id || w._id === item.id);
-      let updated;
-      if (exists) {
-        updated = prev.filter((w) => w.id !== item.id && w._id !== item.id);
-      } else {
-        updated = [...prev, item];
-      }
-      try {
-        localStorage.setItem('rpa_wishlist', JSON.stringify(updated));
-      } catch (err) {
-        console.warn('LocalStorage error:', err);
-      }
-      return updated;
-    });
-  };
-
-  const handleRemoveFromWishlist = (id) => {
-    setWishlist((prev) => {
-      const updated = prev.filter((w) => w.id !== id && w._id !== id);
-      try {
-        localStorage.setItem('rpa_wishlist', JSON.stringify(updated));
-      } catch (err) {
-        console.warn('LocalStorage error:', err);
-      }
-      return updated;
-    });
-  };
-
-  // Combine all watches from backend live updates, store carousels, and full fallback catalog
+  // Single source of truth for watches: backend live updates, falling back to clean catalog
   const allStoreWatches = useMemo(() => {
-    const backendList = Array.isArray(liveWatches) && liveWatches.length > 0 ? liveWatches : [];
-
-    const rawList = [
-      ...backendList,
-      ...(carousels.newArrivals || []),
-      ...(carousels.indianIcons || []),
-      ...(carousels.collectorCapsule || []),
-      ...(carousels.ourIcons || []),
-      ...(carousels.flashDeals || []),
-      ...FALLBACK_WATCHES,
-    ];
-
-    const seenNames = new Set();
-    const seenIds = new Set();
-    const unique = [];
-    for (const item of rawList) {
-      if (!item || !item.name) continue;
-      const idKey = (item._id || item.id || '').trim();
-      const nameKey = item.name.toLowerCase().trim();
-      if ((idKey && seenIds.has(idKey)) || seenNames.has(nameKey)) continue;
-      if (idKey) seenIds.add(idKey);
-      seenNames.add(nameKey);
-      unique.push(item);
+    if (Array.isArray(liveWatches) && liveWatches.length > 0) {
+      return liveWatches;
     }
-    return unique;
-  }, [liveWatches, carousels]);
+    return FALLBACK_WATCHES;
+  }, [liveWatches]);
 
   // Dynamic appearance variables from Admin Appearance Studio
   const appearance = currentData.appearance || {};
@@ -167,8 +110,6 @@ function StorefrontContent() {
 
         {/* 1. Vintage Luxury Sticky Navigation Header */}
         <Header
-          wishlistCount={wishlist.length}
-          onOpenWishlist={() => setIsWishlistOpen(true)}
           allWatches={allStoreWatches}
           onSelectWatch={setSelectedWatchForModal}
           searchQuery={searchQuery}
@@ -194,8 +135,6 @@ function StorefrontContent() {
                 <BrandPage
                   watches={allStoreWatches}
                   contactPhone={contactPhone}
-                  wishlist={wishlist}
-                  onToggleWishlist={handleToggleWishlist}
                   onSelectWatch={setSelectedWatchForModal}
                 />
               }
@@ -213,20 +152,7 @@ function StorefrontContent() {
           </Routes>
         </div>
 
-        {/* 3. Wishlist Sliding Drawer */}
-        <WishlistDrawer
-          isOpen={isWishlistOpen}
-          onClose={() => setIsWishlistOpen(false)}
-          wishlist={wishlist}
-          onRemoveFromWishlist={handleRemoveFromWishlist}
-          contactPhone={contactPhone}
-          onSelectWatch={(item) => {
-            setSelectedWatchForModal(item);
-            setIsWishlistOpen(false);
-          }}
-        />
-
-        {/* 4. Quick View Watch Specifications Modal */}
+        {/* 3. Quick View Watch Specifications Modal */}
         {selectedWatchForModal && (
           <WatchModal
             watch={selectedWatchForModal}

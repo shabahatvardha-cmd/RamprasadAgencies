@@ -68,6 +68,22 @@ export const getWatches = async (filters = {}) => {
   return data.data || [];
 };
 
+const BROADCAST_SYNC_CHANNEL = 'fossil_store_realtime_sync';
+
+export const broadcastSync = (type, payload = null) => {
+  try {
+    if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
+      const channel = new BroadcastChannel(BROADCAST_SYNC_CHANNEL);
+      channel.postMessage({
+        type,
+        payload,
+        timestamp: Date.now(),
+      });
+      channel.close();
+    }
+  } catch {}
+};
+
 /**
  * Add a new watch via POST /api/watches
  */
@@ -85,6 +101,7 @@ export const createWatch = async (watchData) => {
     throw new Error(data.message || 'Failed to create watch');
   }
 
+  broadcastSync('WATCHES_UPDATED');
   return data.data;
 };
 
@@ -101,6 +118,7 @@ export const deleteWatch = async (id) => {
     throw new Error(data.message || 'Failed to delete watch');
   }
 
+  broadcastSync('WATCHES_UPDATED');
   return data;
 };
 
@@ -135,6 +153,8 @@ export const updateSettings = async (settingsData) => {
     throw new Error(data.message || 'Failed to update settings');
   }
 
+  broadcastSync('STORE_UPDATED', data.data);
+  broadcastSync('REFETCH_ALL');
   return data.data;
 };
 
@@ -151,6 +171,8 @@ export const resetSettings = async () => {
     throw new Error(data.message || 'Failed to reset settings');
   }
 
+  broadcastSync('STORE_UPDATED', data.data);
+  broadcastSync('REFETCH_ALL');
   return data.data;
 };
 
@@ -171,6 +193,7 @@ export const updateWatch = async (id, watchData) => {
     throw new Error(data.message || 'Failed to update watch');
   }
 
+  broadcastSync('WATCHES_UPDATED');
   return data.data;
 };
 

@@ -23,8 +23,7 @@ const INDIAN_BRAND_NAMES = ['titan', 'titan raga', 'titan-raga', 'raga', 'hmt', 
 const SWISS_BRAND_NAMES = ['omega', 'tissot', 'breitling', 'rado'];
 const JAPANESE_BRAND_NAMES = ['seiko', 'citizen'];
 
-import { FALLBACK_WATCHES } from '../data/fallbackWatches';
-
+import { FALLBACK_WATCHES, getWatchGender } from '../data/fallbackWatches';
 
 export default function CatalogSection({
   watches = [],
@@ -35,10 +34,9 @@ export default function CatalogSection({
   onSelectCategory,
   searchQuery = '',
   onSearchQuery,
-  wishlist = [],
-  onToggleWishlist,
 }) {
   const [selectedOrigin, setSelectedOrigin] = useState('ALL'); // 'ALL' | 'INDIAN' | 'SWISS' | 'JAPANESE'
+  const [selectedGender, setSelectedGender] = useState('ALL'); // 'ALL' | 'Men' | 'Women' | 'Unisex'
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sortBy, setSortBy] = useState('featured'); // 'featured' | 'name_asc' | 'brand_asc'
   const [activeModalWatch, setActiveModalWatch] = useState(null);
@@ -85,8 +83,13 @@ export default function CatalogSection({
         selectedBrand === 'ALL' ||
         (w.brand && w.brand.toLowerCase() === selectedBrand.toLowerCase());
 
+      // Gender Demographic filter
+      const matchesGender =
+        selectedGender === 'ALL' ||
+        (w.gender || getWatchGender(w)).toLowerCase() === selectedGender.toLowerCase();
+
       // In stock filter
-      const matchesStock = !inStockOnly || w.inStock;
+      const matchesStock = !inStockOnly || w.inStock !== false;
 
       // Multi-token keyword search across all watch metadata
       const rawQuery = (searchQuery || '').toLowerCase().trim();
@@ -111,7 +114,7 @@ export default function CatalogSection({
         );
       }
 
-      return matchesCategory && matchesBrand && matchesStock && matchesSearch;
+      return matchesCategory && matchesBrand && matchesGender && matchesStock && matchesSearch;
     });
 
     if (sortBy === 'name_asc') {
@@ -121,7 +124,7 @@ export default function CatalogSection({
     }
 
     return result;
-  }, [displayWatches, selectedOrigin, selectedCategory, selectedBrand, inStockOnly, searchQuery, sortBy]);
+  }, [displayWatches, selectedOrigin, selectedCategory, selectedBrand, selectedGender, inStockOnly, searchQuery, sortBy]);
 
   // Downward pagination: show 8 initially (2 rows on desktop, 4 on mobile)
   const [visibleCount, setVisibleCount] = useState(8);
@@ -129,7 +132,7 @@ export default function CatalogSection({
   // Reset pagination whenever user changes filters
   useEffect(() => {
     setVisibleCount(8);
-  }, [selectedOrigin, selectedCategory, selectedBrand, inStockOnly, searchQuery, sortBy]);
+  }, [selectedOrigin, selectedCategory, selectedBrand, selectedGender, inStockOnly, searchQuery, sortBy]);
 
   const displayedWatches = filteredWatches.slice(0, visibleCount);
   const hasMore = filteredWatches.length > visibleCount;
@@ -204,25 +207,54 @@ export default function CatalogSection({
           })}
         </div>
 
-        {/* 2. Secondary Filter Controls: Horology Category & Search */}
+        {/* 2. Secondary Filter Controls: Horology Category, Demographic & Search */}
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 sm:gap-4 pt-1">
-          {/* Category Chips */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none touch-pan-x -mx-3 px-3 sm:mx-0 sm:px-0">
-            {CATEGORIES.map((cat) => {
-              const active = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => onSelectCategory && onSelectCategory(cat)}
-                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-extrabold whitespace-nowrap transition-all ${active
-                      ? 'bg-white text-stone-950 shadow-md font-bold'
-                      : 'bg-stone-900 text-stone-400 hover:text-white border border-white/5 hover:border-amber-500/40'
+          {/* Category & Demographic Chips */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+            {/* Demographic Filter Chips */}
+            <div className="flex items-center gap-1 bg-stone-900/90 p-1 rounded-xl border border-white/10 shrink-0">
+              {[
+                { id: 'ALL', label: 'All' },
+                { id: 'Men', label: 'Men' },
+                { id: 'Women', label: 'Women' },
+                { id: 'Unisex', label: 'Unisex' },
+              ].map((item) => {
+                const active = selectedGender === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => setSelectedGender(item.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                      active
+                        ? 'bg-amber-400 text-stone-950 shadow-sm font-extrabold'
+                        : 'text-stone-400 hover:text-white hover:bg-white/5'
                     }`}
-                >
-                  {cat === 'ALL' ? 'All Movements' : cat}
-                </button>
-              );
-            })}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Category Chips */}
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none touch-pan-x -mx-3 px-3 sm:mx-0 sm:px-0">
+              {CATEGORIES.map((cat) => {
+                const active = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => onSelectCategory && onSelectCategory(cat)}
+                    className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-extrabold whitespace-nowrap transition-all ${
+                      active
+                        ? 'bg-white text-stone-950 shadow-md font-bold'
+                        : 'bg-stone-900 text-stone-400 hover:text-white border border-white/5 hover:border-amber-500/40'
+                    }`}
+                  >
+                    {cat === 'ALL' ? 'All Movements' : cat}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Search, Stock, & Sort Controls */}
@@ -288,6 +320,7 @@ export default function CatalogSection({
             <button
               onClick={() => {
                 setSelectedOrigin('ALL');
+                setSelectedGender('ALL');
                 onSelectCategory && onSelectCategory('ALL');
                 onSelectBrand && onSelectBrand('ALL');
                 onSearchQuery && onSearchQuery('');
@@ -301,15 +334,14 @@ export default function CatalogSection({
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-3 sm:gap-5 lg:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
               {displayedWatches.map((watch) => (
                 <WatchCard
                   key={watch._id || watch.id}
                   watch={watch}
                   onQuickView={setActiveModalWatch}
                   contactPhone={contactPhone}
-                  isWishlisted={wishlist.some((w) => w._id === watch._id || w.id === watch._id)}
-                  onToggleWishlist={onToggleWishlist}
+                  isDark={true}
                 />
               ))}
             </div>

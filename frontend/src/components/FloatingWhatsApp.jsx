@@ -41,17 +41,12 @@ export default function FloatingWhatsApp({ contactPhone }) {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 flex-1 min-w-0"
+            className="flex items-center gap-2.5 flex-1 min-w-0"
           >
-            {/* Original WhatsApp Icon */}
-            <div className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center shadow-md shadow-[#25D366]/30 group-hover:scale-105 transition-transform">
-              <OriginalWhatsAppIcon className="w-10 h-10" size={40} />
-            </div>
-
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse shrink-0"></span>
-                <p className="font-semibold text-brass-800 text-sm leading-tight">Live Showroom Concierge</p>
+                <p className="font-semibold text-brass-800 text-sm leading-tight">Showroom Support</p>
               </div>
               <p className="text-[11px] text-[#6B635B] mt-0.5 leading-snug">
                 Inquire about watch stock at Baldev Plaza & JalKal Building

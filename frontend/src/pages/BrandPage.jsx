@@ -367,8 +367,6 @@ export const isWatchInBrand = (w, slug) => {
 export default function BrandPage({
   watches = [],
   contactPhone = '+91 98765 43210',
-  wishlist = [],
-  onToggleWishlist,
   onSelectWatch,
 }) {
   const { brandSlug } = useParams();
@@ -421,9 +419,14 @@ export default function BrandPage({
     return getBrandCampaignAds(cleanSlug, meta, brandImage);
   }, [cleanSlug, meta, brandImage]);
 
-  // Reset slide index on brand change
+  // Reset slide index on brand change and store active brand in session
   useEffect(() => {
     setCurrentSlide(0);
+    try {
+      if (cleanSlug) {
+        sessionStorage.setItem('rpa_last_viewed_brand', cleanSlug);
+      }
+    } catch {}
   }, [cleanSlug]);
 
   // Auto-play timer (every 6 seconds, pauses on mouse hover)
@@ -448,54 +451,20 @@ export default function BrandPage({
     try {
       window.scrollTo(0, 0);
     } catch { }
-    const originalTitle = document.title;
-    document.title = `${meta.name} Timepieces | Ram Prasad Agencies Gorakhpur`;
+    const originalTitle = 'Ram Prasad Agencies | watchstore.in';
+    document.title = `Ram Prasad Agencies | ${meta.name} • watchstore.in`;
     return () => {
       document.title = originalTitle;
     };
   }, [cleanSlug, meta.name]);
 
-  // Filter watches strictly for this brand: merges live updates from admin/backend with the curated collection
+  // Filter watches strictly for this brand:
   const brandWatches = useMemo(() => {
-    const curated = FALLBACK_WATCHES.filter((w) => isWatchInBrand(w, cleanSlug));
     const liveList = (watches || []).filter((w) => isWatchInBrand(w, cleanSlug));
-
-    if (liveList.length === 0) {
-      return curated;
+    if (liveList.length > 0) {
+      return liveList;
     }
-
-    // Index live updates by id and name for instant reactivity
-    const liveById = new Map();
-    const liveByName = new Map();
-    liveList.forEach((w) => {
-      if (w.id) liveById.set(w.id, w);
-      if (w._id) liveById.set(w._id, w);
-      if (w.name) liveByName.set(w.name.toLowerCase().trim(), w);
-    });
-
-    // Merge: live updates override curated base fields
-    const merged = curated.map((base) => {
-      const match =
-        (base.id && liveById.get(base.id)) ||
-        (base._id && liveById.get(base._id)) ||
-        (base.name && liveByName.get(base.name.toLowerCase().trim()));
-      return match ? { ...base, ...match } : base;
-    });
-
-    // Also include any new brand timepieces added via admin studio
-    liveList.forEach((lw) => {
-      const alreadyIncluded = merged.some(
-        (m) =>
-          (m.id && (m.id === lw.id || m.id === lw._id)) ||
-          (m._id && (m._id === lw.id || m._id === lw._id)) ||
-          (m.name && lw.name && m.name.toLowerCase().trim() === lw.name.toLowerCase().trim())
-      );
-      if (!alreadyIncluded) {
-        merged.push(lw);
-      }
-    });
-
-    return merged;
+    return FALLBACK_WATCHES.filter((w) => isWatchInBrand(w, cleanSlug));
   }, [cleanSlug, watches]);
 
   // Gender counts within this brand
@@ -593,7 +562,15 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
               Home
             </Link>
             <span className="text-stone-400">/</span>
-            <Link to="/#brands" className="hover:text-brass-700 transition-colors">
+            <Link
+              to={`/#brand-${cleanSlug}`}
+              onClick={() => {
+                try {
+                  sessionStorage.setItem('rpa_last_viewed_brand', cleanSlug);
+                } catch {}
+              }}
+              className="hover:text-brass-700 transition-colors"
+            >
               Brands
             </Link>
             <span className="text-stone-400">/</span>
@@ -601,7 +578,12 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
           </div>
 
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              try {
+                sessionStorage.setItem('rpa_last_viewed_brand', cleanSlug);
+              } catch {}
+              navigate(`/#brand-${cleanSlug}`);
+            }}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-900 hover:bg-brass-700 text-white text-xs font-bold transition-all shadow-sm cursor-pointer shrink-0"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -1080,52 +1062,17 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             {displayedWatches.map((watch) => (
               <WatchCard
                 key={watch._id || watch.id}
                 watch={watch}
                 onQuickView={onSelectWatch}
                 contactPhone={contactPhone}
-                isWishlisted={wishlist.some(
-                  (w) => (w._id || w.id) === (watch._id || watch.id)
-                )}
-                onToggleWishlist={onToggleWishlist}
               />
             ))}
           </div>
         )}
-      </div>
-
-      {/* 6. Bottom Showroom Assistance Banner */}
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mt-12 sm:mt-16">
-        <div className="rounded-2xl sm:rounded-3xl bg-[#EDE7DB] border border-[#DDD5C7] p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h4 className="font-serif text-lg sm:text-xl font-bold text-stone-900">
-              Looking for a specific {meta.name} reference not listed here?
-            </h4>
-            <p className="text-xs text-stone-600 mt-1">
-              Visit our Baldev Plaza or JalKal Building showrooms in Golghar, or message our horology experts on WhatsApp with your desired reference number.
-            </p>
-          </div>
-          <div className="shrink-0 flex items-center gap-3">
-            <button
-              onClick={() => navigate('/')}
-              className="px-4 py-2.5 rounded-xl bg-white hover:bg-stone-100 text-stone-800 text-xs font-bold transition-all border border-stone-300"
-            >
-              Explore Other Maisons
-            </button>
-            <a
-              href={brandWaLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-brass-700 text-white text-xs font-bold transition-all shadow-md"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>Direct WhatsApp</span>
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   );

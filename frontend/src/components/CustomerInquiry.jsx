@@ -4,23 +4,23 @@ import { getWhatsAppLink, submitLead, saveCustomerProfile } from '../utils/api';
 import { useStore, DEFAULT_INQUIRY_FORM_CONFIG } from '../context/StoreContext';
 
 const COUNTRY_CODES = [
-  { code: '+91', country: 'India', flag: '🇮🇳' },
-  { code: '+1', country: 'USA', flag: '🇺🇸' },
-  { code: '+1-CA', country: 'Canada', flag: '🇨🇦', display: '+1' },
-  { code: '+44', country: 'UK', flag: '🇬🇧' },
-  { code: '+971', country: 'UAE', flag: '🇦🇪' },
-  { code: '+65', country: 'Singapore', flag: '🇸🇬' },
-  { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
-  { code: '+61', country: 'Australia', flag: '🇦🇺' },
-  { code: '+49', country: 'Germany', flag: '🇩🇪' },
-  { code: '+33', country: 'France', flag: '🇫🇷' },
-  { code: '+974', country: 'Qatar', flag: '🇶🇦' },
-  { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
-  { code: '+977', country: 'Nepal', flag: '🇳🇵' },
-  { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
-  { code: '+94', country: 'Sri Lanka', flag: '🇱🇰' },
-  { code: '+81', country: 'Japan', flag: '🇯🇵' },
-  { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+  { code: '+91', iso: 'IN', country: 'India', flag: '🇮🇳' },
+  { code: '+1', iso: 'US', country: 'USA', flag: '🇺🇸' },
+  { code: '+1-CA', iso: 'CA', country: 'Canada', flag: '🇨🇦', display: '+1' },
+  { code: '+44', iso: 'UK', country: 'UK', flag: '🇬🇧' },
+  { code: '+971', iso: 'UAE', country: 'UAE', flag: '🇦🇪' },
+  { code: '+65', iso: 'SG', country: 'Singapore', flag: '🇸🇬' },
+  { code: '+966', iso: 'SA', country: 'Saudi Arabia', flag: '🇸🇦' },
+  { code: '+61', iso: 'AU', country: 'Australia', flag: '🇦🇺' },
+  { code: '+49', iso: 'DE', country: 'Germany', flag: '🇩🇪' },
+  { code: '+33', iso: 'FR', country: 'France', flag: '🇫🇷' },
+  { code: '+974', iso: 'QA', country: 'Qatar', flag: '🇶🇦' },
+  { code: '+965', iso: 'KW', country: 'Kuwait', flag: '🇰🇼' },
+  { code: '+977', iso: 'NP', country: 'Nepal', flag: '🇳🇵' },
+  { code: '+880', iso: 'BD', country: 'Bangladesh', flag: '🇧🇩' },
+  { code: '+94', iso: 'LK', country: 'Sri Lanka', flag: '🇱🇰' },
+  { code: '+81', iso: 'JP', country: 'Japan', flag: '🇯🇵' },
+  { code: '+41', iso: 'CH', country: 'Switzerland', flag: '🇨🇭' },
 ];
 
 export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySubtitle }) {
@@ -29,7 +29,7 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
 
   // Form configuration from Admin Builder
   const formConfig = storeData.inquiryFormConfig || DEFAULT_INQUIRY_FORM_CONFIG;
-  const sectionBadge = formConfig.badge || 'Bespoke Concierge';
+  const sectionBadge = formConfig.badge || 'Showroom Assistance';
   const sectionTitle = inquiryTitle || formConfig.title || 'Custom Sourcing & Horology Inquiries';
   const sectionSubtitle =
     inquirySubtitle ||
@@ -38,7 +38,7 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
   const submitButtonText = formConfig.submitButtonText || 'Submit Inquiry to Showroom';
   const successMessage =
     formConfig.successMessage ||
-    'Your consultation request has been registered with Ram Prasad Agencies concierge. Our showroom specialist will reach out shortly.';
+    'Your consultation request has been registered with Ram Prasad Agencies showroom team. Our showroom specialist will reach out shortly.';
 
   // Active fields list configured by admin
   const configuredFields = (formConfig.fields && Array.isArray(formConfig.fields) && formConfig.fields.length > 0)
@@ -260,7 +260,7 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
               <div className="flex items-start gap-2.5 sm:gap-3">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-brass-700 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs sm:text-sm font-semibold text-[#1A1A1A]">Rapid Response Concierge</h4>
+                  <h4 className="text-xs sm:text-sm font-semibold text-[#1A1A1A]">Rapid Showroom Support</h4>
                   <p className="text-[11px] sm:text-xs text-[#6B635B] mt-0.5">
                     Inquiries are answered within 30 minutes during showroom hours (10:30 AM – 9:00 PM, All 7 Days).
                   </p>
@@ -341,7 +341,7 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs font-bold text-[#2C2723] bg-white hover:bg-[#F2ECE1] border border-[#DDD5C7] shadow-sm transition-colors"
                     >
                       <Phone className="w-3.5 h-3.5 text-brass-700" />
-                      <span>Call Concierge</span>
+                      <span>Call Showroom Support</span>
                     </a>
                   </div>
 
@@ -427,8 +427,8 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                                   title="Select Country Dial Code"
                                 >
                                   {COUNTRY_CODES.map((c) => (
-                                    <option key={c.code + c.country} value={c.code}>
-                                      {c.flag} {c.display || c.code} ({c.country})
+                                    <option key={c.code + c.iso} value={c.code} title={`${c.country} (${c.display || c.code})`}>
+                                      {c.flag} {c.display || c.code} ({c.iso})
                                     </option>
                                   ))}
                                 </select>
@@ -519,7 +519,7 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                       {isSubmitting ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>Registering Lead with Concierge...</span>
+                          <span>Submitting Your Request...</span>
                         </>
                       ) : (
                         <>

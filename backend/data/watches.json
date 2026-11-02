@@ -1,27 +1,5 @@
 [
   {
-    "name": "Hello",
-    "brand": "Citizen",
-    "category": "Automatic",
-    "collectionName": "newArrivals",
-    "price": 14995,
-    "originalPrice": 17995,
-    "badge": "out of stock",
-    "movement": "Japanese 21-Jewel Automatic",
-    "caseDiameter": "42mm",
-    "strapType": "Top-Grain Vintage Saddle Leather",
-    "waterResistance": "50m / 5 Bar",
-    "inStock": true,
-    "featured": true,
-    "image": "/uploads/watch-1793362547672-290094889.webp",
-    "description": "Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.",
-    "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
-    "id": "watch-1793362598713",
-    "_id": "watch-1793362598713",
-    "createdAt": "2026-10-30T12:16:38.713Z",
-    "updatedAt": "2026-10-30T12:21:36.682Z"
-  },
-  {
     "_id": "titan-01-edge-ultra-slim",
     "name": "Titan Edge Ultra-Slim (1696SL02)",
     "brand": "Titan",
@@ -1264,27 +1242,6 @@
     "originalPrice": null
   },
   {
-    "id": "omega-03-seamaster-aqua-terra-150m",
-    "_id": "omega-03-seamaster-aqua-terra-150m",
-    "name": "Seamaster Aqua Terra 150M (220.10.41.21.03.004)",
-    "brand": "Omega",
-    "collection": "Seamaster",
-    "category": "Sport / Dress",
-    "movement": "Automatic Co-Axial",
-    "caseDiameter": "41mm",
-    "dialColor": "Atlantic Blue",
-    "caseMaterial": "Stainless Steel",
-    "strapType": "Integrated Stainless Steel Link Bracelet",
-    "description": "Versatile luxury sports watch bridging formal dress and water resistance.",
-    "image": "/images/watches/omega/03.webp",
-    "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
-    "inStock": true,
-    "featured": true,
-    "gender": "Men",
-    "price": null,
-    "originalPrice": null
-  },
-  {
     "id": "omega-04-constellation-co-axial",
     "_id": "omega-04-constellation-co-axial",
     "name": "Constellation Co-Axial Master Chronometer (131.10.39.20.01.001)",
@@ -1497,7 +1454,7 @@
   {
     "id": "omega-14-de-ville-tresor-power-reserve",
     "_id": "omega-14-de-ville-tresor-power-reserve",
-    "name": "De Ville Trésor Power Reserve (435.13.40.21.02.001)",
+    "name": "De Ville TrÃ©sor Power Reserve (435.13.40.21.02.001)",
     "brand": "Omega",
     "collection": "De Ville",
     "category": "Slim Dress",
@@ -2526,39 +2483,41 @@
   },
   {
     "_id": "raga-03-moments-of-joy",
-    "name": "Titan Raga Moments of Joy (95096WM01)",
+    "name": "Titan Raga Showstopper (95306WM01)",
     "brand": "Titan Raga",
-    "collection": "Moments of Joy",
+    "collection": "Raga Showstopper",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "28mm",
+    "caseDiameter": "32mm",
     "dialColor": "Blush Pink",
-    "caseMaterial": "Rose Gold Plated",
-    "strapType": "Delicate Teardrop Lugs & Mesh Bracelet",
-    "description": "Delicate teardrop lugs tailored for wedding celebrations and receptions.",
+    "caseMaterial": "Rose Gold PVD Steel",
+    "strapType": "Rose Gold Link Bracelet",
+    "description": "Distinctive rose gold showstopper watch featuring an ethereal blush pink dial and intricate jewel strap.",
     "image": "/images/watches/titan-raga/03.webp",
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.639Z"
   },
   {
     "_id": "raga-04-aurora",
-    "name": "Titan Raga Aurora (2481WM01)",
+    "name": "Titan Raga Facets (95118WM02)",
     "brand": "Titan Raga",
-    "collection": "Aurora",
+    "collection": "Raga Facets",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "32mm",
-    "dialColor": "Sunburst Blue",
-    "caseMaterial": "Stainless Steel",
-    "strapType": "Fluid Bangle-Style Bracelet Straps",
-    "description": "Minimalist luxury dial encased in fluid bangle-style bracelet straps.",
+    "caseDiameter": "30mm",
+    "dialColor": "Pink Mother of Pearl",
+    "caseMaterial": "Faceted Crystal & Stainless Steel",
+    "strapType": "Rose Gold Stainless Steel Mesh",
+    "description": "Prismatic crystal faceted glass reflecting multi-dimensional radiance over genuine pink mother of pearl.",
     "image": "/images/watches/titan-raga/04.webp",
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.663Z"
   },
   {
     "_id": "raga-05-flora",
@@ -2580,57 +2539,60 @@
   },
   {
     "_id": "raga-06-power-pearls",
-    "name": "Titan Raga Power Pearls (2635WM01)",
+    "name": "Titan Raga Power Pearls (95250WM02F)",
     "brand": "Titan Raga",
-    "collection": "Power Pearls",
+    "collection": "Raga Power Pearls",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "30mm",
-    "dialColor": "Ivory",
-    "caseMaterial": "Pearl-Embedded Steel",
-    "strapType": "Traditional Pearl & Rose Gold Mesh Bracelet",
-    "description": "Blends traditional pearl bracelet aesthetics with modern quartz reliability.",
+    "caseDiameter": "32mm",
+    "dialColor": "Mother of Pearl",
+    "caseMaterial": "Brass & Stainless Steel",
+    "strapType": "Pearled Jewellery Bracelet",
+    "description": "Luminous freshwater pearl motifs framing an iridescent mother of pearl dial for elevated soirees.",
     "image": "/images/watches/titan-raga/06.webp",
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-07-cocktails",
-    "name": "Titan Raga Cocktails (2588WM03)",
+    "name": "Titan Raga Shaped MOP (2799WM01)",
     "brand": "Titan Raga",
-    "collection": "Cocktails",
+    "collection": "Raga Aurora",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "30mm",
-    "dialColor": "Deep Emerald",
-    "caseMaterial": "Crystal Studded Steel",
-    "strapType": "Gemstone-Hued Crystal Link Bracelet",
-    "description": "Cocktail-party statement piece featuring rich gemstone-hued dials.",
+    "caseDiameter": "34mm",
+    "dialColor": "Mother of Pearl",
+    "caseMaterial": "Rose Gold Ion-Plated Steel",
+    "strapType": "Rose Gold Metal Bracelet",
+    "description": "Sculpted organic bezel contouring a shimmering natural shell dial with rose gold accents.",
     "image": "/images/watches/titan-raga/07.webp",
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-08-delight",
-    "name": "Titan Raga Delight (2485SL01)",
+    "name": "Titan Raga Viva Leather (2579WL01)",
     "brand": "Titan Raga",
-    "collection": "Delight",
+    "collection": "Raga Viva",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "27mm",
-    "dialColor": "Silver",
-    "caseMaterial": "Slim Leather & Metal",
-    "strapType": "Slim Pastel Leather Strap with Metal Charm",
-    "description": "Sleek daily-wear dress watch blending leather comfort with metal charm.",
+    "caseDiameter": "32mm",
+    "dialColor": "Rose Gold Sunray",
+    "caseMaterial": "Rose Gold Plated Steel",
+    "strapType": "Genuine Blush Leather Strap",
+    "description": "Refined minimalism pairing a sunburst rose gold dial with ultra-supple handcrafted blush leather.",
     "image": "/images/watches/titan-raga/08.webp",
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-09-sparkle",
@@ -2670,93 +2632,98 @@
   },
   {
     "_id": "raga-11-noir",
-    "name": "Titan Raga Noir (2612NM01)",
+    "name": "Titan Raga Geometric (2693QM01)",
     "brand": "Titan Raga",
-    "collection": "Noir",
+    "collection": "Raga Geometric",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "30mm",
-    "dialColor": "Onyx Black",
-    "caseMaterial": "Gunmetal Steel",
-    "strapType": "Sleek Gunmetal Ion-Plated Mesh Bracelet",
-    "description": "Mysterious dark-metal aesthetic providing striking wrist contrast.",
+    "caseDiameter": "28mm x 35mm",
+    "dialColor": "Midnight Blue",
+    "caseMaterial": "Polished Stainless Steel",
+    "strapType": "Rose Gold Metal Strap",
+    "description": "Architectural rectangular form paired with a rich midnight blue dial and slender rose gold links.",
     "image": "/images/watches/titan-raga/11.webp",
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-12-ceramic-elegance",
-    "name": "Titan Raga Ceramic Elegance (2640QC01)",
+    "name": "Titan Raga Ceramics (95146KD01)",
     "brand": "Titan Raga",
-    "collection": "Ceramic",
+    "collection": "Raga Ceramics",
     "category": "Luxury",
     "movement": "Quartz",
-    "caseDiameter": "32mm",
-    "dialColor": "White Ceramic",
-    "caseMaterial": "Rose Gold Accents & High-Tech Ceramic",
-    "strapType": "Scratch-Resistant High-Tech Ceramic & Rose Gold Links",
-    "description": "Scratch-resistant high-tech ceramic interlinked with warm rose gold.",
+    "caseDiameter": "33mm",
+    "dialColor": "Ocean Blue",
+    "caseMaterial": "High-Tech Ceramic & Stainless Steel",
+    "strapType": "Ceramic & Rose Gold Bracelet",
+    "description": "Scratch-resistant high-tech deep ocean blue ceramic links seamlessly interwoven with warm rose gold steel.",
     "image": "/images/watches/titan-raga/12.webp",
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-13-pearlescent",
-    "name": "Titan Raga Pearlescent (2545WM01)",
+    "name": "Titan Raga Pearlescent (2809WM01)",
     "brand": "Titan Raga",
-    "collection": "Pearlescent",
+    "collection": "Raga Pearlescent",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "28mm",
-    "dialColor": "Mother-of-Pearl",
-    "caseMaterial": "Dual Tone Steel",
-    "strapType": "Graceful Dual-Tone Gold & Silver Metal Strap",
-    "description": "Graceful dual-tone metal strap matching both gold and silver jewelry.",
+    "caseDiameter": "30mm",
+    "dialColor": "Natural Mother of Pearl",
+    "caseMaterial": "Rose Gold Ion-Plated Brass",
+    "strapType": "Rose Gold Sculptural Bangle",
+    "description": "Flowing sculptural lines wrapping gracefully around the wrist, crowned by an iridescent shell dial.",
     "image": "/images/watches/titan-raga/13.webp",
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-14-empress",
-    "name": "Titan Raga Empress (2502WM01)",
+    "name": "Titan Raga Empress (95428YM01)",
     "brand": "Titan Raga",
-    "collection": "Empress",
+    "collection": "Raga Empress",
     "category": "Festive / Wedding",
     "movement": "Quartz",
-    "caseDiameter": "31mm",
-    "dialColor": "Golden Regal Textured",
-    "caseMaterial": "Gold-Plated Stainless Steel",
-    "strapType": "Royal Imperial Open-Cuff Bangle Bracelet",
-    "description": "Royal imperial styling crafted for brides and festive celebrations.",
+    "caseDiameter": "32mm",
+    "dialColor": "Forest Green Sunray",
+    "caseMaterial": "Gold Ion-Plated Steel",
+    "strapType": "Jewellery Gold Metal Strap",
+    "description": "Regal jewel tones featuring an emerald forest green sunburst dial against warm 18k gold ion plating.",
     "image": "/images/watches/titan-raga/14.webp",
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-15-chic-petite",
-    "name": "Titan Raga Chic Petite (2491SL02)",
+    "name": "Titan Raga Chic Petite (2688WM01)",
     "brand": "Titan Raga",
-    "collection": "Chic Petite",
+    "collection": "Raga Chic",
     "category": "Casual / Office",
     "movement": "Quartz",
-    "caseDiameter": "24mm",
-    "dialColor": "Minimal Rose Gold",
-    "caseMaterial": "Rose Gold Tone Brass & Leather",
-    "strapType": "Slender Genuine Leather Strap",
-    "description": "Ultra-dainty micro dial suited for slender wrists and office wear.",
+    "caseDiameter": "29mm",
+    "dialColor": "Espresso Brown",
+    "caseMaterial": "Rose Gold Plated Steel",
+    "strapType": "Rose Gold Jewellery Bracelet",
+    "description": "Dainty and sophisticated everyday luxury with an espresso satin dial and braided jewellery strap.",
     "image": "/images/watches/titan-raga/15.webp",
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-16-swarnim-gold",
@@ -2814,21 +2781,22 @@
   },
   {
     "_id": "raga-19-viva-rose",
-    "name": "Titan Raga Viva Rose (2606RM01)",
+    "name": "Titan Raga Viva Rose (2604WM01)",
     "brand": "Titan Raga",
     "collection": "Raga Viva",
     "category": "Dress",
     "movement": "Quartz",
-    "caseDiameter": "29mm",
-    "dialColor": "Rose Gold Sunray",
-    "caseMaterial": "All-Rose Plated Stainless Steel",
-    "strapType": "Monochromatic Rose Gold Polished Link Bracelet",
-    "description": "Monochromatic rose gold finish popular among modern young professionals.",
+    "caseDiameter": "34mm",
+    "dialColor": "Slate Grey with Date",
+    "caseMaterial": "Stainless Steel",
+    "strapType": "Rose Gold Multi-Link Bracelet",
+    "description": "Modern executive styling with integrated date complication and slate grey sunray dial.",
     "image": "/images/watches/titan-raga/19.webp",
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "updatedAt": "2026-11-02T11:59:59.664Z"
   },
   {
     "_id": "raga-20-classics",
@@ -2874,7 +2842,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty",
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "updatedAt": "2026-10-30T07:07:03.272Z"
   },
   {
@@ -2903,7 +2871,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-03-ecodrive-calendrier",
@@ -2931,7 +2899,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-04-corso-ecodrive",
@@ -2959,7 +2927,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-05-promaster-mechanical-diver",
@@ -2987,7 +2955,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-06-radiocontrolled-world-chrono",
@@ -3015,7 +2983,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-07-tsuyosa-yellow",
@@ -3043,7 +3011,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-08-promaster-aqualand",
@@ -3071,7 +3039,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-09-axiom-ecodrive",
@@ -3099,7 +3067,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-10-series-8-mechanical",
@@ -3127,7 +3095,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-11-ecodrive-chronograph",
@@ -3155,7 +3123,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-12-ecodrive-ladies-diamond",
@@ -3183,7 +3151,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-13-promaster-skyhawk-at",
@@ -3211,7 +3179,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-14-ecodrive-titanium",
@@ -3239,7 +3207,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-15-tsuyosa-green",
@@ -3267,7 +3235,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-16-ecodrive-one",
@@ -3295,7 +3263,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-17-calendrier-multifunction",
@@ -3323,7 +3291,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-18-promaster-tough",
@@ -3351,7 +3319,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-19-silhouette-crystal",
@@ -3379,7 +3347,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "citizen-20-promaster-ecodrive-gmt",
@@ -3407,7 +3375,7 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-01-neon-disco",
@@ -3435,7 +3403,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-02-reflex-vox-smartwatch",
@@ -3463,7 +3431,7 @@
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-03-edge-metallic",
@@ -3491,7 +3459,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-04-trendies-casual",
@@ -3519,7 +3487,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-05-economy-casual",
@@ -3547,7 +3515,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-06-tees-graphic",
@@ -3575,7 +3543,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-07-bare-essentials",
@@ -3603,7 +3571,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-08-streetwear-chrono",
@@ -3631,7 +3599,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-09-stunners-party-watch",
@@ -3659,7 +3627,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-10-economy-metal",
@@ -3687,7 +3655,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-11-occupational-casual",
@@ -3715,7 +3683,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-12-reflex-play-smartwatch",
@@ -3743,7 +3711,7 @@
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-13-work-casual-steel",
@@ -3771,7 +3739,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-14-un-form-asymmetric",
@@ -3799,7 +3767,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-15-next-gen-digital",
@@ -3827,7 +3795,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-16-economy-minimal",
@@ -3855,7 +3823,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-17-military-field",
@@ -3883,7 +3851,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-18-duo-couple-set",
@@ -3911,7 +3879,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-19-fastfit-sport",
@@ -3939,7 +3907,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fastrack-20-gradient-chic",
@@ -3967,7 +3935,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-01-poze-gold",
@@ -3995,7 +3963,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-02-classic-formal",
@@ -4023,7 +3991,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-03-superfibre-sports",
@@ -4051,7 +4019,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-04-yuva-digital",
@@ -4079,7 +4047,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-05-essentials-steel",
@@ -4107,7 +4075,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-06-gold-wedding-series",
@@ -4135,7 +4103,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-07-stilo-womens-gold",
@@ -4163,7 +4131,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-08-activa-fitness",
@@ -4191,7 +4159,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-09-sleek-metal",
@@ -4219,7 +4187,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-10-digital-alarm-watch",
@@ -4247,7 +4215,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-11-fibre-youth",
@@ -4275,7 +4243,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-12-sleek-leather",
@@ -4303,7 +4271,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-13-poze-rose-gold",
@@ -4331,7 +4299,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-14-wedding-couple-set",
@@ -4359,7 +4327,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-15-gold-dial-classic",
@@ -4387,7 +4355,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-16-gold-chic-women",
@@ -4415,7 +4383,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-17-superfibre-ocean",
@@ -4443,7 +4411,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-18-studded-party-watch",
@@ -4471,7 +4439,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-19-essentials-roman",
@@ -4499,7 +4467,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "sonata-20-minimalist-black",
@@ -4527,7 +4495,7 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-01-neutra-chronograph",
@@ -4555,7 +4523,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-02-machine-chronograph",
@@ -4583,7 +4551,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-03-everett-three-hand",
@@ -4611,7 +4579,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-04-townsman-automatic",
@@ -4639,7 +4607,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-05-raquel-three-hand",
@@ -4667,7 +4635,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-06-carlie-mini",
@@ -4695,7 +4663,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-07-minimalist-three-hand",
@@ -4723,7 +4691,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-08-grant-chronograph",
@@ -4751,7 +4719,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-09-fossil-blue-diver",
@@ -4779,7 +4747,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-10-carraway-tonneau",
@@ -4807,7 +4775,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-11-bronson-chronograph",
@@ -4835,7 +4803,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-12-heritage-automatic",
@@ -4863,7 +4831,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-13-scarlette-mini",
@@ -4891,7 +4859,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-14-sport-tourer",
@@ -4919,7 +4887,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-15-harwell-three-hand",
@@ -4947,7 +4915,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-16-nate-chronograph",
@@ -4975,7 +4943,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-17-fb-01-diver",
@@ -5003,7 +4971,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-18-jacqueline-three-hand",
@@ -5031,7 +4999,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-19-gen-6-smartwatch",
@@ -5059,7 +5027,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "fossil-20-townsman-chronograph",
@@ -5087,7 +5055,7 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-01",
@@ -5108,7 +5076,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-02",
@@ -5129,7 +5097,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-03",
@@ -5150,7 +5118,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-04",
@@ -5171,7 +5139,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-05",
@@ -5192,7 +5160,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-06",
@@ -5213,7 +5181,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-07",
@@ -5234,7 +5202,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-08",
@@ -5255,7 +5223,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-09",
@@ -5276,7 +5244,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-10",
@@ -5297,7 +5265,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-11",
@@ -5318,7 +5286,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-12",
@@ -5339,7 +5307,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-13",
@@ -5360,7 +5328,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-14",
@@ -5381,7 +5349,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-15",
@@ -5402,7 +5370,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-16",
@@ -5423,7 +5391,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-17",
@@ -5444,7 +5412,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-18",
@@ -5465,7 +5433,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-19",
@@ -5486,7 +5454,7 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   },
   {
     "id": "breitling-20",
@@ -5507,6 +5475,6 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock • Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
   }
 ]

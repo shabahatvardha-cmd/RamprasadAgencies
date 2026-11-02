@@ -123,7 +123,7 @@ export default function VisualInquiry({ storeData = {}, isEditMode, onOpenEdit, 
                         <div className="flex rounded-xl bg-white border border-[#DDD5C7] overflow-hidden opacity-90">
                           <div className="bg-[#EFE8DC] text-xs font-bold text-[#1A1A1A] px-3 py-2.5 border-r border-[#DDD5C7] flex items-center gap-1.5">
                             <span>🇮🇳</span>
-                            <span>+91</span>
+                            <span>+91 (IN)</span>
                           </div>
                           <input
                             type="text"

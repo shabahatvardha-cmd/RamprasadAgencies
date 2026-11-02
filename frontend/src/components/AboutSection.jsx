@@ -16,6 +16,7 @@ import {
   Navigation,
   CheckCircle2,
 } from 'lucide-react';
+import { useStore } from '../context/StoreContext';
 import { getStoredCustomerProfile } from '../utils/api';
 
 export default function AboutSection({
@@ -24,15 +25,32 @@ export default function AboutSection({
   certificateImage = '/images/about/heritage-certificate.webp',
   showrooms,
 }) {
+  const { getOverride } = useStore();
   const [activeTab, setActiveTab] = useState(0);
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
 
   const cleanPhone = (contactPhone || '+91 98765 43210').replace(/[^0-9+]/g, '');
 
+  const effectiveTitle = getOverride
+    ? getOverride('about_title', 'Authentic Heritage & Certified Dealership')
+    : 'Authentic Heritage & Certified Dealership';
+
+  const defaultDescription =
+    aboutText ||
+    'Serving Gorakhpur since the 1960s with genuine Swiss automatics, Japanese mechanical calibres, and classic Indian timepieces—every watch delivered with an official international stamped warranty.';
+
+  const effectiveDescription = getOverride
+    ? getOverride('about_text', defaultDescription)
+    : defaultDescription;
+
   // Sanitize certificate image URL (ensuring .webp format)
-  const resolvedCertificate = String(certificateImage || '/images/about/heritage-certificate.webp')
+  const baseCertificate = String(certificateImage || '/images/about/heritage-certificate.webp')
     .trim()
     .replace(/\.jpg$/i, '.webp');
+
+  const resolvedCertificate = getOverride
+    ? getOverride('certificate_image', baseCertificate)
+    : baseCertificate;
 
   const profile = getStoredCustomerProfile() || {};
   const customerName = profile.name?.trim() || '[Your Name]';
@@ -56,10 +74,8 @@ export default function AboutSection({
       label: 'Our Heritage',
       icon: Sparkles,
       badge: 'Swiss & Japanese Horology',
-      title: 'Authentic Heritage & Certified Dealership',
-      description:
-        aboutText ||
-        'Serving Gorakhpur since the 1960s with genuine Swiss automatics, Japanese mechanical calibres, and classic Indian timepieces—every watch delivered with an official international stamped warranty.',
+      title: effectiveTitle,
+      description: effectiveDescription,
       image: resolvedCertificate,
       imageAlt: 'Ram Prasad Agencies Official Authorized Dealer Certificate',
       tagBadge: 'Official Dealership Credential',
@@ -263,11 +279,10 @@ export default function AboutSection({
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(idx)}
-                className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
-                  isActive
-                    ? 'bg-brass-700 text-white shadow-md shadow-brass-700/20 font-bold scale-102'
-                    : 'bg-white/50 backdrop-blur-md text-[#5C544D] border border-[#DDD5C7]/80 hover:bg-white/80 hover:text-[#1A1A1A]'
-                }`}
+                className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer ${isActive
+                  ? 'bg-brass-700 text-white shadow-md shadow-brass-700/20 font-bold scale-102'
+                  : 'bg-white/50 backdrop-blur-md text-[#5C544D] border border-[#DDD5C7]/80 hover:bg-white/80 hover:text-[#1A1A1A]'
+                  }`}
               >
                 <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-brass-700'}`} />
                 <span>{tab.label}</span>
@@ -288,252 +303,356 @@ export default function AboutSection({
           <div className="absolute bottom-4 left-4 w-3.5 h-3.5 border-b-2 border-l-2 border-[#C2A578]/50 pointer-events-none" />
           <div className="absolute bottom-4 right-4 w-3.5 h-3.5 border-b-2 border-r-2 border-[#C2A578]/50 pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Left: Horological Story & Luxury Crest Badges */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-5">
-              {/* Top Live Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-brass-600/30 text-brass-800 text-[10.5px] font-mono font-bold uppercase tracking-widest shadow-xs backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>{currentTab.badge}</span>
+          {currentTab.id === 'showrooms' ? (
+            /* ======================================================== */
+            /* TAB 2: DUAL SHOWROOMS - FULL-WIDTH PRESTIGE VIEW         */
+            /* (No picture, written content expansively covers the card) */
+            /* ======================================================== */
+            <div className="relative z-10 space-y-6 sm:space-y-7 animate-fade-in">
+              {/* Header: Badge, Title & Story */}
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-brass-600/30 text-brass-800 text-[10.5px] font-mono font-bold uppercase tracking-widest shadow-xs backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>{currentTab.badge}</span>
+                </div>
+
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1A1A1A] tracking-tight leading-snug">
+                  {currentTab.title}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-[#5C544D] leading-relaxed max-w-3xl">
+                  {currentTab.description}
+                </p>
               </div>
 
-              {/* Title */}
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1A1A1A] tracking-tight leading-snug">
-                {currentTab.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-[#5C544D] leading-relaxed font-normal">
-                {currentTab.description}
-              </p>
-
-              {/* 3 Luxury Tactile Horology Guarantee Crest Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
-                {currentTab.featureItems.map((item, fIdx) => {
-                  const FIcon = item.icon;
-                  return (
-                    <div
-                      key={fIdx}
-                      className="p-3 rounded-xl bg-white/80 hover:bg-white border border-[#DDD5C7] hover:border-brass-600/50 shadow-xs hover:shadow-md transition-all duration-300 flex items-start gap-2.5 backdrop-blur-sm group/feat"
-                    >
-                      <div className="w-7 h-7 rounded-lg bg-brass-100/90 border border-brass-600/25 flex items-center justify-center shrink-0 mt-0.5 text-brass-800 group-hover/feat:scale-105 transition-transform">
-                        <FIcon className="w-3.5 h-3.5" />
+              {/* 3 Luxury Tactile Destination Cards - Spanning Full Width */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 pt-1">
+                {/* Store 1: Baldev Plaza */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/85 hover:bg-white border border-[#DDD5C7] hover:border-brass-600/50 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between backdrop-blur-sm group/store">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-9 h-9 rounded-xl bg-brass-100/90 border border-brass-600/25 flex items-center justify-center text-brass-800 group-hover/store:scale-105 transition-transform">
+                        <Store className="w-4 h-4" />
                       </div>
-                      <div className="min-w-0">
-                        <div className="text-[11.5px] font-bold text-[#1A1A1A] leading-tight">
-                          {item.title}
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brass-100/80 text-brass-800 border border-brass-600/20">
+                        Swiss & Automatics
+                      </span>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
+                        Store 1: Baldev Plaza Flagship
+                      </h4>
+                      <p className="text-[11px] text-[#7A7167] mt-0.5">
+                        Opposite Town Hall / Heart of Golghar Hub
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-[#EFEAE1] space-y-1">
+                      <p className="text-[10.5px] font-bold text-brass-900 uppercase tracking-wider">
+                        Curated Collections:
+                      </p>
+                      <p className="text-[11px] text-[#4A4036] leading-relaxed">
+                        Official Swiss (Tissot, Rado) & Japanese Automatics (Seiko, Citizen Presage)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-2.5 border-t border-[#EFEAE1] flex items-center justify-between text-[10.5px]">
+                    <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                      Master Horology Bench
+                    </span>
+                    <span className="text-[#8A8177]">Opp. Town Hall</span>
+                  </div>
+                </div>
+
+                {/* Store 2: JalKal Building */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/85 hover:bg-white border border-[#DDD5C7] hover:border-brass-600/50 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between backdrop-blur-sm group/store">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-9 h-9 rounded-xl bg-brass-100/90 border border-brass-600/25 flex items-center justify-center text-brass-800 group-hover/store:scale-105 transition-transform">
+                        <MapPin className="w-4 h-4" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brass-100/80 text-brass-800 border border-brass-600/20">
+                        Lifestyle & Classics
+                      </span>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
+                        Store 2: JalKal Building Boutique
+                      </h4>
+                      <p className="text-[11px] text-[#7A7167] mt-0.5">
+                        Near JalKal Compound, Main Golghar Market
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-[#EFEAE1] space-y-1">
+                      <p className="text-[10.5px] font-bold text-brass-900 uppercase tracking-wider">
+                        Curated Collections:
+                      </p>
+                      <p className="text-[11px] text-[#4A4036] leading-relaxed">
+                        Casual Luxury & Chronographs (Titan, Titan Raga, Fastrack, Fossil, Casio)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-2.5 border-t border-[#EFEAE1] flex items-center justify-between text-[10.5px]">
+                    <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                      Instant Battery & Sizing
+                    </span>
+                    <span className="text-[#8A8177]">Near JalKal</span>
+                  </div>
+                </div>
+
+                {/* Schedule & Walking Synergy */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/85 hover:bg-white border border-[#DDD5C7] hover:border-brass-600/50 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between backdrop-blur-sm group/store">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-9 h-9 rounded-xl bg-brass-100/90 border border-brass-600/25 flex items-center justify-center text-brass-800 group-hover/store:scale-105 transition-transform">
+                        <Clock className="w-4 h-4" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100/90 text-emerald-800 border border-emerald-600/20">
+                        Open All 7 Days
+                      </span>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
+                        10:30 AM – 9:00 PM Viewing
+                      </h4>
+                      <p className="text-[11px] text-[#7A7167] mt-0.5">
+                        Monday through Sunday (Walk-ins Welcome)
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-[#EFEAE1] space-y-1">
+                      <p className="text-[10.5px] font-bold text-brass-900 uppercase tracking-wider">
+                        Twin Boutique Proximity:
+                      </p>
+                      <p className="text-[11px] text-[#4A4036] leading-relaxed">
+                        Just 200 meters apart along Golghar Main Road (a quick 2-minute stroll).
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-2.5 border-t border-[#EFEAE1] flex items-center justify-between text-[10.5px]">
+                    <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                      Stamped Warranty
+                    </span>
+                    <span className="text-[#8A8177]">Gorakhpur Hub</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Actions Bar */}
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#E8DFC0]/70">
+                <a
+                  href="#store-locator"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brass-700 via-amber-700 to-brass-800 hover:from-brass-800 hover:to-brass-900 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-brass-700/20 hover:shadow-brass-700/35 hover:scale-[1.02] active:scale-[0.98] transition-all no-underline cursor-pointer"
+                >
+                  <span>View Full Showroom Details & Maps</span>
+                  <ChevronRight className="w-4 h-4" />
+                </a>
+
+                <div className="flex items-center gap-2 text-xs text-[#6B635B]">
+                  <span className="w-2 h-2 rounded-full bg-brass-600"></span>
+                  <span>Personalized fitting, certified sizing & private timepiece consultations at both Golghar locations.</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* ======================================================== */
+            /* TAB 1 & 3: HERITAGE & DIAGNOSTICS (STANDARD 7/5 SPLIT)   */
+            /* ======================================================== */
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              {/* Left: Horological Story & Luxury Crest Badges */}
+              <div className="lg:col-span-7 space-y-4 sm:space-y-5">
+                {/* Top Live Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-brass-600/30 text-brass-800 text-[10.5px] font-mono font-bold uppercase tracking-widest shadow-xs backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>{currentTab.badge}</span>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1A1A1A] tracking-tight leading-snug">
+                  {currentTab.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-[#5C544D] leading-relaxed font-normal">
+                  {currentTab.description}
+                </p>
+
+                {/* 3 Luxury Tactile Horology Guarantee Crest Badges */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+                  {currentTab.featureItems.map((item, fIdx) => {
+                    const FIcon = item.icon;
+                    return (
+                      <div
+                        key={fIdx}
+                        className="p-3 rounded-xl bg-white/80 hover:bg-white border border-[#DDD5C7] hover:border-brass-600/50 shadow-xs hover:shadow-md transition-all duration-300 flex items-start gap-2.5 backdrop-blur-sm group/feat"
+                      >
+                        <div className="w-7 h-7 rounded-lg bg-brass-100/90 border border-brass-600/25 flex items-center justify-center shrink-0 mt-0.5 text-brass-800 group-hover/feat:scale-105 transition-transform">
+                          <FIcon className="w-3.5 h-3.5" />
                         </div>
-                        <div className="text-[10px] text-[#7A7167] leading-tight mt-0.5">
-                          {item.subtitle}
+                        <div className="min-w-0">
+                          <div className="text-[11.5px] font-bold text-[#1A1A1A] leading-tight">
+                            {item.title}
+                          </div>
+                          <div className="text-[10px] text-[#7A7167] leading-tight mt-0.5">
+                            {item.subtitle}
+                          </div>
                         </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Glowing Magnetic Gold Action Button */}
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  {currentTab.isExternal ? (
+                    <a
+                      href={currentTab.ctaHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brass-700 via-amber-700 to-brass-800 hover:from-brass-800 hover:to-brass-900 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-brass-700/20 hover:shadow-brass-700/35 hover:scale-[1.02] active:scale-[0.98] transition-all no-underline cursor-pointer"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>{currentTab.ctaLabel}</span>
+                    </a>
+                  ) : (
+                    <a
+                      href={currentTab.ctaHref}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brass-700 via-amber-700 to-brass-800 hover:from-brass-800 hover:to-brass-900 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-brass-700/20 hover:shadow-brass-700/35 hover:scale-[1.02] active:scale-[0.98] transition-all no-underline cursor-pointer"
+                    >
+                      <span>{currentTab.ctaLabel}</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Right: Masterpiece Horology Photography & Interactive Showcase Stage */}
+              <div className="lg:col-span-5">
+                {/* ======================================================== */}
+                {/* TAB 1: OUR HERITAGE - ONLY ONE HEADING & WEBP CERTIFICATE */}
+                {/* ======================================================== */}
+                {currentTab.id === 'heritage' && (
+                  <div className="space-y-3">
+                    {/* Single Clean Prestige Heading */}
+                    <div className="flex items-center justify-between px-3.5 py-2 rounded-xl bg-white/85 border border-[#DECDB8] text-[#1A1A1A] shadow-xs backdrop-blur-md">
+                      <div className="flex items-center gap-2">
+                        <Award className="w-4 h-4 text-brass-700" />
+                        <span className="font-serif text-xs sm:text-sm font-bold tracking-wide text-[#2C2416]">
+                          Official Authorized Retailer Certificate
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-brass-800 uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-brass-100/80 border border-brass-600/25">
+                        Estd. 1960
+                      </span>
+                    </div>
+
+                    {/* Main Heritage Stage Card: Converted WebP Certificate */}
+                    <div className="relative rounded-2xl overflow-hidden border border-[#D5C2A8] bg-[#F4EFE6] shadow-xl group/stage aspect-[4/3]">
+                      <img
+                        src={resolvedCertificate}
+                        alt="Ram Prasad Agencies Official Authorized Dealer Certificate"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover/stage:scale-105 cursor-pointer"
+                        onClick={() => setIsCertModalOpen(true)}
+                        loading="lazy"
+                      />
+
+                      {/* Luxury Warm Vignette */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
+
+                      {/* Top Live Badge */}
+                      <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-brass-600/30 backdrop-blur-md shadow-xs text-[10.5px] font-mono font-bold text-brass-900">
+                        <Award className="w-3.5 h-3.5 text-brass-700" />
+                        <span>Official Dealer Credential</span>
+                      </div>
+
+                      {/* Top Right Zoom Button */}
+                      <button
+                        type="button"
+                        onClick={() => setIsCertModalOpen(true)}
+                        className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/90 hover:bg-brass-700 hover:text-white text-brass-900 border border-brass-600/30 backdrop-blur-md transition-all shadow-xs cursor-pointer group/zoom"
+                        title="Click to view full certificate"
+                      >
+                        <ZoomIn className="w-4 h-4 transition-transform group-hover/zoom:scale-110" />
+                      </button>
+
+                      {/* Bottom Museum Spec Strip */}
+                      <div
+                        onClick={() => setIsCertModalOpen(true)}
+                        className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-[#D5C2A8] flex items-center justify-between text-xs text-[#1A1A1A] cursor-pointer hover:border-brass-600 transition-colors shadow-sm"
+                      >
+                        <div className="flex items-center gap-1.5 truncate">
+                          <ShieldCheck className="w-3.5 h-3.5 text-brass-700 shrink-0" />
+                          <span className="text-[11px] text-[#4A4036] font-medium truncate">
+                            Serial: RPA-8924 • Stamped & Sealed
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-brass-800 uppercase tracking-wider shrink-0 flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                          View Fullscreen
+                        </span>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
 
-              {/* Glowing Magnetic Gold Action Button */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-                {currentTab.isExternal ? (
-                  <a
-                    href={currentTab.ctaHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brass-700 via-amber-700 to-brass-800 hover:from-brass-800 hover:to-brass-900 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-brass-700/20 hover:shadow-brass-700/35 hover:scale-[1.02] active:scale-[0.98] transition-all no-underline cursor-pointer"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>{currentTab.ctaLabel}</span>
-                  </a>
-                ) : (
-                  <a
-                    href={currentTab.ctaHref}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brass-700 via-amber-700 to-brass-800 hover:from-brass-800 hover:to-brass-900 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-brass-700/20 hover:shadow-brass-700/35 hover:scale-[1.02] active:scale-[0.98] transition-all no-underline cursor-pointer"
-                  >
-                    <span>{currentTab.ctaLabel}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </a>
+                    {/* Subtle Helper Note */}
+                    <div className="text-center">
+                      <p className="text-[10.5px] text-[#7A7167] italic">
+                        * Official stamped authorized dealer certificate. International manufacturer warranty provided with all timepieces.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* ======================================================== */}
+                {/* TAB 3: DIAGNOSTICS & CARE STAGE                          */}
+                {/* ======================================================== */}
+                {currentTab.id === 'clinic' && (
+                  <div className="space-y-3">
+                    <div className="relative rounded-2xl overflow-hidden border border-[#D5C2A8] bg-[#F4EFE6] shadow-xl group/stage aspect-[4/3]">
+                      <img
+                        src={currentTab.image}
+                        alt={currentTab.imageAlt}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover/stage:scale-106"
+                        loading="lazy"
+                      />
+
+                      {/* Vignette Shadow Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
+
+                      {/* Mechanical Heartbeat Pulse Glass Pill (Top-Left) */}
+                      <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-brass-600/30 backdrop-blur-md shadow-xs text-[10.5px] font-mono font-bold text-brass-900">
+                        <Wrench className="w-3.5 h-3.5 text-brass-700" />
+                        <span>Certified In-Store Clinic</span>
+                      </div>
+
+                      {/* Bottom Museum Spec Strip */}
+                      <div className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-[#D5C2A8] flex items-center justify-between text-xs text-[#1A1A1A] shadow-sm">
+                        <div className="flex items-center gap-1.5 truncate">
+                          <MapPin className="w-3.5 h-3.5 text-brass-700 shrink-0" />
+                          <span className="text-[11px] text-[#4A4036] font-medium truncate">
+                            Diagnostics Bench at Both Showrooms
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-emerald-700 uppercase tracking-wider shrink-0 flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                          While You Wait
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
-
-            {/* Right: Masterpiece Horology Photography & Interactive Showcase Stage */}
-            <div className="lg:col-span-5">
-              {/* ======================================================== */}
-              {/* TAB 1: OUR HERITAGE - ONLY ONE HEADING & WEBP CERTIFICATE */}
-              {/* ======================================================== */}
-              {currentTab.id === 'heritage' && (
-                <div className="space-y-3">
-                  {/* Single Clean Prestige Heading */}
-                  <div className="flex items-center justify-between px-3.5 py-2 rounded-xl bg-white/85 border border-[#DECDB8] text-[#1A1A1A] shadow-xs backdrop-blur-md">
-                    <div className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-brass-700" />
-                      <span className="font-serif text-xs sm:text-sm font-bold tracking-wide text-[#2C2416]">
-                        Official Authorized Retailer Certificate
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-brass-800 uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-brass-100/80 border border-brass-600/25">
-                      Estd. 1960
-                    </span>
-                  </div>
-
-                  {/* Main Heritage Stage Card: Converted WebP Certificate */}
-                  <div className="relative rounded-2xl overflow-hidden border border-[#D5C2A8] bg-[#F4EFE6] shadow-xl group/stage aspect-[4/3]">
-                    <img
-                      src={resolvedCertificate}
-                      alt="Ram Prasad Agencies Official Authorized Dealer Certificate"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover/stage:scale-105 cursor-pointer"
-                      onClick={() => setIsCertModalOpen(true)}
-                      loading="lazy"
-                    />
-
-                    {/* Luxury Warm Vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
-
-                    {/* Top Live Badge */}
-                    <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-brass-600/30 backdrop-blur-md shadow-xs text-[10.5px] font-mono font-bold text-brass-900">
-                      <Award className="w-3.5 h-3.5 text-brass-700" />
-                      <span>Official Dealer Credential</span>
-                    </div>
-
-                    {/* Top Right Zoom Button */}
-                    <button
-                      type="button"
-                      onClick={() => setIsCertModalOpen(true)}
-                      className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/90 hover:bg-brass-700 hover:text-white text-brass-900 border border-brass-600/30 backdrop-blur-md transition-all shadow-xs cursor-pointer group/zoom"
-                      title="Click to view full certificate"
-                    >
-                      <ZoomIn className="w-4 h-4 transition-transform group-hover/zoom:scale-110" />
-                    </button>
-
-                    {/* Bottom Museum Spec Strip */}
-                    <div
-                      onClick={() => setIsCertModalOpen(true)}
-                      className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-[#D5C2A8] flex items-center justify-between text-xs text-[#1A1A1A] cursor-pointer hover:border-brass-600 transition-colors shadow-sm"
-                    >
-                      <div className="flex items-center gap-1.5 truncate">
-                        <ShieldCheck className="w-3.5 h-3.5 text-brass-700 shrink-0" />
-                        <span className="text-[11px] text-[#4A4036] font-medium truncate">
-                          Serial: RPA-8924 • Stamped & Sealed
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-brass-800 uppercase tracking-wider shrink-0 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        View Fullscreen
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Subtle Helper Note */}
-                  <div className="text-center">
-                    <p className="text-[10.5px] text-[#7A7167] italic">
-                      * Official stamped authorized dealer certificate. International manufacturer warranty provided with all timepieces.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* ======================================================== */}
-              {/* TAB 2: DUAL SHOWROOMS STAGE                              */}
-              {/* ======================================================== */}
-              {currentTab.id === 'showrooms' && (
-                <div className="space-y-3">
-                  <div className="relative rounded-2xl overflow-hidden border border-[#D5C2A8] bg-[#F4EFE6] shadow-xl group/stage aspect-[4/3]">
-                    <img
-                      src={currentTab.image}
-                      alt={currentTab.imageAlt}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover/stage:scale-106"
-                      loading="lazy"
-                    />
-
-                    {/* Luxury Vignette Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
-
-                    {/* Top Glass Badge */}
-                    <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-brass-600/30 backdrop-blur-md shadow-xs text-[10.5px] font-mono font-bold text-brass-900">
-                      <Store className="w-3.5 h-3.5 text-brass-700" />
-                      <span>Golghar Twin Flagships</span>
-                    </div>
-
-                    {/* Bottom Museum Spec Strip */}
-                    <div className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-[#D5C2A8] flex items-center justify-between text-xs text-[#1A1A1A] shadow-sm">
-                      <div className="flex items-center gap-1.5 truncate">
-                        <MapPin className="w-3.5 h-3.5 text-brass-700 shrink-0" />
-                        <span className="text-[11px] text-[#4A4036] font-medium truncate">
-                          Baldev Plaza & JalKal Building
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 uppercase tracking-wider shrink-0 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        200m Apart • 2 Min Walk
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Highlights Strip */}
-                  <div className="p-2.5 rounded-xl bg-white/80 border border-[#DDD5C7] flex items-center justify-between text-[11px] text-[#5C544D] shadow-xs">
-                    <span className="flex items-center gap-1.5 font-medium">
-                      <Clock className="w-3.5 h-3.5 text-brass-700" />
-                      Both Open: 10:30 AM – 9:00 PM (All 7 Days)
-                    </span>
-                    <a
-                      href="#store-locator"
-                      className="text-brass-800 hover:text-brass-900 font-bold flex items-center gap-0.5 no-underline"
-                    >
-                      <span>Showroom Details</span>
-                      <ChevronRight className="w-3 h-3" />
-                    </a>
-                  </div>
-                </div>
-              )}
-
-              {/* ======================================================== */}
-              {/* TAB 3: DIAGNOSTICS & CARE STAGE                          */}
-              {/* ======================================================== */}
-              {currentTab.id === 'clinic' && (
-                <div className="space-y-3">
-                  <div className="relative rounded-2xl overflow-hidden border border-[#D5C2A8] bg-[#F4EFE6] shadow-xl group/stage aspect-[4/3]">
-                    <img
-                      src={currentTab.image}
-                      alt={currentTab.imageAlt}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover/stage:scale-106"
-                      loading="lazy"
-                    />
-
-                    {/* Vignette Shadow Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
-
-                    {/* Mechanical Heartbeat Pulse Glass Pill (Top-Left) */}
-                    <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-brass-600/30 backdrop-blur-md shadow-xs text-[10.5px] font-mono font-bold text-brass-900">
-                      <Wrench className="w-3.5 h-3.5 text-brass-700" />
-                      <span>Certified In-Store Clinic</span>
-                    </div>
-
-                    {/* Bottom Museum Spec Strip */}
-                    <div className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-[#D5C2A8] flex items-center justify-between text-xs text-[#1A1A1A] shadow-sm">
-                      <div className="flex items-center gap-1.5 truncate">
-                        <MapPin className="w-3.5 h-3.5 text-brass-700 shrink-0" />
-                        <span className="text-[11px] text-[#4A4036] font-medium truncate">
-                          Diagnostics Bench at Both Showrooms
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 uppercase tracking-wider shrink-0 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                        While You Wait
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-2.5 rounded-xl bg-white/80 border border-[#DDD5C7] flex items-center justify-between text-[11px] text-[#5C544D] shadow-xs">
-                    <span className="flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-brass-700" />
-                      Silver-Oxide Zero-Leak Cell Guarantee
-                    </span>
-                    <span className="text-brass-800 font-bold">Free Sizing</span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+          )}
         </div>
 
         {/* 6. BOTTOM QUALITY EMBOSSED BANNER */}

@@ -6,8 +6,6 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import LiveWatchSearch from './LiveWatchSearch';
 
 export default function Header({
-  wishlistCount = 0,
-  onOpenWishlist,
   allWatches = [],
   onSelectWatch,
   onSearch,
@@ -58,24 +56,34 @@ export default function Header({
     if (href.startsWith('/#')) {
       e.preventDefault();
       const targetId = href.replace('/#', '');
+      let finalHref = href;
+      if (targetId === 'brands' || targetId === 'brand') {
+        try {
+          const lastBrand = sessionStorage.getItem('rpa_last_viewed_brand');
+          if (lastBrand) {
+            finalHref = `/#brand-${lastBrand}`;
+          }
+        } catch {}
+      }
+
       if (location.pathname === '/') {
-        const el = document.getElementById(targetId);
+        const destId = finalHref.replace('/#', '');
+        const el = document.getElementById(destId) || document.getElementById('brands');
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } else {
-        navigate(href);
+        navigate(finalHref);
       }
     }
   };
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 font-sans text-[#1A1A1A] ${
-        isScrolled
+      className={`sticky top-0 z-50 transition-all duration-300 font-sans text-[#1A1A1A] ${isScrolled
           ? 'bg-[#FAF8F5] border-b border-[#D8CEBC] shadow-[0_8px_30px_-4px_rgba(20,15,10,0.18)]'
           : 'bg-[#FAF8F5] border-b border-[#E8E1D5] shadow-sm'
-      }`}
+        }`}
       style={{ backgroundColor: '#FAF8F5' }}
     >
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
@@ -93,10 +101,10 @@ export default function Header({
               </span>
               <p className="text-[8.5px] sm:text-[10px] uppercase tracking-widest text-brass-700 font-extrabold truncate mt-0.5">
                 {storeData?.tagline &&
-                !storeData.tagline.includes('Vintage Horology') &&
-                !storeData.tagline.includes('Authorized & Imported') &&
-                !storeData.tagline.includes('TheWatchStore.in') &&
-                !storeData.tagline.toLowerCase().includes('ramprasadwatchstore')
+                  !storeData.tagline.includes('Vintage Horology') &&
+                  !storeData.tagline.includes('Authorized & Imported') &&
+                  !storeData.tagline.includes('TheWatchStore.in') &&
+                  !storeData.tagline.toLowerCase().includes('ramprasadwatchstore')
                   ? storeData.tagline
                   : 'WATCHSTORE.IN'}
               </p>
@@ -153,9 +161,8 @@ export default function Header({
 
       {/* Luxury Antique Gold Divider Line at Bottom of Header */}
       <div
-        className={`h-[1.5px] w-full bg-gradient-to-r from-brass-600/10 via-brass-500/70 to-brass-600/10 transition-opacity duration-300 ${
-          isScrolled ? 'opacity-100' : 'opacity-40'
-        }`}
+        className={`h-[1.5px] w-full bg-gradient-to-r from-brass-600/10 via-brass-500/70 to-brass-600/10 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-40'
+          }`}
       />
 
       {/* Mobile Drawer Menu */}

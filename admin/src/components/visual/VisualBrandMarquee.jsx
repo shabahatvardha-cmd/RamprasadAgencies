@@ -180,31 +180,21 @@ export default function VisualBrandMarquee({
     return 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4.5';
   };
 
-  // Combine store watches with comprehensive fallback data so every brand has rich watches
+  // Helper to strictly match watch to brand
+  const isWatchInBrand = (w, brandName) => {
+    if (!w || !brandName) return false;
+    const b = (w.brand || '').toLowerCase().trim();
+    const sel = (brandName || '').toLowerCase().trim();
+    if (sel === 'titan') return b === 'titan';
+    if (sel === 'titan raga' || sel === 'raga') return b === 'titan raga' || b === 'raga';
+    if (sel === 'tag heuer' || sel === 'tag-heuer') return b === 'tag heuer' || b === 'tag-heuer';
+    return b === sel || b.replace(/\s+/g, '-') === sel;
+  };
+
+  // Prioritize watches from props, falling back to synchronized dataset
   const displayWatches = useMemo(() => {
-    if (!watches || watches.length === 0) return FALLBACK_WATCHES;
-    const existingIds = new Set();
-    const existingNames = new Set();
-    const merged = [];
-
-    // Prioritize watches from props (includes live edits from backend)
-    watches.forEach((w) => {
-      if (w.id) existingIds.add(w.id);
-      if (w._id) existingIds.add(w._id);
-      if (w.name) existingNames.add(w.name.toLowerCase().trim());
-      merged.push(w);
-    });
-
-    // Supplement with fallbackWatches
-    FALLBACK_WATCHES.forEach((fw) => {
-      const idMatch = (fw.id && existingIds.has(fw.id)) || (fw._id && existingIds.has(fw._id));
-      const nameMatch = fw.name && existingNames.has(fw.name.toLowerCase().trim());
-      if (!idMatch && !nameMatch) {
-        merged.push(fw);
-      }
-    });
-
-    return merged;
+    if (Array.isArray(watches) && watches.length > 0) return watches;
+    return FALLBACK_WATCHES;
   }, [watches]);
 
   const isBrandActive = Boolean(selectedBrand && selectedBrand !== 'ALL');
@@ -212,14 +202,7 @@ export default function VisualBrandMarquee({
   // Filter watches strictly for the active brand
   const filteredWatches = useMemo(() => {
     if (!isBrandActive) return [];
-    const sel = selectedBrand.toLowerCase().trim();
-    return displayWatches.filter((w) => {
-      const b = (w.brand || '').toLowerCase().trim();
-      if (sel === 'titan') return b === 'titan';
-      if (sel === 'titan raga' || sel === 'raga') return b === 'titan raga' || b === 'raga';
-      if (sel === 'tag heuer' || sel === 'tag-heuer') return b === 'tag heuer' || b === 'tag-heuer';
-      return b === sel || b.replace(/\s+/g, '-') === sel || (w.name || '').toLowerCase().includes(sel);
-    });
+    return displayWatches.filter((w) => isWatchInBrand(w, selectedBrand));
   }, [displayWatches, selectedBrand, isBrandActive]);
 
   // Smooth scroll into showcase when brand selected
@@ -464,19 +447,30 @@ export default function VisualBrandMarquee({
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 pt-6">
                 {filteredWatches.map((w, idx) => {
                   const watchImg = getFullImageUrl(w.image);
+                  const isOutOfStock = w.inStock === false;
                   return (
                     <div
                       key={w._id || w.id || idx}
-                      className="group relative rounded-xl overflow-hidden bg-[#1E1C1A] border border-[#3E3830] hover:border-amber-400 p-3 sm:p-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
+                      className={`group relative rounded-xl overflow-hidden bg-[#1E1C1A] border p-3 sm:p-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 ${
+                        isOutOfStock
+                          ? 'border-rose-900/60 bg-rose-950/10 hover:border-rose-500/80'
+                          : 'border-[#3E3830] hover:border-amber-400'
+                      }`}
                     >
                       {/* Top Badges */}
                       <div className="flex items-center justify-between gap-1 mb-2">
                         <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-black/60 text-amber-300 border border-white/10">
                           #{String(idx + 1).padStart(2, '0')}
                         </span>
-                        <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-emerald-950/80 text-emerald-300 border border-emerald-500/30">
-                          {w.inStock !== false ? 'In Stock' : 'Sourcing'}
-                        </span>
+                        {isOutOfStock ? (
+                          <span className="px-2 py-0.5 rounded text-[9px] font-extrabold uppercase tracking-wider bg-rose-950/90 text-rose-300 border border-rose-500/50 shadow-xs">
+                            Out of Stock
+                          </span>
+                        ) : (
+                          <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-emerald-950/80 text-emerald-300 border border-emerald-500/30">
+                            In Stock
+                          </span>
+                        )}
                       </div>
 
                       {/* Watch Image */}
@@ -484,7 +478,9 @@ export default function VisualBrandMarquee({
                         <img
                           src={watchImg}
                           alt={w.name}
-                          className="w-full h-full object-contain transform transition-transform duration-500 group-hover:scale-105"
+                          className={`w-full h-full object-contain transform transition-transform duration-500 group-hover:scale-105 ${
+                            isOutOfStock ? 'opacity-70 grayscale-[25%]' : ''
+                          }`}
                           onError={(e) => {
                             e.target.src = '/images/brands/default.webp';
                           }}

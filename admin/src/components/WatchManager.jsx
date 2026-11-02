@@ -17,6 +17,7 @@ import {
   Check,
   Tag,
   Star,
+  Save,
 } from 'lucide-react';
 import { uploadImageFile, createWatch, updateWatch, deleteWatch, getFullImageUrl } from '../utils/api';
 import { formatINR } from '../utils/formatters';
@@ -277,18 +278,25 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
   const [waterResistance, setWaterResistance] = useState('100m / 10 Bar');
   const [storeLocation, setStoreLocation] = useState('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
   const [inStock, setInStock] = useState(true);
+  const [gender, setGender] = useState('Unisex');
   const [featured, setFeatured] = useState(false);
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [additionalImage1, setAdditionalImage1] = useState('');
+  const [additionalImage2, setAdditionalImage2] = useState('');
 
   // Upload state
   const [isUploading, setIsUploading] = useState(false);
+  const [isUploadingAdd1, setIsUploadingAdd1] = useState(false);
+  const [isUploadingAdd2, setIsUploadingAdd2] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
 
   // Filters
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('ALL');
+  const [genderFilter, setGenderFilter] = useState('ALL');
+  const [stockFilter, setStockFilter] = useState('ALL');
 
   // Confirmation Modals
   const [showRestoreModal, setShowRestoreModal] = useState(false);
@@ -307,9 +315,12 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
     setWaterResistance('100m / 10 Bar');
     setStoreLocation('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
     setInStock(true);
+    setGender('Unisex');
     setFeatured(false);
     setDescription('');
     setImageUrl(BRAND_VERIFIED_WATCH_IMAGE.titan);
+    setAdditionalImage1('');
+    setAdditionalImage2('');
     setIsModalOpen(true);
   };
 
@@ -326,13 +337,17 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
     setWaterResistance(w.waterResistance || '100m / 10 Bar');
     setStoreLocation(w.storeLocation || 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
     setInStock(w.inStock !== false);
+    setGender(w.gender || 'Unisex');
     setFeatured(Boolean(w.featured));
     setDescription(w.description || '');
     setImageUrl(w.image || '');
+    const extra = Array.isArray(w.images) ? w.images : [];
+    setAdditionalImage1(extra[0] || '');
+    setAdditionalImage2(extra[1] || '');
     setIsModalOpen(true);
   };
 
-  // Upload image
+  // Upload main image
   const handleImageFile = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -357,6 +372,61 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
     } finally {
       setIsUploading(false);
     }
+  };
+
+  // Upload additional images
+  const handleAdditionalImageFile = async (e, slotIndex) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const setLoader = slotIndex === 1 ? setIsUploadingAdd1 : setIsUploadingAdd2;
+    const setTarget = slotIndex === 1 ? setAdditionalImage1 : setAdditionalImage2;
+
+    try {
+      setLoader(true);
+      const res = await uploadImageFile(file);
+      if (res?.imageUrl) {
+        setTarget(res.imageUrl);
+        showToast({
+          type: 'success',
+          title: `Additional Photo #${slotIndex} Uploaded`,
+          message: 'Watch photo uploaded and ready to save.',
+        });
+      }
+    } catch (err) {
+      showToast({
+        type: 'error',
+        title: 'Upload Error',
+        message: err.message || 'Could not upload additional image.',
+      });
+    } finally {
+      setLoader(false);
+    }
+  };
+
+  // Reset to Defaults (Current watch form)
+  const handleResetCurrentWatch = () => {
+    setName('Classic Luxury Watch');
+    setBrand('Titan');
+    setPrice('14995');
+    setCategory('Automatic');
+    setMovement('Japanese 21-Jewel Automatic');
+    setCaseDiameter('42mm');
+    setStrapType('Top-Grain Vintage Saddle Leather');
+    setWaterResistance('50m / 5 Bar');
+    setStoreLocation('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
+    setInStock(true);
+    setGender('Unisex');
+    setFeatured(false);
+    setDescription('Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.');
+    setImageUrl(BRAND_VERIFIED_WATCH_IMAGE.titan);
+    setAdditionalImage1('');
+    setAdditionalImage2('');
+    showToast({
+      type: 'info',
+      title: 'Reset to Defaults',
+      message: 'Watch form reverted to baseline defaults.',
+    });
   };
 
   // Submit Form (Create or Update)
@@ -384,6 +454,8 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
         waterResistance,
         storeLocation,
         inStock,
+        gender,
+        images: [additionalImage1, additionalImage2].filter((url) => Boolean(url && url.trim())),
         featured,
         description: description.trim(),
         image: imageUrl || '/images/watches/default-watch.webp',
@@ -493,7 +565,12 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
       w.movement?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory =
       categoryFilter === 'ALL' || w.category?.toLowerCase() === categoryFilter.toLowerCase();
-    return matchesSearch && matchesCategory;
+    const matchesGender =
+      genderFilter === 'ALL' || (w.gender || 'unisex').toLowerCase() === genderFilter.toLowerCase();
+    const matchesStock =
+      stockFilter === 'ALL' ||
+      (stockFilter === 'inStock' ? w.inStock !== false : w.inStock === false);
+    return matchesSearch && matchesCategory && matchesGender && matchesStock;
   });
 
   return (
@@ -534,35 +611,82 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
       </div>
 
       {/* Search & Filter Toolbar */}
-      <div className="p-4 rounded-2xl bg-white border border-[#DDD5C7] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 absolute left-3 top-2.5 text-[#7C746B]" />
-          <input
-            type="text"
-            placeholder="Search by model, brand, caliber..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl pl-9 pr-3.5 py-1.5 text-xs text-[#1A1A1A] placeholder-[#8C847A] focus:outline-none focus:border-brass-600"
-          />
+      <div className="p-4 rounded-2xl bg-white border border-[#DDD5C7] shadow-sm space-y-3">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="relative w-full sm:w-80">
+            <Search className="w-4 h-4 absolute left-3 top-2.5 text-[#7C746B]" />
+            <input
+              type="text"
+              placeholder="Search by model, brand, caliber..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl pl-9 pr-3.5 py-1.5 text-xs text-[#1A1A1A] placeholder-[#8C847A] focus:outline-none focus:border-brass-600"
+            />
+          </div>
+
+          <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+            <span className="text-[11px] font-bold uppercase text-[#6B635B] shrink-0">
+              Movement:
+            </span>
+            {['ALL', 'Automatic', 'Chronograph', 'Dress', 'Skeleton'].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setCategoryFilter(cat)}
+                className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors shrink-0 ${
+                  categoryFilter === cat
+                    ? 'bg-brass-600 text-white shadow-sm'
+                    : 'bg-[#FAF7F2] text-[#4A433D] hover:bg-[#F0EBE1] border border-[#DDD5C7]'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
-          <span className="text-[11px] font-bold uppercase text-[#6B635B] shrink-0">
-            Category:
-          </span>
-          {['ALL', 'Automatic', 'Chronograph', 'Dress', 'Skeleton'].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setCategoryFilter(cat)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors shrink-0 ${
-                categoryFilter === cat
-                  ? 'bg-brass-500 text-white shadow-sm'
-                  : 'bg-[#FAF7F2] text-[#4A433D] hover:bg-[#F0EBE1] border border-[#DDD5C7]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Demographic & Stock Filter Row */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[#E8E1D5]">
+          <div className="flex items-center gap-1.5 overflow-x-auto">
+            <span className="text-[11px] font-bold uppercase text-[#6B635B] shrink-0">
+              Demographic:
+            </span>
+            {['ALL', 'Men', 'Women', 'Unisex'].map((g) => (
+              <button
+                key={g}
+                onClick={() => setGenderFilter(g)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors shrink-0 ${
+                  genderFilter === g
+                    ? 'bg-brass-600 text-white shadow-sm'
+                    : 'bg-[#FAF7F2] text-[#4A433D] hover:bg-[#F0EBE1] border border-[#DDD5C7]'
+                }`}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-1.5 overflow-x-auto">
+            <span className="text-[11px] font-bold uppercase text-[#6B635B] shrink-0">
+              Stock Status:
+            </span>
+            {[
+              { id: 'ALL', label: 'All Items' },
+              { id: 'inStock', label: 'In Stock' },
+              { id: 'outOfStock', label: 'Out of Stock' },
+            ].map((s) => (
+              <button
+                key={s.id}
+                onClick={() => setStockFilter(s.id)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors shrink-0 ${
+                  stockFilter === s.id
+                    ? 'bg-brass-600 text-white shadow-sm'
+                    : 'bg-[#FAF7F2] text-[#4A433D] hover:bg-[#F0EBE1] border border-[#DDD5C7]'
+                }`}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -606,7 +730,7 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                       }}
                     />
 
-                    {/* Badge */}
+                    {/* Badges Overlay */}
                     <div className="absolute top-2.5 left-2.5">
                       <button
                         onClick={() => handleToggleStock(w)}
@@ -621,11 +745,22 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                       </button>
                     </div>
 
-                    {w.featured && (
-                      <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-brass-500 text-white shadow-sm flex items-center gap-1">
-                        <Star className="w-2.5 h-2.5 fill-current" />
-                        <span>Hot</span>
+                    <div className="absolute top-2.5 right-2.5 flex items-center gap-1">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-black/75 text-amber-300 border border-white/20 shadow-sm">
+                        {w.gender || 'Unisex'}
                       </span>
+                      {w.featured && (
+                        <span className="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-brass-500 text-white shadow-sm flex items-center gap-1">
+                          <Star className="w-2.5 h-2.5 fill-current" />
+                          <span>Hot</span>
+                        </span>
+                      )}
+                    </div>
+
+                    {w.images && w.images.length > 0 && (
+                      <div className="absolute bottom-2.5 right-2.5 px-1.5 py-0.5 rounded text-[8.5px] font-mono bg-white/95 text-stone-700 border border-stone-300 shadow-2xs font-bold">
+                        +{w.images.length} extra photos
+                      </div>
                     )}
                   </div>
 
@@ -791,6 +926,63 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                 </div>
               </div>
 
+              {/* Target Demographic & Stock Availability */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                    Target Demographic / Category *
+                  </label>
+                  <div className="flex rounded-xl bg-white border border-[#DDD5C7] p-1 gap-1">
+                    {['Men', 'Women', 'Unisex'].map((g) => (
+                      <button
+                        key={g}
+                        type="button"
+                        onClick={() => setGender(g)}
+                        className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                          gender === g
+                            ? 'bg-brass-600 text-white shadow-sm'
+                            : 'text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#FAF7F2]'
+                        }`}
+                      >
+                        {g}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
+                    Stock Availability Status *
+                  </label>
+                  <div className="flex rounded-xl bg-white border border-[#DDD5C7] p-1 gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setInStock(true)}
+                      className={`flex-1 py-1.5 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+                        inStock
+                          ? 'bg-emerald-600 text-white shadow-sm'
+                          : 'text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#FAF7F2]'
+                      }`}
+                    >
+                      <span className={`w-2 h-2 rounded-full ${inStock ? 'bg-white' : 'bg-emerald-500'}`}></span>
+                      <span>In Stock</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setInStock(false)}
+                      className={`flex-1 py-1.5 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+                        !inStock
+                          ? 'bg-rose-600 text-white shadow-sm'
+                          : 'text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#FAF7F2]'
+                      }`}
+                    >
+                      <span className={`w-2 h-2 rounded-full ${!inStock ? 'bg-white' : 'bg-rose-500'}`}></span>
+                      <span>Out of Stock</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
               {/* Caliber Movement & Case Diameter */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
@@ -928,6 +1120,116 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                     </div>
                   </div>
                 )}
+                {/* Additional Watch Photos (Up to 2 extra pictures) */}
+                <div className="mt-3 p-3.5 rounded-2xl bg-white border border-[#DDD5C7] space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-xs font-bold text-[#1A1A1A] block">
+                        Additional Photos (Up to 2 Extra Angles)
+                      </span>
+                      <span className="text-[10px] text-[#6B635B]">
+                        Appears in customer product detail gallery & thumbnail switcher.
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brass-100 text-brass-800 font-bold">
+                      Multi-Photo Gallery
+                    </span>
+                  </div>
+
+                  {/* Photo #2 */}
+                  <div className="space-y-1.5 pt-1 border-t border-[#E8E1D5]">
+                    <span className="text-[11px] font-semibold text-[#3D3731] block">
+                      Additional Photo #1 (Caseback / Side Profile / Wrist Shot)
+                    </span>
+                    <div className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        value={additionalImage1}
+                        onChange={(e) => setAdditionalImage1(e.target.value)}
+                        placeholder="https://... or /uploads/..."
+                        className="flex-1 bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl px-3 py-1.5 text-xs text-[#1A1A1A] font-mono focus:outline-none"
+                      />
+                      <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-brass-800 bg-brass-500/15 hover:bg-brass-500/25 border border-brass-600/30 cursor-pointer shrink-0">
+                        {isUploadingAdd1 ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Upload className="w-3.5 h-3.5" />}
+                        <span>Upload</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => handleAdditionalImageFile(e, 1)}
+                          disabled={isUploadingAdd1}
+                          className="hidden"
+                        />
+                      </label>
+                      {additionalImage1 && (
+                        <button
+                          type="button"
+                          onClick={() => setAdditionalImage1('')}
+                          className="p-1.5 rounded-xl border border-rose-200 text-rose-600 hover:bg-rose-50"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+                    {additionalImage1 && (
+                      <div className="flex items-center gap-2 p-1.5 rounded-lg bg-[#FAF7F2] border border-[#DDD5C7]">
+                        <img
+                          src={getFullImageUrl(additionalImage1)}
+                          alt="Extra 1"
+                          className="w-10 h-10 rounded object-contain bg-white"
+                          onError={(e) => { e.currentTarget.src = '/images/watches/default-watch.webp'; }}
+                        />
+                        <span className="text-[10px] text-[#5A524A] truncate flex-1">{additionalImage1}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Photo #3 */}
+                  <div className="space-y-1.5 pt-2 border-t border-[#E8E1D5]">
+                    <span className="text-[11px] font-semibold text-[#3D3731] block">
+                      Additional Photo #2 (Clasp / Movement / Presentation Box)
+                    </span>
+                    <div className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        value={additionalImage2}
+                        onChange={(e) => setAdditionalImage2(e.target.value)}
+                        placeholder="https://... or /uploads/..."
+                        className="flex-1 bg-[#FAF7F2] border border-[#DDD5C7] rounded-xl px-3 py-1.5 text-xs text-[#1A1A1A] font-mono focus:outline-none"
+                      />
+                      <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-brass-800 bg-brass-500/15 hover:bg-brass-500/25 border border-brass-600/30 cursor-pointer shrink-0">
+                        {isUploadingAdd2 ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Upload className="w-3.5 h-3.5" />}
+                        <span>Upload</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => handleAdditionalImageFile(e, 2)}
+                          disabled={isUploadingAdd2}
+                          className="hidden"
+                        />
+                      </label>
+                      {additionalImage2 && (
+                        <button
+                          type="button"
+                          onClick={() => setAdditionalImage2('')}
+                          className="p-1.5 rounded-xl border border-rose-200 text-rose-600 hover:bg-rose-50"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+                    {additionalImage2 && (
+                      <div className="flex items-center gap-2 p-1.5 rounded-lg bg-[#FAF7F2] border border-[#DDD5C7]">
+                        <img
+                          src={getFullImageUrl(additionalImage2)}
+                          alt="Extra 2"
+                          className="w-10 h-10 rounded object-contain bg-white"
+                          onError={(e) => { e.currentTarget.src = '/images/watches/default-watch.webp'; }}
+                        />
+                        <span className="text-[10px] text-[#5A524A] truncate flex-1">{additionalImage2}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
 
               {/* Description */}
@@ -944,18 +1246,8 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                 />
               </div>
 
-              {/* Toggles: In Stock & Featured */}
+              {/* Toggles: Featured */}
               <div className="flex flex-wrap items-center gap-6 pt-2">
-                <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[#1A1A1A]">
-                  <input
-                    type="checkbox"
-                    checked={inStock}
-                    onChange={(e) => setInStock(e.target.checked)}
-                    className="w-4 h-4 rounded text-brass-600 focus:ring-brass-500 accent-brass-600"
-                  />
-                  <span>Mark as In Stock at Showroom</span>
-                </label>
-
                 <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[#1A1A1A]">
                   <input
                     type="checkbox"
@@ -963,28 +1255,40 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                     onChange={(e) => setFeatured(e.target.checked)}
                     className="w-4 h-4 rounded text-brass-600 focus:ring-brass-500 accent-brass-600"
                   />
-                  <span>Tag as Featured Hot Drop</span>
+                  <span>Tag as Featured Hot Drop Badge</span>
                 </label>
               </div>
 
               {/* Submit Buttons */}
-              <div className="pt-4 border-t border-[#E8E1D5] flex items-center justify-end gap-3">
+              <div className="pt-4 border-t border-[#E8E1D5] flex items-center justify-between gap-3">
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold text-[#4A433D] hover:bg-[#EFEAE1] border border-[#DDD5C7]"
+                  onClick={handleResetCurrentWatch}
+                  className="px-3.5 py-2 rounded-xl border border-rose-300 bg-rose-50/50 hover:bg-rose-100/70 text-rose-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  title="Reset watch fields to baseline defaults"
                 >
-                  Cancel
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset to Defaults</span>
                 </button>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting || isUploading}
-                  className="flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brass-600 to-amber-600 hover:from-brass-500 hover:to-amber-500 text-white shadow-md shadow-brass-600/20 active:scale-95 disabled:opacity-50"
-                >
-                  {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-                  <span>{editingWatchId ? 'Update Watch' : 'Save New Watch'}</span>
-                </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                    className="px-4 py-2 rounded-xl text-xs font-semibold text-[#4A433D] hover:bg-[#EFEAE1] border border-[#DDD5C7]"
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || isUploading || isUploadingAdd1 || isUploadingAdd2}
+                    className="flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brass-600 to-amber-600 hover:from-brass-500 hover:to-amber-500 text-white shadow-md shadow-brass-600/20 active:scale-95 disabled:opacity-50"
+                  >
+                    {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                    <span>{editingWatchId ? 'Update Watch' : 'Save New Watch'}</span>
+                  </button>
+                </div>
               </div>
             </form>
           </div>

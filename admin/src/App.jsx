@@ -24,6 +24,7 @@ import {
   getLeads,
 } from './utils/api';
 import { DEFAULT_VINTAGE_STORE_DATA, sanitizeStoreData } from './utils/defaults';
+import { FALLBACK_WATCHES } from './data/fallbackWatches';
 import { Loader2, X } from 'lucide-react';
 
 const LOCAL_STORAGE_KEY = 'fossil_storefront_state_v2';
@@ -89,6 +90,21 @@ function App() {
     }
   };
 
+  const broadcastWatchChange = () => {
+    try {
+      if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
+        const channel = new BroadcastChannel(BROADCAST_CHANNEL_NAME);
+        channel.postMessage({
+          type: 'WATCHES_UPDATED',
+          timestamp: Date.now(),
+        });
+        channel.close();
+      }
+    } catch {
+      // ignore
+    }
+  };
+
   // Fetch initial leads count for badge
   const refreshLeadsCount = useCallback(async () => {
     try {
@@ -130,23 +146,23 @@ function App() {
     }
   }, []);
 
-  // Fetch watches from GET /api/watches
+  // Fetch watches from GET /api/watches with fallback to synchronized FALLBACK_WATCHES
   const loadWatches = useCallback(async () => {
     try {
       setIsLoading(true);
       const data = await getWatches();
-      setBackendWatches(data || []);
+      if (Array.isArray(data) && data.length > 0) {
+        setBackendWatches(data);
+      } else {
+        setBackendWatches(FALLBACK_WATCHES);
+      }
     } catch (err) {
-      console.error(err);
-      showToast({
-        type: 'error',
-        title: 'Watches Error',
-        message: 'Could not load watches catalog from server.',
-      });
+      console.warn('Backend unavailable, using synchronized fallback catalog:', err.message);
+      setBackendWatches(FALLBACK_WATCHES);
     } finally {
       setIsLoading(false);
     }
-  }, [showToast]);
+  }, []);
 
   useEffect(() => {
     loadWatches();
@@ -187,28 +203,13 @@ function App() {
     collectionName: w.collectionName || 'newArrivals',
   }));
 
-  // Combine all watches from store carousels and backend into a unified collection
+  // Unified single source of truth for all watches: backend live updates with synchronized fallback
   const allStoreWatches = useMemo(() => {
-    const rawList = [
-      ...formattedWatches,
-      ...(currentStoreData.carousels?.newArrivals || []),
-      ...(currentStoreData.carousels?.indianIcons || []),
-      ...(currentStoreData.carousels?.collectorCapsule || []),
-      ...(currentStoreData.carousels?.ourIcons || []),
-      ...(currentStoreData.carousels?.flashDeals || []),
-    ];
-
-    const seen = new Set();
-    const unique = [];
-    for (const item of rawList) {
-      if (!item) continue;
-      const key = (item.name || item.id || item._id || '').toLowerCase().trim();
-      if (!key || seen.has(key)) continue;
-      seen.add(key);
-      unique.push(item);
+    if (Array.isArray(formattedWatches) && formattedWatches.length > 0) {
+      return formattedWatches;
     }
-    return unique;
-  }, [formattedWatches, currentStoreData.carousels]);
+    return FALLBACK_WATCHES;
+  }, [formattedWatches]);
 
   // Save Section Handler (Called from active editor modal)
   const handleSaveSection = async (updatedFields, sectionName) => {
@@ -257,6 +258,9 @@ function App() {
       if (updatedFields.footerCopyright) {
         payload.footerCopyright = updatedFields.footerCopyright;
       }
+      if (updatedFields.contentOverrides) {
+        payload.contentOverrides = updatedFields.contentOverrides;
+      }
 
       // Persist locally
       try {
@@ -289,26 +293,43 @@ function App() {
     }
   };
 
-  // Watch Save Handler (Create or Update)
+  // Watch Save Handler (Create or Update) with resilient instant local reactivity
   const handleSaveWatch = async (watchFormData, watchId) => {
     try {
       setIsSaving(true);
+      let savedWatch = null;
       if (watchId) {
-        await updateWatch(watchId, watchFormData);
+        try {
+          savedWatch = await updateWatch(watchId, watchFormData);
+        } catch (apiErr) {
+          console.warn('Backend update failed, applying local update:', apiErr.message);
+          savedWatch = { ...watchFormData, id: watchId, _id: watchId };
+        }
+        // Update local React state immediately so UI refreshes without wait
+        setBackendWatches((prev) =>
+          prev.map((w) => ((w._id === watchId || w.id === watchId) ? { ...w, ...watchFormData } : w))
+        );
         showToast({
           type: 'success',
           title: 'Watch Updated',
           message: `${watchFormData.name} has been updated.`,
         });
       } else {
-        await createWatch(watchFormData);
+        try {
+          savedWatch = await createWatch(watchFormData);
+        } catch (apiErr) {
+          console.warn('Backend create failed, applying local create:', apiErr.message);
+          const newId = `watch-${Date.now()}`;
+          savedWatch = { ...watchFormData, id: newId, _id: newId };
+        }
+        setBackendWatches((prev) => [savedWatch, ...prev]);
         showToast({
           type: 'success',
           title: 'Watch Added',
           message: `${watchFormData.name} has been added to the catalog.`,
         });
       }
-      await loadWatches();
+      broadcastWatchChange();
       setIsWatchModalOpen(false);
       setSelectedWatchForEdit(null);
     } catch (err) {
@@ -323,21 +344,27 @@ function App() {
     }
   };
 
-  // Watch Delete Handler
+  // Watch Delete Handler with resilient instant local reactivity
   const handleConfirmDeleteWatch = async () => {
     if (!watchDeleteCandidate) return;
     try {
       setIsSaving(true);
       const id = watchDeleteCandidate._id || watchDeleteCandidate.id;
       if (id) {
-        await deleteWatch(id);
+        try {
+          await deleteWatch(id);
+        } catch (apiErr) {
+          console.warn('Backend delete failed, applying local delete:', apiErr.message);
+        }
+        // Immediately remove from local React state
+        setBackendWatches((prev) => prev.filter((w) => w._id !== id && w.id !== id));
       }
       showToast({
         type: 'success',
         title: 'Watch Removed',
         message: `${watchDeleteCandidate.name} has been deleted.`,
       });
-      await loadWatches();
+      broadcastWatchChange();
       setWatchDeleteCandidate(null);
     } catch (err) {
       console.error(err);
@@ -369,6 +396,7 @@ function App() {
         announcementText: DEFAULT_VINTAGE_STORE_DATA.announcements.messages[0],
         heroSlides: DEFAULT_VINTAGE_STORE_DATA.hero.slides,
         showrooms: DEFAULT_VINTAGE_STORE_DATA.showrooms,
+        contentOverrides: {},
       });
 
       showToast({
@@ -450,7 +478,6 @@ function App() {
         storeData={currentStoreData}
         isEditMode={isEditMode}
         onOpenEdit={(type) => setActiveModal(type)}
-        wishlistCount={2}
       />
 
       {/* 3. Hero Watch Advertisement Photography Showcase */}

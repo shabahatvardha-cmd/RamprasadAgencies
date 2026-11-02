@@ -17,6 +17,7 @@ import {
   LogOut,
   Layers,
   Store,
+  Clock,
 } from 'lucide-react';
 import BrandLogo from '../BrandLogo';
 
@@ -152,6 +153,16 @@ export default function AdminTopBar({
             <span className="hidden sm:inline">Inventory</span>
           </button>
 
+          {/* Dynamic Content & Timers Studio */}
+          <button
+            onClick={() => onOpenModal('dynamicContent')}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#222224] hover:bg-[#2c2c30] text-purple-300 border border-purple-500/30 hover:border-purple-400 transition-all shadow-sm active:scale-95"
+            title="Dynamic Content, Images & Scheduled Timers Studio"
+          >
+            <Clock className="w-3.5 h-3.5 text-purple-400" />
+            <span className="hidden sm:inline">Content & Timers</span>
+          </button>
+
           {/* Quick Section Editors Dropdown */}
           <div className="relative" ref={quickMenuRef}>
             <button
@@ -180,6 +191,17 @@ export default function AdminTopBar({
                     <div>
                       <div className="font-bold">Hero Showcase Slides</div>
                       <div className="text-[10px] text-[#A0988E]">Headlines, photos & badges</div>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => handleQuickEdit('dynamicContent')}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-white hover:bg-brass-500/15 text-left transition-colors"
+                  >
+                    <Clock className="w-3.5 h-3.5 text-purple-400" />
+                    <div>
+                      <div className="font-bold">Dynamic Content & Timers</div>
+                      <div className="text-[10px] text-[#A0988E]">Override text & images with scheduled timers</div>
                     </div>
                   </button>
 

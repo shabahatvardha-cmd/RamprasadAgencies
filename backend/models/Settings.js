@@ -436,6 +436,10 @@ const settingsSchema = new mongoose.Schema(
       type: [adSchema],
       default: DEFAULT_ADS,
     },
+    contentOverrides: {
+      type: Object,
+      default: {},
+    },
   },
   {
     timestamps: true,

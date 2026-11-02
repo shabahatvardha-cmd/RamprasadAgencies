@@ -20,7 +20,6 @@ export default function VisualHeader({
   storeData,
   isEditMode,
   onOpenEdit,
-  wishlistCount = 2,
 }) {
   const brandName = storeData.brandName || 'RAM PRASAD AGENCIES';
   const tagline = storeData.tagline || 'Authorized & Imported Luxury Watch Specialist • Gorakhpur';
@@ -106,7 +105,7 @@ export default function VisualHeader({
               ))}
             </nav>
 
-            {/* Quick Actions (Wishlist & Helpline) */}
+            {/* Quick Actions (Helpline) */}
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-[#1A1A1A]">
                 <Clock className="w-4 h-4 text-brass-700" />

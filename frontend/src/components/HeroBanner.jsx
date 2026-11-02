@@ -16,7 +16,7 @@ import { useStore } from '../context/StoreContext';
 import { getWhatsAppLink, getFullImageUrl } from '../utils/api';
 
 export default function HeroBanner() {
-  const { storeData } = useStore();
+  const { storeData, getOverride } = useStore();
   const heroData = storeData.hero || {};
   const slides = (heroData.slides && heroData.slides.length > 0) ? heroData.slides : [];
 
@@ -38,6 +38,7 @@ export default function HeroBanner() {
   if (slides.length === 0) return null;
 
   const currentSlide = slides[currentSlideIndex] || slides[0];
+  const overrideHeroImage = getOverride ? getOverride('hero_image', null) : null;
   const fullImageUrl = getFullImageUrl(currentSlide.image);
   const contactPhone = storeData.contactPhone || '+91 98765 43210';
   const waLink = getWhatsAppLink(contactPhone, null);
@@ -78,14 +79,16 @@ export default function HeroBanner() {
           const headlineLower = (s.headline || '').toLowerCase();
 
           let bgImg = rawImg;
-          if (s.id === 'hero-2' || headlineLower.includes('omega')) {
+          if (overrideHeroImage && idx === currentSlideIndex) {
+            bgImg = getFullImageUrl(overrideHeroImage);
+          } else if (s.id === 'hero-2' || headlineLower.includes('omega')) {
             bgImg = '/images/hero-omega-showcase.webp';
           } else if (s.id === 'hero-5' || headlineLower.includes('hmt')) {
             bgImg = '/images/hero-hmt-kohinoor-vintage.webp';
           } else if (s.id === 'hero-4' || headlineLower.includes('titan')) {
             bgImg = '/images/hero-titan-regalia.webp';
           } else if (s.id === 'hero-1' || headlineLower.includes('tissot')) {
-            bgImg = '/images/watches/tissot-prx-powermatic-80.webp';
+            bgImg = '/images/hero-tissot-prx.webp';
           } else if (s.id === 'hero-3' || headlineLower.includes('seiko')) {
             bgImg = '/images/watches/seiko-presage-cocktail-time.webp';
           } else if (s.id === 'hero-6' || headlineLower.includes('fastrack')) {
@@ -125,32 +128,47 @@ export default function HeroBanner() {
                 <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-brass-500/20 border border-brass-400/40 shadow-sm backdrop-blur-sm">
                   <Sparkles className="w-4 h-4 text-brass-300" />
                   <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brass-200 font-mono">
-                    {(currentSlide.badge || 'SWISS LUXURY')
-                      .replace('INDIAN HOROLOGY FLAGSHIP', 'TITAN COLLECTION')
-                      .replace('EVERYDAY INDIAN HOROLOGY', 'FASTRACK & SONATA')
-                      .replace('INDIAN MECHANICAL LEGEND', 'HMT MECHANICAL')
-                      .replace(' • EST. 1853', '')
-                      .replace('CERTIFIED SWISS LUXURY IMPORTS', 'SWISS LUXURY')
-                      .replace('SWISS LUXURY IMPORTS', 'SWISS LUXURY')
-                      .replace('JAPANESE AUTOMATIC MASTERY', 'JAPANESE AUTOMATICS')
-                      .replace('HOROLOGY FLAGSHIP', 'COLLECTION')
-                      .replace('HOROLOGY', '')}
+                    {getOverride
+                      ? getOverride(
+                          'hero_badge',
+                          (currentSlide.badge || 'SWISS LUXURY')
+                            .replace('INDIAN HOROLOGY FLAGSHIP', 'TITAN COLLECTION')
+                            .replace('EVERYDAY INDIAN HOROLOGY', 'FASTRACK & SONATA')
+                            .replace('INDIAN MECHANICAL LEGEND', 'HMT MECHANICAL')
+                            .replace(' • EST. 1853', '')
+                            .replace('CERTIFIED SWISS LUXURY IMPORTS', 'SWISS LUXURY')
+                            .replace('SWISS LUXURY IMPORTS', 'SWISS LUXURY')
+                            .replace('JAPANESE AUTOMATIC MASTERY', 'JAPANESE AUTOMATICS')
+                            .replace('HOROLOGY FLAGSHIP', 'COLLECTION')
+                            .replace('HOROLOGY', '')
+                        )
+                      : (currentSlide.badge || 'SWISS LUXURY')}
                   </span>
                 </div>
               </div>
 
               {/* Bold Clean Headline */}
               <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                {(currentSlide.headline || '')
-                  .replace(/rolex/gi, 'Omega')
-                  .replace('Tissot PRX Powermatic 80 & Swiss Automatics', 'Tissot PRX & Swiss Automatics')
-                  .replace('Seiko Presage Cocktail Time & Automatic Calibers', 'Seiko Presage Automatics')}
+                {getOverride
+                  ? getOverride(
+                      'hero_headline',
+                      (currentSlide.headline || '')
+                        .replace(/rolex/gi, 'Omega')
+                        .replace('Tissot PRX Powermatic 80 & Swiss Automatics', 'Tissot PRX & Swiss Automatics')
+                        .replace('Seiko Presage Cocktail Time & Automatic Calibers', 'Seiko Presage Automatics')
+                    )
+                  : (currentSlide.headline || '')}
               </h1>
 
               {/* Concise Subheadline */}
               <p className="text-sm sm:text-base lg:text-lg text-[#F5F2EB] font-normal leading-relaxed max-w-xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
-                {(currentSlide.subheadline || '').includes('discerning collectors in Eastern UP')
-                  ? 'Certified authentic Swiss chronometers with international warranty and stamped papers in Gorakhpur.'
+                {getOverride
+                  ? getOverride(
+                      'hero_subheadline',
+                      (currentSlide.subheadline || '').includes('discerning collectors in Eastern UP')
+                        ? 'Certified authentic Swiss chronometers with international warranty and stamped papers in Gorakhpur.'
+                        : currentSlide.subheadline
+                    )
                   : currentSlide.subheadline}
               </p>
 

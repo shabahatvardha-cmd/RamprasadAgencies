@@ -19,6 +19,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
   footerVipTitle: 'Receive 10% Off Your First Automatic Timepiece',
   footerVipSubtitle: 'Preview limited-edition capsule drops and private showroom fittings in Gorakhpur.',
   certificateImage: '/images/about/heritage-certificate.webp',
+  contentOverrides: {},
 
   showrooms: [
     {
@@ -112,7 +113,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         subheadline: 'Certified authentic Swiss chronometers with international warranty and stamped papers in Gorakhpur.',
         ctaPrimary: 'Explore Brands',
         ctaPrimaryLink: '#brands',
-        ctaSecondary: 'WhatsApp Concierge',
+        ctaSecondary: 'WhatsApp Support',
         ctaSecondaryLink: '#inquiry',
         image: '/images/hero-omega-showcase.webp',
       },
@@ -145,7 +146,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         subheadline: 'Authentic 17-jewel hand-wound mechanical calibers with timeless Devnagari dials since 1961.',
         ctaPrimary: 'Explore HMT',
         ctaPrimaryLink: '#brands',
-        ctaSecondary: 'WhatsApp Concierge',
+        ctaSecondary: 'WhatsApp Support',
         ctaSecondaryLink: '#inquiry',
         image: '/images/hero-hmt-kohinoor-vintage.webp',
       },
@@ -223,7 +224,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 36000,
         badge: 'Trending Drop',
         badgeColor: 'rust',
-        image: '/images/watches/citizen-tsuyosa-emerald-green.webp',
+        image: '/images/watches/citizen/15.webp',
         movement: 'Miyota 8210 Automatic Calibre (42H Reserve)',
         caseSize: '40mm Integrated Lugs',
         strap: 'Curved Presidential Stainless Steel Bracelet',
@@ -255,7 +256,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 24000,
         badge: 'Vintage Drop',
         badgeColor: 'brass',
-        image: '/images/watches/fossil-heritage-automatic.webp',
+        image: '/images/watches/fossil/12.webp',
         movement: 'Japanese 21-Jewel Automatic Mechanical',
         caseSize: '43mm Antique Brushed Steel',
         strap: 'Vegetable-Tanned Saddle Brown Leather',
@@ -472,7 +473,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 21000,
         badge: '24% OFF',
         badgeColor: 'brass',
-        image: '/images/watches/fossil-heritage-automatic.webp',
+        image: '/images/watches/fossil/12.webp',
         movement: 'Japanese 21-Jewel Automatic Movement',
         caseSize: '43mm Antique Steel',
         strap: 'Genuine Vegetable-Tanned Saddle Leather',
@@ -581,7 +582,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 6495,
         badge: 'Youth Street',
         badgeColor: 'rust',
-        image: '/images/watches/fastrack-street-diver-chrono.webp',
+        image: '/images/watches/fastrack/01.webp',
         movement: 'Multi-Function Sport Calibre with Dual Sub-Dials',
         caseSize: '45mm Gunmetal Ion-Plated Steel',
         strap: 'Textured Heavy-Duty All-Black Silicone Strap',
@@ -597,7 +598,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         originalPrice: 3495,
         badge: 'Everyday Classic',
         badgeColor: 'brass',
-        image: '/images/watches/sonata-poze-sunray-gold.webp',
+        image: '/images/watches/sonata/01.webp',
         movement: 'Sonata Reliable Quartz Calibre',
         caseSize: '40mm Yellow Gold Tone Case',
         strap: 'Genuine Brown Crocodile-Pattern Leather Strap',
@@ -722,11 +723,11 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
 
   // 8. CONSULTATION & INQUIRY FORM BUILDER CONFIGURATION
   inquiryFormConfig: {
-    badge: 'Bespoke Concierge',
+    badge: 'Showroom Assistance',
     title: 'Custom Sourcing & Horology Inquiries',
     subtitle: 'Seeking a specific imported reference number, limited edition release, or looking to schedule an in-store viewing at Baldev Plaza or JalKal Building? Share your details with our horology team.',
     submitButtonText: 'Submit Showroom Consultation Request',
-    successMessage: 'Your consultation request has been registered with Ram Prasad Agencies concierge. Our showroom specialist will reach out shortly.',
+    successMessage: 'Your consultation request has been registered with Ram Prasad Agencies showroom team. Our showroom specialist will reach out shortly.',
     fields: [
       {
         id: 'name',
@@ -828,13 +829,13 @@ export const DEFAULT_INQUIRY_FORM_CONFIG = DEFAULT_VINTAGE_STORE_DATA.inquiryFor
 const BRAND_VERIFIED_WATCH_IMAGE = {
   titan: '/images/watches/titan/01.webp',
   hmt: '/images/watches/hmt/01.webp',
-  fastrack: '/images/watches/fastrack-street-diver-chrono.webp',
-  sonata: '/images/watches/sonata-poze-sunray-gold.webp',
+  fastrack: '/images/watches/fastrack/01.webp',
+  sonata: '/images/watches/sonata/01.webp',
   tissot: '/images/watches/tissot/01.webp',
   omega: '/images/watches/omega/01.webp',
   seiko: '/images/watches/seiko/01.webp',
-  citizen: '/images/watches/citizen-tsuyosa-emerald-green.webp',
-  fossil: '/images/watches/fossil-heritage-automatic.webp',
+  citizen: '/images/watches/citizen/01.webp',
+  fossil: '/images/watches/fossil/01.webp',
   breitling: '/images/watches/breitling/01.webp',
   rado: '/images/watches/rado/01.webp',
   'titan raga': '/images/watches/titan-raga/01.webp',
@@ -870,6 +871,28 @@ export const getVerifiedBrandImage = (brand, fallback) => {
     if (brandLower.includes(key)) return verifiedUrl;
   }
   return fallback;
+};
+
+// Helper to evaluate if a scheduled or immediate override is active
+export const isOverrideActive = (override) => {
+  if (!override || override.active === false || !override.value) return false;
+  if (!override.isScheduled) return true;
+  const now = Date.now();
+  const start = override.scheduledStart ? new Date(override.scheduledStart).getTime() : 0;
+  const end = override.scheduledEnd ? new Date(override.scheduledEnd).getTime() : Infinity;
+  if (start && now < start) return false;
+  if (end && now > end) return false;
+  return true;
+};
+
+// Helper to look up active override value with automatic fallback
+export const getDynamicContent = (storeData, key, defaultValue) => {
+  if (!storeData || !storeData.contentOverrides) return defaultValue;
+  const override = storeData.contentOverrides[key];
+  if (isOverrideActive(override)) {
+    return override.value;
+  }
+  return defaultValue;
 };
 
 // Helper to safely merge saved data with complete defaults
@@ -1001,6 +1024,7 @@ export const sanitizeStoreData = (data) => {
         ? data.inquiryFormConfig.fields
         : DEFAULT_INQUIRY_FORM_CONFIG.fields,
     },
+    contentOverrides: data.contentOverrides || {},
   };
 
   // If we cleaned any offender imagery or updated version, persist sanitized data
@@ -1052,6 +1076,9 @@ export function StoreProvider({ children }) {
             setLastSyncTime(event.data.timestamp || Date.now());
             setSyncStatus('synced-external');
             setTimeout(() => setSyncStatus('synchronized'), 2500);
+            window.dispatchEvent(new Event('refresh-backend-sync'));
+          } else if (event?.data?.type === 'WATCHES_UPDATED' || event?.data?.type === 'REFETCH_ALL') {
+            window.dispatchEvent(new Event('refresh-backend-sync'));
           }
         };
       }
@@ -1183,6 +1210,9 @@ export function StoreProvider({ children }) {
                 ...settings.inquiryFormConfig,
               };
             }
+            if (settings.contentOverrides || settings.vintageStoreData?.contentOverrides) {
+              merged.contentOverrides = settings.contentOverrides || settings.vintageStoreData?.contentOverrides || {};
+            }
           }
 
           // 3. Synchronize Live Watches from MongoDB / Admin WatchManager
@@ -1196,6 +1226,8 @@ export function StoreProvider({ children }) {
               badge: w.badge || (w.featured ? 'Featured Drop' : 'In Stock'),
               badgeColor: 'brass',
               image: w.image,
+              images: Array.isArray(w.images) ? w.images : [],
+              gender: w.gender || 'Unisex',
               movement: w.movement || w.category || 'Automatic Movement',
               caseSize: w.caseDiameter || '40mm',
               strap: w.strapType || 'Top-Grain Leather',
@@ -1253,10 +1285,12 @@ export function StoreProvider({ children }) {
 
     const pollInterval = setInterval(syncWithBackend, 4000);
     window.addEventListener('focus', syncWithBackend);
+    window.addEventListener('refresh-backend-sync', syncWithBackend);
 
     return () => {
       clearInterval(pollInterval);
       window.removeEventListener('focus', syncWithBackend);
+      window.removeEventListener('refresh-backend-sync', syncWithBackend);
     };
   }, []);
 
@@ -1496,12 +1530,17 @@ export function StoreProvider({ children }) {
     commitStoreData(() => DEFAULT_VINTAGE_STORE_DATA);
   }, [commitStoreData]);
 
+  const getOverride = useCallback((key, defaultValue) => {
+    return getDynamicContent(storeData, key, defaultValue);
+  }, [storeData]);
+
   const value = {
     storeData,
     liveWatches,
     lastSyncTime,
     syncStatus,
     commitStoreData,
+    getOverride,
     updateAnnouncements,
     toggleFlashSale,
     updateFlashSale,

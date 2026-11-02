@@ -162,24 +162,21 @@ app.use((err, req, res, next) => {
 });
 
 // -----------------------------------------------------------------------------
-// 5. Database Connection & Server Startup
+// 5. Server Startup & Database Connection
 // -----------------------------------------------------------------------------
+const server = app.listen(PORT, () => {
+  console.log(`🚀 Ram Prasad Agencies Backend running on port ${PORT}`);
+  console.log(`📁 Local uploads served statically at http://localhost:${PORT}/uploads`);
+  console.log(`🔗 API Base: http://localhost:${PORT}/api`);
+});
+
 mongoose
-  .connect(MONGO_URI)
+  .connect(MONGO_URI, { serverSelectionTimeoutMS: 2500 })
   .then(() => {
     console.log('✅ Connected successfully to MongoDB');
-    app.listen(PORT, () => {
-      console.log(`🚀 Ram Prasad Agencies Backend running on port ${PORT}`);
-      console.log(`📁 Local uploads served statically at http://localhost:${PORT}/uploads`);
-      console.log(`🔗 API Base: http://localhost:${PORT}/api`);
-    });
   })
   .catch((err) => {
-    console.error('❌ MongoDB Connection Error:', err.message);
-    console.warn('⚠️ Starting HTTP server without active MongoDB connection (DB dependent endpoints will fail until connected)...');
-    app.listen(PORT, () => {
-      console.log(`🚀 Ram Prasad Agencies Backend running on port ${PORT} (Database Offline)`);
-    });
+    console.log('ℹ️ Local Storage Mode active (backend/data/watches.json)');
   });
 
 module.exports = app;

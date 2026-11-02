@@ -3,10 +3,20 @@ import { Zap, Clock, Copy, Check, Gift, ArrowRight, ShieldCheck, Tag } from 'luc
 import { useStore } from '../context/StoreContext';
 
 export default function FlashSaleRibbon() {
-  const { storeData } = useStore();
+  const { storeData, getOverride } = useStore();
   const flashSale = storeData.flashSale?.flashSale || storeData.flashSale || {};
   const [copied, setCopied] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 59, seconds: 48 });
+
+  const effectiveBadge = getOverride
+    ? getOverride('flash_sale_badge', flashSale.badgeText || 'FESTIVE HOROLOGY EVENT')
+    : (flashSale.badgeText || 'FESTIVE HOROLOGY EVENT');
+  const effectiveHeadline = getOverride
+    ? getOverride('flash_sale_headline', flashSale.headline || 'THE BIG BRAND WATCH SALE')
+    : (flashSale.headline || 'THE BIG BRAND WATCH SALE');
+  const effectiveCoupon = getOverride
+    ? getOverride('flash_sale_discount', flashSale.couponCode || 'VINTAGE15')
+    : (flashSale.couponCode || 'VINTAGE15');
 
   // Countdown timer calculation
   useEffect(() => {
@@ -41,7 +51,7 @@ export default function FlashSaleRibbon() {
   }
 
   const handleCopyCode = () => {
-    const code = flashSale.couponCode || 'VINTAGE15';
+    const code = effectiveCoupon;
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
@@ -58,11 +68,11 @@ export default function FlashSaleRibbon() {
         <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest bg-rust-500 text-white shadow-sm animate-pulse">
             <Zap className="w-3 h-3 fill-current" />
-            {flashSale.badgeText || 'FESTIVE HOROLOGY EVENT'}
+            {effectiveBadge}
           </span>
           <div>
             <h3 className="font-serif text-sm sm:text-base font-bold text-[#1A1A1A] tracking-wide">
-              {flashSale.headline || 'THE BIG BRAND WATCH SALE'}
+              {effectiveHeadline}
             </h3>
             <p className="text-[11px] sm:text-xs text-[#5A524A] font-normal line-clamp-1 max-w-xl">
               {flashSale.subheadline || 'Up to 35% Off Curated Swiss & Japanese Automatic Timepieces & Divers'}

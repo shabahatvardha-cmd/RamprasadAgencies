@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Sparkles,
-  Heart,
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
@@ -15,8 +14,6 @@ export default function CarouselSection({
   badgeColor = 'brass',
   items = [],
   onQuickView,
-  wishlist = [],
-  onToggleWishlist,
   contactPhone,
   initialVisible = 4,
 }) {
@@ -90,7 +87,6 @@ export default function CarouselSection({
         {/* Downward Responsive Grid (2 cols mobile, 3 tablet, 4 desktop) */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
           {visibleItems.map((item, index) => {
-            const isWishlisted = wishlist.some((w) => w.id === item.id || w._id === item.id);
             const fullImage = getFullImageUrl(item.image);
 
             return (
@@ -113,23 +109,6 @@ export default function CarouselSection({
                       e.target.src = '/images/watches/default-watch.webp';
                     }}
                   />
-
-                  {/* Wishlist Heart Button - Minimalist & elegant */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onToggleWishlist && onToggleWishlist(item);
-                    }}
-                    className={`absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                      isWishlisted
-                        ? 'bg-rose-500 text-white shadow-md shadow-rose-500/30 scale-105'
-                        : 'bg-white/90 text-[#7C746B] hover:text-rose-600 hover:bg-white border border-[#DDD5C7]/70 shadow-sm opacity-80 group-hover:opacity-100'
-                    }`}
-                    title={isWishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
-                    aria-label="Wishlist toggle"
-                  >
-                    <Heart className={`w-3.5 h-3.5 ${isWishlisted ? 'fill-current' : ''}`} />
-                  </button>
                 </div>
 
                 {/* Card Body Details - Brand Name and Model Name ONLY */}

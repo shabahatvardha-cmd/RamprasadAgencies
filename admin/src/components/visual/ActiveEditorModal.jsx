@@ -7,6 +7,7 @@ import ShowroomsEditor from '../ShowroomsEditor';
 import BrandingEditor from '../BrandingEditor';
 import AppearanceEditor from '../AppearanceEditor';
 import InquiryFormEditor from '../InquiryFormEditor';
+import DynamicOverridesEditor from '../DynamicOverridesEditor';
 
 export default function ActiveEditorModal({
   activeModal,
@@ -40,6 +41,10 @@ export default function ActiveEditorModal({
         return 'Showroom Consultation & Inquiry Form Builder';
       case 'appearance':
         return 'Appearance, Colors & Typography Studio';
+      case 'contentOverrides':
+      case 'overrides':
+      case 'dynamicContent':
+        return 'Dynamic Content, Asset & Scheduled Timers Studio';
       default:
         return 'Section Editor';
     }
@@ -134,6 +139,15 @@ export default function ActiveEditorModal({
             <AppearanceEditor
               appearanceData={storeData.appearance}
               onSaveAppearance={(appearance) => onSaveSection({ appearance }, 'Styling & Appearance')}
+              showToast={showToast}
+              isSaving={isSaving}
+            />
+          )}
+
+          {(activeModal === 'contentOverrides' || activeModal === 'overrides' || activeModal === 'dynamicContent') && (
+            <DynamicOverridesEditor
+              contentOverrides={storeData.contentOverrides || {}}
+              onSaveOverrides={(contentOverrides) => onSaveSection({ contentOverrides }, 'Dynamic Content Overrides')}
               showToast={showToast}
               isSaving={isSaving}
             />

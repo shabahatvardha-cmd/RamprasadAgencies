@@ -7,6 +7,9 @@ import {
   Loader2,
   Check,
   Sparkles,
+  Trash2,
+  RotateCcw,
+  Plus,
 } from 'lucide-react';
 import { uploadImageFile, getFullImageUrl } from '../../utils/api';
 import { getVerifiedBrandImage, BRAND_VERIFIED_WATCH_IMAGE } from '../../utils/defaults';
@@ -82,16 +85,22 @@ export default function WatchEditModal({
     strapType: 'Top-Grain Vintage Saddle Leather',
     waterResistance: '50m / 5 Bar',
     inStock: true,
+    gender: 'Unisex',
     featured: false,
     image: BRAND_VERIFIED_WATCH_IMAGE.titan,
     description: 'Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   });
 
+  const [additionalImage1, setAdditionalImage1] = useState('');
+  const [additionalImage2, setAdditionalImage2] = useState('');
   const [isUploading, setIsUploading] = useState(false);
+  const [isUploadingAdd1, setIsUploadingAdd1] = useState(false);
+  const [isUploadingAdd2, setIsUploadingAdd2] = useState(false);
 
   useEffect(() => {
     if (watch) {
+      const extraImgs = Array.isArray(watch.images) ? watch.images : [];
       setFormData({
         name: watch.name || '',
         brand: watch.brand || 'Titan',
@@ -105,11 +114,14 @@ export default function WatchEditModal({
         strapType: watch.strapType || watch.strap || 'Top-Grain Vintage Saddle Leather',
         waterResistance: watch.waterResistance || '50m / 5 Bar',
         inStock: watch.inStock !== false,
+        gender: watch.gender || 'Unisex',
         featured: Boolean(watch.featured),
         image: watch.image || getVerifiedBrandImage(watch.brand || 'Titan', BRAND_VERIFIED_WATCH_IMAGE.titan),
         description: watch.description || '',
         storeLocation: watch.storeLocation || 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
       });
+      setAdditionalImage1(extraImgs[0] || '');
+      setAdditionalImage2(extraImgs[1] || '');
     } else {
       setFormData({
         name: '',
@@ -124,11 +136,14 @@ export default function WatchEditModal({
         strapType: 'Top-Grain Vintage Saddle Leather',
         waterResistance: '50m / 5 Bar',
         inStock: true,
+        gender: 'Unisex',
         featured: false,
         image: BRAND_VERIFIED_WATCH_IMAGE.titan,
         description: 'Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.',
         storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
       });
+      setAdditionalImage1('');
+      setAdditionalImage2('');
     }
   }, [watch, isOpen]);
 
@@ -160,6 +175,64 @@ export default function WatchEditModal({
     }
   };
 
+  const handleAdditionalImageUpload = async (e, slotIndex) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const setLoader = slotIndex === 1 ? setIsUploadingAdd1 : setIsUploadingAdd2;
+    const setTarget = slotIndex === 1 ? setAdditionalImage1 : setAdditionalImage2;
+
+    try {
+      setLoader(true);
+      const res = await uploadImageFile(file);
+      if (res?.imageUrl) {
+        setTarget(res.imageUrl);
+        showToast && showToast({
+          type: 'success',
+          title: `Additional Photo #${slotIndex} Uploaded`,
+          message: 'Extra timepiece angle saved successfully.',
+        });
+      }
+    } catch (err) {
+      showToast && showToast({
+        type: 'error',
+        title: 'Upload Failed',
+        message: err.message || 'Could not upload additional photo.',
+      });
+    } finally {
+      setLoader(false);
+    }
+  };
+
+  const handleResetDefaults = () => {
+    setFormData({
+      name: watch?.name || 'Classic Luxury Watch',
+      brand: watch?.brand || 'Titan',
+      category: 'Automatic',
+      collectionName: 'newArrivals',
+      price: 14995,
+      originalPrice: 17995,
+      badge: 'In Stock',
+      movement: 'Japanese 21-Jewel Automatic',
+      caseDiameter: '42mm',
+      strapType: 'Top-Grain Vintage Saddle Leather',
+      waterResistance: '50m / 5 Bar',
+      inStock: true,
+      gender: 'Unisex',
+      featured: false,
+      image: getVerifiedBrandImage(watch?.brand || 'Titan', BRAND_VERIFIED_WATCH_IMAGE.titan),
+      description: 'Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.',
+      storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
+    });
+    setAdditionalImage1('');
+    setAdditionalImage2('');
+    showToast && showToast({
+      type: 'info',
+      title: 'Reset to Defaults',
+      message: 'Timepiece fields have been reverted to baseline defaults.',
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name.trim()) {
@@ -170,7 +243,11 @@ export default function WatchEditModal({
       });
       return;
     }
-    onSave(formData, watch?._id || watch?.id);
+    const extraImages = [additionalImage1, additionalImage2].filter((url) => Boolean(url && url.trim()));
+    onSave({
+      ...formData,
+      images: extraImages,
+    }, watch?._id || watch?.id);
   };
 
   return (
@@ -336,6 +413,63 @@ export default function WatchEditModal({
             </div>
           </div>
 
+          {/* Row 2C: Demographic Category & Stock Status */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                Target Demographic / Category *
+              </label>
+              <div className="flex rounded-xl bg-[#FAF7F2] border border-[#DDD5C7] p-1 gap-1">
+                {['Men', 'Women', 'Unisex'].map((g) => (
+                  <button
+                    key={g}
+                    type="button"
+                    onClick={() => setFormData((prev) => ({ ...prev, gender: g }))}
+                    className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                      formData.gender === g
+                        ? 'bg-brass-600 text-white shadow-sm'
+                        : 'text-[#5A524A] hover:text-[#1A1A1A] hover:bg-white/60'
+                    }`}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                Stock Availability *
+              </label>
+              <div className="flex rounded-xl bg-[#FAF7F2] border border-[#DDD5C7] p-1 gap-1">
+                <button
+                  type="button"
+                  onClick={() => setFormData((prev) => ({ ...prev, inStock: true }))}
+                  className={`flex-1 py-1.5 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+                    formData.inStock
+                      ? 'bg-emerald-600 text-white shadow-sm'
+                      : 'text-[#5A524A] hover:text-[#1A1A1A] hover:bg-white/60'
+                  }`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${formData.inStock ? 'bg-white' : 'bg-emerald-500'}`}></span>
+                  <span>In Stock</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFormData((prev) => ({ ...prev, inStock: false }))}
+                  className={`flex-1 py-1.5 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+                    !formData.inStock
+                      ? 'bg-rose-600 text-white shadow-sm'
+                      : 'text-[#5A524A] hover:text-[#1A1A1A] hover:bg-white/60'
+                  }`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${!formData.inStock ? 'bg-white' : 'bg-rose-500'}`}></span>
+                  <span>Out of Stock</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* Row 3: Movement & Case Size */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -483,22 +617,130 @@ export default function WatchEditModal({
                 </div>
               </div>
             )}
+            {/* Additional Watch Photos (Up to 2 extra angles/details) */}
+            <div className="mt-4 p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#DDD5C7] space-y-3">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-xs font-bold text-[#1A1A1A] block">
+                    Additional Watch Photos (Up to 2 Extra Angles)
+                  </span>
+                  <span className="text-[10px] text-[#6B635B]">
+                    Shown in the customer product gallery switcher / carousel.
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brass-100 text-brass-800 font-bold">
+                  Multi-Photo Gallery
+                </span>
+              </div>
+
+              {/* Additional Photo #1 */}
+              <div className="space-y-1.5 pt-1 border-t border-[#E8E1D5]">
+                <span className="text-[11px] font-semibold text-[#3D3731] block">
+                  Additional Photo #1 (Caseback / Side Profile / Wrist Shot)
+                </span>
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="text"
+                    value={additionalImage1}
+                    onChange={(e) => setAdditionalImage1(e.target.value)}
+                    placeholder="https://images.unsplash.com/... or /uploads/..."
+                    className="flex-1 px-3 py-2 rounded-xl border border-[#DDD5C7] bg-white text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600"
+                  />
+                  <label className="px-3 py-2 rounded-xl border border-[#DDD5C7] bg-white hover:bg-[#F5F2EB] text-xs font-semibold text-[#1A1A1A] cursor-pointer flex items-center gap-1.5 transition-colors shrink-0">
+                    {isUploadingAdd1 ? (
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-brass-700" />
+                    ) : (
+                      <Upload className="w-3.5 h-3.5 text-brass-700" />
+                    )}
+                    <span>Upload</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleAdditionalImageUpload(e, 1)}
+                      className="hidden"
+                      disabled={isUploadingAdd1}
+                    />
+                  </label>
+                  {additionalImage1 && (
+                    <button
+                      type="button"
+                      onClick={() => setAdditionalImage1('')}
+                      className="p-2 rounded-xl border border-rose-200 text-rose-600 hover:bg-rose-50"
+                      title="Remove image"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+                {additionalImage1 && (
+                  <div className="flex items-center gap-2 p-1.5 rounded-lg bg-white border border-[#DDD5C7]">
+                    <img
+                      src={getFullImageUrl(additionalImage1)}
+                      alt="Additional 1"
+                      className="w-10 h-10 rounded object-contain bg-[#FAF7F2]"
+                      onError={(e) => { e.currentTarget.src = '/images/brands/default.webp'; }}
+                    />
+                    <span className="text-[10px] text-[#5A524A] truncate flex-1">{additionalImage1}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Additional Photo #2 */}
+              <div className="space-y-1.5 pt-2 border-t border-[#E8E1D5]">
+                <span className="text-[11px] font-semibold text-[#3D3731] block">
+                  Additional Photo #2 (Clasp / Movement / Presentation Box)
+                </span>
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="text"
+                    value={additionalImage2}
+                    onChange={(e) => setAdditionalImage2(e.target.value)}
+                    placeholder="https://images.unsplash.com/... or /uploads/..."
+                    className="flex-1 px-3 py-2 rounded-xl border border-[#DDD5C7] bg-white text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600"
+                  />
+                  <label className="px-3 py-2 rounded-xl border border-[#DDD5C7] bg-white hover:bg-[#F5F2EB] text-xs font-semibold text-[#1A1A1A] cursor-pointer flex items-center gap-1.5 transition-colors shrink-0">
+                    {isUploadingAdd2 ? (
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-brass-700" />
+                    ) : (
+                      <Upload className="w-3.5 h-3.5 text-brass-700" />
+                    )}
+                    <span>Upload</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleAdditionalImageUpload(e, 2)}
+                      className="hidden"
+                      disabled={isUploadingAdd2}
+                    />
+                  </label>
+                  {additionalImage2 && (
+                    <button
+                      type="button"
+                      onClick={() => setAdditionalImage2('')}
+                      className="p-2 rounded-xl border border-rose-200 text-rose-600 hover:bg-rose-50"
+                      title="Remove image"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+                {additionalImage2 && (
+                  <div className="flex items-center gap-2 p-1.5 rounded-lg bg-white border border-[#DDD5C7]">
+                    <img
+                      src={getFullImageUrl(additionalImage2)}
+                      alt="Additional 2"
+                      className="w-10 h-10 rounded object-contain bg-[#FAF7F2]"
+                      onError={(e) => { e.currentTarget.src = '/images/brands/default.webp'; }}
+                    />
+                    <span className="text-[10px] text-[#5A524A] truncate flex-1">{additionalImage2}</span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
-          {/* Row 6: Toggles (In Stock & Featured) */}
+          {/* Row 6: Toggles (Featured) */}
           <div className="flex flex-wrap items-center gap-6 pt-2">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={formData.inStock}
-                onChange={(e) => setFormData({ ...formData, inStock: e.target.checked })}
-                className="w-4 h-4 text-brass-600 rounded border-[#DDD5C7] focus:ring-brass-500"
-              />
-              <span className="text-xs font-semibold text-[#1A1A1A]">
-                In Stock (Ready for Same-Day Delivery / Fitting in Golghar)
-              </span>
-            </label>
-
             <label className="flex items-center gap-2 cursor-pointer">
               <input
                 type="checkbox"
@@ -526,32 +768,44 @@ export default function WatchEditModal({
           </div>
 
           {/* Footer Actions */}
-          <div className="pt-4 border-t border-[#E8E1D5] flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-[#E8E1D5] flex items-center justify-between gap-3">
             <button
               type="button"
-              onClick={onClose}
-              className="px-4 py-2.5 rounded-xl border border-[#DDD5C7] text-xs font-semibold text-[#5A524A] hover:bg-[#F5F2EB] transition-colors"
+              onClick={handleResetDefaults}
+              className="px-3.5 py-2 rounded-xl border border-rose-300 bg-rose-50/50 hover:bg-rose-100/70 text-rose-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              title="Reset watch fields to baseline defaults"
             >
-              Cancel
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset to Defaults</span>
             </button>
 
-            <button
-              type="submit"
-              disabled={isSaving}
-              className="px-6 py-2.5 rounded-xl bg-brass-600 hover:bg-brass-500 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg transition-all disabled:opacity-50"
-            >
-              {isSaving ? (
-                <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  <span>Saving...</span>
-                </>
-              ) : (
-                <>
-                  <Save className="w-3.5 h-3.5" />
-                  <span>{isEditing ? 'Update Timepiece' : 'Save Timepiece'}</span>
-                </>
-              )}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2.5 rounded-xl border border-[#DDD5C7] text-xs font-semibold text-[#5A524A] hover:bg-[#F5F2EB] transition-colors"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                disabled={isSaving}
+                className="px-6 py-2.5 rounded-xl bg-brass-600 hover:bg-brass-500 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg transition-all disabled:opacity-50"
+              >
+                {isSaving ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Saving...</span>
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-3.5 h-3.5" />
+                    <span>{isEditing ? 'Update Timepiece' : 'Save Timepiece'}</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </form>
       </div>

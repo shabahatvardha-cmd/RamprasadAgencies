@@ -5,7 +5,6 @@ import {
   Clock,
   Mail,
   ShieldCheck,
-  Heart,
   Send,
   Check,
   Award,
@@ -17,15 +16,18 @@ import { useStore } from '../context/StoreContext';
 import BrandLogo from './BrandLogo';
 
 export default function Footer() {
-  const { storeData } = useStore();
-  const contactPhone = storeData.contactPhone || '+91 98765 43210';
+  const { storeData, getOverride } = useStore();
+  const rawContactPhone = storeData.contactPhone || '+91 98765 43210';
+  const contactPhone = getOverride ? getOverride('contact_phone', rawContactPhone) : rawContactPhone;
   const cleanPhone = contactPhone.replace(/[^0-9]/g, '');
   const brandName = storeData.brandName || 'RAM PRASAD AGENCIES';
   const footerVipBadge = storeData.footerVipBadge || 'Vintage Collectors Circle';
-  const footerVipTitle = storeData.footerVipTitle || 'Receive 10% Off Your First Automatic Timepiece';
-  const footerVipSubtitle =
+  const rawVipTitle = storeData.footerVipTitle || 'Receive 10% Off Your First Automatic Timepiece';
+  const footerVipTitle = getOverride ? getOverride('vip_title', rawVipTitle) : rawVipTitle;
+  const rawVipSubtitle =
     storeData.footerVipSubtitle ||
     'Be the first to preview limited-edition capsule drops, collector timepieces, and exclusive invitations to private showroom fittings in Gorakhpur.';
+  const footerVipSubtitle = getOverride ? getOverride('vip_subtitle', rawVipSubtitle) : rawVipSubtitle;
 
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);

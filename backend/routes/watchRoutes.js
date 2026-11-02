@@ -9,7 +9,7 @@ const storage = require('../storage');
 router.get('/', async (req, res) => {
   try {
     if (storage.isMongoConnected()) {
-      const { category, brand, inStock, search, sort } = req.query;
+      const { category, brand, inStock, gender, search, sort } = req.query;
       const query = {};
 
       if (category) {
@@ -18,8 +18,11 @@ router.get('/', async (req, res) => {
       if (brand) {
         query.brand = { $regex: new RegExp(`^${brand}$`, 'i') };
       }
-      if (typeof inStock !== 'undefined') {
+      if (typeof inStock !== 'undefined' && inStock !== 'ALL') {
         query.inStock = inStock === 'true' || inStock === true;
+      }
+      if (gender && gender !== 'ALL') {
+        query.gender = { $regex: new RegExp(`^${gender}$`, 'i') };
       }
       if (search) {
         query.$or = [

@@ -40,6 +40,16 @@ const watchSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    gender: {
+      type: String,
+      enum: ['Men', 'Women', 'Unisex'],
+      default: 'Unisex',
+      trim: true,
+    },
+    images: {
+      type: [String],
+      default: [],
+    },
     movement: {
       type: String,
       trim: true,

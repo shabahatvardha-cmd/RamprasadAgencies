@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HeroBanner from '../components/HeroBanner';
 import BrandMarquee from '../components/BrandMarquee';
 import DualStorefront from '../components/DualStorefront';
@@ -10,6 +10,9 @@ export default function HomePage({
   contactPhone = '+91 98765 43210',
   onSelectBrand,
 }) {
+  useEffect(() => {
+    document.title = 'Ram Prasad Agencies | watchstore.in';
+  }, []);
   return (
     <main className="w-full">
       {/* 1. Home - Hero Photography Showcase Banner */}

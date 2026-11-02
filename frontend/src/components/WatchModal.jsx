@@ -1,32 +1,90 @@
 import React, { useState, useEffect } from 'react';
-import { X, Phone, MapPin, Clock } from 'lucide-react';
+import { X, Phone, MapPin, Clock, AlertCircle, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getFullImageUrl, getWhatsAppLink, getStoredCustomerProfile } from '../utils/api';
+import { getWatchGender } from '../data/fallbackWatches';
 import { OriginalWhatsAppIcon } from './FloatingWhatsApp';
 
 export default function WatchModal({ watch, onClose, contactPhone }) {
   const [userName] = useState(() => getStoredCustomerProfile()?.name || '');
   const [userPhone] = useState(() => getStoredCustomerProfile()?.phone || '');
   const [userEmail] = useState(() => getStoredCustomerProfile()?.email || '');
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isZoomedIn, setIsZoomedIn] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+
+  const rawExtra = Array.isArray(watch?.images) ? watch.images : [];
+  const allImages = watch ? [watch.image, ...rawExtra].filter(Boolean) : [];
+  const currentImage = allImages[selectedImageIndex] || watch?.image;
+  const fullImage = getFullImageUrl(currentImage);
 
   useEffect(() => {
+    setSelectedImageIndex(0);
+    setIsLightboxOpen(false);
+    setIsZoomedIn(false);
+    if (watch?.brand) {
+      try {
+        const brandSlug = watch.brand.toLowerCase().trim().replace(/\s+/g, '-');
+        sessionStorage.setItem('rpa_last_viewed_brand', brandSlug);
+      } catch {}
+    }
+  }, [watch]);
+
+  // Keyboard navigation & escape handling (Without disturbance to modal)
+  useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && onClose) {
-        onClose();
+      if (e.key === 'Escape') {
+        if (isLightboxOpen) {
+          setIsLightboxOpen(false);
+          setIsZoomedIn(false);
+        } else if (onClose) {
+          onClose();
+        }
+      } else if (isLightboxOpen && allImages.length > 1) {
+        if (e.key === 'ArrowLeft') {
+          setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : allImages.length - 1));
+          setIsZoomedIn(false);
+        } else if (e.key === 'ArrowRight') {
+          setSelectedImageIndex((prev) => (prev < allImages.length - 1 ? prev + 1 : 0));
+          setIsZoomedIn(false);
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  }, [isLightboxOpen, onClose, allImages.length]);
 
-  if (!watch) return null;
+  const handleMouseMove = (e) => {
+    if (!isZoomedIn) return;
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = Math.max(0, Math.min(100, ((e.clientX - left) / width) * 100));
+    const y = Math.max(0, Math.min(100, ((e.clientY - top) / height) * 100));
+    setZoomPosition({ x, y });
+  };
 
-  const fullImage = getFullImageUrl(watch.image);
-  const waUrl = getWhatsAppLink(
-    contactPhone,
-    watch,
-    watch.storeLocation || 'Golghar showrooms',
-    { name: userName, phone: userPhone, email: userEmail }
-  );
+  const rawGender = watch?.gender || getWatchGender(watch);
+  const gender = rawGender === 'Woman' ? 'Women' : rawGender;
+  const isOutOfStock = watch.inStock === false;
+
+  const outOfStockWaMessage = `Hello Ram Prasad Agencies,
+
+My name is ${userName || '[Your Name]'}. I am inquiring about the ${watch.brand || ''} "${watch.name}" which is currently listed as Out of Stock.
+
+Could you please confirm if this timepiece can be specially sourced or when a new unit will arrive at your Gorakhpur showrooms?
+
+Phone: ${userPhone || '[Your Phone]'}
+Email: ${userEmail || '[Your Email]'}
+Thank you!`;
+
+  const waUrl = isOutOfStock
+    ? getWhatsAppLink(contactPhone, outOfStockWaMessage)
+    : getWhatsAppLink(
+        contactPhone,
+        watch,
+        watch.storeLocation || 'Golghar showrooms',
+        { name: userName, phone: userPhone, email: userEmail }
+      );
+
   const cleanPhone = (contactPhone || '9876543210').replace(/[^0-9]/g, '');
 
   const formattedPrice = watch.price
@@ -55,29 +113,92 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
           <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </button>
 
-        {/* Left: Product Image Stage (Directly facing details side-by-side, no scrolling) */}
-        <div className="w-[38%] sm:w-[40%] bg-gradient-to-b from-[#F7F2E9] to-[#EFE7D8] border-r border-[#E5DEC9] p-2.5 sm:p-4 flex items-center justify-center relative shrink-0 overflow-hidden">
+        {/* Left: Product Image Stage & Multi-Image Gallery */}
+        <div className="w-[38%] sm:w-[40%] bg-gradient-to-b from-[#F7F2E9] to-[#EFE7D8] border-r border-[#E5DEC9] p-2.5 sm:p-4 flex flex-col items-center justify-between relative shrink-0 overflow-hidden">
           {/* Subtle Ambient Radial Highlight */}
           <div className="absolute inset-0 bg-radial from-white/80 via-transparent to-transparent pointer-events-none" />
 
-          <img
-            src={fullImage}
-            alt={watch.name}
-            className="w-auto h-full max-h-[160px] sm:max-h-[220px] md:max-h-[290px] object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.18)] transition-transform duration-300 hover:scale-105"
-            onError={(e) => {
-              e.target.src = '/images/brands/default.webp';
-            }}
-          />
+          {/* Top Badges (Gender & Stock) */}
+          <div className="relative z-10 w-full flex items-center justify-between gap-1.5 pointer-events-none">
+            {/* Gender Badge */}
+            <span className="px-2 py-0.5 rounded-md text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wider bg-black/75 backdrop-blur-md text-amber-300 border border-white/20 shadow-2xs pointer-events-auto">
+              {gender}
+            </span>
 
-          {/* Stock Availability Pill */}
-          <div className="absolute top-2.5 left-2.5 flex items-center gap-1 px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wider bg-white/95 text-emerald-800 border border-emerald-300 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>{watch.inStock !== false ? 'In Stock' : 'Sourcing'}</span>
+            {/* Stock Availability Pill */}
+            <div
+              className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wider border shadow-2xs pointer-events-auto ${
+                !isOutOfStock
+                  ? 'bg-white/95 text-emerald-800 border-emerald-300'
+                  : 'bg-rose-900/90 text-rose-100 border-rose-400'
+              }`}
+            >
+              <span
+                className={`w-1.5 h-1.5 rounded-full ${
+                  !isOutOfStock ? 'bg-emerald-500 animate-pulse' : 'bg-rose-400'
+                }`}
+              ></span>
+              <span>{!isOutOfStock ? 'In Stock' : 'Out of Stock'}</span>
+            </div>
           </div>
 
-          {/* Bottom Badge */}
+          {/* Center Image Display with Click to Zoom */}
+          <div
+            onClick={() => setIsLightboxOpen(true)}
+            className="relative z-0 flex-1 w-full flex flex-col items-center justify-center p-1 min-h-[140px] cursor-zoom-in group/zoomstage"
+            title="Click to Zoom & Inspect All Photos"
+          >
+            <div className="relative">
+              <img
+                src={fullImage}
+                alt={watch.name}
+                className={`w-auto h-full max-h-[150px] sm:max-h-[200px] md:max-h-[250px] object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.18)] transition-all duration-300 group-hover/zoomstage:scale-105 ${
+                  isOutOfStock ? 'opacity-85' : ''
+                }`}
+                onError={(e) => {
+                  e.target.src = '/images/brands/default.webp';
+                }}
+              />
+              <span className="absolute bottom-1 right-1 p-1 rounded-md bg-white/90 text-stone-700 opacity-70 group-hover/zoomstage:opacity-100 group-hover/zoomstage:bg-brass-700 group-hover/zoomstage:text-white transition-all shadow-xs backdrop-blur-xs">
+                <ZoomIn className="w-3.5 h-3.5" />
+              </span>
+            </div>
+            <span className="text-[8.5px] text-[#7C746B] mt-1 opacity-80 group-hover/zoomstage:text-brass-800 flex items-center gap-1">
+              <span>Click to inspect & zoom</span>
+            </span>
+          </div>
+
+          {/* Multi-Image Switcher Gallery (Additional Photos) */}
+          {allImages.length > 1 && (
+            <div className="relative z-10 w-full flex items-center justify-center gap-1.5 pt-1.5 border-t border-[#E5DEC9]/80 overflow-x-auto pb-0.5">
+              {allImages.map((img, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg border p-0.5 bg-white transition-all overflow-hidden shrink-0 ${
+                    selectedImageIndex === idx
+                      ? 'border-brass-600 ring-2 ring-brass-600/30 scale-105 shadow-sm'
+                      : 'border-[#DDD5C7] opacity-60 hover:opacity-100'
+                  }`}
+                  title={`View Angle #${idx + 1}`}
+                >
+                  <img
+                    src={getFullImageUrl(img)}
+                    alt={`Thumbnail ${idx + 1}`}
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      e.target.src = '/images/brands/default.webp';
+                    }}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Bottom Collection Ribbon Badge */}
           {watch.badge && (
-            <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded text-[8px] sm:text-[9px] font-bold uppercase tracking-wider bg-[#1A1A1A]/85 text-amber-300 backdrop-blur-sm border border-white/10">
+            <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded text-[8px] sm:text-[9px] font-bold uppercase tracking-wider bg-[#1A1A1A]/85 text-amber-300 backdrop-blur-sm border border-white/10 pointer-events-none">
               {watch.badge}
             </div>
           )}
@@ -100,17 +221,29 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
               {watch.name}
             </h2>
 
-            {/* Showroom Status & Warranty Row (No Price Displayed) */}
+            {/* Showroom Status & Warranty Row */}
             <div className="flex items-center justify-between gap-2 mt-1 pb-1.5 border-b border-[#E8E1D5]">
               <span className="text-xs sm:text-sm font-serif font-bold text-brass-900 tracking-tight flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                Official Authorized Stock
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    !isOutOfStock ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'
+                  }`}
+                ></span>
+                {!isOutOfStock ? 'Official Authorized Stock' : 'Showroom Sourcing Reference'}
               </span>
               <span className="text-[8.5px] sm:text-[9px] text-emerald-700 font-bold uppercase tracking-wider bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                 Official Warranty
               </span>
             </div>
           </div>
+
+          {/* Out of Stock Notice Banner */}
+          {isOutOfStock && (
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-[10px] sm:text-[10.5px] font-semibold">
+              <AlertCircle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+              <span>Currently Out of Stock • Direct Showroom Sourcing Available on Request</span>
+            </div>
+          )}
 
           {/* 2. Compact Horology Specifications (4 Neat Mini-Pills) */}
           <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-xs">
@@ -180,10 +313,14 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 sm:py-2.5 px-3 rounded-lg text-[10.5px] sm:text-xs uppercase tracking-wider font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md shadow-[#25D366]/20 transition-all active:scale-[0.98]"
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 sm:py-2.5 px-3 rounded-lg text-[10.5px] sm:text-xs uppercase tracking-wider font-bold text-white shadow-md transition-all active:scale-[0.98] ${
+                !isOutOfStock
+                  ? 'bg-[#25D366] hover:bg-[#20ba59] shadow-[#25D366]/20'
+                  : 'bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 shadow-amber-600/20'
+              }`}
             >
               <OriginalWhatsAppIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" size={16} />
-              <span>Inquire WhatsApp</span>
+              <span>{!isOutOfStock ? 'Inquire WhatsApp' : 'Inquire Restock / Waitlist'}</span>
             </a>
 
             <a
@@ -197,6 +334,182 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
           </div>
         </div>
       </div>
+
+      {/* High-Resolution Macro Zoom Lightbox (Zero Disturbance to Specification Modal) */}
+      {isLightboxOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[100] flex flex-col justify-between p-3 sm:p-6 bg-black/95 backdrop-blur-xl animate-fade-in text-white select-none cursor-default"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsLightboxOpen(false);
+            setIsZoomedIn(false);
+          }}
+        >
+          {/* Top Bar: Brand, Model, Multi-Photo Counter & Actions */}
+          <div
+            className="flex items-center justify-between gap-3 w-full max-w-5xl mx-auto pb-3 border-b border-white/15"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3 truncate">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-400 bg-amber-400/15 border border-amber-400/30 px-2.5 py-0.5 rounded-full shrink-0">
+                {watch.brand || 'Horology'}
+              </span>
+              <h3 className="font-serif text-sm sm:text-base font-bold text-white truncate">
+                {watch.name}
+              </h3>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              {allImages.length > 1 && (
+                <span className="text-xs font-mono text-stone-300 px-2.5 py-1 rounded bg-white/10 border border-white/10">
+                  Photo {selectedImageIndex + 1} of {allImages.length}
+                </span>
+              )}
+
+              {/* Zoom In/Out Toggle Button */}
+              <button
+                type="button"
+                onClick={() => setIsZoomedIn((prev) => !prev)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border cursor-pointer ${
+                  isZoomedIn
+                    ? 'bg-amber-400 text-stone-950 border-amber-300'
+                    : 'bg-white/10 hover:bg-white/20 text-white border-white/20'
+                }`}
+                title={isZoomedIn ? 'Zoom Out (Click to toggle)' : 'Zoom In 2.4x (Click to toggle)'}
+              >
+                {isZoomedIn ? <ZoomOut className="w-3.5 h-3.5" /> : <ZoomIn className="w-3.5 h-3.5" />}
+                <span className="hidden sm:inline">{isZoomedIn ? 'Zoom Out' : 'Zoom 2.4x'}</span>
+              </button>
+
+              {/* Close Zoom Viewer (Returns straight to specs) */}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsLightboxOpen(false);
+                  setIsZoomedIn(false);
+                }}
+                className="p-1.5 sm:p-2 rounded-lg bg-white/10 hover:bg-rose-600 text-white transition-all cursor-pointer border border-white/15"
+                title="Back to Specifications (Esc)"
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Center Stage: Interactive Panning Loupe & Navigation Arrows */}
+          <div
+            className="relative flex-1 w-full max-w-5xl mx-auto flex items-center justify-center overflow-hidden my-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Left Nav Arrow (If multiple images) */}
+            {allImages.length > 1 && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : allImages.length - 1));
+                  setIsZoomedIn(false);
+                }}
+                className="absolute left-2 sm:left-4 z-20 p-2 sm:p-3 rounded-full bg-black/60 hover:bg-amber-500 hover:text-stone-950 text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer shadow-lg active:scale-95"
+                title="Previous Image (← Left Arrow)"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            )}
+
+            {/* Interactive Image Container with Mouse-Track Zoom Pan */}
+            <div
+              onMouseMove={handleMouseMove}
+              onClick={() => setIsZoomedIn((prev) => !prev)}
+              className={`relative max-w-full max-h-[66vh] sm:max-h-[72vh] flex items-center justify-center overflow-hidden rounded-2xl ${
+                isZoomedIn ? 'cursor-zoom-out' : 'cursor-zoom-in'
+              }`}
+            >
+              <img
+                src={fullImage}
+                alt={watch.name}
+                style={
+                  isZoomedIn
+                    ? {
+                        transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                        transform: 'scale(2.4)',
+                      }
+                    : { transform: 'scale(1)' }
+                }
+                className="w-auto h-auto max-w-full max-h-[66vh] sm:max-h-[72vh] object-contain transition-transform duration-200 ease-out select-none"
+                onError={(e) => {
+                  e.target.src = '/images/brands/default.webp';
+                }}
+              />
+            </div>
+
+            {/* Right Nav Arrow (If multiple images) */}
+            {allImages.length > 1 && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImageIndex((prev) => (prev < allImages.length - 1 ? prev + 1 : 0));
+                  setIsZoomedIn(false);
+                }}
+                className="absolute right-2 sm:right-4 z-20 p-2 sm:p-3 rounded-full bg-black/60 hover:bg-amber-500 hover:text-stone-950 text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer shadow-lg active:scale-95"
+                title="Next Image (→ Right Arrow)"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            )}
+          </div>
+
+          {/* Bottom Bar: Instructions & Multi-Photo Thumbnails */}
+          <div
+            className="w-full max-w-5xl mx-auto pt-3 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Help Hint */}
+            <p className="text-stone-400 text-[11px] sm:text-xs text-center sm:text-left flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span>
+                {isZoomedIn
+                  ? 'Move cursor to pan across dial, hands & bezel • Click to zoom out'
+                  : 'Click anywhere on photo to zoom in for high-definition macro inspection (2.4x)'}
+              </span>
+            </p>
+
+            {/* Thumbnail Strip (If multiple pictures exist for this watch) */}
+            {allImages.length > 1 && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 max-w-full">
+                {allImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      setSelectedImageIndex(idx);
+                      setIsZoomedIn(false);
+                    }}
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg p-0.5 bg-stone-900 border transition-all overflow-hidden shrink-0 cursor-pointer ${
+                      selectedImageIndex === idx
+                        ? 'border-amber-400 ring-2 ring-amber-400/50 scale-105'
+                        : 'border-white/20 opacity-50 hover:opacity-100'
+                    }`}
+                    title={`View Angle #${idx + 1}`}
+                  >
+                    <img
+                      src={getFullImageUrl(img)}
+                      alt={`Thumbnail ${idx + 1}`}
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        e.target.src = '/images/brands/default.webp';
+                      }}
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

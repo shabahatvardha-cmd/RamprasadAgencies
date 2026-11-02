@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Flame, Zap, Award } from 'lucide-react';
 
 export const BRAND_REFERENCE_IMAGES = {
@@ -88,6 +88,50 @@ export default function BrandMarquee({
   brands,
   onSelectBrand,
 }) {
+  const location = useLocation();
+  const [highlightedBrand, setHighlightedBrand] = useState(null);
+
+  // Auto-scroll to and highlight the brand when returning from a watch or brand page
+  useEffect(() => {
+    let targetSlug = null;
+    const hash = location.hash || '';
+
+    if (hash.startsWith('#brand-')) {
+      targetSlug = hash.replace('#brand-', '').toLowerCase().trim();
+    } else if (hash === '#brands' || hash === '#brand') {
+      try {
+        const last = sessionStorage.getItem('rpa_last_viewed_brand');
+        if (last) targetSlug = last.toLowerCase().trim();
+      } catch {}
+    }
+
+    if (targetSlug) {
+      setHighlightedBrand(targetSlug);
+
+      // Smooth scroll centering retry (gives child grids time to paint)
+      let attempts = 0;
+      const scrollTimer = setInterval(() => {
+        const el = document.getElementById(`brand-${targetSlug}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          clearInterval(scrollTimer);
+        } else if (++attempts > 12) {
+          clearInterval(scrollTimer);
+        }
+      }, 60);
+
+      // Clear highlight glow smoothly after 3.5 seconds
+      const clearTimer = setTimeout(() => {
+        setHighlightedBrand((curr) => (curr === targetSlug ? null : curr));
+      }, 3500);
+
+      return () => {
+        clearInterval(scrollTimer);
+        clearTimeout(clearTimer);
+      };
+    }
+  }, [location.hash, location.pathname]);
+
   const brandList = useMemo(() => {
     if (brands && Array.isArray(brands) && brands.length > 0) {
       const result = [];
@@ -181,13 +225,32 @@ export default function BrandMarquee({
     const isOddLast = totalInGroup % 2 === 1 && index === totalInGroup - 1;
     const spanClass = isOddLast ? 'col-span-2 sm:col-span-1' : '';
 
+    const isHighlighted = highlightedBrand === slug;
+
     return (
       <Link
         key={bName}
+        id={`brand-${slug}`}
         to={`/brand/${slug}`}
-        onClick={() => onSelectBrand && onSelectBrand(bName)}
-        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[130px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between p-3 sm:p-4 text-left no-underline block cursor-pointer ${spanClass}`}
+        onClick={() => {
+          try {
+            sessionStorage.setItem('rpa_last_viewed_brand', slug);
+          } catch {}
+          if (onSelectBrand) onSelectBrand(bName);
+        }}
+        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[130px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-500 flex flex-col justify-between p-3 sm:p-4 text-left no-underline block cursor-pointer ${spanClass} ${
+          isHighlighted
+            ? 'border-amber-400 ring-4 ring-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.6)] scale-[1.03] z-20'
+            : 'border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl hover:-translate-y-1'
+        }`}
       >
+        {/* Subtle Indicator Badge when returning to this specific brand */}
+        {isHighlighted && (
+          <div className="absolute top-2.5 right-2.5 z-30 px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest bg-amber-400 text-stone-950 shadow-md animate-pulse">
+            Selected Brand
+          </div>
+        )}
+
         {/* 1. Full-Bleed Reference Watch Image with Smooth Zoom */}
         <img
           src={brandImg}

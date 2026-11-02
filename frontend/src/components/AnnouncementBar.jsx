@@ -3,15 +3,17 @@ import { Sparkles, Phone, Clock, MapPin, Zap, ExternalLink, ShieldCheck } from '
 import { useStore } from '../context/StoreContext';
 
 export default function AnnouncementBar() {
-  const { storeData } = useStore();
+  const { storeData, getOverride } = useStore();
   const announcements = storeData.announcements || {};
   const flashSale = storeData.flashSale || {};
-  const messages = announcements.messages && announcements.messages.length > 0
+  const overrideTicker = getOverride ? getOverride('announcement_ticker', null) : null;
+  const baseMessages = announcements.messages && announcements.messages.length > 0
     ? announcements.messages
     : [
         '⚡ FLASH SALE: Extra 15% Off Curated Swiss & Japanese Big Brand Automatics • Use Code: VINTAGE15',
         'Authorized Specialists for Tissot, Seiko, Rado, Citizen, Fossil & Swiss Calibers in Gorakhpur',
       ];
+  const messages = overrideTicker ? [overrideTicker, ...baseMessages] : baseMessages;
 
   const contactPhone = storeData.contactPhone || '+91 98765 43210';
   const cleanPhone = contactPhone.replace(/[^0-9]/g, '');
