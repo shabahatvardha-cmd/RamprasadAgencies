@@ -15,6 +15,7 @@ import {
   X,
   Tag,
   Zap,
+  Flame,
 } from 'lucide-react';
 import WatchCard from '../components/WatchCard';
 import { FALLBACK_WATCHES, getWatchGender } from '../data/fallbackWatches';
@@ -593,10 +594,34 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
             <div className="absolute right-0 inset-y-0 w-8 sm:w-20 bg-gradient-to-l from-[#FAF7F2] via-[#FAF7F2]/80 to-transparent z-10 pointer-events-none" />
 
             <div className="flex items-center">
-              {/* Left Pinned Label Badge */}
-              <div className="hidden sm:flex items-center gap-2 px-4 sm:px-5 py-3.5 sm:py-4 bg-stone-900 text-amber-300 text-xs sm:text-sm font-mono font-bold tracking-widest uppercase shrink-0 z-20 border-r border-[#DDD5C7] shadow-xs">
-                <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400 animate-pulse" />
-                <span>SPECIAL OFFERS</span>
+              {/* Left Pinned Luxury Hallmark Seal */}
+              <div className="relative shrink-0 z-20 flex items-center bg-gradient-to-br from-[#1C150F] via-[#2A1D12] to-[#120D08] px-3.5 sm:px-5 py-2 sm:py-3 border-r-2 border-amber-500/70 shadow-[4px_0_18px_rgba(0,0,0,0.18)] overflow-hidden group/seal select-none">
+                {/* Ambient Sweeping Gold Shimmer Glint */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-300/20 to-transparent -translate-x-full group-hover/seal:translate-x-full transition-transform duration-1000 pointer-events-none" />
+
+                {/* Subtle Brass Glow Ambient Circle */}
+                <div className="absolute -left-3 -top-3 w-10 h-10 bg-amber-500/20 rounded-full blur-md pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col justify-center">
+                  {/* Top Live Pulsing Radar Strip */}
+                  <div className="flex items-center gap-1.5">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-90" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-r from-amber-400 to-yellow-300 shadow-[0_0_8px_rgba(251,191,36,0.9)]" />
+                    </span>
+                    <span className="text-[8.5px] sm:text-[9.5px] font-mono font-bold tracking-widest text-amber-300/90 uppercase">
+                      LIMITED TIME
+                    </span>
+                  </div>
+
+                  {/* Main Title with Fire & Lustrous Gold Metallic Gradient */}
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 fill-amber-400 animate-pulse" />
+                    <span className="font-serif font-black text-xs sm:text-sm tracking-wider uppercase bg-gradient-to-r from-amber-100 via-amber-300 to-yellow-200 bg-clip-text text-transparent drop-shadow-xs">
+                      SPECIAL OFFERS
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Continuous Moving Marquee Track (Gentle, Slower Pace Moving Right to Left) */}
