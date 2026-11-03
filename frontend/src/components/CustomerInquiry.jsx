@@ -35,7 +35,12 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
     inquirySubtitle ||
     formConfig.subtitle ||
     'Seeking a specific imported reference number, limited edition release, or looking to schedule an in-store viewing at Baldev Plaza or JalKal Building? Share your details with our horology team.';
-  const submitButtonText = formConfig.submitButtonText || 'Submit Inquiry to Showroom';
+  const rawButtonText = formConfig.submitButtonText || 'Submit Inquiry';
+  const submitButtonText =
+    rawButtonText === 'Submit Showroom Consultation Request' ||
+    rawButtonText === 'Submit Inquiry to Showroom'
+      ? 'Submit Inquiry'
+      : rawButtonText;
   const successMessage =
     formConfig.successMessage ||
     'Your consultation request has been registered with Ram Prasad Agencies showroom team. Our showroom specialist will reach out shortly.';
@@ -519,7 +524,7 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                       {isSubmitting ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>Submitting Your Request...</span>
+                          <span>Submitting...</span>
                         </>
                       ) : (
                         <>

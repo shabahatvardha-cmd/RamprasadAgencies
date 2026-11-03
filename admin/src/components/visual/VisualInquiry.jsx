@@ -152,7 +152,7 @@ export default function VisualInquiry({ storeData = {}, isEditMode, onOpenEdit, 
             <div className="pt-2">
               <div className="w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-gradient-to-r from-brass-600 via-amber-600 to-brass-700 text-white text-center shadow-md flex items-center justify-center gap-2">
                 <Send className="w-4 h-4" />
-                <span>{formConfig.submitButtonText || 'Submit Inquiry to Showroom'}</span>
+                <span>{formConfig.submitButtonText === 'Submit Showroom Consultation Request' ? 'Submit Inquiry' : (formConfig.submitButtonText || 'Submit Inquiry')}</span>
               </div>
             </div>
           </div>

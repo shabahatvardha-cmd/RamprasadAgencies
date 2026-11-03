@@ -730,7 +730,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     badge: 'Showroom Assistance',
     title: 'Custom Sourcing & Horology Inquiries',
     subtitle: 'Seeking a specific imported reference number, limited edition release, or looking to schedule an in-store viewing at Baldev Plaza or JalKal Building? Share your details with our horology team.',
-    submitButtonText: 'Submit Showroom Consultation Request',
+    submitButtonText: 'Submit Inquiry',
     successMessage: 'Your consultation request has been registered with Ram Prasad Agencies showroom team. Our showroom specialist will reach out shortly.',
     fields: [
       {
