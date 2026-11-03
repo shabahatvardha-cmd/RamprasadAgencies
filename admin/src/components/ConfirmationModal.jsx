@@ -8,9 +8,14 @@ export default function ConfirmationModal({
   confirmText = 'Restore Defaults',
   onConfirm,
   onClose,
+  onCancel,
+  isDanger = false,
   isDangerous = false,
 }) {
   if (!isOpen) return null;
+
+  const closeHandler = onClose || onCancel || (() => {});
+  const isActionDangerous = isDangerous || isDanger;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
@@ -19,7 +24,7 @@ export default function ConfirmationModal({
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          onClick={onClose}
+          onClick={closeHandler}
           className="absolute top-4 right-4 p-1.5 rounded-full text-[#7C746B] hover:text-[#1A1A1A] hover:bg-[#EFEAE1] transition-colors"
           aria-label="Close modal"
         >
@@ -28,9 +33,9 @@ export default function ConfirmationModal({
 
         <div className="flex items-center gap-3">
           <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
-            isDangerous ? 'bg-rose-500/15 text-rose-700 border border-rose-500/30' : 'bg-brass-500/15 text-brass-700 border border-brass-500/30'
+            isActionDangerous ? 'bg-rose-500/15 text-rose-700 border border-rose-500/30' : 'bg-brass-500/15 text-brass-700 border border-brass-500/30'
           }`}>
-            {isDangerous ? <AlertTriangle className="w-5 h-5" /> : <RotateCcw className="w-5 h-5" />}
+            {isActionDangerous ? <AlertTriangle className="w-5 h-5" /> : <RotateCcw className="w-5 h-5" />}
           </div>
           <div>
             <h3 className="font-serif text-lg font-bold text-[#1A1A1A]">
@@ -48,18 +53,21 @@ export default function ConfirmationModal({
 
         <div className="pt-3 border-t border-[#E8E1D5] flex items-center justify-end gap-2.5">
           <button
-            onClick={onClose}
+            onClick={closeHandler}
             className="px-4 py-2 rounded-xl text-xs font-semibold text-[#4A433D] hover:bg-[#EFEAE1] border border-[#DDD5C7] transition-all"
           >
             Cancel
           </button>
           <button
-            onClick={() => {
-              onConfirm && onConfirm();
-              onClose();
+            onClick={async () => {
+              try {
+                if (onConfirm) await onConfirm();
+              } finally {
+                closeHandler();
+              }
             }}
             className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all active:scale-95 ${
-              isDangerous
+              isActionDangerous
                 ? 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/20'
                 : 'bg-gradient-to-r from-brass-600 to-amber-600 hover:from-brass-500 hover:to-amber-500 shadow-brass-600/20'
             }`}

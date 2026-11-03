@@ -18,6 +18,7 @@ import {
   getWatches,
   getSettings,
   updateSettings,
+  resetSettings,
   createWatch,
   updateWatch,
   deleteWatch,
@@ -383,11 +384,20 @@ function App() {
     try {
       setIsSaving(true);
       try {
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(DEFAULT_VINTAGE_STORE_DATA));
       } catch {}
 
       broadcastUpdate(DEFAULT_VINTAGE_STORE_DATA);
 
+      // Call backend reset endpoint
+      try {
+        await resetSettings();
+      } catch (resetErr) {
+        console.warn('Backend reset endpoint fallback:', resetErr.message);
+      }
+
+      // Overwrite settings with full factory defaults
       await updateSettings({
         vintageStoreData: DEFAULT_VINTAGE_STORE_DATA,
         heroTitle: DEFAULT_VINTAGE_STORE_DATA.hero.slides[0].headline,
@@ -396,13 +406,24 @@ function App() {
         announcementText: DEFAULT_VINTAGE_STORE_DATA.announcements.messages[0],
         heroSlides: DEFAULT_VINTAGE_STORE_DATA.hero.slides,
         showrooms: DEFAULT_VINTAGE_STORE_DATA.showrooms,
+        flashSale: DEFAULT_VINTAGE_STORE_DATA.flashSale,
+        logo: DEFAULT_VINTAGE_STORE_DATA.logo,
+        brands: DEFAULT_VINTAGE_STORE_DATA.brands,
+        trustBadges: DEFAULT_VINTAGE_STORE_DATA.trustBadges,
+        announcements: DEFAULT_VINTAGE_STORE_DATA.announcements,
+        inquiryTitle: DEFAULT_VINTAGE_STORE_DATA.inquiryTitle,
+        footerCopyright: DEFAULT_VINTAGE_STORE_DATA.footerCopyright,
+        footerVipBadge: DEFAULT_VINTAGE_STORE_DATA.footerVipBadge,
+        footerVipTitle: DEFAULT_VINTAGE_STORE_DATA.footerVipTitle,
+        footerVipSubtitle: DEFAULT_VINTAGE_STORE_DATA.footerVipSubtitle,
+        appearance: DEFAULT_VINTAGE_STORE_DATA.appearance,
         contentOverrides: {},
       });
 
       showToast({
         type: 'success',
         title: 'Master Website Reset',
-        message: 'The entire website has been restored to factory vintage defaults.',
+        message: 'The entire website has been successfully restored to factory vintage defaults.',
       });
 
       await loadSettings();
@@ -585,8 +606,9 @@ function App() {
         title="Delete Timepiece"
         message={`Are you sure you want to permanently remove "${watchDeleteCandidate?.name}" from your catalog?`}
         confirmText="Yes, Delete Timepiece"
-        isDanger={true}
+        isDangerous={true}
         onConfirm={handleConfirmDeleteWatch}
+        onClose={() => setWatchDeleteCandidate(null)}
         onCancel={() => setWatchDeleteCandidate(null)}
       />
 
@@ -596,8 +618,9 @@ function App() {
         title="Restore Entire Website to Curated Defaults"
         message="This will reset all headlines, hero slides, flash sale settings, category pillars, editorial showcases, showroom descriptions, colors, and typography back to the factory vintage luxury defaults. Are you sure you wish to proceed?"
         confirmText="Yes, Restore Entire Website"
-        isDanger={true}
+        isDangerous={true}
         onConfirm={handleMasterRestore}
+        onClose={() => setShowMasterRestoreModal(false)}
         onCancel={() => setShowMasterRestoreModal(false)}
       />
 
