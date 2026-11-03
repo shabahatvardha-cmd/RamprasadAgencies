@@ -256,6 +256,16 @@ function resetSettings() {
   return fresh;
 }
 
+function resetWatches() {
+  const current = readWatchesFile();
+  const resetList = current.map((w) => ({
+    ...w,
+    inStock: true,
+  }));
+  writeWatchesFile(resetList);
+  return resetList;
+}
+
 // -----------------------------------------------------------------------------
 // 3. Watches Storage Operations
 // -----------------------------------------------------------------------------
@@ -495,6 +505,7 @@ module.exports = {
   getSettings,
   updateSettings,
   resetSettings,
+  resetWatches,
   getWatches,
   getWatchById,
   createWatch,

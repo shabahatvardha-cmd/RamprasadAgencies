@@ -1263,7 +1263,7 @@ export const fallbackWatches = [
     "description": "Versatile luxury sports watch bridging formal dress and water resistance.",
     "image": "/images/watches/omega/03.webp",
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
-    "inStock": false,
+    "inStock": true,
     "featured": true,
     "gender": "Unisex",
     "price": null,

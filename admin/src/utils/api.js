@@ -177,6 +177,24 @@ export const resetSettings = async () => {
 };
 
 /**
+ * Reset watch catalog to factory defaults (all in stock) via POST /api/watches/reset
+ */
+export const resetWatches = async () => {
+  const res = await fetch(`${API_BASE}/watches/reset`, {
+    method: 'POST',
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to reset watch catalog');
+  }
+
+  broadcastSync('WATCHES_UPDATED');
+  broadcastSync('REFETCH_ALL');
+  return data.data;
+};
+
+/**
  * Update existing watch via PUT /api/watches/:id
  */
 export const updateWatch = async (id, watchData) => {

@@ -64,6 +64,32 @@ router.get('/', async (req, res) => {
   }
 });
 
+// POST /api/watches/reset - Reset all watches to default catalog (all in stock)
+router.post('/reset', async (req, res) => {
+  try {
+    const resetData = storage.resetWatches();
+    if (storage.isMongoConnected()) {
+      try {
+        await Watch.updateMany({}, { $set: { inStock: true } });
+      } catch (mErr) {
+        console.warn('Mongo watch reset sync warning:', mErr.message);
+      }
+    }
+    res.status(200).json({
+      success: true,
+      message: 'Watch catalog reset to factory defaults (all models in stock)',
+      count: resetData.length,
+      data: resetData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to reset watch catalog',
+      error: error.message,
+    });
+  }
+});
+
 // GET /api/watches/:id - Fetch a single watch by ID
 router.get('/:id', async (req, res) => {
   try {

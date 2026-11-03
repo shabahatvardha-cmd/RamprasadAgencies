@@ -19,6 +19,7 @@ import {
   getSettings,
   updateSettings,
   resetSettings,
+  resetWatches,
   createWatch,
   updateWatch,
   deleteWatch,
@@ -420,13 +421,30 @@ function App() {
         contentOverrides: {},
       });
 
+      // Reset watch catalog back to factory defaults (all models in stock)
+      try {
+        await resetWatches();
+      } catch (watchResetErr) {
+        console.warn('Backend reset watches endpoint fallback:', watchResetErr.message);
+      }
+
+      // Update local watches state so UI immediately shows all in stock
+      setBackendWatches((prev) =>
+        prev.map((w) => ({
+          ...w,
+          inStock: true,
+        }))
+      );
+      broadcastWatchChange();
+
       showToast({
         type: 'success',
         title: 'Master Website Reset',
-        message: 'The entire website has been successfully restored to factory vintage defaults.',
+        message: 'The entire website and timepiece catalog have been restored to factory defaults.',
       });
 
       await loadSettings();
+      await loadWatches();
       setShowMasterRestoreModal(false);
     } catch (err) {
       console.error(err);
