@@ -27,6 +27,7 @@ import {
 } from './utils/api';
 import { DEFAULT_VINTAGE_STORE_DATA, sanitizeStoreData } from './utils/defaults';
 import { FALLBACK_WATCHES } from './data/fallbackWatches';
+import { PRISTINE_BASELINE_WATCHES } from './data/pristineBaselineWatches';
 import { Loader2, X } from 'lucide-react';
 
 const LOCAL_STORAGE_KEY = 'fossil_storefront_state_v2';
@@ -391,14 +392,14 @@ function App() {
 
       broadcastUpdate(DEFAULT_VINTAGE_STORE_DATA);
 
-      // Call backend reset endpoint
+      // 1. Call backend reset settings endpoint
       try {
         await resetSettings();
       } catch (resetErr) {
-        console.warn('Backend reset endpoint fallback:', resetErr.message);
+        console.warn('Backend reset settings endpoint fallback:', resetErr.message);
       }
 
-      // Overwrite settings with full factory defaults
+      // 2. Overwrite settings with full pristine factory defaults
       await updateSettings({
         vintageStoreData: DEFAULT_VINTAGE_STORE_DATA,
         heroTitle: DEFAULT_VINTAGE_STORE_DATA.hero.slides[0].headline,
@@ -421,8 +422,8 @@ function App() {
         contentOverrides: {},
       });
 
-      // Reset watch catalog back to factory defaults (all models in stock, prices unrevealed)
-      let restored = FALLBACK_WATCHES.map((w) => ({
+      // 3. Reset watch catalog back to pristine factory baseline (all 240 models in stock, prices unrevealed)
+      let restored = PRISTINE_BASELINE_WATCHES.map((w) => ({
         ...w,
         inStock: true,
         price: null,
@@ -439,19 +440,31 @@ function App() {
         console.warn('Backend reset watches endpoint fallback:', watchResetErr.message);
       }
 
-      // Update local watches state so UI immediately shows all in stock and clean
+      // 4. Update local watches state so UI immediately shows all in stock and clean
       setBackendWatches(restored);
       broadcastWatchChange();
+
+      // 5. Broadcast master reset to all open browser windows and tabs
+      try {
+        if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
+          const ch = new BroadcastChannel('fossil_store_realtime_sync');
+          ch.postMessage({ type: 'MASTER_FACTORY_RESET', timestamp: Date.now() });
+          ch.close();
+        }
+      } catch {}
 
       showToast({
         type: 'success',
         title: 'Master Website Reset',
-        message: 'The entire website and timepiece catalog have been restored to factory defaults.',
+        message: 'The entire website and timepiece catalog have been restored to factory baseline condition.',
       });
 
-      await loadSettings();
-      await loadWatches();
       setShowMasterRestoreModal(false);
+
+      // Clean browser refresh after 650ms to ensure 100% clean memory and DOM state
+      setTimeout(() => {
+        window.location.reload();
+      }, 650);
     } catch (err) {
       console.error(err);
       showToast({

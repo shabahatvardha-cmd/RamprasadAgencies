@@ -16,7 +16,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-02-neo-splash",
@@ -34,7 +37,10 @@ export const fallbackWatches = [
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-03-workwear-minimalist",
@@ -52,7 +58,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-04-regalia-classic",
@@ -70,7 +79,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-05-grandmaster-chronograph",
@@ -88,7 +100,10 @@ export const fallbackWatches = [
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-06-maritime-chronograph",
@@ -106,7 +121,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-07-purple-entice",
@@ -124,7 +142,10 @@ export const fallbackWatches = [
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-08-automatics-neo",
@@ -142,7 +163,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-09-edge-ceramic",
@@ -160,7 +184,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-10-bandhan-couple-set",
@@ -178,7 +205,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-11-karishma-classic",
@@ -196,7 +226,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-12-octane-hyperion",
@@ -214,7 +247,10 @@ export const fallbackWatches = [
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-13-stellar-meteorite",
@@ -232,7 +268,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-14-neo-economy",
@@ -250,7 +289,10 @@ export const fallbackWatches = [
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-15-workwear-slimline",
@@ -268,7 +310,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-16-rhythms-of-nature",
@@ -286,7 +331,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-17-neo-iv-chronograph",
@@ -304,7 +352,10 @@ export const fallbackWatches = [
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-18-edge-mechanical",
@@ -322,7 +373,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-19-heritage-gold",
@@ -340,7 +394,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-20-classique-formal",
@@ -358,7 +415,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-01-janata-mechanical-white",
@@ -379,7 +439,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-02-sangam-mechanical",
@@ -400,7 +461,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-03-kanchan-gold-automatic",
@@ -421,7 +483,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-04-pilot-mechanical-black",
@@ -442,7 +505,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-05-kohinoor-maroon",
@@ -463,7 +527,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-06-himadri-automatic",
@@ -484,7 +549,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-07-tareeq-automatic",
@@ -505,7 +571,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-08-chronograph-fgss-12",
@@ -526,7 +593,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-09-commando-tactical",
@@ -547,7 +615,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-10-vijay-mechanical",
@@ -568,7 +637,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-11-rajat-automatic",
@@ -589,7 +659,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-12-chetak-gold",
@@ -610,7 +681,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-13-jhalak-skeleton",
@@ -631,7 +703,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-14-abhilasha-gold",
@@ -652,7 +725,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-15-amber-ladies-mechanical",
@@ -673,7 +747,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-16-himalaya-quartz-ips",
@@ -694,7 +769,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-17-inox-gold-igss-05",
@@ -715,7 +791,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-18-nandan-quartz",
@@ -736,7 +813,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-19-sweekar-quartz",
@@ -757,7 +835,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-20-adsl-04-couple-watch",
@@ -778,7 +857,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-01-prx-powermatic-80",
@@ -799,7 +879,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-02-prx-quartz-40mm",
@@ -820,7 +901,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-03-seastar-1000-powermatic-80",
@@ -841,7 +923,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-04-gentleman-powermatic-80-silicium",
@@ -862,7 +945,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-05-le-locle-powermatic-80",
@@ -883,7 +967,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-06-prx-powermatic-80-carbon",
@@ -904,7 +989,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-07-heritage-visodate-automatic",
@@ -925,7 +1011,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-08-supersport-chrono",
@@ -946,7 +1033,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-09-pr-100-sport-chic",
@@ -967,7 +1055,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-10-chemin-des-tourelles-powermatic-80",
@@ -988,7 +1077,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-11-prx-35mm-mint-green",
@@ -1009,7 +1099,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-12-bellissima-automatic",
@@ -1030,7 +1121,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-13-seastar-2000-professional",
@@ -1051,7 +1143,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-14-heritage-1973-chronograph",
@@ -1072,7 +1165,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-15-everytime-swissmatic",
@@ -1093,7 +1187,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-16-t-touch-connect-solar",
@@ -1114,7 +1209,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-17-tradition-powermatic-80-open-heart",
@@ -1135,7 +1231,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-18-carson-premium-powermatic-80",
@@ -1156,7 +1253,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-19-prx-powermatic-80-gold",
@@ -1177,7 +1275,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-20-lovely-square",
@@ -1198,7 +1297,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-01-speedmaster-moonwatch",
@@ -1219,7 +1319,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-02-seamaster-diver-300m",
@@ -1294,7 +1395,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-05-seamaster-planet-ocean-600m",
@@ -1315,7 +1417,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-06-de-ville-prestige-co-axial",
@@ -1336,7 +1439,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-07-speedmaster-38-chronograph",
@@ -1357,7 +1461,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-08-seamaster-300-heritage",
@@ -1378,7 +1483,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-09-speedmaster-moonwatch-hesalite",
@@ -1399,7 +1505,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-10-seamaster-diver-300m-blue",
@@ -1420,7 +1527,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-11-constellation-globemaster",
@@ -1441,7 +1549,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-12-speedmaster-dark-side-moon",
@@ -1462,7 +1571,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-13-seamaster-aqua-terra-worldtimer",
@@ -1483,7 +1593,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-14-de-ville-tresor-power-reserve",
@@ -1504,7 +1615,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-15-speedmaster-racing",
@@ -1525,7 +1637,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-16-seamaster-ploprof-1200m",
@@ -1546,7 +1659,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-17-constellation-manhattan",
@@ -1567,7 +1681,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-18-speedmaster-57-co-axial",
@@ -1588,7 +1703,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-19-seamaster-aqua-terra-ultra-light",
@@ -1609,7 +1725,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-20-de-ville-hour-vision",
@@ -1630,7 +1747,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-01-captain-cook-high-tech-ceramic",
@@ -1651,7 +1769,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-02-true-square-open-heart",
@@ -1672,7 +1791,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-03-centrix-automatic-diamonds",
@@ -1693,7 +1813,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-04-true-round-automatic",
@@ -1714,7 +1835,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-05-hyperchrome-classic-automatic",
@@ -1735,7 +1857,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-06-integral-jubile",
@@ -1756,7 +1879,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-07-diamaster-automatic",
@@ -1777,7 +1901,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-08-captain-cook-over-pole",
@@ -1798,7 +1923,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-09-ceramica-automatic",
@@ -1819,7 +1945,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-10-true-thinline-less",
@@ -1840,7 +1967,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-11-centrix-open-heart",
@@ -1861,7 +1989,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-12-captain-cook-bronze-automatic",
@@ -1882,7 +2011,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-13-true-square-thinline",
@@ -1903,7 +2033,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-14-hyperchrome-captain-cook-chronograph",
@@ -1924,7 +2055,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-15-coupole-classic-automatic",
@@ -1945,7 +2077,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-16-true-secret-automatic",
@@ -1966,7 +2099,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-17-sintra-jubile",
@@ -1987,7 +2121,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-18-diastar-original-automatic",
@@ -2008,7 +2143,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-19-true-square-designer",
@@ -2029,7 +2165,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-20-centrix-automatic-chronograph",
@@ -2050,7 +2187,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-01-5-sports-srpd55k1",
@@ -2071,7 +2209,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-02-prospex-turtle",
@@ -2092,7 +2231,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-03-presage-cocktail-time-skydiving",
@@ -2113,7 +2253,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-04-prospex-alpinist",
@@ -2134,7 +2275,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-05-prospex-sumo",
@@ -2155,7 +2297,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-06-5-sports-field-watch",
@@ -2176,7 +2319,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-07-prospex-speedtimer-solar-chrono",
@@ -2197,7 +2341,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-08-presage-mockingbird-cocktail",
@@ -2218,7 +2363,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-09-king-seiko-vanac",
@@ -2239,7 +2385,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-10-prospex-monster",
@@ -2260,7 +2407,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-11-astron-gps-solar",
@@ -2281,7 +2429,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-12-5-sports-gmt-orange-field",
@@ -2302,7 +2451,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-13-premier-kinetic-perpetual",
@@ -2323,7 +2473,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-14-presage-sharp-edged",
@@ -2344,7 +2495,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-15-prospex-1965-diver-reinterpretation",
@@ -2365,7 +2517,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-16-5-sports-gmt-batman",
@@ -2386,7 +2539,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-17-presage-cocktail-time-old-fashioned",
@@ -2407,7 +2561,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-18-prospex-solar-diver",
@@ -2428,7 +2583,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-19-5-sports-snxs-vintage",
@@ -2449,7 +2605,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-20-prospex-marinemaster-300m",
@@ -2470,7 +2627,8 @@ export const fallbackWatches = [
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-01-viva",
@@ -2488,7 +2646,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-02-facets",
@@ -2533,7 +2694,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.639Z"
+    "updatedAt": "2026-11-02T11:59:59.639Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-04-aurora",
@@ -2552,7 +2716,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.663Z"
+    "updatedAt": "2026-11-02T11:59:59.663Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-05-flora",
@@ -2570,7 +2737,10 @@ export const fallbackWatches = [
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-06-power-pearls",
@@ -2589,7 +2759,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-07-cocktails",
@@ -2608,7 +2781,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-08-delight",
@@ -2627,7 +2803,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-09-sparkle",
@@ -2645,7 +2824,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-10-masaba-gupta",
@@ -2663,7 +2845,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-11-noir",
@@ -2682,7 +2867,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-12-ceramic-elegance",
@@ -2701,7 +2889,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-13-pearlescent",
@@ -2720,7 +2911,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-14-empress",
@@ -2739,7 +2933,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-15-chic-petite",
@@ -2758,7 +2955,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-16-swarnim-gold",
@@ -2776,7 +2976,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-17-lumina",
@@ -2794,7 +2997,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-18-moonlight",
@@ -2812,7 +3018,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-19-viva-rose",
@@ -2831,7 +3040,10 @@ export const fallbackWatches = [
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-20-classics",
@@ -2849,7 +3061,10 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "citizen-01-tsuyosa-automatic",
@@ -2878,7 +3093,8 @@ export const fallbackWatches = [
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-10-30T07:07:03.272Z"
+    "updatedAt": "2026-10-30T07:07:03.272Z",
+    "hidePrice": true
   },
   {
     "id": "citizen-02-promaster-ecodrive-diver",
@@ -2906,7 +3122,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-03-ecodrive-calendrier",
@@ -2934,7 +3151,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-04-corso-ecodrive",
@@ -2962,7 +3180,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-05-promaster-mechanical-diver",
@@ -2990,7 +3209,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-06-radiocontrolled-world-chrono",
@@ -3018,7 +3238,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-07-tsuyosa-yellow",
@@ -3046,7 +3267,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-08-promaster-aqualand",
@@ -3074,7 +3296,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-09-axiom-ecodrive",
@@ -3102,7 +3325,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-10-series-8-mechanical",
@@ -3130,7 +3354,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-11-ecodrive-chronograph",
@@ -3158,7 +3383,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-12-ecodrive-ladies-diamond",
@@ -3186,7 +3412,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-13-promaster-skyhawk-at",
@@ -3214,7 +3441,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-14-ecodrive-titanium",
@@ -3242,7 +3470,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-15-tsuyosa-green",
@@ -3270,7 +3499,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-16-ecodrive-one",
@@ -3298,7 +3528,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-17-calendrier-multifunction",
@@ -3326,7 +3557,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-18-promaster-tough",
@@ -3354,7 +3586,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-19-silhouette-crystal",
@@ -3382,7 +3615,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-20-promaster-ecodrive-gmt",
@@ -3410,7 +3644,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-01-neon-disco",
@@ -3438,7 +3673,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-02-reflex-vox-smartwatch",
@@ -3466,7 +3702,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-03-edge-metallic",
@@ -3495,7 +3732,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.538Z"
+    "updatedAt": "2026-11-02T17:17:53.538Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-04-trendies-casual",
@@ -3523,7 +3761,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-05-economy-casual",
@@ -3552,7 +3791,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.557Z"
+    "updatedAt": "2026-11-02T17:17:53.557Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-06-tees-graphic",
@@ -3581,7 +3821,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.586Z"
+    "updatedAt": "2026-11-02T17:17:53.586Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-07-bare-essentials",
@@ -3610,7 +3851,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.620Z"
+    "updatedAt": "2026-11-02T17:17:53.620Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-08-streetwear-chrono",
@@ -3638,7 +3880,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-09-stunners-party-watch",
@@ -3667,7 +3910,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.649Z"
+    "updatedAt": "2026-11-02T17:17:53.649Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-10-economy-metal",
@@ -3695,7 +3939,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-11-occupational-casual",
@@ -3723,7 +3968,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-12-reflex-play-smartwatch",
@@ -3751,7 +3997,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-13-work-casual-steel",
@@ -3779,7 +4026,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-14-un-form-asymmetric",
@@ -3807,7 +4055,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-15-next-gen-digital",
@@ -3836,7 +4085,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.686Z"
+    "updatedAt": "2026-11-02T17:17:53.686Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-16-economy-minimal",
@@ -3865,7 +4115,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.719Z"
+    "updatedAt": "2026-11-02T17:17:53.719Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-17-military-field",
@@ -3893,7 +4144,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-18-duo-couple-set",
@@ -3921,7 +4173,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-19-fastfit-sport",
@@ -3949,7 +4202,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-20-gradient-chic",
@@ -3978,7 +4232,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.756Z"
+    "updatedAt": "2026-11-02T17:17:53.756Z",
+    "hidePrice": true
   },
   {
     "id": "sonata-01-poze-gold",
@@ -4006,7 +4261,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-02-classic-formal",
@@ -4034,7 +4290,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-03-superfibre-sports",
@@ -4062,7 +4319,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-04-yuva-digital",
@@ -4090,7 +4348,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-05-essentials-steel",
@@ -4118,7 +4377,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-06-gold-wedding-series",
@@ -4146,7 +4406,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-07-stilo-womens-gold",
@@ -4174,7 +4435,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-08-activa-fitness",
@@ -4202,7 +4464,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-09-sleek-metal",
@@ -4230,7 +4493,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-10-digital-alarm-watch",
@@ -4258,7 +4522,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-11-fibre-youth",
@@ -4286,7 +4551,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-12-sleek-leather",
@@ -4314,7 +4580,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-13-poze-rose-gold",
@@ -4342,7 +4609,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-14-wedding-couple-set",
@@ -4370,7 +4638,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-15-gold-dial-classic",
@@ -4398,7 +4667,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-16-gold-chic-women",
@@ -4426,7 +4696,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-17-superfibre-ocean",
@@ -4454,7 +4725,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-18-studded-party-watch",
@@ -4482,7 +4754,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-19-essentials-roman",
@@ -4510,7 +4783,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-20-minimalist-black",
@@ -4538,7 +4812,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-01-neutra-chronograph",
@@ -4566,7 +4841,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-02-machine-chronograph",
@@ -4594,7 +4870,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-03-everett-three-hand",
@@ -4622,7 +4899,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-04-townsman-automatic",
@@ -4650,7 +4928,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-05-raquel-three-hand",
@@ -4679,7 +4958,8 @@ export const fallbackWatches = [
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:41:03.868Z"
+    "updatedAt": "2026-11-02T17:41:03.868Z",
+    "hidePrice": true
   },
   {
     "id": "fossil-06-carlie-mini",
@@ -4707,7 +4987,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-07-minimalist-three-hand",
@@ -4735,7 +5016,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-08-grant-chronograph",
@@ -4763,7 +5045,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-09-fossil-blue-diver",
@@ -4791,7 +5074,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-10-carraway-tonneau",
@@ -4819,7 +5103,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-11-bronson-chronograph",
@@ -4847,7 +5132,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-12-heritage-automatic",
@@ -4875,7 +5161,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-13-scarlette-mini",
@@ -4903,7 +5190,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-14-sport-tourer",
@@ -4931,7 +5219,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-15-harwell-three-hand",
@@ -4959,7 +5248,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-16-nate-chronograph",
@@ -4987,7 +5277,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-17-fb-01-diver",
@@ -5015,7 +5306,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-18-jacqueline-three-hand",
@@ -5043,7 +5335,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-19-gen-6-smartwatch",
@@ -5071,7 +5364,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-20-townsman-chronograph",
@@ -5099,7 +5393,8 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "breitling-01",
@@ -5120,7 +5415,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-02",
@@ -5141,7 +5438,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-03",
@@ -5164,7 +5463,9 @@ export const fallbackWatches = [
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-03",
-    "updatedAt": "2026-11-02T17:00:29.375Z"
+    "updatedAt": "2026-11-02T17:00:29.375Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-04",
@@ -5185,7 +5486,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-05",
@@ -5206,7 +5509,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-06",
@@ -5227,7 +5532,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-07",
@@ -5248,7 +5555,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-08",
@@ -5269,7 +5578,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-09",
@@ -5290,7 +5601,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-10",
@@ -5311,7 +5624,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-11",
@@ -5334,7 +5649,9 @@ export const fallbackWatches = [
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-11",
-    "updatedAt": "2026-11-02T17:00:29.394Z"
+    "updatedAt": "2026-11-02T17:00:29.394Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-12",
@@ -5357,7 +5674,9 @@ export const fallbackWatches = [
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-12",
-    "updatedAt": "2026-11-02T17:00:29.420Z"
+    "updatedAt": "2026-11-02T17:00:29.420Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-13",
@@ -5378,7 +5697,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-14",
@@ -5401,7 +5722,9 @@ export const fallbackWatches = [
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
     "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-14",
-    "updatedAt": "2026-11-02T17:00:29.448Z"
+    "updatedAt": "2026-11-02T17:00:29.448Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-15",
@@ -5422,7 +5745,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-16",
@@ -5443,7 +5768,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-17",
@@ -5464,7 +5791,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-18",
@@ -5485,7 +5814,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-19",
@@ -5506,7 +5837,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-20",
@@ -5527,7 +5860,9 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   }
 ];
 

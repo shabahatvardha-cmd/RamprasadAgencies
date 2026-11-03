@@ -286,6 +286,55 @@ function resetWatches() {
   return resetList;
 }
 
+function resetSingleWatch(id) {
+  let freshList = [];
+  try {
+    if (fs.existsSync(DEFAULT_WATCHES_FILE)) {
+      const raw = fs.readFileSync(DEFAULT_WATCHES_FILE, 'utf8').replace(/^\uFEFF/, '');
+      freshList = JSON.parse(raw);
+    }
+  } catch (err) {
+    console.error('Error reading defaultWatches.json:', err.message);
+  }
+
+  if (!freshList || freshList.length === 0) {
+    freshList = loadInitialWatches();
+  }
+
+  const cleanId = String(id).trim();
+  const original = freshList.find(
+    (w) =>
+      String(w._id || w.id).trim().toLowerCase() === cleanId.toLowerCase() ||
+      (w.name && String(w.name).trim().toLowerCase() === cleanId.toLowerCase())
+  );
+
+  if (!original) return null;
+
+  const restored = {
+    ...original,
+    inStock: true,
+    price: null,
+    originalPrice: null,
+    hidePrice: true,
+  };
+
+  const currentList = readWatchesFile();
+  const idx = currentList.findIndex(
+    (w) =>
+      String(w._id || w.id).trim().toLowerCase() === cleanId.toLowerCase() ||
+      (w.name && String(w.name).trim().toLowerCase() === String(original.name).trim().toLowerCase())
+  );
+
+  if (idx !== -1) {
+    currentList[idx] = { ...currentList[idx], ...restored };
+  } else {
+    currentList.push(restored);
+  }
+
+  writeWatchesFile(currentList);
+  return restored;
+}
+
 // -----------------------------------------------------------------------------
 // 3. Watches Storage Operations
 // -----------------------------------------------------------------------------
@@ -526,6 +575,7 @@ module.exports = {
   updateSettings,
   resetSettings,
   resetWatches,
+  resetSingleWatch,
   getWatches,
   getWatchById,
   createWatch,

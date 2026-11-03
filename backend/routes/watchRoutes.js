@@ -90,6 +90,43 @@ router.post('/reset', async (req, res) => {
   }
 });
 
+// POST /api/watches/:id/reset - Reset a single watch to factory specifications
+router.post('/:id/reset', async (req, res) => {
+  try {
+    const restored = storage.resetSingleWatch(req.params.id);
+    if (!restored) {
+      return res.status(404).json({
+        success: false,
+        message: `Watch with ID ${req.params.id} not found in factory catalog`,
+      });
+    }
+
+    if (storage.isMongoConnected()) {
+      try {
+        await Watch.findOneAndUpdate(
+          { _id: req.params.id },
+          { $set: restored },
+          { new: true }
+        );
+      } catch (mErr) {
+        console.warn('Mongo single watch reset sync warning:', mErr.message);
+      }
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Watch "${restored.name}" reset to factory specifications`,
+      data: restored,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to reset watch to factory specifications',
+      error: error.message,
+    });
+  }
+});
+
 // GET /api/watches/:id - Fetch a single watch by ID
 router.get('/:id', async (req, res) => {
   try {

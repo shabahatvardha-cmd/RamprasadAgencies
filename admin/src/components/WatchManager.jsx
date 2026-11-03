@@ -19,9 +19,10 @@ import {
   Star,
   Save,
 } from 'lucide-react';
-import { uploadImageFile, createWatch, updateWatch, deleteWatch, getFullImageUrl } from '../utils/api';
+import { uploadImageFile, createWatch, updateWatch, deleteWatch, getFullImageUrl, resetSingleWatch, resetWatches } from '../utils/api';
 import { formatINR } from '../utils/formatters';
 import { getVerifiedBrandImage, BRAND_VERIFIED_WATCH_IMAGE } from '../utils/defaults';
+import { PRISTINE_BASELINE_WATCHES } from '../data/pristineBaselineWatches';
 import ConfirmationModal from './ConfirmationModal';
 
 const POPULAR_BRANDS = [
@@ -269,12 +270,13 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
   const [editingWatchId, setEditingWatchId] = useState(null);
 
   const [name, setName] = useState('');
-  const [brand, setBrand] = useState('Fossil Heritage');
+  const [brand, setBrand] = useState('Titan');
   const [price, setPrice] = useState('');
+  const [hidePrice, setHidePrice] = useState(true);
   const [category, setCategory] = useState('Automatic');
   const [movement, setMovement] = useState('Automatic Movement');
   const [caseDiameter, setCaseDiameter] = useState('42mm');
-  const [strapType, setStrapType] = useState('Vegetable-Tanned Saddle Leather');
+  const [strapType, setStrapType] = useState('Stainless Steel Bracelet');
   const [waterResistance, setWaterResistance] = useState('100m / 10 Bar');
   const [storeLocation, setStoreLocation] = useState('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
   const [inStock, setInStock] = useState(true);
@@ -291,6 +293,7 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
   const [isUploadingAdd2, setIsUploadingAdd2] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
+  const [isResettingId, setIsResettingId] = useState(null);
 
   // Filters
   const [searchQuery, setSearchQuery] = useState('');
@@ -308,6 +311,7 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
     setName('');
     setBrand('Titan');
     setPrice('');
+    setHidePrice(true);
     setCategory('Automatic');
     setMovement('Titan Automatic Mechanical Calibre');
     setCaseDiameter('42mm');
@@ -328,8 +332,10 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
   const handleOpenEdit = (w) => {
     setEditingWatchId(w._id || w.id);
     setName(w.name || '');
-    setBrand(w.brand || 'Fossil Heritage');
-    setPrice(w.price !== undefined ? String(w.price) : '');
+    setBrand(w.brand || 'Titan');
+    const isHidden = !w.price || Number(w.price) <= 0 || Boolean(w.hidePrice);
+    setHidePrice(isHidden);
+    setPrice(isHidden ? '' : String(w.price));
     setCategory(w.category || 'Automatic');
     setMovement(w.movement || 'Automatic Movement');
     setCaseDiameter(w.caseDiameter || '42mm');
@@ -404,28 +410,105 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
     }
   };
 
+  // Reset Single Watch directly to pristine factory baseline
+  const handleResetSingleWatch = async (w) => {
+    const id = w._id || w.id;
+    try {
+      setIsResettingId(id);
+      const original = PRISTINE_BASELINE_WATCHES.find(
+        (orig) =>
+          (orig._id && orig._id === id) ||
+          (orig.id && orig.id === id) ||
+          (orig.name && w.name && orig.name.toLowerCase() === w.name.toLowerCase())
+      );
+
+      try {
+        await resetSingleWatch(id);
+      } catch (apiErr) {
+        if (original) {
+          await updateWatch(id, {
+            ...original,
+            inStock: true,
+            price: null,
+            originalPrice: null,
+            hidePrice: true,
+          });
+        }
+      }
+
+      showToast({
+        type: 'success',
+        title: 'Timepiece Restored',
+        message: `"${original?.name || w.name}" restored to authentic factory condition (In Stock, Price Hidden).`,
+      });
+      onRefresh && onRefresh();
+    } catch (err) {
+      showToast({
+        type: 'error',
+        title: 'Reset Failed',
+        message: err.message || 'Could not reset timepiece.',
+      });
+    } finally {
+      setIsResettingId(null);
+    }
+  };
+
   // Reset to Defaults (Current watch form)
   const handleResetCurrentWatch = () => {
-    setName('Classic Luxury Watch');
+    if (editingWatchId) {
+      const original = PRISTINE_BASELINE_WATCHES.find(
+        (orig) =>
+          (orig._id && orig._id === editingWatchId) ||
+          (orig.id && orig.id === editingWatchId) ||
+          (orig.name && name && orig.name.toLowerCase() === name.toLowerCase())
+      );
+      if (original) {
+        setName(original.name || '');
+        setBrand(original.brand || 'Titan');
+        setPrice('');
+        setHidePrice(true);
+        setCategory(original.category || 'Automatic');
+        setMovement(original.movement || 'Automatic Movement');
+        setCaseDiameter(original.caseDiameter || original.caseSize || '42mm');
+        setStrapType(original.strapType || original.strap || 'Stainless Steel Bracelet');
+        setWaterResistance(original.waterResistance || '50m / 5 Bar');
+        setStoreLocation(original.storeLocation || 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
+        setInStock(true);
+        setGender(original.gender || 'Unisex');
+        setFeatured(Boolean(original.featured));
+        setDescription(original.description || '');
+        setImageUrl(original.image || BRAND_VERIFIED_WATCH_IMAGE.titan);
+        setAdditionalImage1('');
+        setAdditionalImage2('');
+        showToast({
+          type: 'success',
+          title: 'Original Specs Restored',
+          message: `Reverted to factory baseline specifications for ${original.name}.`,
+        });
+        return;
+      }
+    }
+    setName('');
     setBrand('Titan');
-    setPrice('14995');
+    setPrice('');
+    setHidePrice(true);
     setCategory('Automatic');
-    setMovement('Japanese 21-Jewel Automatic');
+    setMovement('Automatic Movement');
     setCaseDiameter('42mm');
-    setStrapType('Top-Grain Vintage Saddle Leather');
+    setStrapType('Stainless Steel Bracelet');
     setWaterResistance('50m / 5 Bar');
     setStoreLocation('Baldev Plaza & JalKal Building, Golghar, Gorakhpur');
     setInStock(true);
     setGender('Unisex');
     setFeatured(false);
-    setDescription('Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.');
+    setDescription('');
     setImageUrl(BRAND_VERIFIED_WATCH_IMAGE.titan);
     setAdditionalImage1('');
     setAdditionalImage2('');
     showToast({
       type: 'info',
-      title: 'Reset to Defaults',
-      message: 'Watch form reverted to baseline defaults.',
+      title: 'Form Cleared',
+      message: 'Watch fields cleared to baseline defaults.',
     });
   };
 
@@ -436,7 +519,7 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
       showToast({ type: 'error', title: 'Name Required', message: 'Please enter watch model name.' });
       return;
     }
-    const numericPrice = price && Number(price) > 0 ? Number(price) : null;
+    const numericPrice = hidePrice || !price || Number(price) <= 0 ? null : Number(price);
 
     try {
       setIsSubmitting(true);
@@ -444,7 +527,8 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
         name: name.trim(),
         brand: brand.trim(),
         price: numericPrice,
-        hidePrice: numericPrice === null,
+        originalPrice: null,
+        hidePrice: Boolean(hidePrice || numericPrice === null),
         category,
         movement,
         caseDiameter,
@@ -533,17 +617,16 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
     }
   };
 
-  // Restore Default Catalog
+  // Restore Default Catalog (All 240 Timepieces)
   const handleRestoreCatalog = async () => {
     try {
-      for (const sample of DEFAULT_SAMPLE_WATCHES) {
-        await createWatch(sample);
-      }
+      await resetWatches();
       showToast({
         type: 'success',
-        title: 'Showcase Catalog Seeded',
-        message: 'Loaded curated vintage automatic timepieces into the database.',
+        title: 'All Watches Restored to Factory Defaults',
+        message: 'All 240 timepieces restored: 100% In Stock with Prices Hidden ("Price Upon Request").',
       });
+      setShowRestoreModal(false);
       onRefresh && onRefresh();
     } catch (err) {
       showToast({
@@ -786,6 +869,19 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
 
                   <div className="flex items-center gap-1.5">
                     <button
+                      onClick={() => handleResetSingleWatch(w)}
+                      disabled={isResettingId === (w._id || w.id)}
+                      className="p-1.5 rounded-lg text-amber-700 hover:text-amber-900 hover:bg-amber-50 border border-amber-300 transition-colors"
+                      title="Reset this timepiece to authentic factory original (In Stock, Price Hidden)"
+                    >
+                      {isResettingId === (w._id || w.id) ? (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      ) : (
+                        <RotateCcw className="w-3.5 h-3.5" />
+                      )}
+                    </button>
+
+                    <button
                       onClick={() => handleOpenEdit(w)}
                       className="p-1.5 rounded-lg text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#FAF7F2] border border-[#DDD5C7] transition-colors"
                       title="Edit Watch Specifications"
@@ -795,11 +891,11 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
 
                     <button
                       onClick={() => setWatchToDelete(w)}
-                      disabled={isDeleting}
+                      disabled={deletingId === (w._id || w.id)}
                       className="p-1.5 rounded-lg text-rose-600 hover:text-rose-700 hover:bg-rose-50 border border-rose-200 transition-colors"
                       title="Delete Watch"
                     >
-                      {isDeleting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
+                      {deletingId === (w._id || w.id) ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
                     </button>
                   </div>
                 </div>
@@ -895,17 +991,43 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
               {/* Price & Category */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#5A524A] mb-1">
-                    Price (INR ₹) *
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-[#5A524A]">
+                      Price (INR ₹)
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const nextHide = !hidePrice;
+                        setHidePrice(nextHide);
+                        if (nextHide) setPrice('');
+                      }}
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded transition-colors ${
+                        hidePrice
+                          ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                          : 'bg-stone-200 text-stone-700 hover:bg-stone-300'
+                      }`}
+                    >
+                      {hidePrice ? '🔒 Price Hidden ("Price Upon Request")' : '👁️ Reveal Numeric Price'}
+                    </button>
+                  </div>
                   <input
                     type="number"
-                    required
-                    value={price}
+                    disabled={hidePrice}
+                    value={hidePrice ? '' : price}
                     onChange={(e) => setPrice(e.target.value)}
-                    placeholder="18995"
-                    className="w-full bg-white border border-[#DDD5C7] rounded-xl px-3.5 py-2 text-xs font-bold text-[#1A1A1A] focus:outline-none focus:border-brass-600"
+                    placeholder={hidePrice ? 'Price Upon Request (Showroom Consultation)' : 'e.g. 18995'}
+                    className={`w-full border rounded-xl px-3.5 py-2 text-xs font-bold transition-all focus:outline-none ${
+                      hidePrice
+                        ? 'bg-stone-100/80 border-dashed border-stone-300 text-stone-500 italic cursor-not-allowed'
+                        : 'bg-white border-[#DDD5C7] text-[#1A1A1A] focus:border-brass-600'
+                    }`}
                   />
+                  {hidePrice && (
+                    <p className="text-[10px] text-amber-800 mt-1">
+                      Customers will see &quot;Price Upon Request&quot; and inquire via WhatsApp / Showroom.
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -1265,10 +1387,10 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
                   type="button"
                   onClick={handleResetCurrentWatch}
                   className="px-3.5 py-2 rounded-xl border border-rose-300 bg-rose-50/50 hover:bg-rose-100/70 text-rose-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
-                  title="Reset watch fields to baseline defaults"
+                  title="Reset this timepiece to authentic factory baseline specifications"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Reset to Defaults</span>
+                  <span>{editingWatchId ? 'Reset to Factory Original' : 'Clear Form'}</span>
                 </button>
 
                 <div className="flex items-center gap-3">
@@ -1298,11 +1420,13 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
       {/* Confirm Catalog Restore Modal */}
       <ConfirmationModal
         isOpen={showRestoreModal}
-        title="Seed Default Watch Catalog?"
-        message="This will add the curated Fossil Heritage automatic watches (Townsend Skeleton, Heritage Pilot Chrono, Neutra Smoked Amber) to your database."
-        confirmText="Yes, Seed Default Watches"
+        title="Restore Entire Watch Catalog to Factory Defaults?"
+        message="This will reset all 240 timepieces across all 12 brands back to factory original condition: 100% In Stock with Prices Hidden ('Price Upon Request'). Any custom price reveals or out-of-stock marks will be reset."
+        confirmText="Yes, Restore All 240 Timepieces"
+        isDangerous={true}
         onConfirm={handleRestoreCatalog}
         onClose={() => setShowRestoreModal(false)}
+        onCancel={() => setShowRestoreModal(false)}
       />
 
       {/* Confirm Delete Single Watch Modal */}

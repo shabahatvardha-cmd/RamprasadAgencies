@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { uploadImageFile, getFullImageUrl } from '../../utils/api';
 import { getVerifiedBrandImage, BRAND_VERIFIED_WATCH_IMAGE } from '../../utils/defaults';
+import { PRISTINE_BASELINE_WATCHES } from '../../data/pristineBaselineWatches';
 
 const POPULAR_BRANDS = [
   'Titan',
@@ -209,32 +210,52 @@ export default function WatchEditModal({
   };
 
   const handleResetDefaults = () => {
-    setFormData({
-      name: watch?.name || 'Classic Luxury Watch',
-      brand: watch?.brand || 'Titan',
-      category: 'Automatic',
-      collectionName: 'newArrivals',
-      price: 14995,
-      originalPrice: 17995,
-      badge: 'In Stock',
-      movement: 'Japanese 21-Jewel Automatic',
-      caseDiameter: '42mm',
-      strapType: 'Top-Grain Vintage Saddle Leather',
-      waterResistance: '50m / 5 Bar',
-      inStock: true,
-      gender: 'Unisex',
-      featured: false,
-      image: getVerifiedBrandImage(watch?.brand || 'Titan', BRAND_VERIFIED_WATCH_IMAGE.titan),
-      description: 'Precision mechanical craftsmanship encased in solid satin-finished stainless steel with sapphire crystal.',
-      storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
-    });
-    setAdditionalImage1('');
-    setAdditionalImage2('');
-    showToast && showToast({
-      type: 'info',
-      title: 'Reset to Defaults',
-      message: 'Timepiece fields have been reverted to baseline defaults.',
-    });
+    const id = watch?._id || watch?.id;
+    const original = PRISTINE_BASELINE_WATCHES.find(
+      (orig) => (orig._id && orig._id === id) || (orig.id && orig.id === id) || (orig.name && watch?.name && orig.name.toLowerCase() === watch.name.toLowerCase())
+    );
+
+    if (original) {
+      const restored = {
+        name: original.name || '',
+        brand: original.brand || 'Titan',
+        category: original.category || 'Automatic',
+        collectionName: original.collectionName || 'newArrivals',
+        price: null,
+        originalPrice: null,
+        hidePrice: true,
+        badge: original.badge || (original.featured ? 'Featured Drop' : 'In Stock'),
+        movement: original.movement || 'Automatic Movement',
+        caseDiameter: original.caseDiameter || original.caseSize || '42mm',
+        strapType: original.strapType || original.strap || 'Stainless Steel Bracelet',
+        waterResistance: original.waterResistance || '50m / 5 Bar',
+        inStock: true,
+        gender: original.gender || 'Unisex',
+        featured: Boolean(original.featured),
+        image: original.image || BRAND_VERIFIED_WATCH_IMAGE.titan,
+        description: original.description || '',
+        storeLocation: original.storeLocation || 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
+        images: [],
+      };
+      setFormData(restored);
+      setAdditionalImage1('');
+      setAdditionalImage2('');
+
+      if (id) {
+        onSave(restored, id);
+      }
+      showToast && showToast({
+        type: 'success',
+        title: 'Original Timepiece Restored',
+        message: `${original.name} has been reset to original factory specifications.`,
+      });
+    } else {
+      showToast && showToast({
+        type: 'info',
+        title: 'Reset to Defaults',
+        message: 'Timepiece fields have been reverted to baseline defaults.',
+      });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -824,11 +845,11 @@ export default function WatchEditModal({
             <button
               type="button"
               onClick={handleResetDefaults}
-              className="px-3.5 py-2 rounded-xl border border-rose-300 bg-rose-50/50 hover:bg-rose-100/70 text-rose-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
-              title="Reset watch fields to baseline defaults"
+              className="px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-50/50 hover:bg-amber-100/70 text-amber-800 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              title="Reset this watch back to original factory specifications"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset to Defaults</span>
+              <RotateCcw className="w-3.5 h-3.5 text-amber-700" />
+              <span>Reset to Original Timepiece</span>
             </button>
 
             <div className="flex items-center gap-3">

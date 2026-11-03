@@ -49,7 +49,9 @@ export default function VintageWatchAdShowcase() {
                 </div>
                 <div className="text-right">
                   <span className="font-serif text-xs sm:text-sm font-bold text-brass-900 block">
-                    {ad.price ? `₹${Number(ad.price).toLocaleString('en-IN')}` : 'Price Upon Request'}
+                    {ad.price && Number(ad.price) > 0 && !ad.hidePrice
+                      ? `₹${Number(ad.price).toLocaleString('en-IN')}`
+                      : 'Price Upon Request'}
                   </span>
                   <span className="text-[10px] text-emerald-700 font-semibold">
                     ✓ Available in Gorakhpur

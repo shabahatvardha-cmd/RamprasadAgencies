@@ -195,6 +195,24 @@ export const resetWatches = async () => {
 };
 
 /**
+ * Reset a single watch to factory specifications via POST /api/watches/:id/reset
+ */
+export const resetSingleWatch = async (id) => {
+  const res = await fetch(`${API_BASE}/watches/${id}/reset`, {
+    method: 'POST',
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to reset watch to factory specifications');
+  }
+
+  broadcastSync('WATCHES_UPDATED');
+  broadcastSync('REFETCH_ALL');
+  return data.data;
+};
+
+/**
  * Update existing watch via PUT /api/watches/:id
  */
 export const updateWatch = async (id, watchData) => {
