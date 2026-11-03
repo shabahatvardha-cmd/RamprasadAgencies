@@ -12,8 +12,6 @@ import {
   CheckCircle2,
   Clock,
   Compass,
-  ChevronLeft,
-  ChevronRight,
   X,
 } from 'lucide-react';
 import WatchCard from '../components/WatchCard';
@@ -409,42 +407,20 @@ export default function BrandPage({
   const [sortBy, setSortBy] = useState('featured'); // 'featured' | 'price-asc' | 'price-desc' | 'name'
   const [showroomFilter, setShowroomFilter] = useState('ALL'); // 'ALL' | 'Baldev Plaza' | 'JalKal'
 
-  // Campaign Ad Carousel State & Controls
-  const [isAdOpen, setIsAdOpen] = useState(true);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
   // Retrieve curated campaign ads for this brand
   const campaignAds = useMemo(() => {
     return getBrandCampaignAds(cleanSlug, meta, brandImage);
   }, [cleanSlug, meta, brandImage]);
 
-  // Reset slide index on brand change and store active brand in session
-  useEffect(() => {
-    setCurrentSlide(0);
-    try {
-      if (cleanSlug) {
-        sessionStorage.setItem('rpa_last_viewed_brand', cleanSlug);
-      }
-    } catch {}
-  }, [cleanSlug]);
-
-  // Auto-play timer (every 6 seconds, pauses on mouse hover)
-  useEffect(() => {
-    if (!isAdOpen || isPaused || !campaignAds || campaignAds.length <= 1) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % campaignAds.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [isAdOpen, isPaused, campaignAds]);
-
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + campaignAds.length) % campaignAds.length);
-  };
-
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % campaignAds.length);
-  };
+  // Seamless looping items for continuous moving right-to-left strip
+  const marqueeAds = useMemo(() => {
+    if (!campaignAds || campaignAds.length === 0) return [];
+    let list = [...campaignAds];
+    while (list.length < 6) {
+      list = [...list, ...campaignAds];
+    }
+    return [...list, ...list];
+  }, [campaignAds]);
 
   // Scroll to top immediately and update document title
   useEffect(() => {
@@ -542,16 +518,6 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
 
   const brandWaLink = getWhatsAppLink(contactPhone, brandWaMessage);
 
-  // Active Campaign Slide & Dedicated WhatsApp Link
-  const activeAd = (campaignAds && campaignAds[currentSlide]) || (campaignAds && campaignAds[0]) || {};
-  const adWaMessage = `Hello Ram Prasad Agencies,
-
-My name is ${customerName}. I am inquiring about the "${activeAd?.headline || meta.name}" featured in your showroom campaign banner.
-
-You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to your guidance on availability and showroom viewing. Thank you!`;
-
-  const adWaLink = getWhatsAppLink(contactPhone, adWaMessage);
-
   return (
     <div className="w-full min-h-screen bg-[#FAF7F2] text-[#1A1A1A] pb-24">
       {/* 1. Breadcrumb & Back Navigation Bar */}
@@ -592,313 +558,226 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
         </div>
       </div>
 
-      {/* 2. Hero Portion: Big Banner Campaign Ad Carousel OR Collapsed Brand Heritage Overview */}
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-6 sm:pt-8 pb-4">
-        {isAdOpen ? (
-          /* =========================================================================
-             A. BIG BANNER BRAND CAMPAIGN AD CAROUSEL (WITH CLOSE 'X' BUTTON)
-             ========================================================================= */
-          <div
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-[#FAF7F2] via-[#F5ECE0] to-[#EAE0D0] border border-[#DDD5C7] shadow-[0_20px_50px_rgba(180,150,110,0.14)] transition-all duration-300"
-          >
-            {/* Top Brass Accent Trim */}
-            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-brass-500/80 to-transparent z-20" />
+      {/* 2. Brand Hero Portion: Permanent Brand Heritage Overview + Continuous Moving Advertisement Strip */}
+      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-6 sm:pt-8 pb-4 space-y-3.5">
+        {/* A. Brand Heritage Overview (ALWAYS VISIBLE THROUGHOUT) */}
+        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-[#FAF7F2] via-[#F4ECE1] to-[#EAE0D0] border border-[#DDD5C7] shadow-[0_20px_50px_rgba(180,150,110,0.12)] transition-all duration-300">
+          {/* Subtle Top Brass Accent Trim */}
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-brass-500/80 to-transparent z-20" />
 
-            {/* Ambient Sapphire Crystal Glint */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-              <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-12 animate-[pulse_7s_ease-in-out_infinite]" />
-            </div>
+          {/* Animated Sweeping Light Shimmer */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+            <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-12 animate-[pulse_7s_ease-in-out_infinite]" />
+          </div>
 
-            {/* Background Watch Watermark Photo */}
-            <div className="absolute inset-0 pointer-events-none">
-              <img
-                src={activeAd.image || brandImage}
-                alt={activeAd.headline || meta.name}
-                className="w-full h-full object-cover object-right-top lg:object-center opacity-10 mix-blend-multiply scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2]/90 to-[#FAF7F2]/50" />
-            </div>
+          {/* Background Reference Photo with Light Ivory Vignette */}
+          <div className="absolute inset-0 pointer-events-none">
+            <img
+              src={brandImage}
+              alt={`${meta.name} flagship timepiece`}
+              className="w-full h-full object-cover object-right-top lg:object-center opacity-15 mix-blend-multiply scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2]/90 to-[#FAF7F2]/50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2]/90 via-transparent to-[#FAF7F2]/40" />
+          </div>
 
-            {/* Top Controls Strip: Campaign Badge, Slide Counter & Close 'X' Button */}
-            <div className="relative z-20 px-6 sm:px-10 pt-5 sm:pt-6 flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brass-700/10 border border-brass-600/30 text-brass-800 text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-brass-700 animate-pulse" />
-                  <span>Official Maison Campaign</span>
-                </div>
-                <span className="text-[11px] font-mono text-stone-600 font-bold bg-white/80 px-2 py-0.5 rounded-full border border-stone-200">
-                  Slide {currentSlide + 1} of {campaignAds.length}
-                </span>
-              </div>
-
-              {/* Close Ad Banner Button */}
-              <button
-                onClick={() => setIsAdOpen(false)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 hover:bg-stone-900 text-stone-700 hover:text-white border border-[#D5CCBC] shadow-xs text-xs font-bold transition-all cursor-pointer group"
-                title="Close campaign ad carousel"
+          {/* Animated Kinetic Horological Gears Watermark (SVG) */}
+          <div className="absolute right-[-40px] md:right-8 lg:right-20 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-25 md:opacity-35 z-0">
+            <div className="relative w-72 h-72 sm:w-96 sm:h-96">
+              {/* Master Horological Gear - Clockwise Rotation */}
+              <svg
+                viewBox="0 0 200 200"
+                className="w-full h-full text-brass-700 animate-[spin_70s_linear_infinite]"
+                fill="none"
+                stroke="currentColor"
               >
-                <span className="text-[11px] font-semibold hidden sm:inline">Close Ads</span>
-                <X className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-200" />
-              </button>
-            </div>
-
-            {/* Main Slide Content: Left Text/CTA, Right Timepiece Showcase */}
-            <div className="relative z-10 px-6 sm:px-10 md:px-12 py-5 sm:py-7 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-              {/* Left Column (Content & CTA) */}
-              <div className="lg:col-span-7 space-y-3 sm:space-y-3.5 text-stone-900">
-                <span className="inline-block text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-brass-800 font-bold bg-amber-100/70 px-2.5 py-0.5 rounded-md border border-amber-200/80">
-                  {activeAd.badge}
-                </span>
-
-                <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight leading-tight">
-                  {activeAd.headline}
-                </h2>
-
-                <p className="font-serif text-sm sm:text-base md:text-lg text-brass-800 font-bold tracking-wide">
-                  {activeAd.subheadline}
-                </p>
-
-                <p className="text-xs sm:text-sm text-[#4A4238] leading-relaxed max-w-xl font-normal">
-                  {activeAd.description}
-                </p>
-
-                {/* Quick Specs Badges */}
-                <div className="flex flex-wrap items-center gap-2 pt-1">
-                  {activeAd.specs && activeAd.specs.map((spec, idx) => (
-                    <span
-                      key={idx}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/85 border border-[#DDD5C7] text-stone-700 text-[11px] font-medium shadow-xs"
-                    >
-                      <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
-                      <span>{spec}</span>
-                    </span>
-                  ))}
-                </div>
-
-                {/* Inquire on WhatsApp & Showroom Info */}
-                <div className="pt-2 flex flex-wrap items-center gap-3.5">
-                  <a
-                    href={adWaLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 px-5 py-2.5 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-700/20 hover:shadow-emerald-700/30 transition-all hover:scale-102 active:scale-98"
-                  >
-                    <MessageCircle className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-                    <span>Inquire Campaign on WhatsApp</span>
-                  </a>
-                  <div className="flex items-center gap-1.5 text-xs text-stone-600">
-                    <MapPin className="w-3.5 h-3.5 text-brass-700 shrink-0" />
-                    <span>{activeAd.storeAvailability}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column (Big Timepiece Visual Showcase Card) */}
-              <div className="lg:col-span-5 flex items-center justify-center relative">
-                <div className="relative group w-48 h-48 sm:w-60 sm:h-60 md:w-68 md:h-68 lg:w-72 lg:h-72 rounded-3xl overflow-hidden bg-white/80 backdrop-blur-xl border border-brass-600/30 p-3 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
-                  <img
-                    src={activeAd.image}
-                    alt={activeAd.headline}
-                    className="w-full h-full object-cover object-center rounded-2xl group-hover:scale-108 transition-transform duration-700 ease-out"
-                  />
-                  {/* Luminous border glint */}
-                  <div className="absolute inset-0 rounded-3xl border border-white/40 pointer-events-none" />
-                  {/* Floating Brand Badge */}
-                  <div className="absolute bottom-3 left-3 right-3 px-3 py-1.5 rounded-xl bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-bold flex items-center justify-between">
-                    <span>{meta.name}</span>
-                    <span className="text-amber-300 font-semibold">100% Genuine</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Carousel Controls Bar: Dots & Prev/Next */}
-            <div className="relative z-20 px-6 sm:px-10 pb-4 sm:pb-5 flex items-center justify-between border-t border-[#E5DEC9]/60 pt-3">
-              {/* Slide Indicator Dots */}
-              <div className="flex items-center gap-1.5">
-                {campaignAds.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentSlide(idx)}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${currentSlide === idx ? 'w-6 bg-brass-800' : 'w-2 bg-stone-300 hover:bg-stone-400'
-                      }`}
-                    aria-label={`Go to slide ${idx + 1}`}
+                <circle cx="100" cy="100" r="82" strokeWidth="1.5" strokeDasharray="3 4" />
+                <circle cx="100" cy="100" r="70" strokeWidth="1.5" />
+                <circle cx="100" cy="100" r="48" strokeWidth="1" strokeDasharray="6 3" />
+                <circle cx="100" cy="100" r="24" strokeWidth="2" fill="currentColor" fillOpacity="0.06" />
+                <circle cx="100" cy="100" r="6" fill="currentColor" />
+                {/* Spokes */}
+                {[0, 30, 60, 90, 120, 150].map((deg) => (
+                  <line
+                    key={deg}
+                    x1="100"
+                    y1="30"
+                    x2="100"
+                    y2="170"
+                    strokeWidth="1.5"
+                    transform={`rotate(${deg} 100 100)`}
                   />
                 ))}
+                {/* Outer Gear Teeth */}
+                {Array.from({ length: 24 }).map((_, i) => (
+                  <rect
+                    key={i}
+                    x="97"
+                    y="10"
+                    width="6"
+                    height="12"
+                    rx="1.5"
+                    fill="currentColor"
+                    fillOpacity="0.4"
+                    transform={`rotate(${i * 15} 100 100)`}
+                  />
+                ))}
+              </svg>
+
+              {/* Counter-Rotating Pinion Gear */}
+              <svg
+                viewBox="0 0 120 120"
+                className="absolute -top-10 -left-10 w-36 h-36 sm:w-44 sm:h-44 text-amber-700 animate-[spin_40s_linear_infinite_reverse]"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="60" cy="60" r="48" strokeWidth="1.5" strokeDasharray="2 3" />
+                <circle cx="60" cy="60" r="32" strokeWidth="1.5" />
+                <circle cx="60" cy="60" r="14" strokeWidth="1.5" fill="currentColor" fillOpacity="0.08" />
+                <circle cx="60" cy="60" r="4" fill="currentColor" />
+                {[0, 45, 90, 135].map((deg) => (
+                  <line
+                    key={deg}
+                    x1="60"
+                    y1="16"
+                    x2="60"
+                    y2="104"
+                    strokeWidth="1.2"
+                    transform={`rotate(${deg} 60 60)`}
+                  />
+                ))}
+                {Array.from({ length: 16 }).map((_, i) => (
+                  <rect
+                    key={i}
+                    x="58"
+                    y="6"
+                    width="4"
+                    height="8"
+                    rx="1"
+                    fill="currentColor"
+                    fillOpacity="0.4"
+                    transform={`rotate(${i * 22.5} 60 60)`}
+                  />
+                ))}
+              </svg>
+            </div>
+          </div>
+
+          {/* Heritage Banner Content */}
+          <div className="relative z-10 p-6 sm:p-10 md:p-12 lg:p-14">
+            <div className="max-w-3xl space-y-3 sm:space-y-4 text-stone-900">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brass-700/10 border border-brass-600/30 text-brass-800 text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-brass-700 animate-pulse" />
+                <span>{meta.country} Horology • Authorized Portfolio</span>
               </div>
 
-              {/* Prev / Next Navigation Arrows */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handlePrevSlide}
-                  className="w-8 h-8 rounded-full bg-white/90 hover:bg-stone-900 text-stone-700 hover:text-white border border-[#DDD5C7] flex items-center justify-center transition-all shadow-xs cursor-pointer"
-                  aria-label="Previous Campaign"
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-stone-950 tracking-tight">
+                {meta.name}
+              </h1>
+
+              <p className="font-serif text-base sm:text-lg md:text-xl text-brass-800 font-bold tracking-wide">
+                {meta.tagline}
+              </p>
+
+              <p className="text-xs sm:text-sm text-[#4A4238] leading-relaxed max-w-2xl font-normal">
+                {meta.history}
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 text-xs">
+                <div className="flex items-center gap-2 bg-white/85 hover:bg-white text-stone-800 px-3.5 py-1.5 rounded-full border border-[#DDD5C7] shadow-xs backdrop-blur-md transition-all">
+                  <MapPin className="w-3.5 h-3.5 text-brass-700 shrink-0" />
+                  <span className="font-medium text-stone-800">{meta.showrooms}</span>
+                </div>
+                <div className="flex items-center gap-2 bg-emerald-50/90 hover:bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200/90 shadow-xs backdrop-blur-md transition-all">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
+                  </span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                  <span className="font-semibold text-emerald-900">100% Genuine Certified Stock</span>
+                </div>
+                <a
+                  href={brandWaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-1.5 rounded-full shadow-xs transition-all font-bold text-xs cursor-pointer active:scale-98"
                 >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={handleNextSlide}
-                  className="w-8 h-8 rounded-full bg-white/90 hover:bg-stone-900 text-stone-700 hover:text-white border border-[#DDD5C7] flex items-center justify-center transition-all shadow-xs cursor-pointer"
-                  aria-label="Next Campaign"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp Showroom</span>
+                </a>
               </div>
             </div>
           </div>
-        ) : (
-          /* =========================================================================
-             B. COLLAPSED BRAND HERITAGE OVERVIEW (WITH 'VIEW BRAND ADS' BUTTON)
-             ========================================================================= */
-          <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-[#FAF7F2] via-[#F4ECE1] to-[#EAE0D0] border border-[#DDD5C7] shadow-[0_20px_50px_rgba(180,150,110,0.12)] transition-all duration-300">
-            {/* Subtle Top Brass Accent Trim */}
-            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-brass-500/80 to-transparent z-20" />
+        </div>
 
-            {/* Animated Sweeping Light Shimmer */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-              <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-12 animate-[pulse_7s_ease-in-out_infinite]" />
-            </div>
+        {/* B. FINE CONTINUOUS CAMPAIGN ADVERTISEMENT STRIP (MOVING RIGHT TO LEFT) */}
+        {marqueeAds && marqueeAds.length > 0 && (
+          <div
+            className="relative w-full rounded-xl overflow-hidden bg-gradient-to-r from-[#FAF7F2] via-[#F4EDE1] to-[#FAF7F2] border border-[#DDD5C7] shadow-2xs group/adstrip transition-all"
+            aria-label="Active Brand Campaigns"
+          >
+            {/* Subtle soft gradient fade masks on left and right for seamless loop */}
+            <div className="absolute left-0 inset-y-0 w-8 sm:w-16 bg-gradient-to-r from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 inset-y-0 w-8 sm:w-16 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
 
-            {/* Background Reference Photo with Light Ivory Vignette */}
-            <div className="absolute inset-0 pointer-events-none">
-              <img
-                src={brandImage}
-                alt={`${meta.name} flagship timepiece`}
-                className="w-full h-full object-cover object-right-top lg:object-center opacity-15 mix-blend-multiply scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2]/90 to-[#FAF7F2]/50" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2]/90 via-transparent to-[#FAF7F2]/40" />
-            </div>
-
-            {/* Animated Kinetic Horological Gears Watermark (SVG) */}
-            <div className="absolute right-[-40px] md:right-8 lg:right-20 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-25 md:opacity-35 z-0">
-              <div className="relative w-72 h-72 sm:w-96 sm:h-96">
-                {/* Master Horological Gear - Clockwise Rotation */}
-                <svg
-                  viewBox="0 0 200 200"
-                  className="w-full h-full text-brass-700 animate-[spin_70s_linear_infinite]"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <circle cx="100" cy="100" r="82" strokeWidth="1.5" strokeDasharray="3 4" />
-                  <circle cx="100" cy="100" r="70" strokeWidth="1.5" />
-                  <circle cx="100" cy="100" r="48" strokeWidth="1" strokeDasharray="6 3" />
-                  <circle cx="100" cy="100" r="24" strokeWidth="2" fill="currentColor" fillOpacity="0.06" />
-                  <circle cx="100" cy="100" r="6" fill="currentColor" />
-                  {/* Spokes */}
-                  {[0, 30, 60, 90, 120, 150].map((deg) => (
-                    <line
-                      key={deg}
-                      x1="100"
-                      y1="30"
-                      x2="100"
-                      y2="170"
-                      strokeWidth="1.5"
-                      transform={`rotate(${deg} 100 100)`}
-                    />
-                  ))}
-                  {/* Outer Gear Teeth */}
-                  {Array.from({ length: 24 }).map((_, i) => (
-                    <rect
-                      key={i}
-                      x="97"
-                      y="10"
-                      width="6"
-                      height="12"
-                      rx="1.5"
-                      fill="currentColor"
-                      fillOpacity="0.4"
-                      transform={`rotate(${i * 15} 100 100)`}
-                    />
-                  ))}
-                </svg>
-
-                {/* Counter-Rotating Pinion Gear */}
-                <svg
-                  viewBox="0 0 120 120"
-                  className="absolute -top-10 -left-10 w-36 h-36 sm:w-44 sm:h-44 text-amber-700 animate-[spin_40s_linear_infinite_reverse]"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <circle cx="60" cy="60" r="48" strokeWidth="1.5" strokeDasharray="2 3" />
-                  <circle cx="60" cy="60" r="32" strokeWidth="1.5" />
-                  <circle cx="60" cy="60" r="14" strokeWidth="1.5" fill="currentColor" fillOpacity="0.08" />
-                  <circle cx="60" cy="60" r="4" fill="currentColor" />
-                  {[0, 45, 90, 135].map((deg) => (
-                    <line
-                      key={deg}
-                      x1="60"
-                      y1="16"
-                      x2="60"
-                      y2="104"
-                      strokeWidth="1.2"
-                      transform={`rotate(${deg} 60 60)`}
-                    />
-                  ))}
-                  {Array.from({ length: 16 }).map((_, i) => (
-                    <rect
-                      key={i}
-                      x="58"
-                      y="6"
-                      width="4"
-                      height="8"
-                      rx="1"
-                      fill="currentColor"
-                      fillOpacity="0.4"
-                      transform={`rotate(${i * 22.5} 60 60)`}
-                    />
-                  ))}
-                </svg>
+            <div className="flex items-center">
+              {/* Left Pinned Label Pill */}
+              <div className="hidden sm:flex items-center gap-1.5 px-3.5 py-2.5 bg-stone-900 text-amber-300 text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase shrink-0 z-20 border-r border-[#DDD5C7]">
+                <Sparkles className="w-3 h-3 text-amber-400 animate-pulse" />
+                <span>Campaign</span>
               </div>
-            </div>
 
-            {/* Collapsed Heritage Banner Content */}
-            <div className="relative z-10 p-6 sm:p-10 md:p-12 lg:p-14">
-              <div className="max-w-3xl space-y-3 sm:space-y-4 text-stone-900">
-                {/* Header Strip with Reopen Campaign Ads Button */}
-                <div className="flex items-center justify-between flex-wrap gap-2 pb-1">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brass-700/10 border border-brass-600/30 text-brass-800 text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase shadow-xs">
-                    <Sparkles className="w-3.5 h-3.5 text-brass-700 animate-pulse" />
-                    <span>{meta.country} Horology • Authorized Portfolio</span>
-                  </div>
+              {/* Continuous Moving Marquee Track (Moving Right to Left) */}
+              <div className="flex overflow-hidden select-none w-full">
+                <div className="flex items-center gap-8 whitespace-nowrap animate-marquee group-hover/adstrip:[animation-play-state:paused] py-2 sm:py-2.5 cursor-default">
+                  {marqueeAds.map((ad, idx) => (
+                    <div key={idx} className="inline-flex items-center gap-2.5 shrink-0 text-xs">
+                      {/* Transparent Watch Cutout Thumbnail */}
+                      {ad.image && (
+                        <div className="w-7 h-7 rounded-md bg-white border border-[#E5DEC9] p-0.5 flex items-center justify-center shrink-0 shadow-2xs">
+                          <img
+                            src={ad.image}
+                            alt=""
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
 
-                  <button
-                    onClick={() => setIsAdOpen(true)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 hover:bg-stone-900 text-stone-800 hover:text-white border border-[#DDD5C7] text-xs font-bold transition-all shadow-xs cursor-pointer group"
-                    title="View Brand Campaign Ads Carousel"
-                  >
-                    <Sparkles className="w-3.5 h-3.5 text-brass-700 group-hover:text-amber-300 animate-pulse" />
-                    <span>View Campaign Ads ({campaignAds.length})</span>
-                  </button>
-                </div>
+                      {/* Campaign Badge */}
+                      <span className="px-2 py-0.5 rounded-full bg-brass-700/15 border border-brass-600/30 text-brass-900 text-[9.5px] sm:text-[10px] font-mono font-extrabold uppercase tracking-wider">
+                        {ad.badge}
+                      </span>
 
-                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-stone-950 tracking-tight">
-                  {meta.name}
-                </h1>
+                      {/* Campaign Headline */}
+                      <strong className="font-serif text-stone-900 font-bold text-xs sm:text-sm">
+                        {ad.headline}
+                      </strong>
 
-                <p className="font-serif text-base sm:text-lg md:text-xl text-brass-800 font-bold tracking-wide">
-                  {meta.tagline}
-                </p>
+                      {/* Subheadline Highlight */}
+                      <span className="text-stone-600 text-[11px] sm:text-xs hidden md:inline">
+                        — {ad.subheadline}
+                      </span>
 
-                <p className="text-xs sm:text-sm text-[#4A4238] leading-relaxed max-w-2xl font-normal">
-                  {meta.history}
-                </p>
+                      {/* Quick WhatsApp Inquiry Pill */}
+                      <a
+                        href={getWhatsAppLink(
+                          contactPhone,
+                          `Hello Ram Prasad Agencies, I am inquiring about the ${meta.name} Campaign: "${ad.headline}". Please guide me on showroom availability at Gorakhpur.`
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] sm:text-[11px] transition-all shadow-2xs cursor-pointer ml-1"
+                        title={`Inquire about ${ad.headline} on WhatsApp`}
+                      >
+                        <MessageCircle className="w-2.5 h-2.5" />
+                        <span>Inquire</span>
+                      </a>
 
-                <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 text-xs">
-                  <div className="flex items-center gap-2 bg-white/85 hover:bg-white text-stone-800 px-3.5 py-1.5 rounded-full border border-[#DDD5C7] shadow-xs backdrop-blur-md transition-all">
-                    <MapPin className="w-3.5 h-3.5 text-brass-700 shrink-0" />
-                    <span className="font-medium text-stone-800">{meta.showrooms}</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-emerald-50/90 hover:bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200/90 shadow-xs backdrop-blur-md transition-all">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
-                    </span>
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-                    <span className="font-semibold text-emerald-900">100% Genuine Certified Stock</span>
-                  </div>
+                      {/* Elegant Separator Diamond */}
+                      <span className="text-brass-700/60 font-serif text-xs ml-3 select-none">◆</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
