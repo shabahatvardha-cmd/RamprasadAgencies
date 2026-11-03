@@ -3436,13 +3436,13 @@
   {
     "id": "fastrack-03-edge-metallic",
     "_id": "fastrack-03-edge-metallic",
-    "name": "Fastrack Edge Metallic (3120SM01)",
+    "name": "Fastrack Bare Basics (3120SM01)",
     "sku": "3120SM01",
     "brand": "Fastrack",
     "collection": "Edge",
     "category": "Casual",
     "movement": "Quartz",
-    "dialColor": "Gunmetal",
+    "dialColor": "Silver & Gunmetal",
     "caseMaterial": "Stainless Steel",
     "strapType": "Angular Gunmetal Stainless Steel Bracelet",
     "caseDiameter": "40mm",
@@ -3459,7 +3459,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.538Z"
   },
   {
     "id": "fastrack-04-trendies-casual",
@@ -3492,13 +3493,13 @@
   {
     "id": "fastrack-05-economy-casual",
     "_id": "fastrack-05-economy-casual",
-    "name": "Fastrack Economy Casual (3289SM01)",
-    "sku": "3289SM01",
+    "name": "Fastrack Opulence Date (3289KM01)",
+    "sku": "3289KM01",
     "brand": "Fastrack",
     "collection": "Casual",
     "category": "Daily Wear",
     "movement": "Quartz",
-    "dialColor": "Silver",
+    "dialColor": "Classic Black",
     "caseMaterial": "Stainless Steel",
     "strapType": "Classic Stainless Steel Link Bracelet",
     "caseDiameter": "40mm",
@@ -3515,19 +3516,20 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.557Z"
   },
   {
     "id": "fastrack-06-tees-graphic",
     "_id": "fastrack-06-tees-graphic",
-    "name": "Fastrack Tees Graphic (3039PP01)",
-    "sku": "3039PP01",
+    "name": "Fastrack Trendsetting Metal (3039SM01)",
+    "sku": "3039SM01",
     "brand": "Fastrack",
     "collection": "Tees",
     "category": "Casual",
     "movement": "Quartz",
-    "dialColor": "Graphic Art",
-    "caseMaterial": "Silicone Strap",
+    "dialColor": "Silver Analog",
+    "caseMaterial": "All-Metal Alloy",
     "strapType": "Interchangeable Printed Graphic Silicone Strap",
     "caseDiameter": "38mm",
     "description": "Fun, interchangeable graphic silicone strap watches for festival wear.",
@@ -3543,7 +3545,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.586Z"
   },
   {
     "id": "fastrack-07-bare-essentials",
@@ -3554,8 +3557,8 @@
     "collection": "Essentials",
     "category": "Minimalist",
     "movement": "Quartz",
-    "dialColor": "Minimal White",
-    "caseMaterial": "Leather Strap",
+    "dialColor": "Midnight Black",
+    "caseMaterial": "Brass & Leather",
     "strapType": "Soft Genuine Black Leather Strap",
     "caseDiameter": "39mm",
     "description": "Minimalist slim dial paired with soft leather for understated style.",
@@ -3571,7 +3574,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.620Z"
   },
   {
     "id": "fastrack-08-streetwear-chrono",
@@ -3604,14 +3608,14 @@
   {
     "id": "fastrack-09-stunners-party-watch",
     "_id": "fastrack-09-stunners-party-watch",
-    "name": "Fastrack Stunners Party Watch (6078QM01)",
-    "sku": "6078QM01",
+    "name": "Fastrack Stunners Party (6078SM01)",
+    "sku": "6078SM01",
     "brand": "Fastrack",
     "collection": "Stunners",
     "category": "Party Wear",
     "movement": "Quartz",
-    "dialColor": "Rose Gold",
-    "caseMaterial": "Brass-Steel",
+    "dialColor": "Silver Sunray",
+    "caseMaterial": "Stainless Steel Mesh",
     "strapType": "Rose Gold-Toned Shimmer Mesh Bracelet",
     "caseDiameter": "34mm",
     "description": "Glamorous party-wear watch embellished with sparkling crystals.",
@@ -3627,7 +3631,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.649Z"
   },
   {
     "id": "fastrack-10-economy-metal",
@@ -3772,14 +3777,14 @@
   {
     "id": "fastrack-15-next-gen-digital",
     "_id": "fastrack-15-next-gen-digital",
-    "name": "Fastrack Next-Gen Digital (38045PP01)",
+    "name": "Fastrack Trendies Digital (38045PP01)",
     "sku": "38045PP01",
     "brand": "Fastrack",
     "collection": "Digital",
     "category": "Digital Sports",
     "movement": "Digital Quartz",
-    "dialColor": "Neon Yellow",
-    "caseMaterial": "Resin Strap",
+    "dialColor": "Digital Sport Red",
+    "caseMaterial": "High-Grade Silicone & Resin",
     "strapType": "Flexible Neon Yellow Polyurethane Strap",
     "caseDiameter": "42mm",
     "description": "Retro digital sports watch featuring stopwatch and backlight illumination.",
@@ -3795,19 +3800,20 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.686Z"
   },
   {
     "id": "fastrack-16-economy-minimal",
     "_id": "fastrack-16-economy-minimal",
-    "name": "Fastrack Economy Minimal (3112SL02)",
+    "name": "Fastrack Extreme Sports (3112SL02)",
     "sku": "3112SL02",
     "brand": "Fastrack",
     "collection": "Minimal",
     "category": "Minimalist",
     "movement": "Quartz",
-    "dialColor": "Brown Leather",
-    "caseMaterial": "Minimal Dial",
+    "dialColor": "Black Minimal",
+    "caseMaterial": "Brushed Alloy & Leather",
     "strapType": "Clean Stitchless Brown Leather Strap",
     "caseDiameter": "38mm",
     "description": "Slim, understated everyday watch for clean, clutter-free aesthetics.",
@@ -3823,7 +3829,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.719Z"
   },
   {
     "id": "fastrack-17-military-field",
@@ -3912,14 +3919,14 @@
   {
     "id": "fastrack-20-gradient-chic",
     "_id": "fastrack-20-gradient-chic",
-    "name": "Fastrack Gradient Chic (3155SL01)",
-    "sku": "3155SL01",
+    "name": "Fastrack Tripster Purple (6219SM02)",
+    "sku": "6219SM02",
     "brand": "Fastrack",
     "collection": "Chic",
     "category": "Fashion",
     "movement": "Quartz",
-    "dialColor": "Gradient Purple",
-    "caseMaterial": "Leather",
+    "dialColor": "Royal Purple Sunray",
+    "caseMaterial": "Stainless Steel",
     "strapType": "Deep Indigo Genuine Leather Strap",
     "caseDiameter": "34mm",
     "description": "Trendy gradient dial transitioning smoothly from violet to deep indigo.",
@@ -3935,7 +3942,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.756Z"
   },
   {
     "id": "sonata-01-poze-gold",
@@ -4612,14 +4620,14 @@
   {
     "id": "fossil-05-raquel-three-hand",
     "_id": "fossil-05-raquel-three-hand",
-    "name": "Fossil Raquel Three-Hand (ES5022)",
-    "sku": "ES5022",
+    "name": "Fossil Raquel Three-Hand (ES5221)",
+    "sku": "ES5221",
     "brand": "Fossil",
     "collection": "Raquel",
     "category": "Dress",
     "movement": "Quartz",
-    "dialColor": "Mother of Pearl",
-    "caseMaterial": "Two-Tone Steel",
+    "dialColor": "Silver Satin",
+    "caseMaterial": "Stainless Steel",
     "strapType": "Two-Tone Stainless Steel Five-Link Bracelet",
     "caseDiameter": "23mm",
     "description": "Vintage-inspired rectangular dress watch favored for professional women.",
@@ -4635,7 +4643,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:41:03.868Z"
   },
   {
     "id": "fossil-06-carlie-mini",
@@ -5106,7 +5115,7 @@
     "brand": "Breitling",
     "collection": "Chronomat",
     "movement": "Automatic Chrono",
-    "dialColor": "Silver",
+    "dialColor": "Silver & Black",
     "caseMaterial": "Stainless Steel",
     "price": null,
     "originalPrice": null,
@@ -5118,7 +5127,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "_id": "breitling-03",
+    "updatedAt": "2026-11-02T17:00:29.375Z"
   },
   {
     "id": "breitling-04",
@@ -5274,8 +5285,8 @@
     "brand": "Breitling",
     "collection": "Professional",
     "movement": "Thermo-Compensated Quartz",
-    "dialColor": "Black",
-    "caseMaterial": "Breitlight Composite",
+    "dialColor": "Black & Blue",
+    "caseMaterial": "Breitlight®",
     "price": null,
     "originalPrice": null,
     "image": "/images/watches/breitling/11.webp",
@@ -5286,7 +5297,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "_id": "breitling-11",
+    "updatedAt": "2026-11-02T17:00:29.394Z"
   },
   {
     "id": "breitling-12",
@@ -5295,8 +5308,8 @@
     "brand": "Breitling",
     "collection": "Navitimer",
     "movement": "Automatic Chrono",
-    "dialColor": "Silver",
-    "caseMaterial": "Stainless Steel",
+    "dialColor": "Silver & Black",
+    "caseMaterial": "Stainless Steel & Alligator Leather",
     "price": null,
     "originalPrice": null,
     "image": "/images/watches/breitling/12.webp",
@@ -5307,7 +5320,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "_id": "breitling-12",
+    "updatedAt": "2026-11-02T17:00:29.420Z"
   },
   {
     "id": "breitling-13",
@@ -5333,12 +5348,12 @@
   {
     "id": "breitling-14",
     "name": "Breitling Avenger Automatic GMT 45",
-    "sku": "A32393101B1X1",
+    "sku": "A32395101C1A1",
     "brand": "Breitling",
     "collection": "Avenger",
     "movement": "Automatic GMT",
-    "dialColor": "Military Black",
-    "caseMaterial": "Steel & Canvas",
+    "dialColor": "Royal Blue",
+    "caseMaterial": "Stainless Steel",
     "price": null,
     "originalPrice": null,
     "image": "/images/watches/breitling/14.webp",
@@ -5349,7 +5364,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "_id": "breitling-14",
+    "updatedAt": "2026-11-02T17:00:29.448Z"
   },
   {
     "id": "breitling-15",
