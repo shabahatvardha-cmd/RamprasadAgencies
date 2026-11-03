@@ -17,14 +17,24 @@ export default function WatchCard({
   return (
     <div
       onClick={() => onQuickView && onQuickView(watch)}
-      className="group relative flex flex-col cursor-pointer transition-all duration-300 hover:-translate-y-1 bg-transparent border-0 shadow-none"
+      className={`group relative flex flex-col justify-between cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 rounded-2xl p-2.5 sm:p-3 md:p-3.5 border shadow-2xs hover:shadow-md ${
+        isDark
+          ? 'bg-[#1C1815] border-white/10 hover:border-amber-400/50'
+          : 'bg-white border-[#E5DFD3] hover:border-brass-600/70 hover:shadow-[0_8px_20px_rgba(197,160,89,0.12)]'
+      }`}
     >
-      {/* 1. Frameless / Invisible Watch Photography Canvas with Equal 1:1 Aspect Ratio */}
-      <div className="relative aspect-square w-full rounded-xl overflow-hidden flex items-center justify-center p-1 sm:p-2 transition-transform duration-500 ease-out group-hover:scale-105 bg-transparent">
+      {/* 1. Watch Photography Canvas with Equal 1:1 Aspect Ratio & Fine Inner Stage */}
+      <div
+        className={`relative aspect-square w-full rounded-xl overflow-hidden flex items-center justify-center p-2 sm:p-2.5 transition-all duration-500 ease-out border ${
+          isDark
+            ? 'bg-[#25201C] border-white/5 group-hover:bg-[#2C2621]'
+            : 'bg-[#FAF8F5] border-[#F0EBE1] group-hover:bg-[#F5F0E6]/80'
+        }`}
+      >
         <img
           src={fullImage}
           alt={`${watch.brand || ''} ${watch.name}`}
-          className={`w-full h-full object-contain ${
+          className={`w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-105 drop-shadow-[0_4px_10px_rgba(0,0,0,0.06)] ${
             isOutOfStock ? 'opacity-70 grayscale-[25%]' : ''
           }`}
           loading="lazy"
@@ -35,14 +45,14 @@ export default function WatchCard({
 
         {/* Out of Stock Subtle Pill Badge */}
         {isOutOfStock && (
-          <span className="absolute top-1.5 right-1.5 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider bg-rose-600/90 text-white shadow-sm pointer-events-auto">
+          <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider bg-rose-600/90 text-white shadow-sm pointer-events-auto">
             Out of Stock
           </span>
         )}
       </div>
 
       {/* 2. Details close below the image */}
-      <div className="mt-1 sm:mt-1.5 flex flex-col px-0.5">
+      <div className="mt-2.5 sm:mt-3 flex flex-col flex-1 justify-between px-0.5">
         {/* Watch Model Name */}
         <h3
           className={`font-serif text-xs sm:text-sm font-bold line-clamp-2 leading-snug transition-colors ${
@@ -56,8 +66,8 @@ export default function WatchCard({
 
         {/* Portion like Men, Women, or Unisex under the watch name */}
         <p
-          className={`mt-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider ${
-            isDark ? 'text-amber-400/80' : 'text-[#6B635B]'
+          className={`mt-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider ${
+            isDark ? 'text-amber-400/80' : 'text-[#7A7269]'
           }`}
         >
           {gender}
