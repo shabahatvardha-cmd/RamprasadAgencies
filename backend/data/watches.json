@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "_id": "titan-01-edge-ultra-slim",
     "name": "Titan Edge Ultra-Slim (1696SL02)",
@@ -15,7 +15,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-02-neo-splash",
@@ -33,7 +36,10 @@
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-03-workwear-minimalist",
@@ -51,7 +57,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-04-regalia-classic",
@@ -69,7 +78,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-05-grandmaster-chronograph",
@@ -87,7 +99,10 @@
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-06-maritime-chronograph",
@@ -105,7 +120,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-07-purple-entice",
@@ -123,7 +141,10 @@
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-08-automatics-neo",
@@ -141,7 +162,10 @@
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-09-edge-ceramic",
@@ -159,7 +183,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-10-bandhan-couple-set",
@@ -177,7 +204,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Unisex"
+    "gender": "Unisex",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-11-karishma-classic",
@@ -195,7 +225,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-12-octane-hyperion",
@@ -213,7 +246,10 @@
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-13-stellar-meteorite",
@@ -231,7 +267,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-14-neo-economy",
@@ -249,7 +288,10 @@
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-15-workwear-slimline",
@@ -267,7 +309,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-16-rhythms-of-nature",
@@ -285,7 +330,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-17-neo-iv-chronograph",
@@ -303,7 +351,10 @@
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-18-edge-mechanical",
@@ -321,7 +372,10 @@
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-19-heritage-gold",
@@ -339,7 +393,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "titan-20-classique-formal",
@@ -357,7 +414,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Men"
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-01-janata-mechanical-white",
@@ -378,7 +438,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-02-sangam-mechanical",
@@ -399,7 +460,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-03-kanchan-gold-automatic",
@@ -420,7 +482,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-04-pilot-mechanical-black",
@@ -441,7 +504,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-05-kohinoor-maroon",
@@ -462,7 +526,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-06-himadri-automatic",
@@ -483,7 +548,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-07-tareeq-automatic",
@@ -504,7 +570,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-08-chronograph-fgss-12",
@@ -525,7 +592,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-09-commando-tactical",
@@ -546,7 +614,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-10-vijay-mechanical",
@@ -567,7 +636,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-11-rajat-automatic",
@@ -588,7 +658,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-12-chetak-gold",
@@ -609,7 +680,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-13-jhalak-skeleton",
@@ -630,7 +702,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-14-abhilasha-gold",
@@ -651,7 +724,8 @@
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-15-amber-ladies-mechanical",
@@ -672,7 +746,8 @@
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-16-himalaya-quartz-ips",
@@ -693,7 +768,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-17-inox-gold-igss-05",
@@ -714,7 +790,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-18-nandan-quartz",
@@ -735,7 +812,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-19-sweekar-quartz",
@@ -756,7 +834,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "hmt-20-adsl-04-couple-watch",
@@ -777,7 +856,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-01-prx-powermatic-80",
@@ -798,7 +878,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-02-prx-quartz-40mm",
@@ -819,7 +900,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-03-seastar-1000-powermatic-80",
@@ -840,7 +922,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-04-gentleman-powermatic-80-silicium",
@@ -861,7 +944,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-05-le-locle-powermatic-80",
@@ -882,7 +966,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-06-prx-powermatic-80-carbon",
@@ -903,7 +988,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-07-heritage-visodate-automatic",
@@ -924,7 +1010,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-08-supersport-chrono",
@@ -945,7 +1032,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-09-pr-100-sport-chic",
@@ -966,7 +1054,8 @@
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-10-chemin-des-tourelles-powermatic-80",
@@ -987,7 +1076,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-11-prx-35mm-mint-green",
@@ -1008,7 +1098,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-12-bellissima-automatic",
@@ -1029,7 +1120,8 @@
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-13-seastar-2000-professional",
@@ -1050,7 +1142,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-14-heritage-1973-chronograph",
@@ -1071,7 +1164,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-15-everytime-swissmatic",
@@ -1092,7 +1186,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-16-t-touch-connect-solar",
@@ -1113,7 +1208,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-17-tradition-powermatic-80-open-heart",
@@ -1134,7 +1230,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-18-carson-premium-powermatic-80",
@@ -1155,7 +1252,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-19-prx-powermatic-80-gold",
@@ -1176,7 +1274,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "tissot-20-lovely-square",
@@ -1197,7 +1296,8 @@
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-01-speedmaster-moonwatch",
@@ -1218,7 +1318,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-02-seamaster-diver-300m",
@@ -1293,7 +1394,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-05-seamaster-planet-ocean-600m",
@@ -1314,7 +1416,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-06-de-ville-prestige-co-axial",
@@ -1335,7 +1438,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-07-speedmaster-38-chronograph",
@@ -1356,7 +1460,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-08-seamaster-300-heritage",
@@ -1377,7 +1482,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-09-speedmaster-moonwatch-hesalite",
@@ -1398,7 +1504,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-10-seamaster-diver-300m-blue",
@@ -1419,7 +1526,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-11-constellation-globemaster",
@@ -1440,7 +1548,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-12-speedmaster-dark-side-moon",
@@ -1461,7 +1570,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-13-seamaster-aqua-terra-worldtimer",
@@ -1482,12 +1592,13 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-14-de-ville-tresor-power-reserve",
     "_id": "omega-14-de-ville-tresor-power-reserve",
-    "name": "De Ville TrÃƒÂ©sor Power Reserve (435.13.40.21.02.001)",
+    "name": "De Ville TrÃ©sor Power Reserve (435.13.40.21.02.001)",
     "brand": "Omega",
     "collection": "De Ville",
     "category": "Slim Dress",
@@ -1503,7 +1614,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-15-speedmaster-racing",
@@ -1524,7 +1636,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-16-seamaster-ploprof-1200m",
@@ -1545,7 +1658,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-17-constellation-manhattan",
@@ -1566,7 +1680,8 @@
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-18-speedmaster-57-co-axial",
@@ -1587,7 +1702,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-19-seamaster-aqua-terra-ultra-light",
@@ -1608,7 +1724,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "omega-20-de-ville-hour-vision",
@@ -1629,7 +1746,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-01-captain-cook-high-tech-ceramic",
@@ -1650,7 +1768,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-02-true-square-open-heart",
@@ -1671,7 +1790,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-03-centrix-automatic-diamonds",
@@ -1692,7 +1812,8 @@
     "featured": true,
     "gender": "Women",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-04-true-round-automatic",
@@ -1713,7 +1834,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-05-hyperchrome-classic-automatic",
@@ -1734,7 +1856,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-06-integral-jubile",
@@ -1755,7 +1878,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-07-diamaster-automatic",
@@ -1776,7 +1900,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-08-captain-cook-over-pole",
@@ -1797,7 +1922,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-09-ceramica-automatic",
@@ -1818,7 +1944,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-10-true-thinline-less",
@@ -1839,7 +1966,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-11-centrix-open-heart",
@@ -1860,7 +1988,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-12-captain-cook-bronze-automatic",
@@ -1881,7 +2010,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-13-true-square-thinline",
@@ -1902,7 +2032,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-14-hyperchrome-captain-cook-chronograph",
@@ -1923,7 +2054,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-15-coupole-classic-automatic",
@@ -1944,7 +2076,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-16-true-secret-automatic",
@@ -1965,7 +2098,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-17-sintra-jubile",
@@ -1986,7 +2120,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-18-diastar-original-automatic",
@@ -2007,7 +2142,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-19-true-square-designer",
@@ -2028,7 +2164,8 @@
     "featured": true,
     "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "rado-20-centrix-automatic-chronograph",
@@ -2049,7 +2186,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-01-5-sports-srpd55k1",
@@ -2070,7 +2208,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-02-prospex-turtle",
@@ -2091,7 +2230,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-03-presage-cocktail-time-skydiving",
@@ -2112,7 +2252,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-04-prospex-alpinist",
@@ -2133,7 +2274,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-05-prospex-sumo",
@@ -2154,7 +2296,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-06-5-sports-field-watch",
@@ -2175,7 +2318,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-07-prospex-speedtimer-solar-chrono",
@@ -2196,7 +2340,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-08-presage-mockingbird-cocktail",
@@ -2217,7 +2362,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-09-king-seiko-vanac",
@@ -2238,7 +2384,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-10-prospex-monster",
@@ -2259,7 +2406,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-11-astron-gps-solar",
@@ -2280,7 +2428,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-12-5-sports-gmt-orange-field",
@@ -2301,7 +2450,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-13-premier-kinetic-perpetual",
@@ -2322,7 +2472,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-14-presage-sharp-edged",
@@ -2343,7 +2494,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-15-prospex-1965-diver-reinterpretation",
@@ -2364,7 +2516,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-16-5-sports-gmt-batman",
@@ -2385,7 +2538,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-17-presage-cocktail-time-old-fashioned",
@@ -2406,7 +2560,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-18-prospex-solar-diver",
@@ -2427,7 +2582,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-19-5-sports-snxs-vintage",
@@ -2448,7 +2604,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "seiko-20-prospex-marinemaster-300m",
@@ -2469,7 +2626,8 @@
     "featured": true,
     "gender": "Men",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-01-viva",
@@ -2487,7 +2645,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-02-facets",
@@ -2532,7 +2693,10 @@
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.639Z"
+    "updatedAt": "2026-11-02T11:59:59.639Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-04-aurora",
@@ -2551,7 +2715,10 @@
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.663Z"
+    "updatedAt": "2026-11-02T11:59:59.663Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-05-flora",
@@ -2569,7 +2736,10 @@
     "storeLocation": "Shop No. 1, JalKal Building, Golghar",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-06-power-pearls",
@@ -2588,7 +2758,10 @@
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-07-cocktails",
@@ -2607,7 +2780,10 @@
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-08-delight",
@@ -2626,7 +2802,10 @@
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-09-sparkle",
@@ -2644,7 +2823,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-10-masaba-gupta",
@@ -2662,7 +2844,10 @@
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-11-noir",
@@ -2681,7 +2866,10 @@
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-12-ceramic-elegance",
@@ -2700,7 +2888,10 @@
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-13-pearlescent",
@@ -2719,7 +2910,10 @@
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-14-empress",
@@ -2738,7 +2932,10 @@
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-15-chic-petite",
@@ -2757,7 +2954,10 @@
     "inStock": true,
     "featured": false,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-16-swarnim-gold",
@@ -2775,7 +2975,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": true,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-17-lumina",
@@ -2793,7 +2996,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-18-moonlight",
@@ -2811,7 +3017,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-19-viva-rose",
@@ -2830,7 +3039,10 @@
     "inStock": true,
     "featured": true,
     "gender": "Women",
-    "updatedAt": "2026-11-02T11:59:59.664Z"
+    "updatedAt": "2026-11-02T11:59:59.664Z",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "_id": "raga-20-classics",
@@ -2848,7 +3060,10 @@
     "storeLocation": "Baldev Plaza & JalKal Building, Golghar, Gorakhpur",
     "inStock": true,
     "featured": false,
-    "gender": "Women"
+    "gender": "Women",
+    "price": null,
+    "originalPrice": null,
+    "hidePrice": true
   },
   {
     "id": "citizen-01-tsuyosa-automatic",
@@ -2876,8 +3091,9 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-10-30T07:07:03.272Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-10-30T07:07:03.272Z",
+    "hidePrice": true
   },
   {
     "id": "citizen-02-promaster-ecodrive-diver",
@@ -2905,7 +3121,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-03-ecodrive-calendrier",
@@ -2933,7 +3150,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-04-corso-ecodrive",
@@ -2961,7 +3179,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-05-promaster-mechanical-diver",
@@ -2989,7 +3208,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-06-radiocontrolled-world-chrono",
@@ -3017,7 +3237,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-07-tsuyosa-yellow",
@@ -3045,7 +3266,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-08-promaster-aqualand",
@@ -3073,7 +3295,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-09-axiom-ecodrive",
@@ -3101,7 +3324,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-10-series-8-mechanical",
@@ -3129,7 +3353,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-11-ecodrive-chronograph",
@@ -3157,7 +3382,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-12-ecodrive-ladies-diamond",
@@ -3185,7 +3411,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-13-promaster-skyhawk-at",
@@ -3213,7 +3440,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-14-ecodrive-titanium",
@@ -3241,7 +3469,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-15-tsuyosa-green",
@@ -3269,7 +3498,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-16-ecodrive-one",
@@ -3297,7 +3527,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-17-calendrier-multifunction",
@@ -3325,7 +3556,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-18-promaster-tough",
@@ -3353,7 +3585,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-19-silhouette-crystal",
@@ -3381,7 +3614,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "citizen-20-promaster-ecodrive-gmt",
@@ -3409,7 +3643,8 @@
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-01-neon-disco",
@@ -3437,7 +3672,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-02-reflex-vox-smartwatch",
@@ -3465,7 +3701,8 @@
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-03-edge-metallic",
@@ -3493,8 +3730,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.538Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.538Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-04-trendies-casual",
@@ -3522,7 +3760,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-05-economy-casual",
@@ -3550,8 +3789,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.557Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.557Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-06-tees-graphic",
@@ -3579,8 +3819,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.586Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.586Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-07-bare-essentials",
@@ -3608,8 +3849,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.620Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.620Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-08-streetwear-chrono",
@@ -3637,7 +3879,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-09-stunners-party-watch",
@@ -3665,8 +3908,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.649Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.649Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-10-economy-metal",
@@ -3694,7 +3938,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-11-occupational-casual",
@@ -3722,7 +3967,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-12-reflex-play-smartwatch",
@@ -3750,7 +3996,8 @@
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-13-work-casual-steel",
@@ -3778,7 +4025,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-14-un-form-asymmetric",
@@ -3806,7 +4054,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-15-next-gen-digital",
@@ -3834,8 +4083,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.686Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.686Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-16-economy-minimal",
@@ -3863,8 +4113,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.719Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.719Z",
+    "hidePrice": true
   },
   {
     "id": "fastrack-17-military-field",
@@ -3892,7 +4143,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-18-duo-couple-set",
@@ -3920,7 +4172,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-19-fastfit-sport",
@@ -3948,7 +4201,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fastrack-20-gradient-chic",
@@ -3976,8 +4230,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:17:53.756Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:17:53.756Z",
+    "hidePrice": true
   },
   {
     "id": "sonata-01-poze-gold",
@@ -4005,7 +4260,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-02-classic-formal",
@@ -4033,7 +4289,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-03-superfibre-sports",
@@ -4061,7 +4318,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-04-yuva-digital",
@@ -4089,7 +4347,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-05-essentials-steel",
@@ -4117,7 +4376,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-06-gold-wedding-series",
@@ -4145,7 +4405,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-07-stilo-womens-gold",
@@ -4173,7 +4434,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-08-activa-fitness",
@@ -4201,7 +4463,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-09-sleek-metal",
@@ -4229,7 +4492,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-10-digital-alarm-watch",
@@ -4257,7 +4521,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-11-fibre-youth",
@@ -4285,7 +4550,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-12-sleek-leather",
@@ -4313,7 +4579,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-13-poze-rose-gold",
@@ -4341,7 +4608,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-14-wedding-couple-set",
@@ -4369,7 +4637,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-15-gold-dial-classic",
@@ -4397,7 +4666,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-16-gold-chic-women",
@@ -4425,7 +4695,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-17-superfibre-ocean",
@@ -4453,7 +4724,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-18-studded-party-watch",
@@ -4481,7 +4753,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-19-essentials-roman",
@@ -4509,7 +4782,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "sonata-20-minimalist-black",
@@ -4537,7 +4811,8 @@
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-01-neutra-chronograph",
@@ -4565,7 +4840,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-02-machine-chronograph",
@@ -4593,7 +4869,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-03-everett-three-hand",
@@ -4621,7 +4898,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-04-townsman-automatic",
@@ -4649,7 +4927,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-05-raquel-three-hand",
@@ -4677,8 +4956,9 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
-    "updatedAt": "2026-11-02T17:41:03.868Z"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "updatedAt": "2026-11-02T17:41:03.868Z",
+    "hidePrice": true
   },
   {
     "id": "fossil-06-carlie-mini",
@@ -4706,7 +4986,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-07-minimalist-three-hand",
@@ -4734,7 +5015,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-08-grant-chronograph",
@@ -4762,7 +5044,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-09-fossil-blue-diver",
@@ -4790,7 +5073,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-10-carraway-tonneau",
@@ -4818,7 +5102,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-11-bronson-chronograph",
@@ -4846,7 +5131,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-12-heritage-automatic",
@@ -4874,7 +5160,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-13-scarlette-mini",
@@ -4902,7 +5189,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-14-sport-tourer",
@@ -4930,7 +5218,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-15-harwell-three-hand",
@@ -4958,7 +5247,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-16-nate-chronograph",
@@ -4986,7 +5276,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-17-fb-01-diver",
@@ -5014,7 +5305,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-18-jacqueline-three-hand",
@@ -5042,7 +5334,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-19-gen-6-smartwatch",
@@ -5070,7 +5363,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "fossil-20-townsman-chronograph",
@@ -5098,7 +5392,8 @@
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "hidePrice": true
   },
   {
     "id": "breitling-01",
@@ -5119,7 +5414,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-02",
@@ -5140,7 +5437,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-03",
@@ -5161,9 +5460,11 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-03",
-    "updatedAt": "2026-11-02T17:00:29.375Z"
+    "updatedAt": "2026-11-02T17:00:29.375Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-04",
@@ -5184,7 +5485,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-05",
@@ -5205,7 +5508,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-06",
@@ -5226,7 +5531,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-07",
@@ -5247,7 +5554,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-08",
@@ -5268,7 +5577,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-09",
@@ -5289,7 +5600,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-10",
@@ -5310,7 +5623,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-11",
@@ -5320,7 +5635,7 @@
     "collection": "Professional",
     "movement": "Thermo-Compensated Quartz",
     "dialColor": "Black & Blue",
-    "caseMaterial": "BreitlightÂ®",
+    "caseMaterial": "Breitlight®",
     "price": null,
     "originalPrice": null,
     "image": "/images/watches/breitling/11.webp",
@@ -5331,9 +5646,11 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-11",
-    "updatedAt": "2026-11-02T17:00:29.394Z"
+    "updatedAt": "2026-11-02T17:00:29.394Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-12",
@@ -5354,9 +5671,11 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-12",
-    "updatedAt": "2026-11-02T17:00:29.420Z"
+    "updatedAt": "2026-11-02T17:00:29.420Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-13",
@@ -5377,7 +5696,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-14",
@@ -5398,9 +5719,11 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
     "_id": "breitling-14",
-    "updatedAt": "2026-11-02T17:00:29.448Z"
+    "updatedAt": "2026-11-02T17:00:29.448Z",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-15",
@@ -5421,7 +5744,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-16",
@@ -5442,7 +5767,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-17",
@@ -5463,7 +5790,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-18",
@@ -5484,7 +5813,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-19",
@@ -5505,7 +5836,9 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   },
   {
     "id": "breitling-20",
@@ -5526,6 +5859,8 @@
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "inStock": true,
+    "hidePrice": true
   }
 ]
