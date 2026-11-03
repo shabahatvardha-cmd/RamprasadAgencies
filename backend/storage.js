@@ -250,6 +250,8 @@ function updateSettings(updateFields) {
   return updated;
 }
 
+const DEFAULT_WATCHES_FILE = path.join(DATA_DIR, 'defaultWatches.json');
+
 function resetSettings() {
   const fresh = loadInitialSettings();
   writeSettingsFile(fresh);
@@ -257,11 +259,29 @@ function resetSettings() {
 }
 
 function resetWatches() {
-  const current = readWatchesFile();
-  const resetList = current.map((w) => ({
+  let freshList = [];
+  try {
+    if (fs.existsSync(DEFAULT_WATCHES_FILE)) {
+      const raw = fs.readFileSync(DEFAULT_WATCHES_FILE, 'utf8').replace(/^\uFEFF/, '');
+      freshList = JSON.parse(raw);
+    }
+  } catch (err) {
+    console.error('Error reading defaultWatches.json:', err.message);
+  }
+
+  if (!freshList || freshList.length === 0) {
+    freshList = loadInitialWatches();
+  }
+
+  // Ensure every watch is 100% factory in-stock with hidden prices
+  const resetList = freshList.map((w) => ({
     ...w,
     inStock: true,
+    price: null,
+    originalPrice: null,
+    hidePrice: true,
   }));
+
   writeWatchesFile(resetList);
   return resetList;
 }

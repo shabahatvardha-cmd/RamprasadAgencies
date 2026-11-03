@@ -421,20 +421,26 @@ function App() {
         contentOverrides: {},
       });
 
-      // Reset watch catalog back to factory defaults (all models in stock)
+      // Reset watch catalog back to factory defaults (all models in stock, prices unrevealed)
+      let restored = FALLBACK_WATCHES.map((w) => ({
+        ...w,
+        inStock: true,
+        price: null,
+        originalPrice: null,
+        hidePrice: true,
+      }));
+
       try {
-        await resetWatches();
+        const apiWatches = await resetWatches();
+        if (Array.isArray(apiWatches) && apiWatches.length > 0) {
+          restored = apiWatches;
+        }
       } catch (watchResetErr) {
         console.warn('Backend reset watches endpoint fallback:', watchResetErr.message);
       }
 
-      // Update local watches state so UI immediately shows all in stock
-      setBackendWatches((prev) =>
-        prev.map((w) => ({
-          ...w,
-          inStock: true,
-        }))
-      );
+      // Update local watches state so UI immediately shows all in stock and clean
+      setBackendWatches(restored);
       broadcastWatchChange();
 
       showToast({
