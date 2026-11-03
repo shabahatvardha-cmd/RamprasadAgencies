@@ -558,9 +558,83 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
         </div>
       </div>
 
-      {/* 2. Brand Hero Portion: Permanent Brand Heritage Overview + Continuous Moving Advertisement Strip */}
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-6 sm:pt-8 pb-4 space-y-3.5">
-        {/* A. Brand Heritage Overview (ALWAYS VISIBLE THROUGHOUT) */}
+      {/* 2. Brand Hero Portion: Continuous Moving Campaign Strip (TOP) + Permanent Brand Heritage Overview (BELOW) */}
+      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-5 sm:pt-7 pb-4 space-y-4 sm:space-y-5">
+        {/* A. BROADER, SLOW CONTINUOUS CAMPAIGN ADVERTISEMENT STRIP (ABOVE BRAND CARD) */}
+        {marqueeAds && marqueeAds.length > 0 && (
+          <div
+            className="relative w-full rounded-2xl overflow-hidden bg-gradient-to-r from-[#FAF7F2] via-[#F4EDE1] to-[#FAF7F2] border border-[#DDD5C7] shadow-sm group/adstrip transition-all"
+            aria-label="Active Brand Campaigns"
+          >
+            {/* Subtle soft gradient fade masks on left and right for seamless loop */}
+            <div className="absolute left-0 inset-y-0 w-8 sm:w-20 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2]/80 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 inset-y-0 w-8 sm:w-20 bg-gradient-to-l from-[#FAF7F2] via-[#FAF7F2]/80 to-transparent z-10 pointer-events-none" />
+
+            <div className="flex items-center">
+              {/* Left Pinned Label Badge */}
+              <div className="hidden sm:flex items-center gap-2 px-4 sm:px-5 py-3.5 sm:py-4 bg-stone-900 text-amber-300 text-xs sm:text-sm font-mono font-bold tracking-widest uppercase shrink-0 z-20 border-r border-[#DDD5C7] shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+                <span>Campaign</span>
+              </div>
+
+              {/* Continuous Moving Marquee Track (Gentle, Slower Pace Moving Right to Left) */}
+              <div className="flex overflow-hidden select-none w-full">
+                <div className="flex items-center gap-10 whitespace-nowrap animate-[marquee_65s_linear_infinite] group-hover/adstrip:[animation-play-state:paused] py-3 sm:py-3.5 md:py-4 cursor-default">
+                  {marqueeAds.map((ad, idx) => (
+                    <div key={idx} className="inline-flex items-center gap-3.5 shrink-0">
+                      {/* Broader Watch Cutout Thumbnail Stage */}
+                      {ad.image && (
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white border border-[#E5DEC9] p-1 flex items-center justify-center shrink-0 shadow-xs">
+                          <img
+                            src={ad.image}
+                            alt=""
+                            className="w-full h-full object-contain drop-shadow-xs"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+
+                      {/* Campaign Category Badge */}
+                      <span className="px-2.5 py-1 rounded-full bg-brass-700/15 border border-brass-600/30 text-brass-900 text-[10px] sm:text-xs font-mono font-extrabold uppercase tracking-wider">
+                        {ad.badge}
+                      </span>
+
+                      {/* Campaign Headline */}
+                      <strong className="font-serif text-stone-950 font-extrabold text-sm sm:text-base">
+                        {ad.headline}
+                      </strong>
+
+                      {/* Subheadline Highlight */}
+                      <span className="text-stone-700 text-xs sm:text-sm font-medium hidden md:inline">
+                        — {ad.subheadline}
+                      </span>
+
+                      {/* Quick WhatsApp Inquiry Pill */}
+                      <a
+                        href={getWhatsAppLink(
+                          contactPhone,
+                          `Hello Ram Prasad Agencies, I am inquiring about the ${meta.name} Campaign: "${ad.headline}". Please guide me on showroom availability at Gorakhpur.`
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-xs cursor-pointer ml-1 active:scale-95"
+                        title={`Inquire about ${ad.headline} on WhatsApp`}
+                      >
+                        <MessageCircle className="w-3 h-3" />
+                        <span>Inquire</span>
+                      </a>
+
+                      {/* Elegant Separator Diamond */}
+                      <span className="text-brass-700/60 font-serif text-sm ml-4 select-none">◆</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* B. Brand Heritage Overview (PROMINENTLY DISPLAYED BELOW CAMPAIGN STRIP) */}
         <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-[#FAF7F2] via-[#F4ECE1] to-[#EAE0D0] border border-[#DDD5C7] shadow-[0_20px_50px_rgba(180,150,110,0.12)] transition-all duration-300">
           {/* Subtle Top Brass Accent Trim */}
           <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-brass-500/80 to-transparent z-20" />
@@ -709,80 +783,6 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
             </div>
           </div>
         </div>
-
-        {/* B. FINE CONTINUOUS CAMPAIGN ADVERTISEMENT STRIP (MOVING RIGHT TO LEFT) */}
-        {marqueeAds && marqueeAds.length > 0 && (
-          <div
-            className="relative w-full rounded-xl overflow-hidden bg-gradient-to-r from-[#FAF7F2] via-[#F4EDE1] to-[#FAF7F2] border border-[#DDD5C7] shadow-2xs group/adstrip transition-all"
-            aria-label="Active Brand Campaigns"
-          >
-            {/* Subtle soft gradient fade masks on left and right for seamless loop */}
-            <div className="absolute left-0 inset-y-0 w-8 sm:w-16 bg-gradient-to-r from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 inset-y-0 w-8 sm:w-16 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
-
-            <div className="flex items-center">
-              {/* Left Pinned Label Pill */}
-              <div className="hidden sm:flex items-center gap-1.5 px-3.5 py-2.5 bg-stone-900 text-amber-300 text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase shrink-0 z-20 border-r border-[#DDD5C7]">
-                <Sparkles className="w-3 h-3 text-amber-400 animate-pulse" />
-                <span>Campaign</span>
-              </div>
-
-              {/* Continuous Moving Marquee Track (Moving Right to Left) */}
-              <div className="flex overflow-hidden select-none w-full">
-                <div className="flex items-center gap-8 whitespace-nowrap animate-marquee group-hover/adstrip:[animation-play-state:paused] py-2 sm:py-2.5 cursor-default">
-                  {marqueeAds.map((ad, idx) => (
-                    <div key={idx} className="inline-flex items-center gap-2.5 shrink-0 text-xs">
-                      {/* Transparent Watch Cutout Thumbnail */}
-                      {ad.image && (
-                        <div className="w-7 h-7 rounded-md bg-white border border-[#E5DEC9] p-0.5 flex items-center justify-center shrink-0 shadow-2xs">
-                          <img
-                            src={ad.image}
-                            alt=""
-                            className="w-full h-full object-contain"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-
-                      {/* Campaign Badge */}
-                      <span className="px-2 py-0.5 rounded-full bg-brass-700/15 border border-brass-600/30 text-brass-900 text-[9.5px] sm:text-[10px] font-mono font-extrabold uppercase tracking-wider">
-                        {ad.badge}
-                      </span>
-
-                      {/* Campaign Headline */}
-                      <strong className="font-serif text-stone-900 font-bold text-xs sm:text-sm">
-                        {ad.headline}
-                      </strong>
-
-                      {/* Subheadline Highlight */}
-                      <span className="text-stone-600 text-[11px] sm:text-xs hidden md:inline">
-                        — {ad.subheadline}
-                      </span>
-
-                      {/* Quick WhatsApp Inquiry Pill */}
-                      <a
-                        href={getWhatsAppLink(
-                          contactPhone,
-                          `Hello Ram Prasad Agencies, I am inquiring about the ${meta.name} Campaign: "${ad.headline}". Please guide me on showroom availability at Gorakhpur.`
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] sm:text-[11px] transition-all shadow-2xs cursor-pointer ml-1"
-                        title={`Inquire about ${ad.headline} on WhatsApp`}
-                      >
-                        <MessageCircle className="w-2.5 h-2.5" />
-                        <span>Inquire</span>
-                      </a>
-
-                      {/* Elegant Separator Diamond */}
-                      <span className="text-brass-700/60 font-serif text-xs ml-3 select-none">◆</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* 3. Gender / Category Filter Tabs (Men, Women, Unisex) */}
