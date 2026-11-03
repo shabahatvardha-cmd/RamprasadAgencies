@@ -4,7 +4,7 @@ import { DEFAULT_VINTAGE_STORE_DATA } from '../../utils/defaults';
 import { FALLBACK_WATCHES } from '../../data/fallbackWatches';
 import { getFullImageUrl } from '../../utils/api';
 
-export const BRAND_REFERENCE_IMAGES = {
+const BRAND_REFERENCE_IMAGES = {
   titan: '/images/brands/titan.webp',
   hmt: '/images/brands/hmt.webp',
   fastrack: '/images/brands/fastrack.webp',
@@ -20,7 +20,7 @@ export const BRAND_REFERENCE_IMAGES = {
   'titan raga': '/images/brands/raga.webp',
 };
 
-export const getBrandReferenceImage = (brandName, customImage) => {
+const getBrandReferenceImage = (brandName, customImage) => {
   if (customImage && typeof customImage === 'string' && customImage.trim() !== '') {
     return customImage;
   }
@@ -36,7 +36,7 @@ export const getBrandReferenceImage = (brandName, customImage) => {
   return '/images/brands/default.webp';
 };
 
-export const IMPORTED_BRANDS = [
+const IMPORTED_BRANDS = [
   // 1. Featured Brands (4 brands)
   { name: 'Titan', country: 'India', category: 'featured' },
   { name: 'Titan Raga', country: 'India', category: 'featured' },
@@ -56,7 +56,7 @@ export const IMPORTED_BRANDS = [
   { name: 'Sonata', country: 'India', category: 'fresh_drop' },
 ];
 
-export const SECTIONS_CONFIG = [
+const SECTIONS_CONFIG = [
   {
     id: 'featured',
     label: 'Featured',
@@ -95,9 +95,31 @@ export default function VisualBrandMarquee({
   onDeleteWatch,
   onAddWatch,
   onQuickView,
+  selectedBrand: propSelectedBrand,
+  onSelectBrand,
 }) {
-  const [selectedBrand, setSelectedBrand] = useState('ALL');
+  const [internalSelectedBrand, setInternalSelectedBrand] = useState(() => {
+    try {
+      return sessionStorage.getItem('rp_admin_selected_brand') || 'ALL';
+    } catch {
+      return 'ALL';
+    }
+  });
+
+  const selectedBrand = propSelectedBrand !== undefined ? propSelectedBrand : internalSelectedBrand;
+  const setSelectedBrand = (b) => {
+    try {
+      sessionStorage.setItem('rp_admin_selected_brand', b);
+    } catch {}
+    if (onSelectBrand) {
+      onSelectBrand(b);
+    } else {
+      setInternalSelectedBrand(b);
+    }
+  };
+
   const showcaseRef = useRef(null);
+  const prevBrandRef = useRef(selectedBrand);
 
   const brandList = useMemo(() => {
     if (brands && Array.isArray(brands) && brands.length > 0) {
@@ -205,13 +227,18 @@ export default function VisualBrandMarquee({
     return displayWatches.filter((w) => isWatchInBrand(w, selectedBrand));
   }, [displayWatches, selectedBrand, isBrandActive]);
 
-  // Smooth scroll into showcase when brand selected
+  // Smooth scroll into showcase only when user switches to a brand
   useEffect(() => {
     if (isBrandActive && showcaseRef.current) {
-      const timer = setTimeout(() => {
-        showcaseRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
-      return () => clearTimeout(timer);
+      if (prevBrandRef.current !== selectedBrand) {
+        prevBrandRef.current = selectedBrand;
+        const timer = setTimeout(() => {
+          showcaseRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    } else {
+      prevBrandRef.current = selectedBrand;
     }
   }, [selectedBrand, isBrandActive]);
 
@@ -448,9 +475,11 @@ export default function VisualBrandMarquee({
                 {filteredWatches.map((w, idx) => {
                   const watchImg = getFullImageUrl(w.image);
                   const isOutOfStock = w.inStock === false;
+                  const watchCardDomId = `watch-card-${w._id || w.id || idx}`;
                   return (
                     <div
                       key={w._id || w.id || idx}
+                      id={watchCardDomId}
                       className={`group relative rounded-xl overflow-hidden bg-[#1E1C1A] border p-3 sm:p-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 ${
                         isOutOfStock
                           ? 'border-rose-900/60 bg-rose-950/10 hover:border-rose-500/80'

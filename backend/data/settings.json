@@ -1,6 +1,6 @@
 {
   "theme": "obsidian-gold",
-  "logo": "/logo.webp",
+  "logo": "/logo.png",
   "contactPhone": "+91 98765 43210",
   "aboutText": "Gorakhpur’s trusted destination for genuine imported luxury watches, automatic chronographs, and precision battery servicing for over three decades.",
   "certificateImage": "/images/about/heritage-certificate.webp",
@@ -16,14 +16,13 @@
       "tagline": "Swiss Horology & Automatic Heritage",
       "address": "Baldev Plaza, Main Market, Golghar, Gorakhpur - 273001",
       "landmark": "Opposite Town Hall / Commercial Center",
-      "hours": "10:30 AM – 9:00 PM (All 7 Days)",
+      "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
       "image": "/images/showrooms/baldev-plaza.webp",
       "mapQuery": "Baldev+Plaza+Golghar+Gorakhpur",
       "phone": "+91 98765 43210",
       "specialties": [
-        "Official Swiss Collections (Tissot, Rado, Longines, Victorinox)",
-        "Indian Heritage Horology (Titan Edge, Titan Mechanicals, HMT Kohinoor & Janata)",
-        "Collector Import Consultations (Omega, TAG Heuer, Rado)",
+        "Official Swiss Collections (Tissot, Rado, Breitling, Omega)",
+        "Collector Import Consultations (Omega, Breitling, Rado)",
         "Japanese Automatics & Presage timepieces (Seiko, Citizen)",
         "Certified watch battery, pressure testing & ultrasonic cleaning"
       ]
@@ -34,14 +33,13 @@
       "tagline": "Contemporary & Everyday Luxury Timepieces",
       "address": "Shop No. 1, JalKal Building, Golghar, Gorakhpur - 273001",
       "landmark": "Near JalKal Compound, Main Golghar Market",
-      "hours": "10:30 AM – 9:00 PM (All 7 Days)",
+      "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
       "image": "/images/showrooms/jalkal-building.webp",
       "mapQuery": "JalKal+Building+Golghar+Gorakhpur",
       "phone": "+91 98765 43210",
       "specialties": [
-        "Indian Youth & Daily Wear (Titan Octane, Fastrack Chronos, Sonata Poze)",
-        "Casual Luxury & Chronographs (Fossil, Casio Edifice, G-Shock)",
-        "Designer horology collections (Emporio Armani, Tommy Hilfiger)",
+        "Casual Luxury & Chronographs (Fossil, Fastrack, Sonata)",
+        "Designer horology collections (Titan Raga, Fossil Heritage)",
         "Genuine leather straps, steel bracelets & horology accessories",
         "Instant watch bracelet sizing & movement health diagnostics"
       ]
@@ -51,10 +49,9 @@
     "isActive": true,
     "speed": "normal",
     "messages": [
-      "🇮🇳 INDIAN WATCH HERITAGE: Complete Collections for Titan, Titan Raga, HMT, Fastrack & Sonata Available at Golghar",
-      "⚡ FLASH SALE: Extra 15% Off Swiss, Japanese & Indian Mechanicals • Use Code: VINTAGE15",
+      "âš¡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics â€¢ Use Code: VINTAGE15",
       "Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers",
-      "Direct Imports for Omega, Tissot & TAG Heuer with Stamped International Warranty",
+      "Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty",
       "Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms",
       "Free Insured Express Shipping on All Luxury Orders Across India"
     ]
@@ -77,40 +74,82 @@
   "heroSlides": [
     {
       "id": "hero-1",
-      "badge": "SWISS PRECISION",
-      "headline": "Tissot PRX & Swiss Automatics",
-      "subheadline": "Gorakhpur’s premier authorized showroom for Swiss Powermatic 80 movements and retro-futuristic integrated bracelets.",
-      "ctaPrimary": "Shop PRX",
-      "ctaSecondary": "Baldev Plaza Showroom",
-      "image": "/images/watches/tissot/01.webp",
-      "tag": "Tissot • PRX • Powermatic 80"
+      "badge": "SWISS PRECISION â€¢ EST. 1853",
+      "headline": "Tissot PRX Powermatic 80 & Swiss Automatics",
+      "subheadline": "Iconic 1970s integrated bracelet geometry powered by an 80-hour Nivachron anti-magnetic balance spring. Experience authentic Swiss horology at Ram Prasad Agencies.",
+      "ctaPrimary": "Explore Tissot PRX",
+      "ctaPrimaryLink": "#new-arrivals",
+      "ctaSecondary": "View Showrooms",
+      "ctaSecondaryLink": "#showrooms",
+      "image": "/images/watches/tissot-prx-powermatic-80.webp",
+      "specsTag": "Powermatic 80 Caliber â€¢ 100M Water Resistant â€¢ Anti-Magnetic"
     },
     {
       "id": "hero-2",
-      "badge": "JAPANESE PRECISION",
-      "headline": "Citizen Tsuyosa & Eco-Drive Calibers",
-      "subheadline": "Sunburst dials, cyclops date, and light-powered timekeeping requiring zero battery changes.",
-      "ctaPrimary": "Explore Tsuyosa",
-      "ctaSecondary": "Visit Showrooms",
-      "image": "/images/watches/citizen/01.webp",
-      "tag": "Citizen • Tsuyosa • Eco-Drive"
+      "badge": "CERTIFIED SWISS LUXURY IMPORTS",
+      "headline": "Omega & Tissot Swiss Showcase",
+      "subheadline": "Legendary chronometers imported for discerning collectors in Eastern UP. Complete with official international stamped papers, presentation cases, and provenance.",
+      "ctaPrimary": "Inquire Swiss Icons",
+      "ctaPrimaryLink": "#collector-capsule",
+      "ctaSecondary": "WhatsApp Support",
+      "ctaSecondaryLink": "#inquiry",
+      "image": "/images/hero-omega-showcase.webp",
+      "specsTag": "Cerachrom Ceramic Bezel â€¢ Co-Axial Master Chronometer"
     },
     {
       "id": "hero-3",
-      "badge": "INDIAN MECHANICAL HERITAGE",
-      "headline": "Titan Edge & HMT Mechanical Icons",
-      "subheadline": "Devnagari dials, 17-jewel hand-wound calibers, and the world’s slimmest ceramic wristwatches.",
-      "ctaPrimary": "Discover Indian Icons",
-      "ctaSecondary": "Inquire on WhatsApp",
-      "image": "/images/watches/titan/01.webp",
-      "tag": "Titan • HMT • Kohinoor"
+      "badge": "JAPANESE AUTOMATIC MASTERY",
+      "headline": "Seiko Presage Cocktail Time & Automatic Calibers",
+      "subheadline": "Exquisite radial sunburst guillochÃ© dials with heat-blued hands, crafted by master Japanese horologists. Powered by robust in-house mechanical movements.",
+      "ctaPrimary": "Discover Seiko Presage",
+      "ctaPrimaryLink": "#our-icons",
+      "ctaSecondary": "Book Private Fitting",
+      "ctaSecondaryLink": "#showrooms",
+      "image": "/images/watches/seiko-presage-cocktail-time.webp",
+      "specsTag": "In-House 4R35 Automatic â€¢ Box-Shaped Hardlex Crystal"
+    },
+    {
+      "id": "hero-4",
+      "badge": "INDIAN HOROLOGY FLAGSHIP",
+      "headline": "Titan Edge & Regalia Heritage",
+      "subheadline": "Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guillochÃ© timepieces by the Tata legacy.",
+      "ctaPrimary": "Explore Titan",
+      "ctaPrimaryLink": "#brands",
+      "ctaSecondary": "View Showrooms",
+      "ctaSecondaryLink": "#showrooms",
+      "image": "/images/hero-titan-regalia.webp",
+      "specsTag": "Titan Ultra-Slim Caliber â€¢ Scratch-Resistant Sapphire â€¢ Tata Pedigree"
+    },
+    {
+      "id": "hero-5",
+      "badge": "INDIAN MECHANICAL LEGEND",
+      "headline": "HMT Kohinoor & Janata Mechanicals",
+      "subheadline": "The vintage heartbeat of Indian horology since 1961. Authentic 17-jewel hand-wound mechanical calibers with timeless Devnagari dials.",
+      "ctaPrimary": "Explore HMT",
+      "ctaPrimaryLink": "#brands",
+      "ctaSecondary": "WhatsApp Support",
+      "ctaSecondaryLink": "#inquiry",
+      "image": "/images/hero-hmt-kohinoor-vintage.webp",
+      "specsTag": "In-House Calibre 0231 â€¢ 17 Jewels Mechanical â€¢ Made in India"
+    },
+    {
+      "id": "hero-6",
+      "badge": "EVERYDAY INDIAN HOROLOGY",
+      "headline": "Fastrack Chronos & Sonata Classics",
+      "subheadline": "Bold youth street chronographs and dependable everyday classics crafted for Indian lifestyle, with showroom warranty in Golghar.",
+      "ctaPrimary": "Explore Collections",
+      "ctaPrimaryLink": "#brands",
+      "ctaSecondary": "Visit Showrooms",
+      "ctaSecondaryLink": "#showrooms",
+      "image": "/images/fastrack-banner.webp",
+      "specsTag": "All-Weather Water Resistance â€¢ Precision Quartz â€¢ Tata Quality"
     }
   ],
   "vintageStoreData": {
-    "version": "6.1.0",
+    "version": "6.0.0",
     "brandName": "RAM PRASAD AGENCIES",
     "tagline": "WATCHSTORE.IN",
-    "logo": "/logo.webp",
+    "logo": "/logo.png",
     "contactPhone": "+91 98765 43210",
     "inquiryTitle": "Bespoke Sourcing & Private Showroom Consultation",
     "footerCopyright": "Ram Prasad Agencies. Baldev Plaza & JalKal Building, Golghar, Gorakhpur. Authorized Watch Specialists. All rights reserved.",
@@ -126,14 +165,13 @@
         "tagline": "Swiss Horology & Automatic Heritage",
         "address": "Baldev Plaza, Main Market, Golghar, Gorakhpur - 273001",
         "landmark": "Opposite Town Hall / Commercial Center",
-        "hours": "10:30 AM – 9:00 PM (All 7 Days)",
+        "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
         "image": "/images/showrooms/baldev-plaza.webp",
         "mapQuery": "Baldev+Plaza+Golghar+Gorakhpur",
         "phone": "+91 98765 43210",
         "specialties": [
-          "Official Swiss Collections (Tissot, Rado, Longines, Victorinox)",
-          "Indian Heritage Horology (Titan Edge, Titan Mechanicals, HMT Kohinoor & Janata)",
-          "Collector Import Consultations (Omega, TAG Heuer, Rado)",
+          "Official Swiss Collections (Tissot, Rado, Breitling, Omega)",
+          "Collector Import Consultations (Omega, Breitling, Rado)",
           "Japanese Automatics & Presage timepieces (Seiko, Citizen)",
           "Certified watch battery, pressure testing & ultrasonic cleaning"
         ]
@@ -144,14 +182,13 @@
         "tagline": "Contemporary & Everyday Luxury Timepieces",
         "address": "Shop No. 1, JalKal Building, Golghar, Gorakhpur - 273001",
         "landmark": "Near JalKal Compound, Main Golghar Market",
-        "hours": "10:30 AM – 9:00 PM (All 7 Days)",
+        "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
         "image": "/images/showrooms/jalkal-building.webp",
         "mapQuery": "JalKal+Building+Golghar+Gorakhpur",
         "phone": "+91 98765 43210",
         "specialties": [
-          "Indian Youth & Daily Wear (Titan Octane, Fastrack Chronos, Sonata Poze)",
-          "Casual Luxury & Chronographs (Fossil, Casio Edifice, G-Shock)",
-          "Designer horology collections (Emporio Armani, Tommy Hilfiger)",
+          "Casual Luxury & Chronographs (Fossil, Fastrack, Sonata)",
+          "Designer horology collections (Titan Raga, Fossil Heritage)",
           "Genuine leather straps, steel bracelets & horology accessories",
           "Instant watch bracelet sizing & movement health diagnostics"
         ]
@@ -161,10 +198,9 @@
       "isActive": true,
       "speed": "normal",
       "messages": [
-        "🇮🇳 INDIAN WATCH HERITAGE: Complete Collections for Titan, Titan Raga, HMT, Fastrack & Sonata Available at Golghar",
-        "⚡ FLASH SALE: Extra 15% Off Swiss, Japanese & Indian Mechanicals • Use Code: VINTAGE15",
+        "âš¡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics â€¢ Use Code: VINTAGE15",
         "Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers",
-        "Direct Imports for Omega, Tissot & TAG Heuer with Stamped International Warranty",
+        "Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty",
         "Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms",
         "Free Insured Express Shipping on All Luxury Orders Across India"
       ]
@@ -189,35 +225,904 @@
       "slides": [
         {
           "id": "hero-1",
-          "badge": "SWISS PRECISION",
-          "headline": "Tissot PRX & Swiss Automatics",
-          "subheadline": "Gorakhpur’s premier authorized showroom for Swiss Powermatic 80 movements and retro-futuristic integrated bracelets.",
-          "ctaPrimary": "Shop PRX",
-          "ctaSecondary": "Baldev Plaza Showroom",
-          "image": "/images/watches/tissot/01.webp",
-          "tag": "Tissot • PRX • Powermatic 80"
+          "badge": "SWISS PRECISION â€¢ EST. 1853",
+          "headline": "Tissot PRX Powermatic 80 & Swiss Automatics",
+          "subheadline": "Iconic 1970s integrated bracelet geometry powered by an 80-hour Nivachron anti-magnetic balance spring. Experience authentic Swiss horology at Ram Prasad Agencies.",
+          "ctaPrimary": "Explore Tissot PRX",
+          "ctaPrimaryLink": "#new-arrivals",
+          "ctaSecondary": "View Showrooms",
+          "ctaSecondaryLink": "#showrooms",
+          "image": "/images/watches/tissot-prx-powermatic-80.webp",
+          "specsTag": "Powermatic 80 Caliber â€¢ 100M Water Resistant â€¢ Anti-Magnetic"
         },
         {
           "id": "hero-2",
-          "badge": "JAPANESE PRECISION",
-          "headline": "Citizen Tsuyosa & Eco-Drive Calibers",
-          "subheadline": "Sunburst dials, cyclops date, and light-powered timekeeping requiring zero battery changes.",
-          "ctaPrimary": "Explore Tsuyosa",
-          "ctaSecondary": "Visit Showrooms",
-          "image": "/images/watches/citizen/01.webp",
-          "tag": "Citizen • Tsuyosa • Eco-Drive"
+          "badge": "CERTIFIED SWISS LUXURY IMPORTS",
+          "headline": "Omega & Tissot Swiss Showcase",
+          "subheadline": "Legendary chronometers imported for discerning collectors in Eastern UP. Complete with official international stamped papers, presentation cases, and provenance.",
+          "ctaPrimary": "Inquire Swiss Icons",
+          "ctaPrimaryLink": "#collector-capsule",
+          "ctaSecondary": "WhatsApp Support",
+          "ctaSecondaryLink": "#inquiry",
+          "image": "/images/hero-omega-showcase.webp",
+          "specsTag": "Cerachrom Ceramic Bezel â€¢ Co-Axial Master Chronometer"
         },
         {
           "id": "hero-3",
-          "badge": "INDIAN MECHANICAL HERITAGE",
-          "headline": "Titan Edge & HMT Mechanical Icons",
-          "subheadline": "Devnagari dials, 17-jewel hand-wound calibers, and the world’s slimmest ceramic wristwatches.",
-          "ctaPrimary": "Discover Indian Icons",
-          "ctaSecondary": "Inquire on WhatsApp",
-          "image": "/images/watches/titan/01.webp",
-          "tag": "Titan • HMT • Kohinoor"
+          "badge": "JAPANESE AUTOMATIC MASTERY",
+          "headline": "Seiko Presage Cocktail Time & Automatic Calibers",
+          "subheadline": "Exquisite radial sunburst guillochÃ© dials with heat-blued hands, crafted by master Japanese horologists. Powered by robust in-house mechanical movements.",
+          "ctaPrimary": "Discover Seiko Presage",
+          "ctaPrimaryLink": "#our-icons",
+          "ctaSecondary": "Book Private Fitting",
+          "ctaSecondaryLink": "#showrooms",
+          "image": "/images/watches/seiko-presage-cocktail-time.webp",
+          "specsTag": "In-House 4R35 Automatic â€¢ Box-Shaped Hardlex Crystal"
+        },
+        {
+          "id": "hero-4",
+          "badge": "INDIAN HOROLOGY FLAGSHIP",
+          "headline": "Titan Edge & Regalia Heritage",
+          "subheadline": "Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guillochÃ© timepieces by the Tata legacy.",
+          "ctaPrimary": "Explore Titan",
+          "ctaPrimaryLink": "#brands",
+          "ctaSecondary": "View Showrooms",
+          "ctaSecondaryLink": "#showrooms",
+          "image": "/images/hero-titan-regalia.webp",
+          "specsTag": "Titan Ultra-Slim Caliber â€¢ Scratch-Resistant Sapphire â€¢ Tata Pedigree"
+        },
+        {
+          "id": "hero-5",
+          "badge": "INDIAN MECHANICAL LEGEND",
+          "headline": "HMT Kohinoor & Janata Mechanicals",
+          "subheadline": "The vintage heartbeat of Indian horology since 1961. Authentic 17-jewel hand-wound mechanical calibers with timeless Devnagari dials.",
+          "ctaPrimary": "Explore HMT",
+          "ctaPrimaryLink": "#brands",
+          "ctaSecondary": "WhatsApp Support",
+          "ctaSecondaryLink": "#inquiry",
+          "image": "/images/hero-hmt-kohinoor-vintage.webp",
+          "specsTag": "In-House Calibre 0231 â€¢ 17 Jewels Mechanical â€¢ Made in India"
+        },
+        {
+          "id": "hero-6",
+          "badge": "EVERYDAY INDIAN HOROLOGY",
+          "headline": "Fastrack Chronos & Sonata Classics",
+          "subheadline": "Bold youth street chronographs and dependable everyday classics crafted for Indian lifestyle, with showroom warranty in Golghar.",
+          "ctaPrimary": "Explore Collections",
+          "ctaPrimaryLink": "#brands",
+          "ctaSecondary": "Visit Showrooms",
+          "ctaSecondaryLink": "#showrooms",
+          "image": "/images/fastrack-banner.webp",
+          "specsTag": "All-Weather Water Resistance â€¢ Precision Quartz â€¢ Tata Quality"
         }
       ]
+    },
+    "carousels": {
+      "newArrivals": [
+        {
+          "id": "na-1",
+          "name": "Tissot PRX Powermatic 80 Ice Blue 40mm",
+          "brand": "Tissot Swiss",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "New Arrival",
+          "badgeColor": "brass",
+          "image": "/images/watches/tissot-prx-35-ice-blue.webp",
+          "movement": "Swiss Powermatic 80.111 (80-Hour Reserve)",
+          "caseSize": "40mm Tonneau 316L Steel",
+          "strap": "Integrated 316L Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "Mesmerizing waffle tapisserie dial in ice blue with scratch-resistant sapphire crystal and transparent exhibition caseback."
+        },
+        {
+          "id": "na-2",
+          "name": "Seiko Presage Cocktail Time Skydiving 40.5mm",
+          "brand": "Seiko Presage",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Best Seller",
+          "badgeColor": "brass",
+          "image": "/images/watches/seiko-presage-cocktail-time.webp",
+          "movement": "Japanese Calibre 4R35 Automatic",
+          "caseSize": "40.5mm Polished Steel",
+          "strap": "Solid Multi-Link Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "Shimmering radial guillochÃ© dial with heat-blued hands inspired by cocktail culture, date window and exhibition back."
+        },
+        {
+          "id": "na-3",
+          "name": "Omega Seamaster Aqua Terra 150M Master Chronometer",
+          "brand": "Omega",
+          "category": "Luxury Swiss",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Swiss Luxury",
+          "badgeColor": "forest",
+          "image": "/images/watches/omega-seamaster-aqua-terra.webp",
+          "movement": "Omega Co-Axial Master Chronometer 8900",
+          "caseSize": "41mm Stainless Steel",
+          "strap": "Integrated Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "Horizontal teak concept dial inspired by wooden decks of luxury yachts, date window at 6 oâ€™clock, and certified METAS anti-magnetic precision."
+        },
+        {
+          "id": "na-4",
+          "name": "Citizen Tsuyosa Automatic Emerald Sunray 40mm",
+          "brand": "Citizen Automatics",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Trending Drop",
+          "badgeColor": "rust",
+          "image": "/images/watches/citizen/15.webp",
+          "movement": "Miyota 8210 Automatic Calibre (42H Reserve)",
+          "caseSize": "40mm Integrated Lugs",
+          "strap": "Curved Presidential Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "Rich emerald green sunray dial with magnified date window at 3 o'clock, recessed 4 o'clock crown, and seamlessly integrated presidential links."
+        },
+        {
+          "id": "na-5",
+          "name": "Breitling Navitimer B01 Chronograph 43mm",
+          "brand": "Breitling",
+          "category": "Chronograph",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Aviation Icon",
+          "badgeColor": "rust",
+          "image": "/images/watches/breitling/01.webp",
+          "movement": "Manufacture Breitling Caliber 01 Automatic",
+          "caseSize": "43mm Stainless Steel",
+          "strap": "Seven-Row Stainless Steel Navitimer Bracelet",
+          "inStock": true,
+          "description": "Iconic circular slide rule bezel with column-wheel chronograph movement, contrasting sub-dials, and sapphire crystal exhibition caseback."
+        },
+        {
+          "id": "na-6",
+          "name": "Fossil Heritage Automatic Skeleton 43mm",
+          "brand": "Fossil Heritage",
+          "category": "Skeleton",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Vintage Drop",
+          "badgeColor": "brass",
+          "image": "/images/watches/fossil/12.webp",
+          "movement": "Japanese 21-Jewel Automatic Mechanical",
+          "caseSize": "43mm Antique Brushed Steel",
+          "strap": "Vegetable-Tanned Saddle Brown Leather",
+          "inStock": true,
+          "description": "Intricately skeletonized exhibition dial showing balance wheel oscillation, encased in antique steel with rich luggage leather strap."
+        }
+      ],
+      "collectorCapsule": [
+        {
+          "id": "cc-1",
+          "name": "Rado Captain Cook High-Tech Ceramic Diver 300m",
+          "brand": "Rado",
+          "category": "Luxury Swiss",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Swiss Ceramic",
+          "badgeColor": "forest",
+          "image": "/images/watches/rado-captain-cook-ceramic.webp",
+          "movement": "Rado Calibre R763 Automatic (80H Power Reserve)",
+          "caseSize": "43mm Matte Plasma High-Tech Ceramic",
+          "strap": "High-Tech Ceramic Bracelet with Titanium Clasp",
+          "inStock": true,
+          "description": "Pioneering plasma high-tech ceramic monobloc case with tinted black sapphire crystal dial, Nivachron antimagnetic hairspring, and ISO 6425 diving certification."
+        },
+        {
+          "id": "cc-2",
+          "name": "Omega Speedmaster Professional Moonwatch Co-Axial",
+          "brand": "Omega",
+          "category": "Luxury Swiss",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Space Legend",
+          "badgeColor": "brass",
+          "image": "/images/watches/omega-speedmaster-moonwatch.webp",
+          "movement": "Omega Co-Axial Master Chronometer 3861",
+          "caseSize": "42mm Asymmetrical Steel",
+          "strap": "Brushed 5-Arched-Links-per-Row Steel",
+          "inStock": true,
+          "description": "The flight-qualified watch worn on all six lunar missions. Matte step dial with dot-over-ninety anodised aluminium bezel."
+        },
+        {
+          "id": "cc-3",
+          "name": "Titan Edge Ceramic Slimmest Quartz",
+          "brand": "Titan",
+          "category": "Dress",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Slimmest Ceramic",
+          "badgeColor": "brass",
+          "image": "/images/watches/titan/01.webp",
+          "movement": "In-House Titan T9081 Slim Quartz Movement",
+          "caseSize": "40mm Ultra-Slim Ceramic",
+          "strap": "High-Tech Scratch-Resistant Ceramic Bracelet",
+          "inStock": true,
+          "description": "World-renowned ultra-slim design engineering with full high-tech ceramic construction and sapphire glass."
+        },
+        {
+          "id": "cc-4",
+          "name": "Seiko Presage Cocktail Time Automatic",
+          "brand": "Seiko",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Japanese Craft",
+          "badgeColor": "forest",
+          "image": "/images/watches/seiko/01.webp",
+          "movement": "Seiko 4R35 Automatic Hand-Winding Movement",
+          "caseSize": "40.5mm Stainless Steel",
+          "strap": "Polished Multi-Link Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "Deep sunburst radial pattern dial inspired by vintage cocktail bars with box-shaped Hardlex crystal and exhibition caseback."
+        },
+        {
+          "id": "cc-5",
+          "name": "Breitling Navitimer B01 Chronograph 43",
+          "brand": "Breitling",
+          "category": "Chronograph",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Aviation Legend",
+          "badgeColor": "rust",
+          "image": "/images/watches/breitling-navitimer-b01-chronograph.webp",
+          "movement": "Breitling 01 Manufacture Automatic (COSC)",
+          "caseSize": "43mm Polished Steel",
+          "strap": "Navitimer 7-Row Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "The quintessential pilot's watch since 1952. Circular slide rule flight calculation bezel and in-house COSC-certified Breitling 01 calibre."
+        }
+      ],
+      "ourIcons": [
+        {
+          "id": "icon-1",
+          "name": "Tissot PRX Powermatic 80 Swiss Edition",
+          "brand": "Tissot Swiss",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Everyday Luxury",
+          "badgeColor": "brass",
+          "image": "/images/watches/tissot-prx-powermatic-80.webp",
+          "movement": "Swiss Powermatic 80 with Nivachron Hairspring",
+          "caseSize": "40mm Integrated Tonneau",
+          "strap": "Satin-Brushed Solid Stainless Steel",
+          "inStock": true,
+          "description": "The consummate Swiss sports-dress companion featuring an anti-magnetic balance spring, 80-hour power reserve, and waffle dial."
+        },
+        {
+          "id": "icon-2",
+          "name": "Seiko Presage Craftsmanship GuillochÃ© Automatic",
+          "brand": "Seiko Presage",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Heritage Icon",
+          "badgeColor": "brass",
+          "image": "/images/watches/seiko-presage-cocktail-time.webp",
+          "movement": "Seiko 4R35 Mechanical Automatic",
+          "caseSize": "40.5mm Polished Steel",
+          "strap": "Multi-Link Fine Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "Radial guillochÃ© dial with blued leaf hands, date complication at 3 o'clock, and exhibition caseback displaying the decorated Japanese movement."
+        },
+        {
+          "id": "icon-3",
+          "name": "Breitling Top Time B01 Triumph Chronograph",
+          "brand": "Breitling",
+          "category": "Chronograph",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Racing Heritage",
+          "badgeColor": "brass",
+          "image": "/images/watches/breitling-top-time-b01-chronograph.webp",
+          "movement": "Breitling Manufacture Calibre 01 Automatic (COSC)",
+          "caseSize": "41mm Polished Steel",
+          "strap": "Perforated Black Racing Calfskin Strap",
+          "inStock": true,
+          "description": "Vintage 1960s cafÃ©-racer heritage chronograph featuring an ice-blue bow-tie \"Zorro\" dial, contrasting black squircle subdials, and in-house COSC B01 calibre."
+        },
+        {
+          "id": "icon-4",
+          "name": "Tissot Seastar 2000 Professional Powermatic 80",
+          "brand": "Tissot",
+          "category": "Luxury Swiss",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Professional Diver",
+          "badgeColor": "charcoal",
+          "image": "/images/watches/tissot-seastar-2000-diver.webp",
+          "movement": "Swiss Powermatic 80 Automatic (80-Hour Reserve)",
+          "caseSize": "46mm 316L Stainless Steel",
+          "strap": "Solid Stainless Steel Diver Bracelet with Extension",
+          "inStock": true,
+          "description": "ISO 6425 certified professional diver with helium escape valve, wave motif gradient dial, ceramic bezel, and 600m water resistance."
+        },
+        {
+          "id": "icon-5",
+          "name": "Fossil Neutra Smoked Amber Chrono 44mm",
+          "brand": "Fossil Classic",
+          "category": "Chronograph",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Vintage Style",
+          "badgeColor": "brass",
+          "image": "/images/watches/fossil-neutra-chronograph.webp",
+          "movement": "Precision Chronograph Multi-Hand",
+          "caseSize": "44mm",
+          "strap": "Supple Luggage Brown Saddle Leather",
+          "inStock": true,
+          "description": "Warm amber sunray dial with Roman numeral indices, brushed antique bezel, and quick-release genuine leather strap."
+        }
+      ],
+      "flashDeals": [
+        {
+          "id": "fd-1",
+          "name": "Citizen Tsuyosa Automatic Canary Yellow 40mm",
+          "brand": "Citizen Automatics",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "20% OFF FLASH",
+          "badgeColor": "rust",
+          "image": "/images/watches/citizen-tsuyosa-canary-yellow.webp",
+          "movement": "Miyota 8210 Automatic Calibre (42H Reserve)",
+          "caseSize": "40mm Integrated Lugs",
+          "strap": "Presidential Curved Steel Bracelet",
+          "inStock": true,
+          "description": "Flash Deal: Vibrant canary yellow sunray dial with cyclops date magnifier and integrated presidential bracelet at 20% off."
+        },
+        {
+          "id": "fd-2",
+          "name": "Seiko Presage Craftsmanship Urushi Automatic",
+          "brand": "Seiko Presage",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "20% OFF FLASH",
+          "badgeColor": "rust",
+          "image": "/images/watches/seiko-presage-cocktail-time.webp",
+          "movement": "Japanese 4R35 Automatic Caliber",
+          "caseSize": "40.5mm Polished Steel",
+          "strap": "Fine Multi-Link Stainless Steel",
+          "inStock": true,
+          "description": "Flash Deal: Radial guillochÃ© dial with blued hands and date window at special showroom pricing."
+        },
+        {
+          "id": "fd-3",
+          "name": "Fossil Heritage Automatic Skeleton 43mm",
+          "brand": "Fossil Heritage",
+          "category": "Skeleton",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "24% OFF",
+          "badgeColor": "brass",
+          "image": "/images/watches/fossil/12.webp",
+          "movement": "Japanese 21-Jewel Automatic Movement",
+          "caseSize": "43mm Antique Steel",
+          "strap": "Genuine Vegetable-Tanned Saddle Leather",
+          "inStock": true,
+          "description": "Flash Deal: Open-heart skeleton balance wheel and gear train with genuine saddle leather strap."
+        },
+        {
+          "id": "fd-4",
+          "name": "Fossil Neutra Chronograph Amber Vintage Leather",
+          "brand": "Fossil Classic",
+          "category": "Chronograph",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "25% OFF",
+          "badgeColor": "forest",
+          "image": "/images/watches/fossil-townsman-automatic.webp",
+          "movement": "Precision Multi-Function Chronograph",
+          "caseSize": "44mm",
+          "strap": "Luggage Brown Saddle Leather",
+          "inStock": true,
+          "description": "Flash Deal: Amber sunburst chronograph with Roman numeral markers and supple saddle leather."
+        }
+      ],
+      "indianIcons": [
+        {
+          "id": "titan-01-edge-ultra-slim",
+          "name": "Titan Edge Ultra-Slim (1696SL02)",
+          "brand": "Titan",
+          "category": "Dress",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Ultra-Slim Flagship",
+          "badgeColor": "brass",
+          "image": "/images/watches/titan/01.webp",
+          "movement": "Ultra-Slim Quartz",
+          "caseSize": "40mm Ceramic Composite",
+          "strap": "Slim Leather Strap",
+          "inStock": true,
+          "description": "World's slimmest design philosophy targeting elite corporate professionals."
+        },
+        {
+          "id": "titan-02-neo-splash",
+          "name": "Titan Neo Splash (1805QM01)",
+          "brand": "Titan",
+          "category": "Sport",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Sport Edition",
+          "badgeColor": "rust",
+          "image": "/images/watches/titan/02.webp",
+          "movement": "Quartz",
+          "caseSize": "42mm Stainless Steel",
+          "strap": "Stainless Steel Bracelet",
+          "inStock": true,
+          "description": "Rugged yet sleek styling crafted for casual weekend adventures."
+        },
+        {
+          "id": "ind-3",
+          "name": "HMT Kohinoor 17-Jewel Manual-Wind Mechanical",
+          "brand": "HMT",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Indian Legend",
+          "badgeColor": "brass",
+          "image": "/images/watches/hmt-kohinoor-mechanical.webp",
+          "movement": "HMT Calibre 0231 17-Jewel Hand-Wound Mechanical",
+          "caseSize": "36mm Vintage Polished Steel",
+          "strap": "Vintage 18mm Stainless Steel Fold-Over Bracelet",
+          "inStock": true,
+          "description": "The historic pride of Indian horology since 1961. Hand-wound 17-jewel movement with audible mechanical sweep, polished steel case, and sunburst dial."
+        },
+        {
+          "id": "titan-04-regalia-classic",
+          "name": "Titan Regalia Classic (1650SM01)",
+          "brand": "Titan",
+          "category": "Dress",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Festive Royal",
+          "badgeColor": "brass",
+          "image": "/images/watches/titan/04.webp",
+          "movement": "Quartz",
+          "caseSize": "41mm Stainless Steel",
+          "strap": "Regal Jewelry-Inspired Link Bracelet",
+          "inStock": true,
+          "description": "Regal jewelry-inspired link bracelet design for festive occasions."
+        },
+        {
+          "id": "ind-5",
+          "name": "HMT Janata Devnagari Mechanical Heritage Edition",
+          "brand": "HMT",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Heritage Devnagari",
+          "badgeColor": "forest",
+          "image": "/images/watches/hmt-janata-devnagari.webp",
+          "movement": "HMT Calibre 0231 17-Jewels Hand-Wound Mechanical",
+          "caseSize": "35.5mm Classic Domed Acrylic Case",
+          "strap": "Handcrafted Tan Top-Grain Leather Strap",
+          "inStock": true,
+          "description": "Historic Indian dress watch featuring authentic Devnagari numerals on an ivory enamel dial, manufactured in Bangalore heritage facilities."
+        },
+        {
+          "id": "ind-6",
+          "name": "Fastrack Street All-Black Diver Chrono 45mm",
+          "brand": "Fastrack",
+          "category": "Chronograph",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Youth Street",
+          "badgeColor": "rust",
+          "image": "/images/watches/fastrack/01.webp",
+          "movement": "Multi-Function Sport Calibre with Dual Sub-Dials",
+          "caseSize": "45mm Gunmetal Ion-Plated Steel",
+          "strap": "Textured Heavy-Duty All-Black Silicone Strap",
+          "inStock": true,
+          "description": "Youth-inspired rugged street chronograph with gunmetal angular case, tactile pushers, 50M water resistance, and high-visibility indices."
+        },
+        {
+          "id": "ind-7",
+          "name": "Sonata Poze Classic Sunray Gold 40mm",
+          "brand": "Sonata",
+          "category": "Dress",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Everyday Classic",
+          "badgeColor": "brass",
+          "image": "/images/watches/sonata/01.webp",
+          "movement": "Sonata Reliable Quartz Calibre",
+          "caseSize": "40mm Yellow Gold Tone Case",
+          "strap": "Genuine Brown Crocodile-Pattern Leather Strap",
+          "inStock": true,
+          "description": "Timeless everyday Indian elegance from the Tata family. Clean champagne sunray dial with minimalist baton markers and croc-embossed leather."
+        },
+        {
+          "id": "titan-08-automatics-neo",
+          "name": "Titan Automatics Neo (90118SL01)",
+          "brand": "Titan",
+          "category": "Automatic",
+          "price": null,
+          "originalPrice": null,
+          "hidePrice": true,
+          "badge": "Titan Automatic",
+          "badgeColor": "forest",
+          "image": "/images/watches/titan/08.webp",
+          "movement": "Automatic Skeleton",
+          "caseSize": "43mm Stainless Steel",
+          "strap": "Embossed Leather Strap",
+          "inStock": true,
+          "description": "Exhibition open-heart mechanical movement at an accessible price point."
+        }
+      ]
+    },
+    "categories": [
+      {
+        "id": "cat-indian",
+        "title": "Indian Heritage & Brands",
+        "subtitle": "Titan Edge, Octane, HMT Mechanicals, Fastrack & Sonata",
+        "itemCount": "45+ Timepieces",
+        "tag": "ðŸ‡®ðŸ‡³ Proud Indian Horology",
+        "image": "/images/watches/titan/12.webp",
+        "filterKey": "Indian Brands"
+      },
+      {
+        "id": "cat-swiss",
+        "title": "Swiss Luxury & Automatics",
+        "subtitle": "Omega, Tissot, Rado & Breitling",
+        "itemCount": "38 Timepieces",
+        "tag": "Swiss Certified",
+        "image": "/images/categories/swiss-luxury.webp",
+        "filterKey": "Automatic"
+      },
+      {
+        "id": "cat-japanese",
+        "title": "Japanese Presage & Automatics",
+        "subtitle": "Seiko Presage, Prospex & Citizen Tsuyosa",
+        "itemCount": "29 Timepieces",
+        "tag": "In-House Calibers",
+        "image": "/images/watches/seiko-presage-cocktail-time.webp",
+        "filterKey": "Automatic"
+      },
+      {
+        "id": "cat-chronos",
+        "title": "Racing Chronographs & Aviators",
+        "subtitle": "Breitling Navitimer, Omega Moonwatch & Tissot",
+        "itemCount": "24 Chronographs",
+        "tag": "Split-Second Precision",
+        "image": "/images/categories/sport-chronographs.webp",
+        "filterKey": "Chronograph"
+      },
+      {
+        "id": "cat-skeletons",
+        "title": "Heritage Skeletons & Exhibition",
+        "subtitle": "Fossil Heritage, Open Heart & 21-Jewel Automatics",
+        "itemCount": "19 Open-Heart Pieces",
+        "tag": "Exhibition Glass",
+        "image": "/images/categories/skeleton-openheart.webp",
+        "filterKey": "Skeleton"
+      }
+    ],
+    "editorialAd": {
+      "badge": "SWISS HOROLOGY MASTERPIECE â€¢ GORAKHPUR FLAGSHIPS",
+      "title": "The Heritage of Swiss Master Chronometer Precision",
+      "quote": "â€œA fine mechanical watch doesnâ€™t just count hours. It preserves generations of precision engineering and personal triumphs.â€",
+      "description": "Ram Prasad Agencies is Eastern UP's authorized destination for world-renowned horological houses. Every timepiece across our Baldev Plaza and JalKal Building showrooms is 100% authentic, accompanied by official international stamped warranty cards, tamper-proof serial numbers, and lifetime battery and ultrasonic bracelet sizing support.",
+      "caliber": "Omega Co-Axial Master Chronometer Calibre 3861 (50-Hour Reserve)",
+      "material": "316L Stainless Steel with Hesalite & Sapphire Crystal",
+      "strapLeather": "Brushed Five-Arched-Links-per-Row Stainless Steel Bracelet",
+      "glass": "Domed Scratch-Resistant Sapphire Crystal with Anti-Reflective Treatment",
+      "waterResistance": "50 Meters / 167 Feet Water Resistance",
+      "image": "/images/editorial-baldev-flagship.webp",
+      "price": null,
+      "hidePrice": true
+    },
+    "brands": [
+      {
+        "name": "Titan",
+        "country": "India",
+        "desc": "Edge, Octane & Regalia Flagships"
+      },
+      {
+        "name": "Titan Raga",
+        "country": "India",
+        "desc": "Jewelry & Floral Designer Horology"
+      },
+      {
+        "name": "HMT",
+        "country": "India",
+        "desc": "Kohinoor & Janata Mechanical Heritage"
+      },
+      {
+        "name": "Fastrack",
+        "country": "India",
+        "desc": "Youth Sport & Street Chronographs"
+      },
+      {
+        "name": "Sonata",
+        "country": "India",
+        "desc": "Everyday Reliable Indian Horology"
+      },
+      {
+        "name": "Tissot",
+        "country": "Swiss",
+        "desc": "PRX & Heritage Swiss Precision"
+      },
+      {
+        "name": "Omega",
+        "country": "Swiss",
+        "desc": "Moonwatch & Co-Axial Chronometers"
+      },
+      {
+        "name": "Seiko",
+        "country": "Japan",
+        "desc": "Automatic & Presage Craft"
+      },
+      {
+        "name": "Citizen",
+        "country": "Japan",
+        "desc": "Tsuyosa & Eco-Drive Calibers"
+      },
+      {
+        "name": "Breitling",
+        "country": "Swiss",
+        "desc": "Navitimer Aviation Chronographs"
+      },
+      {
+        "name": "Fossil",
+        "country": "USA",
+        "desc": "Heritage Automatics & Vintage Styling"
+      },
+      {
+        "name": "Rado",
+        "country": "Swiss",
+        "desc": "Master of High-Tech Ceramic"
+      }
+    ],
+    "trustBadges": [
+      {
+        "title": "Official Stamped 2-Yr Warranty",
+        "subtitle": "International Manufacturer Backed"
+      },
+      {
+        "title": "Baldev Plaza & JalKal Flagships",
+        "subtitle": "Twin Experience Stores in Golghar"
+      },
+      {
+        "title": "Authentic Imported Horology",
+        "subtitle": "Swiss, Japanese & Indian Calibers"
+      }
+    ],
+    "appearance": {
+      "primaryColor": "#C5A059",
+      "backgroundColor": "#FAF7F2",
+      "charcoalColor": "#1A1A1A",
+      "cardBg": "#FFFFFF",
+      "accentColor": "#B85D38",
+      "headingFont": "Playfair Display",
+      "bodyFont": "Plus Jakarta Sans",
+      "fontSizeScale": "medium"
+    },
+    "inquiryFormConfig": {
+      "badge": "Showroom Assistance",
+      "title": "Custom Sourcing & Horology Inquiries",
+      "subtitle": "Seeking a specific imported reference number, limited edition release, or looking to schedule an in-store viewing at Baldev Plaza or JalKal Building? Share your details with our horology team.",
+      "submitButtonText": "Submit Inquiry",
+      "successMessage": "Your consultation request has been registered with Ram Prasad Agencies showroom team. Our showroom specialist will reach out shortly.",
+      "fields": [
+        {
+          "id": "name",
+          "label": "Your Full Name",
+          "type": "text",
+          "placeholder": "e.g. Anand Srivastava",
+          "required": true,
+          "enabled": true,
+          "isSystem": true
+        },
+        {
+          "id": "phone",
+          "label": "Phone / WhatsApp Number",
+          "type": "tel",
+          "placeholder": "+91 98765 43210",
+          "required": true,
+          "enabled": true,
+          "isSystem": true
+        },
+        {
+          "id": "email",
+          "label": "Email Address",
+          "type": "email",
+          "placeholder": "anand@example.com",
+          "required": false,
+          "enabled": true,
+          "isSystem": true
+        },
+        {
+          "id": "storeLocation",
+          "label": "Preferred Showroom Destination",
+          "type": "select",
+          "options": [
+            "Baldev Plaza Flagship Showroom, Golghar",
+            "Shop No. 1, JalKal Building, Golghar",
+            "Either Showroom (Any Available)"
+          ],
+          "required": true,
+          "enabled": true,
+          "isSystem": true
+        },
+        {
+          "id": "inquiryType",
+          "label": "Nature of Consultation",
+          "type": "select",
+          "options": [
+            "Buy / Inquire Specific Watch Model",
+            "Private In-Store Showroom Fitting (Baldev Plaza / JalKal Building)",
+            "Custom Sourcing for Imported Reference (Omega, Tissot, Rado, Seiko)",
+            "Watch Bracelet Sizing & Ultrasonic Cleaning",
+            "Swiss Movement Servicing & Battery Replacement",
+            "Corporate & Luxury Wedding Gifting Inquiry",
+            "Vintage Heritage & Collector Appraisal",
+            "Strap Replacement & Custom Leather Fitting"
+          ],
+          "required": true,
+          "enabled": true,
+          "isSystem": true
+        },
+        {
+          "id": "budgetRange",
+          "label": "Expected Budget Range",
+          "type": "select",
+          "options": [
+            "Under â‚¹15,000 (Casual & Daily Wear)",
+            "â‚¹15,000 â€“ â‚¹35,000 (Automatic & Sport Chronographs)",
+            "â‚¹35,000 â€“ â‚¹75,000 (Entry Swiss & Japanese Presage)",
+            "â‚¹75,000 â€“ â‚¹1,50,000 (Premium Swiss Automatics)",
+            "Above â‚¹1,50,000 (Collector Heritage & Sourced Imports)"
+          ],
+          "required": false,
+          "enabled": true,
+          "isSystem": false
+        },
+        {
+          "id": "preferredVisitDate",
+          "label": "Preferred Showroom Visit Date / Timing",
+          "type": "text",
+          "placeholder": "e.g. Saturday afternoon, or DD/MM/YYYY",
+          "required": false,
+          "enabled": true,
+          "isSystem": false
+        },
+        {
+          "id": "message",
+          "label": "Watch Model / Specific Requests",
+          "type": "textarea",
+          "placeholder": "Mention reference number, watch brand, preferred dial color, or appointment time...",
+          "required": false,
+          "enabled": true,
+          "isSystem": true
+        }
+      ]
+    },
+    "contentOverrides": {}
+  },
+  "heroTitle": "Tissot PRX Powermatic 80 & Swiss Automatics",
+  "heroSubtitle": "Iconic 1970s integrated bracelet geometry powered by an 80-hour Nivachron anti-magnetic balance spring. Experience authentic Swiss horology at Ram Prasad Agencies.",
+  "announcementText": "âš¡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics â€¢ Use Code: VINTAGE15",
+  "brands": [
+    {
+      "name": "Titan",
+      "country": "India",
+      "desc": "Edge, Octane & Regalia Flagships"
+    },
+    {
+      "name": "Titan Raga",
+      "country": "India",
+      "desc": "Jewelry & Floral Designer Horology"
+    },
+    {
+      "name": "HMT",
+      "country": "India",
+      "desc": "Kohinoor & Janata Mechanical Heritage"
+    },
+    {
+      "name": "Fastrack",
+      "country": "India",
+      "desc": "Youth Sport & Street Chronographs"
+    },
+    {
+      "name": "Sonata",
+      "country": "India",
+      "desc": "Everyday Reliable Indian Horology"
+    },
+    {
+      "name": "Tissot",
+      "country": "Swiss",
+      "desc": "PRX & Heritage Swiss Precision"
+    },
+    {
+      "name": "Omega",
+      "country": "Swiss",
+      "desc": "Moonwatch & Co-Axial Chronometers"
+    },
+    {
+      "name": "Seiko",
+      "country": "Japan",
+      "desc": "Automatic & Presage Craft"
+    },
+    {
+      "name": "Citizen",
+      "country": "Japan",
+      "desc": "Tsuyosa & Eco-Drive Calibers"
+    },
+    {
+      "name": "Breitling",
+      "country": "Swiss",
+      "desc": "Navitimer Aviation Chronographs"
+    },
+    {
+      "name": "Fossil",
+      "country": "USA",
+      "desc": "Heritage Automatics & Vintage Styling"
+    },
+    {
+      "name": "Rado",
+      "country": "Swiss",
+      "desc": "Master of High-Tech Ceramic"
     }
-  }
+  ],
+  "trustBadges": [
+    {
+      "title": "Official Stamped 2-Yr Warranty",
+      "subtitle": "International Manufacturer Backed"
+    },
+    {
+      "title": "Baldev Plaza & JalKal Flagships",
+      "subtitle": "Twin Experience Stores in Golghar"
+    },
+    {
+      "title": "Authentic Imported Horology",
+      "subtitle": "Swiss, Japanese & Indian Calibers"
+    }
+  ],
+  "appearance": {
+    "primaryColor": "#C5A059",
+    "backgroundColor": "#FAF7F2",
+    "charcoalColor": "#1A1A1A",
+    "cardBg": "#FFFFFF",
+    "accentColor": "#B85D38",
+    "headingFont": "Playfair Display",
+    "bodyFont": "Plus Jakarta Sans",
+    "fontSizeScale": "medium"
+  },
+  "contentOverrides": {},
+  "updatedAt": "2026-11-03T08:06:40.363Z"
 }

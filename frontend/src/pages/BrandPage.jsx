@@ -350,7 +350,7 @@ const getBrandCampaignAds = (slug, meta, brandImage) => {
 };
 
 // Strict Brand Matcher Helper: guarantees exact 20 watches per brand
-export const isWatchInBrand = (w, slug) => {
+const isWatchInBrand = (w, slug) => {
   if (!w) return false;
   const b = (w.brand || '').toLowerCase().trim();
   const clean = (slug || '').toLowerCase().trim();

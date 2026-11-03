@@ -39,7 +39,9 @@
     "gender": "Men",
     "price": null,
     "originalPrice": null,
-    "hidePrice": true
+    "hidePrice": true,
+    "id": "titan-02-neo-splash",
+    "updatedAt": "2026-11-03T08:38:30.469Z"
   },
   {
     "_id": "titan-03-workwear-minimalist",

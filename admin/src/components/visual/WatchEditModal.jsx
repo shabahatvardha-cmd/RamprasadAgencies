@@ -295,6 +295,7 @@ export default function WatchEditModal({
             </h3>
           </div>
           <button
+            type="button"
             onClick={onClose}
             className="w-8 h-8 rounded-full bg-white border border-[#DDD5C7] flex items-center justify-center text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#F5F2EB] transition-colors"
           >

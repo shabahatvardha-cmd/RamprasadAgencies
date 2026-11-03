@@ -63,6 +63,23 @@ function App() {
   const [isInventoryModalOpen, setIsInventoryModalOpen] = useState(false);
   const [newLeadsCount, setNewLeadsCount] = useState(0);
 
+  const [marqueeBrand, setMarqueeBrand] = useState(() => {
+    try {
+      return sessionStorage.getItem('rp_admin_marquee_brand') || 'ALL';
+    } catch {
+      return 'ALL';
+    }
+  });
+
+  const handleSelectMarqueeBrand = (brand) => {
+    setMarqueeBrand(brand);
+    try {
+      sessionStorage.setItem('rp_admin_marquee_brand', brand);
+    } catch {
+      // ignore
+    }
+  };
+
   const [settings, setSettings] = useState(null);
   const [backendWatches, setBackendWatches] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -300,6 +317,9 @@ function App() {
   const handleSaveWatch = async (watchFormData, watchId) => {
     try {
       setIsSaving(true);
+      if (watchFormData?.brand) {
+        handleSelectMarqueeBrand(watchFormData.brand);
+      }
       let savedWatch = null;
       if (watchId) {
         try {
@@ -335,6 +355,17 @@ function App() {
       broadcastWatchChange();
       setIsWatchModalOpen(false);
       setSelectedWatchForEdit(null);
+
+      // Keep user smoothly positioned right at the edited watch card
+      const targetId = watchId || savedWatch?._id || savedWatch?.id;
+      if (targetId) {
+        setTimeout(() => {
+          const cardEl = document.getElementById(`watch-card-${targetId}`);
+          if (cardEl) {
+            cardEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 80);
+      }
     } catch (err) {
       console.error(err);
       showToast({
@@ -562,17 +593,28 @@ function App() {
           brands={currentStoreData.brands}
           watches={allStoreWatches}
           isEditMode={isEditMode}
+          selectedBrand={marqueeBrand}
+          onSelectBrand={handleSelectMarqueeBrand}
           onOpenEdit={(type = 'branding') => setActiveModal(type)}
           onEditWatch={(watch) => {
+            if (watch?.brand) {
+              handleSelectMarqueeBrand(watch.brand);
+            }
             setSelectedWatchForEdit(watch);
             setIsWatchModalOpen(true);
           }}
           onDeleteWatch={(watch) => setWatchDeleteCandidate(watch)}
           onAddWatch={(defaults) => {
+            if (defaults?.brand) {
+              handleSelectMarqueeBrand(defaults.brand);
+            }
             setSelectedWatchForEdit(defaults || null);
             setIsWatchModalOpen(true);
           }}
           onQuickView={(watch) => {
+            if (watch?.brand) {
+              handleSelectMarqueeBrand(watch.brand);
+            }
             setSelectedWatchForEdit(watch);
             setIsWatchModalOpen(true);
           }}
