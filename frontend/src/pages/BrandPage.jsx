@@ -13,6 +13,8 @@ import {
   Clock,
   Compass,
   X,
+  Tag,
+  Zap,
 } from 'lucide-react';
 import WatchCard from '../components/WatchCard';
 import { FALLBACK_WATCHES, getWatchGender } from '../data/fallbackWatches';
@@ -325,7 +327,7 @@ const getBrandCampaignAds = (slug, meta, brandImage) => {
   return [
     {
       id: `${clean}-ad-1`,
-      badge: `${(meta.country || 'GLOBAL').toUpperCase()} HOROLOGY • OFFICIAL CAMPAIGN`,
+      badge: `${(meta.country || 'GLOBAL').toUpperCase()} HOROLOGY • SPECIAL SHOWROOM DROP`,
       headline: `${meta.name} Flagship Exhibition`,
       subheadline: meta.tagline || 'Masterpiece Collection Available in Gorakhpur',
       description: meta.history || 'Exclusive luxury timepiece collection available at Ram Prasad Agencies, Gorakhpur.',
@@ -360,6 +362,26 @@ export const isWatchInBrand = (w, slug) => {
     return b === 'titan raga' || b === 'raga';
   }
   return b === clean || b.replace(/\s+/g, '-') === clean;
+};
+
+// Curated festive & showroom discount privileges per brand
+const getBrandDiscountBadge = (cleanSlug, idx) => {
+  const discounts = {
+    omega: ['UP TO 15% FESTIVE PRIVILEGE', 'COMPLIMENTARY 5-YEAR WARRANTY', 'ZERO-COST EMI AVAILABLE'],
+    rado: ['FLAT 15% OFF IN-STORE', 'COMPLIMENTARY ULTRASONIC SPA', 'UP TO ₹18,000 SAVINGS'],
+    breitling: ['EXCLUSIVE 15% HOROLOGY BENEFIT', 'CERTIFIED CHRONOMETER PERK', 'SPECIAL SHOWROOM PRICING'],
+    tissot: ['UP TO 20% OFF IN-STORE', 'ZERO-COST 6-MONTH EMI', 'SPECIAL FESTIVE SAVINGS'],
+    seiko: ['FLAT 15% - 20% OFF', 'COMPLIMENTARY BRACELET SIZING', 'FESTIVE DISCOUNT ACTIVE'],
+    citizen: ['UP TO 25% OFF ECO-DRIVE', 'FLAT 20% OFF IN-STORE', 'COMPLIMENTARY SPA PERK'],
+    titan: ['UP TO 20% OFF EDGE & OCTANE', 'FLAT 15% OFF AT SHOWROOM', 'SPECIAL FESTIVE DROP'],
+    'titan-raga': ['UP TO 25% OFF RAGA JEWELS', 'FLAT 20% FESTIVE DISCOUNT', 'SPECIAL GIFT COMBO PRIVILEGE'],
+    fossil: ['FLAT 25% OFF THIS WEEK', 'UP TO 30% OFF HERITAGE SKELETONS', 'SPECIAL SHOWROOM DEAL'],
+    fastrack: ['FLAT 20% OFF YOUTH CHRONOS', 'BUY 1 GET EXTRA 10% OFF', 'SPECIAL STORE DISCOUNT'],
+    sonata: ['FLAT 20% OFF EVERYDAY WATCHES', 'UP TO 25% OFF IN-STORE', 'FESTIVE OFFER ACTIVE'],
+    hmt: ['SPECIAL GORAKHPUR COLLECTOR DROP', 'LIFETIME POLISHING BENEFIT', 'CERTIFIED MECHANICAL HERITAGE']
+  };
+  const list = discounts[cleanSlug] || ['UP TO 20% OFF IN-STORE', 'SPECIAL FESTIVE DISCOUNT', 'ZERO-COST EMI AVAILABLE'];
+  return list[idx % list.length];
 };
 
 export default function BrandPage({
@@ -560,11 +582,11 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
 
       {/* 2. Brand Hero Portion: Continuous Moving Campaign Strip (TOP) + Permanent Brand Heritage Overview (BELOW) */}
       <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-5 sm:pt-7 pb-4 space-y-4 sm:space-y-5">
-        {/* A. BROADER, SLOW CONTINUOUS CAMPAIGN ADVERTISEMENT STRIP (ABOVE BRAND CARD) */}
+        {/* A. BROADER, SLOW CONTINUOUS SPECIAL OFFERS & DISCOUNTS STRIP (ABOVE BRAND CARD) */}
         {marqueeAds && marqueeAds.length > 0 && (
           <div
             className="relative w-full rounded-2xl overflow-hidden bg-gradient-to-r from-[#FAF7F2] via-[#F4EDE1] to-[#FAF7F2] border border-[#DDD5C7] shadow-sm group/adstrip transition-all"
-            aria-label="Active Brand Campaigns"
+            aria-label="Active Brand Offers and Discounts"
           >
             {/* Subtle soft gradient fade masks on left and right for seamless loop */}
             <div className="absolute left-0 inset-y-0 w-8 sm:w-20 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2]/80 to-transparent z-10 pointer-events-none" />
@@ -573,61 +595,70 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
             <div className="flex items-center">
               {/* Left Pinned Label Badge */}
               <div className="hidden sm:flex items-center gap-2 px-4 sm:px-5 py-3.5 sm:py-4 bg-stone-900 text-amber-300 text-xs sm:text-sm font-mono font-bold tracking-widest uppercase shrink-0 z-20 border-r border-[#DDD5C7] shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-                <span>Campaign</span>
+                <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400 animate-pulse" />
+                <span>SPECIAL OFFERS</span>
               </div>
 
               {/* Continuous Moving Marquee Track (Gentle, Slower Pace Moving Right to Left) */}
               <div className="flex overflow-hidden select-none w-full">
                 <div className="flex items-center gap-10 whitespace-nowrap animate-[marquee_65s_linear_infinite] group-hover/adstrip:[animation-play-state:paused] py-3 sm:py-3.5 md:py-4 cursor-default">
-                  {marqueeAds.map((ad, idx) => (
-                    <div key={idx} className="inline-flex items-center gap-3.5 shrink-0">
-                      {/* Broader Watch Cutout Thumbnail Stage */}
-                      {ad.image && (
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white border border-[#E5DEC9] p-1 flex items-center justify-center shrink-0 shadow-xs">
-                          <img
-                            src={ad.image}
-                            alt=""
-                            className="w-full h-full object-contain drop-shadow-xs"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
+                  {marqueeAds.map((ad, idx) => {
+                    const discount = getBrandDiscountBadge(cleanSlug, idx);
+                    return (
+                      <div key={idx} className="inline-flex items-center gap-3.5 shrink-0">
+                        {/* High-Impact Red/Amber Discount Offer Pill */}
+                        <span className="px-2.5 py-1 rounded-full bg-rose-600 text-white text-[10px] sm:text-xs font-mono font-black tracking-wider uppercase shadow-xs flex items-center gap-1">
+                          <Tag className="w-3 h-3 text-amber-300 fill-amber-300" />
+                          <span>{discount}</span>
+                        </span>
 
-                      {/* Campaign Category Badge */}
-                      <span className="px-2.5 py-1 rounded-full bg-brass-700/15 border border-brass-600/30 text-brass-900 text-[10px] sm:text-xs font-mono font-extrabold uppercase tracking-wider">
-                        {ad.badge}
-                      </span>
-
-                      {/* Campaign Headline */}
-                      <strong className="font-serif text-stone-950 font-extrabold text-sm sm:text-base">
-                        {ad.headline}
-                      </strong>
-
-                      {/* Subheadline Highlight */}
-                      <span className="text-stone-700 text-xs sm:text-sm font-medium hidden md:inline">
-                        — {ad.subheadline}
-                      </span>
-
-                      {/* Quick WhatsApp Inquiry Pill */}
-                      <a
-                        href={getWhatsAppLink(
-                          contactPhone,
-                          `Hello Ram Prasad Agencies, I am inquiring about the ${meta.name} Campaign: "${ad.headline}". Please guide me on showroom availability at Gorakhpur.`
+                        {/* Broader Watch Cutout Thumbnail Stage */}
+                        {ad.image && (
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white border border-[#E5DEC9] p-1 flex items-center justify-center shrink-0 shadow-xs">
+                            <img
+                              src={ad.image}
+                              alt=""
+                              className="w-full h-full object-contain drop-shadow-xs"
+                              loading="lazy"
+                            />
+                          </div>
                         )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-xs cursor-pointer ml-1 active:scale-95"
-                        title={`Inquire about ${ad.headline} on WhatsApp`}
-                      >
-                        <MessageCircle className="w-3 h-3" />
-                        <span>Inquire</span>
-                      </a>
 
-                      {/* Elegant Separator Diamond */}
-                      <span className="text-brass-700/60 font-serif text-sm ml-4 select-none">◆</span>
-                    </div>
-                  ))}
+                        {/* Category Badge */}
+                        <span className="px-2.5 py-1 rounded-full bg-brass-700/15 border border-brass-600/30 text-brass-900 text-[10px] sm:text-xs font-mono font-extrabold uppercase tracking-wider">
+                          {ad.badge.replace(/CAMPAIGN/gi, 'SPECIAL')}
+                        </span>
+
+                        {/* Headline */}
+                        <strong className="font-serif text-stone-950 font-extrabold text-sm sm:text-base">
+                          {ad.headline}
+                        </strong>
+
+                        {/* Subheadline Highlight */}
+                        <span className="text-stone-700 text-xs sm:text-sm font-medium hidden md:inline">
+                          — {ad.subheadline}
+                        </span>
+
+                        {/* Quick WhatsApp Inquiry Pill */}
+                        <a
+                          href={getWhatsAppLink(
+                            contactPhone,
+                            `Hello Ram Prasad Agencies, I want to claim the Special Discount Offer (${discount}) for ${meta.name} "${ad.headline}". Please confirm availability at your Gorakhpur showrooms.`
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-xs cursor-pointer ml-1 active:scale-95"
+                          title={`Claim ${discount} on WhatsApp`}
+                        >
+                          <MessageCircle className="w-3 h-3" />
+                          <span>Claim Offer &rarr;</span>
+                        </a>
+
+                        {/* Elegant Separator Diamond */}
+                        <span className="text-brass-700/60 font-serif text-sm ml-4 select-none">◆</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
