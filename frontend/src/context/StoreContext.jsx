@@ -630,7 +630,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       subtitle: 'Titan Edge, Octane, HMT Mechanicals, Fastrack & Sonata',
       itemCount: '45+ Timepieces',
       tag: '🇮🇳 Proud Indian Horology',
-      image: '/images/watches/titan-octane-chronograph.webp',
+      image: '/images/watches/titan/12.webp',
       filterKey: 'Indian Brands',
     },
     {

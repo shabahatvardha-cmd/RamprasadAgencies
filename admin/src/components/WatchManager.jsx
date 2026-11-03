@@ -62,7 +62,7 @@ const DEFAULT_SAMPLE_WATCHES = [
     waterResistance: '100m / 10 Bar',
     inStock: true,
     featured: true,
-    image: '/images/watches/titan-octane-chronograph.webp',
+    image: '/images/watches/titan/12.webp',
     description: 'Bold dual-layer tachymeter dial with high-contrast orange chronograph accents, 100M water resistance, and racing date window.',
     storeLocation: 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
   },

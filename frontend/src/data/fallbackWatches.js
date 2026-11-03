@@ -1243,6 +1243,27 @@ export const fallbackWatches = [
     "originalPrice": null
   },
   {
+    "id": "omega-03-seamaster-aqua-terra-150m",
+    "_id": "omega-03-seamaster-aqua-terra-150m",
+    "name": "Seamaster Aqua Terra 150M (220.10.41.21.03.004)",
+    "brand": "Omega",
+    "collection": "Seamaster",
+    "category": "Sport / Dress",
+    "movement": "Automatic Co-Axial",
+    "caseDiameter": "41mm",
+    "dialColor": "Atlantic Blue",
+    "caseMaterial": "Stainless Steel",
+    "strapType": "Integrated Stainless Steel Link Bracelet",
+    "description": "Versatile luxury sports watch bridging formal dress and water resistance.",
+    "image": "/images/watches/omega/03.webp",
+    "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
+    "inStock": true,
+    "featured": true,
+    "gender": "Men",
+    "price": null,
+    "originalPrice": null
+  },
+  {
     "id": "omega-04-constellation-co-axial",
     "_id": "omega-04-constellation-co-axial",
     "name": "Constellation Co-Axial Master Chronometer (131.10.39.20.01.001)",
