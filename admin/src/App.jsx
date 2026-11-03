@@ -520,7 +520,7 @@ function App() {
         fontFamily: `'${bodyFont}', sans-serif`,
         fontSize: fontSizeBase,
       }}
-      className="w-full min-h-screen overflow-x-clip selection:bg-brass-500 selection:text-white"
+      className="w-full min-h-screen selection:bg-brass-500 selection:text-white"
     >
       {/* Dynamic Font and Color Rules */}
       <style>{`
@@ -540,34 +540,35 @@ function App() {
         }
       `}</style>
 
-      {/* 1. Sticky Luxury Visual Admin Control Bar */}
-      <AdminTopBar
-        isEditMode={isEditMode}
-        setIsEditMode={setIsEditMode}
-        onOpenModal={(modalType) => {
-          if (modalType === 'watch-add') {
-            setSelectedWatchForEdit(null);
-            setIsWatchModalOpen(true);
-          } else if (modalType === 'inventory') {
-            setIsInventoryModalOpen(true);
-          } else {
-            setActiveModal(modalType);
-          }
-        }}
-        onOpenMasterRestore={() => setShowMasterRestoreModal(true)}
-        onOpenLeads={() => setIsLeadsModalOpen(true)}
-        onOpenInventory={() => setIsInventoryModalOpen(true)}
-        onLogout={handleLogout}
-        newLeadsCount={newLeadsCount}
-        isSaving={isSaving}
-      />
+      {/* Unified Sticky Header Section: Admin Controls + Storefront Header Stay Visible While Scrolling */}
+      <div className="sticky top-0 z-[60] w-full bg-[#FAF8F5]">
+        <AdminTopBar
+          isEditMode={isEditMode}
+          setIsEditMode={setIsEditMode}
+          onOpenModal={(modalType) => {
+            if (modalType === 'watch-add') {
+              setSelectedWatchForEdit(null);
+              setIsWatchModalOpen(true);
+            } else if (modalType === 'inventory') {
+              setIsInventoryModalOpen(true);
+            } else {
+              setActiveModal(modalType);
+            }
+          }}
+          onOpenMasterRestore={() => setShowMasterRestoreModal(true)}
+          onOpenLeads={() => setIsLeadsModalOpen(true)}
+          onOpenInventory={() => setIsInventoryModalOpen(true)}
+          onLogout={handleLogout}
+          newLeadsCount={newLeadsCount}
+          isSaving={isSaving}
+        />
 
-      {/* 2. Top Announcement Ticker & Main Sticky Header */}
-      <VisualHeader
-        storeData={currentStoreData}
-        isEditMode={isEditMode}
-        onOpenEdit={(type) => setActiveModal(type)}
-      />
+        <VisualHeader
+          storeData={currentStoreData}
+          isEditMode={isEditMode}
+          onOpenEdit={(type) => setActiveModal(type)}
+        />
+      </div>
 
       {/* 3. Hero Watch Advertisement Photography Showcase */}
       <div id="hero">

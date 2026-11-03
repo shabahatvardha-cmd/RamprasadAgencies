@@ -93,54 +93,59 @@ router.get('/stats', async (req, res) => {
 /**
  * @route   POST /api/leads
  * @desc    Create a new customer lead from storefront form
+ *          Validates strictly against Mongoose Schema in memory (no DB required)
+ *          Saves to MongoDB if connected, or local storage if offline
  */
 router.post('/', async (req, res) => {
   try {
     const { name, phone, email, storeLocation, inquiryType, watchName, message, source, customFields } = req.body;
 
-    if (!name || !name.trim()) {
-      return res.status(400).json({
-        success: false,
-        message: 'Customer name is required',
-      });
-    }
-
-    if (!phone || !phone.trim()) {
-      return res.status(400).json({
-        success: false,
-        message: 'Phone number is required',
-      });
-    }
-
-    const savedLead = storage.createLead({
-      name: name.trim(),
-      phone: phone.trim(),
-      email: email ? email.trim() : '',
-      storeLocation: storeLocation || 'Baldev Plaza, Golghar',
+    // 1. Create a Mongoose Lead document in memory
+    const leadInstance = new Lead({
+      name,
+      phone,
+      email: email ? String(email).trim() : '',
+      storeLocation: storeLocation || 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
       inquiryType: inquiryType || 'Buy / Inquire Specific Watch',
-      watchName: watchName ? watchName.trim() : '',
-      message: message ? message.trim() : '',
+      watchName: watchName ? String(watchName).trim() : '',
+      message: message ? String(message).trim() : '',
       customFields: customFields && typeof customFields === 'object' ? customFields : {},
       status: 'New',
       source: source || 'Storefront Inquiry Form',
     });
 
-    if (storage.isMongoConnected()) {
+    // 2. Validate synchronously against Mongoose schema rules (RUNS IN MEMORY - ZERO DB NEEDED)
+    const validationError = leadInstance.validateSync();
+    if (validationError) {
+      const errorMessages = Object.values(validationError.errors).map((e) => e.message);
+      return res.status(400).json({
+        success: false,
+        message: errorMessages[0] || 'Form validation failed',
+        errors: errorMessages,
+      });
+    }
+
+    const leadData = leadInstance.toObject();
+
+    // 3. Database Mode (When MongoDB is connected later)
+    if (storage.isMongoConnected && storage.isMongoConnected()) {
       try {
-        const lead = new Lead(savedLead);
-        await lead.save();
+        await leadInstance.save();
       } catch (mErr) {
         console.warn('Mongo lead save warning:', mErr.message);
       }
     }
 
-    res.status(201).json({
+    // 4. Local Mode (Right now: works offline, keeps admin CRM and notifications working)
+    const savedLead = storage.createLead(leadData);
+
+    return res.status(201).json({
       success: true,
       message: 'Your inquiry has been successfully registered with Ram Prasad Agencies concierge.',
       data: savedLead,
     });
   } catch (err) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Failed to submit customer lead',
       error: err.message,

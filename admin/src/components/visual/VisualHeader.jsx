@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Menu,
   X,
@@ -31,6 +31,17 @@ export default function VisualHeader({
   const flashSale = storeData.flashSale?.flashSale || storeData.flashSale || {};
 
   const [activeMessageIndex, setActiveMessageIndex] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Track window scroll to make header sleek and tuck away announcement bar smoothly
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { label: 'Home', href: '#top' },
@@ -56,21 +67,31 @@ export default function VisualHeader({
         </div>
       )}
 
-      {/* 1. Top Announcement Marquee Ticker */}
-      <div className="w-full bg-[#1A1A1A] text-cream-100 py-2 px-4 text-center text-xs font-medium tracking-wide overflow-hidden border-b border-brass-600/30">
+      {/* 1. Top Announcement Marquee Ticker (smoothly tucks away when scrolling down) */}
+      <div
+        className={`w-full bg-[#1A1A1A] text-cream-100 text-center text-xs font-medium tracking-wide border-b border-brass-600/30 transition-all duration-300 ${
+          isScrolled ? 'max-h-0 py-0 opacity-0 overflow-hidden border-b-0' : 'max-h-12 py-2 px-4 opacity-100'
+        }`}
+      >
         <div className="flex items-center justify-center gap-2 overflow-hidden">
           <Sparkles className="w-3.5 h-3.5 text-brass-400 shrink-0" />
           <span className="truncate">{announcements[0]}</span>
         </div>
       </div>
 
-      {/* 2. Main Sticky Navigation Header */}
+      {/* 2. Main Navigation Header (Clean, Elevated & Visible While Scrolling) */}
       <header
-        className="bg-[#FAF8F5] border-b border-[#E8E1D5] shadow-sm transition-all font-sans text-[#1A1A1A]"
+        className={`bg-[#FAF8F5]/98 backdrop-blur-md border-b border-[#E8E1D5] transition-all duration-300 font-sans text-[#1A1A1A] ${
+          isScrolled ? 'shadow-md py-0.5' : 'shadow-xs py-0'
+        }`}
         style={{ backgroundColor: '#FAF8F5' }}
       >
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
+          <div
+            className={`flex items-center justify-between gap-4 transition-all duration-300 ${
+              isScrolled ? 'h-14 sm:h-16' : 'h-16 sm:h-20'
+            }`}
+          >
             {/* Brand Logo & Name */}
             <a href="#" className="flex items-center gap-3 shrink-0 group">
               <BrandLogo customSrc={storeData?.logo} className="w-9 h-9 sm:w-11 sm:h-11" />

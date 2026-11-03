@@ -70,7 +70,7 @@ export default function AdminTopBar({
   };
 
   return (
-    <header className="sticky top-0 z-[60] bg-[#141415]/98 text-white border-b border-brass-600/30 backdrop-blur-xl shadow-2xl transition-all font-sans">
+    <header className="w-full bg-[#141415]/98 text-white border-b border-brass-600/30 backdrop-blur-xl shadow-md transition-all font-sans">
       {/* Primary Top Bar Row */}
       <div className="w-full px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3">
         {/* Left: Brand & Status */}
