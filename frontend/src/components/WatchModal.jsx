@@ -87,12 +87,14 @@ Thank you!`;
 
   const cleanPhone = (contactPhone || '9876543210').replace(/[^0-9]/g, '');
 
-  const formattedPrice = watch.price
-    ? `₹${Number(watch.price).toLocaleString('en-IN')}`
-    : 'Price Upon Request';
-  const formattedOriginalPrice = watch.originalPrice && watch.originalPrice > watch.price
-    ? `₹${Number(watch.originalPrice).toLocaleString('en-IN')}`
-    : null;
+  const formattedPrice =
+    watch.price && Number(watch.price) > 0 && !watch.hidePrice
+      ? `₹${Number(watch.price).toLocaleString('en-IN')}`
+      : 'Price Upon Request';
+  const formattedOriginalPrice =
+    !watch.hidePrice && watch.originalPrice && watch.originalPrice > watch.price
+      ? `₹${Number(watch.originalPrice).toLocaleString('en-IN')}`
+      : null;
 
   return (
     <div

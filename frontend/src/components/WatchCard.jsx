@@ -19,10 +19,8 @@ export default function WatchCard({
   const brand = watch?.brand || 'Luxury Horology';
   const category = watch?.category || watch?.movement || 'Automatic';
   const strapSpec = watch?.strapType || watch?.strap || watch?.movement || 'Automatic Movement';
-  const priceDisplay =
-    watch?.price && Number(watch.price) > 0
-      ? formatINR(watch.price)
-      : 'Price Upon Request';
+  const isPriceHidden = !watch?.price || Number(watch.price) <= 0 || Boolean(watch?.hidePrice);
+  const priceDisplay = isPriceHidden ? 'Price Upon Request' : formatINR(watch.price);
 
   return (
     <div

@@ -77,8 +77,9 @@ export default function WatchEditModal({
     brand: 'Titan',
     category: 'Automatic',
     collectionName: 'newArrivals',
-    price: 14995,
-    originalPrice: 17995,
+    price: '',
+    originalPrice: '',
+    hidePrice: true,
     badge: 'In Stock',
     movement: 'Japanese 21-Jewel Automatic',
     caseDiameter: '42mm',
@@ -101,13 +102,15 @@ export default function WatchEditModal({
   useEffect(() => {
     if (watch) {
       const extraImgs = Array.isArray(watch.images) ? watch.images : [];
+      const isPriceHidden = !watch.price || Number(watch.price) <= 0 || Boolean(watch.hidePrice);
       setFormData({
         name: watch.name || '',
         brand: watch.brand || 'Titan',
         category: watch.category || 'Automatic',
         collectionName: watch.collectionName || 'newArrivals',
-        price: watch.price || 14995,
-        originalPrice: watch.originalPrice || 0,
+        price: isPriceHidden ? '' : watch.price,
+        originalPrice: isPriceHidden ? '' : (watch.originalPrice || ''),
+        hidePrice: isPriceHidden,
         badge: watch.badge || (watch.featured ? 'Featured Drop' : 'In Stock'),
         movement: watch.movement || 'Japanese 21-Jewel Automatic',
         caseDiameter: watch.caseDiameter || watch.caseSize || '42mm',
@@ -128,8 +131,9 @@ export default function WatchEditModal({
         brand: 'Titan',
         category: 'Automatic',
         collectionName: 'newArrivals',
-        price: 14995,
-        originalPrice: 17995,
+        price: '',
+        originalPrice: '',
+        hidePrice: true,
         badge: 'In Stock',
         movement: 'Japanese 21-Jewel Automatic',
         caseDiameter: '42mm',
@@ -244,8 +248,14 @@ export default function WatchEditModal({
       return;
     }
     const extraImages = [additionalImage1, additionalImage2].filter((url) => Boolean(url && url.trim()));
+    const finalPrice = formData.hidePrice || !formData.price || Number(formData.price) <= 0 ? null : Number(formData.price);
+    const finalOriginalPrice = formData.hidePrice || !formData.originalPrice || Number(formData.originalPrice) <= 0 ? null : Number(formData.originalPrice);
+
     onSave({
       ...formData,
+      price: finalPrice,
+      originalPrice: finalOriginalPrice,
+      hidePrice: Boolean(formData.hidePrice || finalPrice === null),
       images: extraImages,
     }, watch?._id || watch?.id);
   };
@@ -370,46 +380,88 @@ export default function WatchEditModal({
           </div>
 
           {/* Row 2B: Retail Price, Original MRP & Badge */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
-                Offer Price (INR ₹) *
+          <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#DDD5C7] space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[#E8E1D5]">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#1A1A1A]">
+                Pricing & Showroom Consultation Mode
+              </span>
+              <label className="inline-flex items-center gap-2 cursor-pointer bg-white px-3 py-1.5 rounded-xl border border-[#DDD5C7] shadow-2xs hover:border-brass-600 transition-colors">
+                <input
+                  type="checkbox"
+                  checked={Boolean(formData.hidePrice)}
+                  onChange={(e) => {
+                    const hide = e.target.checked;
+                    setFormData((prev) => ({
+                      ...prev,
+                      hidePrice: hide,
+                      price: hide ? '' : (prev.price || 14995),
+                      originalPrice: hide ? '' : prev.originalPrice,
+                    }));
+                  }}
+                  className="w-4 h-4 rounded text-brass-600 focus:ring-brass-500 accent-brass-600 cursor-pointer"
+                />
+                <span className="text-xs font-bold text-[#1A1A1A] select-none">
+                  🔒 Hide Price (Display "Price Upon Request")
+                </span>
               </label>
-              <input
-                type="number"
-                min="0"
-                required
-                value={formData.price}
-                onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD5C7] bg-[#FAF7F2] text-xs font-bold text-[#1A1A1A] focus:outline-none focus:border-brass-600 focus:bg-white"
-              />
             </div>
 
-            <div>
-              <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
-                Original MRP (INR ₹)
-              </label>
-              <input
-                type="number"
-                min="0"
-                value={formData.originalPrice}
-                onChange={(e) => setFormData({ ...formData, originalPrice: Number(e.target.value) })}
-                placeholder="e.g. 17995"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD5C7] bg-[#FAF7F2] text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600 focus:bg-white"
-              />
-            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                  Offer Price (INR ₹)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  disabled={formData.hidePrice}
+                  value={formData.hidePrice ? '' : formData.price}
+                  onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                  placeholder={formData.hidePrice ? 'Price Upon Request' : 'e.g. 14995'}
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs font-bold transition-all ${
+                    formData.hidePrice
+                      ? 'bg-stone-100 border-stone-200 text-stone-500 italic cursor-not-allowed'
+                      : 'border-[#DDD5C7] bg-white text-[#1A1A1A] focus:outline-none focus:border-brass-600'
+                  }`}
+                />
+                {formData.hidePrice && (
+                  <p className="text-[10px] text-brass-800 font-semibold mt-1">
+                    ✓ Price is hidden. Customers will see "Price Upon Request".
+                  </p>
+                )}
+              </div>
 
-            <div>
-              <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
-                Badge / Ribbon Tag
-              </label>
-              <input
-                type="text"
-                value={formData.badge}
-                onChange={(e) => setFormData({ ...formData, badge: e.target.value })}
-                placeholder="e.g. In Stock, 20% Off, New Arrival"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD5C7] bg-[#FAF7F2] text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600 focus:bg-white"
-              />
+              <div>
+                <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                  Original MRP (INR ₹)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  disabled={formData.hidePrice}
+                  value={formData.hidePrice ? '' : formData.originalPrice}
+                  onChange={(e) => setFormData({ ...formData, originalPrice: e.target.value })}
+                  placeholder={formData.hidePrice ? 'Hidden' : 'e.g. 17995'}
+                  className={`w-full px-3.5 py-2.5 rounded-xl border text-xs transition-all ${
+                    formData.hidePrice
+                      ? 'bg-stone-100 border-stone-200 text-stone-400 italic cursor-not-allowed'
+                      : 'border-[#DDD5C7] bg-white text-[#1A1A1A] focus:outline-none focus:border-brass-600'
+                  }`}
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-[#1A1A1A] mb-1">
+                  Badge / Ribbon Tag
+                </label>
+                <input
+                  type="text"
+                  value={formData.badge}
+                  onChange={(e) => setFormData({ ...formData, badge: e.target.value })}
+                  placeholder="e.g. In Stock, 20% Off, New Arrival"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#DDD5C7] bg-white text-xs text-[#1A1A1A] focus:outline-none focus:border-brass-600"
+                />
+              </div>
             </div>
           </div>
 

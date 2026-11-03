@@ -436,17 +436,15 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
       showToast({ type: 'error', title: 'Name Required', message: 'Please enter watch model name.' });
       return;
     }
-    if (!price || Number(price) <= 0) {
-      showToast({ type: 'error', title: 'Price Required', message: 'Please specify a valid price in INR.' });
-      return;
-    }
+    const numericPrice = price && Number(price) > 0 ? Number(price) : null;
 
     try {
       setIsSubmitting(true);
       const payload = {
         name: name.trim(),
         brand: brand.trim(),
-        price: Number(price),
+        price: numericPrice,
+        hidePrice: numericPrice === null,
         category,
         movement,
         caseDiameter,
@@ -780,8 +778,10 @@ export default function WatchManager({ watches = [], onRefresh, showToast }) {
 
                 {/* Pricing & Actions */}
                 <div className="pt-2 border-t border-[#E8E1D5] flex items-center justify-between">
-                  <span className="font-serif text-sm font-bold text-[#1A1A1A]">
-                    {formatINR(w.price)}
+                  <span className="font-serif text-xs sm:text-sm font-bold text-[#1A1A1A]">
+                    {w.price && Number(w.price) > 0 && !w.hidePrice
+                      ? formatINR(w.price)
+                      : 'Price Upon Request'}
                   </span>
 
                   <div className="flex items-center gap-1.5">

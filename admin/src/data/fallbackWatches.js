@@ -1238,9 +1238,15 @@ export const fallbackWatches = [
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
     "inStock": true,
     "featured": true,
-    "gender": "Men",
+    "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true,
+    "collectionName": "newArrivals",
+    "badge": "Featured Drop",
+    "waterResistance": "50m / 5 Bar",
+    "images": [],
+    "updatedAt": "2026-11-03T06:17:15.122Z"
   },
   {
     "id": "omega-03-seamaster-aqua-terra-150m",
@@ -1257,11 +1263,16 @@ export const fallbackWatches = [
     "description": "Versatile luxury sports watch bridging formal dress and water resistance.",
     "image": "/images/watches/omega/03.webp",
     "storeLocation": "Baldev Plaza Flagship Showroom, Golghar",
-    "inStock": true,
+    "inStock": false,
     "featured": true,
-    "gender": "Men",
+    "gender": "Unisex",
     "price": null,
-    "originalPrice": null
+    "originalPrice": null,
+    "hidePrice": true,
+    "badge": "Featured Drop",
+    "waterResistance": "50m / 5 Bar",
+    "images": [],
+    "updatedAt": "2026-11-03T05:42:30.725Z"
   },
   {
     "id": "omega-04-constellation-co-axial",
