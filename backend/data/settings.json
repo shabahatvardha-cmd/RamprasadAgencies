@@ -49,7 +49,7 @@
     "isActive": true,
     "speed": "normal",
     "messages": [
-      "âš¡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics â€¢ Use Code: VINTAGE15",
+      "⚡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics • Use Code: VINTAGE15",
       "Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers",
       "Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty",
       "Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms",
@@ -74,7 +74,7 @@
   "heroSlides": [
     {
       "id": "hero-1",
-      "badge": "SWISS PRECISION â€¢ EST. 1853",
+      "badge": "SWISS PRECISION • EST. 1853",
       "headline": "Tissot PRX Powermatic 80 & Swiss Automatics",
       "subheadline": "Iconic 1970s integrated bracelet geometry powered by an 80-hour Nivachron anti-magnetic balance spring. Experience authentic Swiss horology at Ram Prasad Agencies.",
       "ctaPrimary": "Explore Tissot PRX",
@@ -82,7 +82,7 @@
       "ctaSecondary": "View Showrooms",
       "ctaSecondaryLink": "#showrooms",
       "image": "/images/watches/tissot-prx-powermatic-80.webp",
-      "specsTag": "Powermatic 80 Caliber â€¢ 100M Water Resistant â€¢ Anti-Magnetic"
+      "specsTag": "Powermatic 80 Caliber • 100M Water Resistant • Anti-Magnetic"
     },
     {
       "id": "hero-2",
@@ -94,7 +94,7 @@
       "ctaSecondary": "WhatsApp Support",
       "ctaSecondaryLink": "#inquiry",
       "image": "/images/hero-omega-showcase.webp",
-      "specsTag": "Cerachrom Ceramic Bezel â€¢ Co-Axial Master Chronometer"
+      "specsTag": "Cerachrom Ceramic Bezel • Co-Axial Master Chronometer"
     },
     {
       "id": "hero-3",
@@ -106,7 +106,7 @@
       "ctaSecondary": "Book Private Fitting",
       "ctaSecondaryLink": "#showrooms",
       "image": "/images/watches/seiko-presage-cocktail-time.webp",
-      "specsTag": "In-House 4R35 Automatic â€¢ Box-Shaped Hardlex Crystal"
+      "specsTag": "In-House 4R35 Automatic • Box-Shaped Hardlex Crystal"
     },
     {
       "id": "hero-4",
@@ -118,7 +118,7 @@
       "ctaSecondary": "View Showrooms",
       "ctaSecondaryLink": "#showrooms",
       "image": "/images/hero-titan-regalia.webp",
-      "specsTag": "Titan Ultra-Slim Caliber â€¢ Scratch-Resistant Sapphire â€¢ Tata Pedigree"
+      "specsTag": "Titan Ultra-Slim Caliber • Scratch-Resistant Sapphire • Tata Pedigree"
     },
     {
       "id": "hero-5",
@@ -130,7 +130,7 @@
       "ctaSecondary": "WhatsApp Support",
       "ctaSecondaryLink": "#inquiry",
       "image": "/images/hero-hmt-kohinoor-vintage.webp",
-      "specsTag": "In-House Calibre 0231 â€¢ 17 Jewels Mechanical â€¢ Made in India"
+      "specsTag": "In-House Calibre 0231 • 17 Jewels Mechanical • Made in India"
     },
     {
       "id": "hero-6",
@@ -142,11 +142,11 @@
       "ctaSecondary": "Visit Showrooms",
       "ctaSecondaryLink": "#showrooms",
       "image": "/images/fastrack-banner.webp",
-      "specsTag": "All-Weather Water Resistance â€¢ Precision Quartz â€¢ Tata Quality"
+      "specsTag": "All-Weather Water Resistance • Precision Quartz • Tata Quality"
     }
   ],
   "vintageStoreData": {
-    "version": "6.0.0",
+    "version": "5.0.0",
     "brandName": "RAM PRASAD AGENCIES",
     "tagline": "WATCHSTORE.IN",
     "logo": "/logo.png",
@@ -198,7 +198,7 @@
       "isActive": true,
       "speed": "normal",
       "messages": [
-        "âš¡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics â€¢ Use Code: VINTAGE15",
+        "⚡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics • Use Code: VINTAGE15",
         "Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers",
         "Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty",
         "Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms",
@@ -1002,11 +1002,12 @@
           "label": "Expected Budget Range",
           "type": "select",
           "options": [
-            "Under â‚¹15,000 (Casual & Daily Wear)",
-            "â‚¹15,000 â€“ â‚¹35,000 (Automatic & Sport Chronographs)",
-            "â‚¹35,000 â€“ â‚¹75,000 (Entry Swiss & Japanese Presage)",
-            "â‚¹75,000 â€“ â‚¹1,50,000 (Premium Swiss Automatics)",
-            "Above â‚¹1,50,000 (Collector Heritage & Sourced Imports)"
+            "Flexible / Open Budget",
+            "Under ₹15,000 (Casual & Daily Wear)",
+            "₹15,000 – ₹35,000 (Automatic & Sport Chronographs)",
+            "₹35,000 – ₹75,000 (Entry Swiss & Japanese Presage)",
+            "₹75,000 – ₹1,50,000 (Premium Swiss Automatics)",
+            "Above ₹1,50,000 (Collector Heritage & Sourced Imports)"
           ],
           "required": false,
           "enabled": true,
@@ -1032,11 +1033,12 @@
         }
       ]
     },
-    "contentOverrides": {}
+    "contentOverrides": {},
+    "announcementHours": "10:30 AM – 9:00 PM (All 7 Days)"
   },
   "heroTitle": "Tissot PRX Powermatic 80 & Swiss Automatics",
   "heroSubtitle": "Iconic 1970s integrated bracelet geometry powered by an 80-hour Nivachron anti-magnetic balance spring. Experience authentic Swiss horology at Ram Prasad Agencies.",
-  "announcementText": "âš¡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics â€¢ Use Code: VINTAGE15",
+  "announcementText": "⚡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics • Use Code: VINTAGE15",
   "brands": [
     {
       "name": "Titan",
@@ -1124,5 +1126,8 @@
     "fontSizeScale": "medium"
   },
   "contentOverrides": {},
-  "updatedAt": "2026-11-03T12:02:10.414Z"
+  "updatedAt": "2026-11-04T06:46:01.860Z",
+  "brandName": "RAM PRASAD AGENCIES",
+  "tagline": "WATCHSTORE.IN",
+  "announcementHours": "10:30 AM – 9:00 PM (All 7 Days)"
 }

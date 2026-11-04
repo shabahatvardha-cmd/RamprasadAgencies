@@ -23,6 +23,22 @@ const COUNTRY_CODES = [
   { code: '+41', iso: 'CH', country: 'Switzerland', flag: '🇨🇭' },
 ];
 
+const cleanPhoneNumberInput = (rawVal, dialCode) => {
+  if (!rawVal) return '';
+  let digits = String(rawVal).replace(/\D/g, '');
+
+  if (dialCode === '+91') {
+    if (digits.length === 12 && digits.startsWith('91')) {
+      digits = digits.slice(2);
+    } else if (digits.length === 11 && digits.startsWith('0')) {
+      digits = digits.slice(1);
+    }
+    return digits.slice(0, 10);
+  }
+
+  return digits.slice(0, 15);
+};
+
 export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySubtitle }) {
   const storeContext = useStore();
   const storeData = storeContext?.storeData || {};
@@ -38,7 +54,7 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
   const rawButtonText = formConfig.submitButtonText || 'Submit Inquiry';
   const submitButtonText =
     rawButtonText === 'Submit Showroom Consultation Request' ||
-    rawButtonText === 'Submit Inquiry to Showroom'
+      rawButtonText === 'Submit Inquiry to Showroom'
       ? 'Submit Inquiry'
       : rawButtonText;
   const successMessage =
@@ -101,22 +117,33 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate fields strictly (especially 10-digit numeric phone)
+    // Validate fields (phone validation tailored for India 10-digit and international E.164)
     for (const field of activeFields) {
       if (field.id === 'phone' || field.type === 'tel') {
         const rawVal = formAnswers[field.id] || '';
         const digits = String(rawVal).replace(/\D/g, '');
 
         if (field.required && !digits) {
-          setValidationError(`Please enter your 10-digit mobile number for "${field.label}".`);
+          setValidationError(`Please enter your mobile / phone number for "${field.label}".`);
           return;
         }
 
-        if (digits && digits.length !== 10) {
-          setValidationError(
-            `Mobile / WhatsApp number must be exactly 10 numeric digits. Currently ${digits.length} digits entered.`
-          );
-          return;
+        if (digits) {
+          if (countryCode === '+91') {
+            if (digits.length !== 10) {
+              setValidationError(
+                `Mobile / WhatsApp number for India must be exactly 10 digits. Currently ${digits.length} digits entered.`
+              );
+              return;
+            }
+          } else {
+            if (digits.length < 7 || digits.length > 15) {
+              setValidationError(
+                `Phone number must be between 7 and 15 digits. Currently ${digits.length} digits entered.`
+              );
+              return;
+            }
+          }
         }
       } else if (field.required) {
         const val = formAnswers[field.id];
@@ -202,6 +229,7 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
   const customerEmail = (formAnswers.email || '').trim();
   const chosenStore = formAnswers.storeLocation || 'Baldev Plaza Flagship Showroom, Golghar';
   const chosenInquiry = formAnswers.inquiryType || 'Luxury Watch Consultation';
+  const chosenBudget = formAnswers.budgetRange && !formAnswers.budgetRange.includes('Flexible') ? ` (Expected Budget: ${formAnswers.budgetRange})` : '';
   const customerMsg = formAnswers.message?.trim() ? ` Regarding: "${formAnswers.message.trim()}".` : '';
 
   const contactList = [
@@ -213,7 +241,7 @@ export default function CustomerInquiry({ contactPhone, inquiryTitle, inquirySub
 
   const paragraphMessage = `Hello Ram Prasad Agencies,
 
-My name is ${customerName}. I would like to inquire about a showroom consultation for "${chosenInquiry}" at your ${chosenStore}.${customerMsg}
+My name is ${customerName}. I would like to inquire about a showroom consultation for "${chosenInquiry}" at your ${chosenStore}.${chosenBudget}${customerMsg}
 
 You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to your guidance on availability and private viewing. Thank you!
 
@@ -418,16 +446,21 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                               placeholder={field.placeholder || ''}
                               value={value}
                               onChange={(e) => handleInputChange(field.id, e.target.value)}
-                              className="w-full bg-[#FAF7F2] border border-[#DDD5C7] focus:border-brass-600 focus:bg-white rounded-xl px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#9E9589] focus:outline-none transition-colors resize-none leading-relaxed"
+                              className="w-full bg-[#FAF7F2] border border-[#DDD5C7] focus:border-brass-600 focus:bg-white rounded-xl px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#9E9589] placeholder:text-[11.5px] sm:placeholder:text-xs focus:outline-none transition-colors resize-none leading-relaxed"
                             />
                           ) : isPhoneField ? (
-                            /* Enforced 10-Digit Numeric Phone Input with Country Code */
+                            /* Enforced Numeric Phone Input with Country Code */
                             <div className="space-y-1">
                               <div className="flex rounded-xl bg-[#FAF7F2] border border-[#DDD5C7] focus-within:border-brass-600 focus-within:bg-white transition-all overflow-hidden shadow-sm">
                                 {/* Country Code Dropdown */}
                                 <select
                                   value={countryCode}
-                                  onChange={(e) => setCountryCode(e.target.value)}
+                                  onChange={(e) => {
+                                    const newCode = e.target.value;
+                                    setCountryCode(newCode);
+                                    const cleaned = cleanPhoneNumberInput(formAnswers[field.id], newCode);
+                                    handleInputChange(field.id, cleaned);
+                                  }}
                                   className="bg-[#EFE8DC] hover:bg-[#E8DEC0] text-xs sm:text-sm font-bold text-[#1A1A1A] pl-2.5 pr-2 py-3 border-r border-[#DDD5C7] focus:outline-none cursor-pointer"
                                   title="Select Country Dial Code"
                                 >
@@ -438,56 +471,47 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                                   ))}
                                 </select>
 
-                                {/* Strict 10-Digit Numeric Input */}
+                                {/* Responsive Phone Input (Supports mobile virtual keyboards & auto-cleans paste) */}
                                 <input
                                   type="tel"
                                   inputMode="numeric"
-                                  pattern="[0-9]{10}"
-                                  maxLength={10}
+                                  autoComplete="tel-national"
+                                  maxLength={countryCode === '+91' ? 10 : 15}
                                   required={Boolean(field.required)}
-                                  placeholder="98765 43210 (10 digits)"
+                                  placeholder={countryCode === '+91' ? '10 digits' : 'Phone number'}
                                   value={value}
                                   onPaste={(e) => {
                                     e.preventDefault();
                                     const pasteData = (e.clipboardData || window.clipboardData).getData('text') || '';
-                                    const digits = pasteData.replace(/\D/g, '').slice(0, 10);
-                                    handleInputChange(field.id, digits);
-                                  }}
-                                  onKeyDown={(e) => {
-                                    // Allow edit and navigation keys: backspace, delete, tab, arrows
-                                    if (
-                                      ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key) ||
-                                      (e.ctrlKey === true || e.metaKey === true)
-                                    ) {
-                                      return;
-                                    }
-                                    // Block any non-digit character
-                                    if (!/^[0-9]$/.test(e.key)) {
-                                      e.preventDefault();
-                                    }
+                                    const cleaned = cleanPhoneNumberInput(pasteData, countryCode);
+                                    handleInputChange(field.id, cleaned);
                                   }}
                                   onChange={(e) => {
-                                    // Strictly filter to digits only and limit to 10 numbers
-                                    const numericOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
-                                    handleInputChange(field.id, numericOnly);
+                                    const cleaned = cleanPhoneNumberInput(e.target.value, countryCode);
+                                    handleInputChange(field.id, cleaned);
                                   }}
-                                  className="flex-1 bg-transparent px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#9E9589] font-mono tracking-wider focus:outline-none"
+                                  className="flex-1 bg-transparent px-3 sm:px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#9E9589] placeholder:text-[11.5px] sm:placeholder:text-xs font-mono focus:outline-none"
                                 />
                               </div>
 
                               {/* Digit Counter & Validation Feedback */}
                               <div className="flex items-center justify-between text-[11px] text-[#7A7268] px-1 pt-0.5">
-                                <span>Numbers only • Exactly 10 digits</span>
+                                <span>{countryCode === '+91' ? 'Numbers only • 10-digit mobile' : 'International • 7 to 15 digits'}</span>
                                 <span
-                                  className={`font-mono font-bold transition-colors ${
-                                    value.length === 10
-                                      ? 'text-emerald-700 font-extrabold'
-                                      : value.length > 0
+                                  className={`font-mono font-bold transition-colors ${(countryCode === '+91' && value.length === 10) || (countryCode !== '+91' && value.length >= 7)
+                                    ? 'text-emerald-700 font-extrabold'
+                                    : value.length > 0
                                       ? 'text-amber-700'
                                       : 'text-[#8C847A]'
-                                  }`}
+                                    }`}
                                 >
-                                  {value.length === 10 ? '✓ 10 Digits Complete' : `${value.length}/10 digits`}
+                                  {countryCode === '+91'
+                                    ? value.length === 10
+                                      ? '✓ 10 Digits Complete'
+                                      : `${value.length}/10 digits`
+                                    : value.length >= 7
+                                      ? `✓ ${value.length} Digits`
+                                      : `${value.length} digits (min 7)`}
                                 </span>
                               </div>
                             </div>
@@ -497,16 +521,16 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                                 field.type === 'email'
                                   ? 'email'
                                   : field.type === 'number'
-                                  ? 'number'
-                                  : field.type === 'date'
-                                  ? 'date'
-                                  : 'text'
+                                    ? 'number'
+                                    : field.type === 'date'
+                                      ? 'date'
+                                      : 'text'
                               }
                               required={Boolean(field.required)}
                               placeholder={field.placeholder || ''}
                               value={value}
                               onChange={(e) => handleInputChange(field.id, e.target.value)}
-                              className="w-full bg-[#FAF7F2] border border-[#DDD5C7] focus:border-brass-600 focus:bg-white rounded-xl px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#9E9589] focus:outline-none transition-colors"
+                              className="w-full bg-[#FAF7F2] border border-[#DDD5C7] focus:border-brass-600 focus:bg-white rounded-xl px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#9E9589] placeholder:text-[11.5px] sm:placeholder:text-xs focus:outline-none transition-colors"
                             />
                           )}
                         </div>

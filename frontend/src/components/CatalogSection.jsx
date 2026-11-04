@@ -127,11 +127,11 @@ export default function CatalogSection({
   }, [displayWatches, selectedOrigin, selectedCategory, selectedBrand, selectedGender, inStockOnly, searchQuery, sortBy]);
 
   // Downward pagination: show 8 initially (2 rows on desktop, 4 on mobile)
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(10);
 
   // Reset pagination whenever user changes filters
   useEffect(() => {
-    setVisibleCount(8);
+    setVisibleCount(10);
   }, [selectedOrigin, selectedCategory, selectedBrand, selectedGender, inStockOnly, searchQuery, sortBy]);
 
   const displayedWatches = filteredWatches.slice(0, visibleCount);
@@ -334,7 +334,7 @@ export default function CatalogSection({
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 gap-2.5 sm:gap-3.5 md:gap-4.5 lg:gap-5">
               {displayedWatches.map((watch) => (
                 <WatchCard
                   key={watch._id || watch.id}
@@ -350,7 +350,7 @@ export default function CatalogSection({
             {hasMore && (
               <div className="pt-4 flex items-center justify-center">
                 <button
-                  onClick={() => setVisibleCount((prev) => prev + 8)}
+                  onClick={() => setVisibleCount((prev) => prev + 10)}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-stone-950 font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-lg shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all group"
                 >
                   <span>See More</span>
@@ -359,7 +359,7 @@ export default function CatalogSection({
               </div>
             )}
 
-            {!hasMore && filteredWatches.length > 8 && (
+            {!hasMore && filteredWatches.length > 10 && (
               <div className="pt-2 flex justify-center">
                 <button
                   onClick={() => {

@@ -15,13 +15,24 @@ export default function Header({
   const { storeData } = useStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileSearchExpanded, setMobileSearchExpanded] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  // Clean any stale legacy header height styles
+  useEffect(() => {
+    try {
+      document.documentElement.style.removeProperty('--site-header-height');
+    } catch {}
+  }, []);
 
-  // Detect scroll to enhance contrast, border and elevation over underlying sections
+  // Detect scroll past 50px threshold to trigger smooth shrinking header effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
+      const scrolled = window.scrollY > 50;
+      setIsScrolled(scrolled);
+      if (!scrolled) {
+        setMobileSearchExpanded(false);
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
@@ -80,26 +91,48 @@ export default function Header({
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 font-sans text-[#1A1A1A] ${isScrolled
-          ? 'bg-[#FAF8F5] border-b border-[#D8CEBC] shadow-[0_8px_30px_-4px_rgba(20,15,10,0.18)]'
+      className={`sticky top-0 z-50 transition-all duration-300 font-sans text-[#1A1A1A] ${
+        isScrolled
+          ? 'bg-[#FAF8F5]/92 backdrop-blur-md border-b border-[#D8CEBC]/90 shadow-[0_8px_30px_-4px_rgba(20,15,10,0.18)]'
           : 'bg-[#FAF8F5] border-b border-[#E8E1D5] shadow-sm'
-        }`}
-      style={{ backgroundColor: '#FAF8F5' }}
+      }`}
+      style={{ backgroundColor: isScrolled ? 'rgba(250, 248, 245, 0.94)' : '#FAF8F5' }}
     >
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-6">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 transition-all duration-300">
+        <div
+          className={`flex items-center justify-between gap-3 sm:gap-6 transition-all duration-300 ease-in-out ${
+            isScrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-20'
+          }`}
+        >
           {/* Brand Logo & Name */}
           <Link
             to="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className="flex items-center gap-2.5 sm:gap-3 shrink-0 group py-1"
+            className="flex items-center gap-2 sm:gap-3 shrink-0 group py-1 transition-all duration-300"
           >
-            <BrandLogo customSrc={storeData?.logo} className="w-9 h-9 sm:w-11 sm:h-11" />
-            <div className="flex flex-col justify-center">
-              <span className="font-serif text-sm sm:text-base md:text-lg font-black tracking-wider text-[#111111] block leading-tight group-hover:text-brass-700 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
+            <BrandLogo
+              customSrc={storeData?.logo}
+              className={`transition-all duration-300 object-contain ${
+                isScrolled ? 'w-7 h-7 sm:w-8 sm:h-8' : 'w-9 h-9 sm:w-11 sm:h-11'
+              }`}
+            />
+            <div className="flex flex-col justify-center transition-all duration-300">
+              <span
+                className={`font-serif font-black tracking-wider text-[#111111] block leading-tight group-hover:text-brass-700 transition-all duration-300 drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)] ${
+                  isScrolled
+                    ? 'text-xs sm:text-sm md:text-base'
+                    : 'text-sm sm:text-base md:text-lg'
+                }`}
+              >
                 {storeData?.brandName || 'RAM PRASAD AGENCIES'}
               </span>
-              <p className="text-[8.5px] sm:text-[10px] uppercase tracking-widest text-brass-700 font-extrabold truncate mt-0.5">
+              <p
+                className={`uppercase tracking-widest text-brass-700 font-extrabold truncate transition-all duration-300 ${
+                  isScrolled
+                    ? 'opacity-0 max-h-0 text-[0px] mt-0 overflow-hidden pointer-events-none'
+                    : 'opacity-100 max-h-5 text-[8.5px] sm:text-[10px] mt-0.5'
+                }`}
+              >
                 {storeData?.tagline &&
                   !storeData.tagline.includes('Vintage Horology') &&
                   !storeData.tagline.includes('Authorized & Imported') &&
@@ -112,49 +145,84 @@ export default function Header({
           </Link>
 
           {/* Desktop Navigation Links (Center) */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-10">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-7 xl:gap-9 transition-all duration-300">
             {navLinks.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-xs lg:text-[13px] font-bold tracking-wider uppercase text-[#2B2621] hover:text-brass-700 relative py-2 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brass-600 hover:after:w-full after:transition-all after:duration-300"
+                className={`font-bold tracking-wider uppercase text-[#2B2621] hover:text-brass-700 relative transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brass-600 hover:after:w-full after:transition-all after:duration-300 ${
+                  isScrolled ? 'text-xs py-1' : 'text-xs lg:text-[13px] py-2'
+                }`}
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* Right Header Search Bar & Mobile Hamburger */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* Right Header Search Bar & Mobile Controls */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0 transition-all duration-300">
             {/* Desktop Live Search Bar */}
-            <LiveWatchSearch
-              allWatches={allWatches}
-              onSelectWatch={onSelectWatch}
-              className="hidden md:block w-48 lg:w-64 xl:w-80"
-              placeholder="Search watch, brand, caliber..."
-            />
+            <div
+              className={`hidden md:block transition-all duration-300 ${
+                isScrolled ? 'w-44 lg:w-56 focus-within:w-64' : 'w-48 lg:w-64 xl:w-80'
+              }`}
+            >
+              <LiveWatchSearch
+                allWatches={allWatches}
+                onSelectWatch={onSelectWatch}
+                className="w-full"
+                placeholder={isScrolled ? 'Search watches...' : 'Search watch, brand, caliber...'}
+              />
+            </div>
+
+            {/* Mobile Scrolled Search Toggle Icon */}
+            {isScrolled && (
+              <button
+                onClick={() => setMobileSearchExpanded(!mobileSearchExpanded)}
+                className={`md:hidden p-1.5 rounded-lg transition-colors focus:outline-none ${
+                  mobileSearchExpanded
+                    ? 'text-brass-700 bg-brass-100/60'
+                    : 'text-[#3A3530] hover:text-[#1A1A1A]'
+                }`}
+                aria-label="Toggle Search"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+            )}
 
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#3A3530] hover:text-[#1A1A1A] rounded-lg focus:outline-none"
+              className="md:hidden p-1.5 sm:p-2 text-[#3A3530] hover:text-[#1A1A1A] rounded-lg focus:outline-none transition-colors"
               aria-label="Toggle Navigation"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Search Input Row with Live Results */}
-        <div className="md:hidden pb-3 pt-0.5">
+        {/* Mobile Search Row: Full at Top, Collapses into Compact State on Scroll */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            !isScrolled || mobileSearchExpanded
+              ? 'max-h-20 opacity-100 pb-3 pt-0.5'
+              : 'max-h-0 opacity-0 pb-0 pt-0 pointer-events-none'
+          }`}
+        >
           <LiveWatchSearch
             allWatches={allWatches}
-            onSelectWatch={onSelectWatch}
+            onSelectWatch={(watch) => {
+              if (onSelectWatch) onSelectWatch(watch);
+              setMobileSearchExpanded(false);
+            }}
             className="w-full"
             isMobile={true}
             placeholder="Search PRX, Tsuyosa, Speedmaster..."
-            onCloseMobile={() => setMobileMenuOpen(false)}
+            onCloseMobile={() => {
+              setMobileMenuOpen(false);
+              setMobileSearchExpanded(false);
+            }}
           />
         </div>
       </div>

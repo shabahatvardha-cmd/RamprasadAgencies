@@ -305,7 +305,15 @@ export default function BrandingEditor({
             className="flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brass-600 to-amber-600 hover:from-brass-500 hover:to-amber-500 text-white shadow-md shadow-brass-600/20 transition-all active:scale-95 disabled:opacity-50"
           >
             {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-            <span>Save Footer & Identity</span>
+            <span>
+              {activeTab === 'announcements'
+                ? 'Save Announcements'
+                : activeTab === 'brands'
+                ? 'Save Brand Portfolio'
+                : activeTab === 'trustBadges'
+                ? 'Save Trust Badges'
+                : 'Save Identity & Footer'}
+            </span>
           </button>
         </div>
       </div>

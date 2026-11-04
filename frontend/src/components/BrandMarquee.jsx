@@ -3,10 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { Flame, Zap, Award } from 'lucide-react';
 
 export const BRAND_REFERENCE_IMAGES = {
-  titan: '/images/brands/titan.webp',
+  titan: '/images/watches/titan/01.webp',
   hmt: '/images/brands/hmt.webp',
   fastrack: '/images/brands/fastrack.webp',
-  sonata: '/images/brands/sonata.webp',
+  sonata: '/images/watches/sonata/01.webp',
   tissot: '/images/brands/tissot.webp',
   omega: '/images/brands/omega.webp',
   seiko: '/images/brands/seiko.webp',
@@ -238,7 +238,7 @@ export default function BrandMarquee({
           } catch {}
           if (onSelectBrand) onSelectBrand(bName);
         }}
-        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[130px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-500 flex flex-col justify-between p-3 sm:p-4 text-left no-underline block cursor-pointer ${spanClass} ${
+        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[120px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-500 flex flex-col justify-between p-2.5 sm:p-4 text-left no-underline block cursor-pointer ${spanClass} ${
           isHighlighted
             ? 'border-amber-400 ring-4 ring-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.6)] scale-[1.03] z-20'
             : 'border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl hover:-translate-y-1'

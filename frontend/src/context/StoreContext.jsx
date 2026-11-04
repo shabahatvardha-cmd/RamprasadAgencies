@@ -817,11 +817,12 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         label: 'Expected Budget Range',
         type: 'select',
         options: [
-          'Under â‚¹15,000 (Casual & Daily Wear)',
-          'â‚¹15,000 â€“ â‚¹35,000 (Automatic & Sport Chronographs)',
-          'â‚¹35,000 â€“ â‚¹75,000 (Entry Swiss & Japanese Presage)',
-          'â‚¹75,000 â€“ â‚¹1,50,000 (Premium Swiss Automatics)',
-          'Above â‚¹1,50,000 (Collector Heritage & Sourced Imports)',
+          'Flexible / Open Budget',
+          'Under ₹15,000 (Casual & Daily Wear)',
+          '₹15,000 – ₹35,000 (Automatic & Sport Chronographs)',
+          '₹35,000 – ₹75,000 (Entry Swiss & Japanese Presage)',
+          '₹75,000 – ₹1,50,000 (Premium Swiss Automatics)',
+          'Above ₹1,50,000 (Collector Heritage & Sourced Imports)',
         ],
         required: false,
         enabled: true,
@@ -1046,7 +1047,18 @@ export const sanitizeStoreData = (data) => {
       ...DEFAULT_INQUIRY_FORM_CONFIG,
       ...(data.inquiryFormConfig || {}),
       fields: (data.inquiryFormConfig?.fields && Array.isArray(data.inquiryFormConfig.fields) && data.inquiryFormConfig.fields.length > 0)
-        ? data.inquiryFormConfig.fields
+        ? data.inquiryFormConfig.fields.map((f) => {
+            if (f.id === 'budgetRange' && Array.isArray(f.options)) {
+              const isBad = f.options.some((o) => typeof o === 'string' && (o.includes('â‚¹') || o.includes('\ufffd') || o.includes('?')));
+              if (isBad || !f.options.some((o) => typeof o === 'string' && o.includes('Flexible'))) {
+                return {
+                  ...f,
+                  options: DEFAULT_INQUIRY_FORM_CONFIG.fields.find((df) => df.id === 'budgetRange')?.options || f.options,
+                };
+              }
+            }
+            return f;
+          })
         : DEFAULT_INQUIRY_FORM_CONFIG.fields,
     },
     contentOverrides: data.contentOverrides || {},

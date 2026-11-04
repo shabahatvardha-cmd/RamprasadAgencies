@@ -30,6 +30,45 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
     }
   }, [watch]);
 
+  // Lock background body scroll completely while modal is open (Bulletproof for iOS & Desktop)
+  useEffect(() => {
+    const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalBodyPosition = document.body.style.position;
+    const originalBodyTop = document.body.style.top;
+    const originalBodyLeft = document.body.style.left;
+    const originalBodyRight = document.body.style.right;
+    const originalBodyWidth = document.body.style.width;
+    const originalBodyPaddingRight = document.body.style.paddingRight;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
+    // Prevent horizontal content shift on desktop by preserving scrollbar width
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+
+    return () => {
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.overflow = originalBodyOverflow;
+      document.body.style.position = originalBodyPosition;
+      document.body.style.top = originalBodyTop;
+      document.body.style.left = originalBodyLeft;
+      document.body.style.right = originalBodyRight;
+      document.body.style.width = originalBodyWidth;
+      document.body.style.paddingRight = originalBodyPaddingRight;
+      window.scrollTo(0, scrollY);
+    };
+  }, []);
+
   // Keyboard navigation & escape handling (Without disturbance to modal)
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -63,7 +102,7 @@ export default function WatchModal({ watch, onClose, contactPhone }) {
   };
 
   const rawGender = watch?.gender || getWatchGender(watch);
-  const gender = rawGender === 'Woman' ? 'Women' : rawGender;
+  const gender = rawGender === 'Woman' ? 'Women' : (rawGender || 'Unisex');
   const isOutOfStock = watch.inStock === false;
 
   const outOfStockWaMessage = `Hello Ram Prasad Agencies,
@@ -99,11 +138,13 @@ Thank you!`;
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/70 backdrop-blur-sm animate-fade-in cursor-pointer"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm animate-fade-in cursor-pointer overscroll-contain select-none"
+      style={{ touchAction: 'none' }}
     >
       <div
-        className="relative w-full max-w-2xl lg:max-w-3xl mx-auto rounded-2xl bg-[#FAF7F2] border border-[#DDD5C7] shadow-2xl flex flex-row overflow-hidden max-h-[92vh] sm:max-h-[460px] cursor-default"
+        className="relative w-full max-w-2xl lg:max-w-3xl mx-auto rounded-2xl bg-[#FAF7F2] border border-[#DDD5C7] shadow-2xl flex flex-col sm:flex-row overflow-hidden max-h-[92vh] sm:max-h-[500px] md:max-h-[540px] cursor-default overscroll-contain"
         onClick={(e) => e.stopPropagation()}
+        style={{ touchAction: 'auto' }}
       >
         {/* Close Button */}
         <button
@@ -116,7 +157,7 @@ Thank you!`;
         </button>
 
         {/* Left: Product Image Stage & Multi-Image Gallery */}
-        <div className="w-[38%] sm:w-[40%] bg-gradient-to-b from-[#F7F2E9] to-[#EFE7D8] border-r border-[#E5DEC9] p-2.5 sm:p-4 flex flex-col items-center justify-between relative shrink-0 overflow-hidden">
+        <div className="w-full sm:w-[42%] md:w-[40%] bg-gradient-to-b from-[#F7F2E9] to-[#EFE7D8] border-b sm:border-b-0 sm:border-r border-[#E5DEC9] p-3 sm:p-4 flex flex-col items-center justify-between relative shrink-0 min-h-[220px] sm:min-h-0 overflow-hidden">
           {/* Subtle Ambient Radial Highlight */}
           <div className="absolute inset-0 bg-radial from-white/80 via-transparent to-transparent pointer-events-none" />
 
@@ -147,14 +188,14 @@ Thank you!`;
           {/* Center Image Display with Click to Zoom */}
           <div
             onClick={() => setIsLightboxOpen(true)}
-            className="relative z-0 flex-1 w-full flex flex-col items-center justify-center p-1 min-h-[140px] cursor-zoom-in group/zoomstage"
+            className="relative z-0 flex-1 w-full flex flex-col items-center justify-center p-1 min-h-[140px] sm:min-h-[160px] cursor-zoom-in group/zoomstage"
             title="Click to Zoom & Inspect All Photos"
           >
             <div className="relative">
               <img
                 src={fullImage}
                 alt={watch.name}
-                className={`w-auto h-full max-h-[150px] sm:max-h-[200px] md:max-h-[250px] object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.18)] transition-all duration-300 group-hover/zoomstage:scale-105 ${
+                className={`w-auto h-full max-h-[160px] sm:max-h-[200px] md:max-h-[250px] object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.18)] transition-all duration-300 group-hover/zoomstage:scale-105 ${
                   isOutOfStock ? 'opacity-85' : ''
                 }`}
                 onError={(e) => {
@@ -206,8 +247,11 @@ Thank you!`;
           )}
         </div>
 
-        {/* Right: Specifications & Direct Concierge (Directly in front of watch pic, zero scrolling) */}
-        <div className="w-[62%] sm:w-[60%] p-3 sm:p-4 md:p-5 flex flex-col justify-between overflow-hidden space-y-2 sm:space-y-2.5">
+        {/* Right: Specifications & Direct Concierge */}
+        <div
+          className="w-full sm:w-[58%] md:w-[60%] p-3.5 sm:p-4 md:p-5 flex flex-col justify-between overflow-y-auto space-y-2.5 sm:space-y-3 overscroll-contain"
+          style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+        >
           {/* 1. Header: Brand, Title, Price & Warranty */}
           <div>
             <div className="flex items-center justify-between gap-2 pr-6">
@@ -219,9 +263,21 @@ Thank you!`;
               </span>
             </div>
 
-            <h2 className="font-serif text-sm sm:text-base md:text-lg font-bold text-[#111111] leading-snug mt-0.5 line-clamp-1">
+            <h2 className="font-serif text-sm sm:text-base md:text-lg font-bold text-[#111111] leading-snug mt-0.5 line-clamp-2">
               {watch.name}
             </h2>
+
+            {/* Price Display Row */}
+            <div className="flex items-baseline gap-2 mt-1">
+              <span className="font-serif text-base sm:text-lg font-extrabold text-stone-900">
+                {formattedPrice}
+              </span>
+              {formattedOriginalPrice && (
+                <span className="text-xs font-serif text-stone-400 line-through">
+                  {formattedOriginalPrice}
+                </span>
+              )}
+            </div>
 
             {/* Showroom Status & Warranty Row */}
             <div className="flex items-center justify-between gap-2 mt-1 pb-1.5 border-b border-[#E8E1D5]">
@@ -286,7 +342,7 @@ Thank you!`;
             </div>
           </div>
 
-          {/* 3. Description (Seen cleanly directly in front of watch pic, no scrolling) */}
+          {/* 3. Description */}
           <div className="bg-white/85 rounded-lg p-2 sm:p-2.5 border border-[#E8E1D5] shadow-2xs">
             <span className="text-[8px] sm:text-[8.5px] font-bold uppercase tracking-wider text-[#7C746B] block leading-none mb-1">
               Description & Heritage
@@ -315,7 +371,7 @@ Thank you!`;
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 sm:py-2.5 px-3 rounded-lg text-[10.5px] sm:text-xs uppercase tracking-wider font-bold text-white shadow-md transition-all active:scale-[0.98] ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 sm:py-2.5 px-3 rounded-lg text-[10.5px] sm:text-xs uppercase tracking-wider font-bold text-white shadow-md transition-all active:scale-[0.98] ${
                 !isOutOfStock
                   ? 'bg-[#25D366] hover:bg-[#20ba59] shadow-[#25D366]/20'
                   : 'bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 shadow-amber-600/20'
@@ -327,11 +383,11 @@ Thank you!`;
 
             <a
               href={`tel:${cleanPhone}`}
-              className="inline-flex items-center justify-center gap-1 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-lg text-[10.5px] sm:text-xs font-bold text-[#1A1A1A] bg-white hover:bg-[#F2ECE1] border border-[#DDD5C7] shadow-2xs transition-all active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-1 py-2.5 sm:py-2.5 px-3 rounded-lg text-[10.5px] sm:text-xs font-bold text-[#1A1A1A] bg-white hover:bg-[#F2ECE1] border border-[#DDD5C7] shadow-2xs transition-all active:scale-[0.98] shrink-0"
               title="Call Showroom"
             >
               <Phone className="w-3 h-3 text-brass-700" />
-              <span className="hidden sm:inline">Call Store</span>
+              <span>Call Store</span>
             </a>
           </div>
         </div>
@@ -342,7 +398,8 @@ Thank you!`;
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-[100] flex flex-col justify-between p-3 sm:p-6 bg-black/95 backdrop-blur-xl animate-fade-in text-white select-none cursor-default"
+          className="fixed inset-0 z-[100] flex flex-col justify-between p-3 sm:p-6 bg-black/95 backdrop-blur-xl animate-fade-in text-white select-none cursor-default overscroll-contain"
+          style={{ touchAction: 'none' }}
           onClick={(e) => {
             e.stopPropagation();
             setIsLightboxOpen(false);

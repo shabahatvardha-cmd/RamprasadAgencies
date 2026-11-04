@@ -118,7 +118,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-20 w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 py-16 sm:py-24 lg:py-28 min-h-[550px] lg:min-h-[640px] flex items-center">
+      <div className="relative z-20 w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 py-16 sm:py-24 lg:py-28 min-h-[460px] sm:min-h-[550px] lg:min-h-[640px] flex items-center">
         {/* Top Content Block: Luxury Editorial Showcase Card (Invisible Card Border & Frame) */}
         <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl">
           <div className="p-0 sm:p-2 lg:p-4 bg-transparent border-0 border-transparent shadow-none relative">
@@ -148,7 +148,7 @@ export default function HeroBanner() {
               </div>
 
               {/* Bold Clean Headline */}
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.15] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 {getOverride
                   ? getOverride(
                       'hero_headline',
@@ -202,10 +202,10 @@ export default function HeroBanner() {
         <>
           <button
             onClick={() => setCurrentSlideIndex((prev) => (prev - 1 + slides.length) % slides.length)}
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/70 text-white border border-white/25 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 active:scale-95 group cursor-pointer"
+            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/25 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 active:scale-95 group cursor-pointer"
             aria-label="Previous Slide"
           >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:-translate-x-0.5" />
+            <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 transition-transform group-hover:-translate-x-0.5" />
           </button>
 
           <button
@@ -213,7 +213,7 @@ export default function HeroBanner() {
             className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/70 text-white border border-white/25 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all hover:scale-110 active:scale-95 group cursor-pointer"
             aria-label="Next Slide"
           >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-0.5" />
+            <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-0.5" />
           </button>
         </>
       )}

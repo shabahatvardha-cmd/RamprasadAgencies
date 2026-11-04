@@ -62,6 +62,7 @@ function App() {
   const [isLeadsModalOpen, setIsLeadsModalOpen] = useState(false);
   const [isInventoryModalOpen, setIsInventoryModalOpen] = useState(false);
   const [newLeadsCount, setNewLeadsCount] = useState(0);
+  const [lastSectionSavedAt, setLastSectionSavedAt] = useState(null);
 
   const [marqueeBrand, setMarqueeBrand] = useState(() => {
     try {
@@ -300,7 +301,8 @@ function App() {
       });
 
       await loadSettings();
-      setActiveModal(null);
+      // Option A: Dialog stays open so user can continue editing without interruption
+      setLastSectionSavedAt(Date.now());
     } catch (err) {
       console.error(err);
       showToast({
@@ -664,6 +666,7 @@ function App() {
         onSaveSection={handleSaveSection}
         showToast={showToast}
         isSaving={isSaving}
+        lastSavedAt={lastSectionSavedAt}
       />
 
       {/* Watch Create / Edit Modal */}

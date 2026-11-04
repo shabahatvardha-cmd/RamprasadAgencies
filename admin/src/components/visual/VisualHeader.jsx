@@ -52,10 +52,10 @@ export default function VisualHeader({
   ];
 
   return (
-    <div id="top" className="relative group/header border-b border-[#E8E1D5]">
+    <div id="top" className="relative z-10 group/header border-b border-[#E8E1D5]">
       {/* Visual Admin Edit Trigger Badge */}
       {isEditMode && (
-        <div className="absolute top-2 right-4 z-50">
+        <div className="absolute top-2 right-4 z-20">
           <button
             onClick={() => onOpenEdit('branding')}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-brass-600 hover:bg-brass-500 text-white shadow-xl hover:scale-105 transition-all border border-white/30 backdrop-blur-md"

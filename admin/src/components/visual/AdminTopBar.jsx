@@ -45,22 +45,6 @@ export default function AdminTopBar({
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
-  const sections = [
-    { label: 'Hero Showcase', href: '#hero' },
-    { label: 'The Maison Portfolio', href: '#brands' },
-    { label: 'Showrooms', href: '#showrooms' },
-    { label: 'Inquiry Form', href: '#inquiry' },
-    { label: 'Footer & VIP', href: '#footer' },
-  ];
-
-  const handleSmoothScroll = (e, href) => {
-    e.preventDefault();
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const handleQuickEdit = (modalType) => {
     setIsQuickMenuOpen(false);
     if (!isEditMode) {
@@ -70,7 +54,7 @@ export default function AdminTopBar({
   };
 
   return (
-    <header className="w-full bg-[#141415]/98 text-white border-b border-brass-600/30 backdrop-blur-xl shadow-md transition-all font-sans">
+    <header className="relative z-50 w-full bg-[#141415]/98 text-white border-b border-brass-600/30 backdrop-blur-xl shadow-md transition-all font-sans">
       {/* Primary Top Bar Row */}
       <div className="w-full px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3">
         {/* Left: Brand & Status */}
@@ -177,7 +161,7 @@ export default function AdminTopBar({
 
             {/* Dropdown Menu */}
             {isQuickMenuOpen && (
-              <div className="absolute right-0 mt-2 w-64 bg-[#1C1C1F] border border-brass-600/40 rounded-2xl shadow-2xl p-2 z-50 text-xs animate-fade-in backdrop-blur-2xl">
+              <div className="absolute right-0 mt-2 w-64 bg-[#1C1C1F] border border-brass-600/40 rounded-2xl shadow-2xl p-2 z-[100] text-xs animate-fade-in backdrop-blur-2xl">
                 <div className="px-3 py-1.5 text-[10px] uppercase font-bold tracking-widest text-brass-400 border-b border-white/10 mb-1">
                   Section Editors
                 </div>
@@ -319,24 +303,6 @@ export default function AdminTopBar({
             </button>
           )}
         </div>
-      </div>
-
-      {/* Quick Section Anchor Jump Bar */}
-      <div className="w-full px-3 sm:px-6 py-1.5 bg-[#18181A] border-t border-white/5 flex items-center gap-2 overflow-x-auto scrollbar-none text-[11px]">
-        <span className="text-[10px] uppercase font-mono tracking-widest text-brass-400 font-bold shrink-0 mr-1 flex items-center gap-1">
-          <Layers className="w-3 h-3" />
-          Jump To:
-        </span>
-        {sections.map((sec) => (
-          <a
-            key={sec.href}
-            href={sec.href}
-            onClick={(e) => handleSmoothScroll(e, sec.href)}
-            className="px-2.5 py-0.5 rounded-full bg-white/5 hover:bg-brass-500/20 hover:text-brass-300 text-[#C7BFB5] shrink-0 transition-colors"
-          >
-            {sec.label}
-          </a>
-        ))}
       </div>
     </header>
   );

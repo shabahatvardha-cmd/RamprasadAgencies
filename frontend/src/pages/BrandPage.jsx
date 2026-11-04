@@ -545,12 +545,12 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
     <div className="w-full min-h-screen bg-[#FAF7F2] text-[#1A1A1A] pb-24">
       {/* 1. Breadcrumb & Back Navigation Bar */}
       <div className="w-full bg-[#F4EFE6] border-b border-[#E5DEC9]">
-        <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 py-3 sm:py-3.5 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2 text-stone-600 font-medium truncate">
-            <Link to="/" className="hover:text-brass-700 transition-colors">
+        <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2.5 sm:py-3.5 flex items-center justify-between gap-2.5 sm:gap-4 text-xs min-w-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-stone-600 font-medium min-w-0 flex-1 overflow-hidden text-[11.5px] sm:text-xs">
+            <Link to="/" className="hover:text-brass-700 transition-colors shrink-0">
               Home
             </Link>
-            <span className="text-stone-400">/</span>
+            <span className="text-stone-400 shrink-0">/</span>
             <Link
               to={`/#brand-${cleanSlug}`}
               onClick={() => {
@@ -558,12 +558,12 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
                   sessionStorage.setItem('rpa_last_viewed_brand', cleanSlug);
                 } catch {}
               }}
-              className="hover:text-brass-700 transition-colors"
+              className="hover:text-brass-700 transition-colors shrink-0"
             >
               Brands
             </Link>
-            <span className="text-stone-400">/</span>
-            <span className="font-bold text-stone-900 truncate">{meta.name}</span>
+            <span className="text-stone-400 shrink-0">/</span>
+            <span className="font-bold text-stone-900 truncate min-w-0">{meta.name}</span>
           </div>
 
           <button
@@ -573,17 +573,19 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
               } catch {}
               navigate(`/#brand-${cleanSlug}`);
             }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-900 hover:bg-brass-700 text-white text-xs font-bold transition-all shadow-sm cursor-pointer shrink-0"
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-stone-900 hover:bg-brass-700 text-white text-[11px] sm:text-xs font-bold transition-all shadow-sm cursor-pointer shrink-0"
+            title="Back to Brands"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Brands</span>
+            <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
+            <span className="hidden sm:inline">Back to Brands</span>
+            <span className="sm:hidden">Brands</span>
           </button>
         </div>
       </div>
 
       {/* 2. Brand Hero Portion: Continuous Moving Campaign Strip (TOP) + Permanent Brand Heritage Overview (BELOW) */}
       <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-5 sm:pt-7 pb-4 space-y-4 sm:space-y-5">
-        {/* A. BROADER, SLOW CONTINUOUS SPECIAL OFFERS & DISCOUNTS STRIP (ABOVE BRAND CARD) */}
+        {/* A. BROADER, SLOW CONTINUOUS OFFERS & DISCOUNTS STRIP (ABOVE BRAND CARD) */}
         {marqueeAds && marqueeAds.length > 0 && (
           <div
             className="relative w-full rounded-2xl overflow-hidden bg-gradient-to-r from-[#FAF7F2] via-[#F4EDE1] to-[#FAF7F2] border border-[#DDD5C7] shadow-sm group/adstrip transition-all"
@@ -595,7 +597,7 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
 
             <div className="flex items-center">
               {/* Left Pinned Luxury Emblem (Warm Champagne & Polished Brass - No Harsh Black) */}
-              <div className="relative shrink-0 z-20 flex items-center bg-gradient-to-r from-[#F5EAD7] via-[#EDE0C8] to-[#E5D2B3] px-3.5 sm:px-5 py-2.5 sm:py-3.5 border-r border-[#D8C6A5] shadow-sm select-none">
+              <div className="relative shrink-0 z-20 flex items-center bg-gradient-to-r from-[#F5EAD7] via-[#EDE0C8] to-[#E5D2B3] px-2.5 sm:px-5 py-2 sm:py-3.5 border-r border-[#D8C6A5] shadow-sm select-none">
                 {/* Ambient Sweeping Pearlescent Glint */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover/adstrip:translate-x-full transition-transform duration-1000 pointer-events-none" />
 
@@ -607,7 +609,7 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600 shadow-2xs" />
                     </span>
                     <span className="text-[9px] sm:text-[10px] font-mono font-extrabold tracking-widest text-[#7C5A1E] uppercase">
-                      EXCLUSIVE PRIVILEGE
+                      EXCLUSIVE
                     </span>
                   </div>
 
@@ -615,7 +617,7 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
                   <div className="flex items-center gap-1.5 mt-0.5">
                     <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-600 fill-rose-600 animate-pulse" />
                     <span className="font-serif font-black text-xs sm:text-sm tracking-wider uppercase text-[#38240D]">
-                      SPECIAL OFFERS
+                      OFFERS
                     </span>
                   </div>
                 </div>
@@ -791,18 +793,18 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
           </div>
 
           {/* Heritage Banner Content */}
-          <div className="relative z-10 p-6 sm:p-10 md:p-12 lg:p-14">
+          <div className="relative z-10 p-4 sm:p-8 md:p-12 lg:p-14">
             <div className="max-w-3xl space-y-3 sm:space-y-4 text-stone-900">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brass-700/10 border border-brass-600/30 text-brass-800 text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-brass-700 animate-pulse" />
                 <span>{meta.country} Horology • Authorized Portfolio</span>
               </div>
 
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-stone-950 tracking-tight">
+              <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-stone-950 tracking-tight">
                 {meta.name}
               </h1>
 
-              <p className="font-serif text-base sm:text-lg md:text-xl text-brass-800 font-bold tracking-wide">
+              <p className="font-serif text-sm sm:text-lg md:text-xl text-brass-800 font-bold tracking-wide">
                 {meta.tagline}
               </p>
 
@@ -838,100 +840,98 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
         </div>
       </div>
 
-      {/* 3. Gender / Category Filter Tabs (Men, Women, Unisex) */}
+      {/* 3. Gender / Category Filter Tabs with Brand Name (Compact & Stylish) */}
       <div
-        className="sticky top-16 sm:top-20 z-30 bg-[#FAF7F2] border-y border-[#D8CEBC] shadow-md py-3.5 sm:py-4 transition-all"
-        style={{ backgroundColor: '#FAF7F2' }}
+        className="sticky top-12 sm:top-14 z-30 bg-[#FAF7F2]/95 backdrop-blur-md border-y border-[#D8CEBC] shadow-sm py-2 sm:py-2.5 transition-all duration-300"
+        style={{ backgroundColor: 'rgba(250, 247, 242, 0.97)' }}
       >
-        <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
-            {/* Gender Filter Buttons */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+        <div className="w-full px-2 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+          <div className="flex items-center justify-between gap-1.5 sm:gap-4 overflow-x-auto scrollbar-none py-0.5">
+            {/* Left: Brand Identity in the bar */}
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 min-w-0">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-md bg-white border border-[#DDD5C7] p-0.5 shrink-0 flex items-center justify-center shadow-2xs">
+                <img
+                  src={brandImage}
+                  alt={meta.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="font-serif text-xs sm:text-sm md:text-base font-black text-stone-950 tracking-tight truncate">
+                {meta.name}
+              </span>
+              <span className="text-[8px] sm:text-[9.5px] font-mono uppercase tracking-wider text-brass-800 font-bold px-1.5 py-0.2 rounded-full bg-brass-100/70 border border-brass-600/20 shrink-0 hidden xs:inline-block">
+                {meta.country}
+              </span>
+            </div>
+
+            {/* Center: Ultra-Compact Luxury Segmented Track */}
+            <div className="inline-flex items-center p-0.5 rounded-full bg-[#EAE3D5]/90 border border-[#DDD5C7] text-[10px] sm:text-xs font-semibold shrink-0">
               <button
                 onClick={() => setSelectedGender('ALL')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${selectedGender === 'ALL'
-                  ? 'bg-stone-900 text-white shadow-md ring-2 ring-stone-900'
-                  : 'bg-[#EDE7DB] text-stone-700 hover:bg-[#E2D9C8] hover:text-stone-900'
-                  }`}
+                className={`flex items-center gap-1 px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer whitespace-nowrap active:scale-95 ${
+                  selectedGender === 'ALL'
+                    ? 'bg-stone-900 text-white font-bold shadow-2xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-white/40'
+                }`}
               >
-                <span>All Watches</span>
-                <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedGender === 'ALL' ? 'bg-amber-400 text-stone-950 font-black' : 'bg-stone-300 text-stone-800'
-                    }`}
-                >
+                <span>All</span>
+                <span className={`text-[9px] ${selectedGender === 'ALL' ? 'text-amber-300 font-bold' : 'text-stone-400 font-medium'}`}>
                   {counts.all}
                 </span>
               </button>
 
               <button
                 onClick={() => setSelectedGender('Men')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${selectedGender === 'Men'
-                  ? 'bg-stone-900 text-white shadow-md ring-2 ring-stone-900'
-                  : 'bg-[#EDE7DB] text-stone-700 hover:bg-[#E2D9C8] hover:text-stone-900'
-                  }`}
+                className={`flex items-center gap-1 px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer whitespace-nowrap active:scale-95 ${
+                  selectedGender === 'Men'
+                    ? 'bg-stone-900 text-white font-bold shadow-2xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-white/40'
+                }`}
               >
-                <span>Men's Watches</span>
-                <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedGender === 'Men' ? 'bg-amber-400 text-stone-950 font-black' : 'bg-stone-300 text-stone-800'
-                    }`}
-                >
+                <span>Men</span>
+                <span className={`text-[9px] ${selectedGender === 'Men' ? 'text-amber-300 font-bold' : 'text-stone-400 font-medium'}`}>
                   {counts.men}
                 </span>
               </button>
 
               <button
                 onClick={() => setSelectedGender('Women')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${selectedGender === 'Women'
-                  ? 'bg-stone-900 text-white shadow-md ring-2 ring-stone-900'
-                  : 'bg-[#EDE7DB] text-stone-700 hover:bg-[#E2D9C8] hover:text-stone-900'
-                  }`}
+                className={`flex items-center gap-1 px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer whitespace-nowrap active:scale-95 ${
+                  selectedGender === 'Women'
+                    ? 'bg-stone-900 text-white font-bold shadow-2xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-white/40'
+                }`}
               >
-                <span>Women's Watches</span>
-                <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedGender === 'Women' ? 'bg-amber-400 text-stone-950 font-black' : 'bg-stone-300 text-stone-800'
-                    }`}
-                >
+                <span>Women</span>
+                <span className={`text-[9px] ${selectedGender === 'Women' ? 'text-amber-300 font-bold' : 'text-stone-400 font-medium'}`}>
                   {counts.women}
                 </span>
               </button>
 
               <button
                 onClick={() => setSelectedGender('Unisex')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${selectedGender === 'Unisex'
-                  ? 'bg-stone-900 text-white shadow-md ring-2 ring-stone-900'
-                  : 'bg-[#EDE7DB] text-stone-700 hover:bg-[#E2D9C8] hover:text-stone-900'
-                  }`}
+                className={`flex items-center gap-1 px-2 sm:px-2.5 py-0.5 rounded-full transition-all cursor-pointer whitespace-nowrap active:scale-95 ${
+                  selectedGender === 'Unisex'
+                    ? 'bg-stone-900 text-white font-bold shadow-2xs'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-white/40'
+                }`}
               >
-                <span>Unisex Timepieces</span>
-                <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedGender === 'Unisex' ? 'bg-amber-400 text-stone-950 font-black' : 'bg-stone-300 text-stone-800'
-                    }`}
-                >
+                <span>Unisex</span>
+                <span className={`text-[9px] ${selectedGender === 'Unisex' ? 'text-amber-300 font-bold' : 'text-stone-400 font-medium'}`}>
                   {counts.unisex}
                 </span>
               </button>
             </div>
 
-            {/* Quick Live Search within Brand & Price Sort */}
-            <div className="flex items-center gap-2.5 shrink-0">
-              <div className="relative w-44 sm:w-56">
-                <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-stone-500" />
-                <input
-                  type="text"
-                  placeholder={`Search ${meta.name}...`}
-                  value={searchInBrand}
-                  onChange={(e) => setSearchInBrand(e.target.value)}
-                  className="w-full bg-[#EDE7DB] border border-[#DDD5C7] focus:border-brass-600 rounded-xl pl-8 pr-3 py-1.5 text-xs text-stone-900 placeholder-stone-500 focus:outline-none"
-                />
-              </div>
-
+            {/* Right: Compact Sort */}
+            <div className="flex items-center gap-1.5 shrink-0">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-[#EDE7DB] border border-[#DDD5C7] rounded-xl px-2.5 py-1.5 text-xs font-semibold text-stone-800 focus:outline-none cursor-pointer"
+                className="bg-[#EAE3D5]/80 border border-[#DDD5C7] rounded-lg px-1.5 sm:px-2 py-0.5 text-[9.5px] sm:text-xs font-semibold text-stone-800 focus:outline-none cursor-pointer"
               >
-                <option value="featured">Curated Drops</option>
-                <option value="name">Model Name (A – Z)</option>
+                <option value="featured">Featured</option>
+                <option value="name">A – Z</option>
               </select>
             </div>
           </div>
@@ -939,22 +939,13 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
       </div>
 
       {/* 4. Active Selection Feedback Bar */}
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-5 pb-2">
+      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pt-4 pb-1">
         <div className="flex items-center justify-between text-xs text-stone-600">
           <div>
             Showing <strong className="text-stone-900">{displayedWatches.length}</strong>{' '}
             {selectedGender === 'ALL' ? 'total' : selectedGender.toLowerCase()} timepieces for{' '}
             <strong className="text-stone-900">{meta.name}</strong>
           </div>
-
-          {searchInBrand && (
-            <button
-              onClick={() => setSearchInBrand('')}
-              className="text-brass-700 hover:underline font-bold text-xs"
-            >
-              Clear search filter
-            </button>
-          )}
         </div>
       </div>
 
@@ -994,7 +985,7 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 gap-2.5 sm:gap-3.5 md:gap-4.5 lg:gap-5">
             {displayedWatches.map((watch) => (
               <WatchCard
                 key={watch._id || watch.id}

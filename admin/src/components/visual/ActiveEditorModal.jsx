@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Sparkles } from 'lucide-react';
+import { X, Sparkles, CheckCircle2 } from 'lucide-react';
 import HeroSlidesEditor from '../HeroSlidesEditor';
 import FlashSaleEditor from '../FlashSaleEditor';
 import LifestyleEditor from '../LifestyleEditor';
@@ -16,6 +16,7 @@ export default function ActiveEditorModal({
   onSaveSection,
   showToast,
   isSaving,
+  lastSavedAt,
 }) {
   if (!activeModal) return null;
 
@@ -67,12 +68,24 @@ export default function ActiveEditorModal({
             </div>
           </div>
 
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#DDD5C7] flex items-center justify-center text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#F0EBE1] transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2.5">
+            {/* Option A: Saved Successfully Badge */}
+            {lastSavedAt && (Date.now() - lastSavedAt < 10000) && (
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 shadow-2xs animate-fade-in">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Saved Successfully ✓</span>
+              </span>
+            )}
+
+            <button
+              onClick={onClose}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#DDD5C7] text-xs font-semibold text-[#5A524A] hover:text-[#1A1A1A] hover:bg-[#F0EBE1] transition-colors cursor-pointer"
+              title="Close Dialog"
+            >
+              <X className="w-3.5 h-3.5" />
+              <span>Close</span>
+            </button>
+          </div>
         </div>
 
         {/* Modal Content Scroll Area */}
