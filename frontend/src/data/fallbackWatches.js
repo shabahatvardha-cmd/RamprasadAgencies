@@ -1599,7 +1599,7 @@ export const fallbackWatches = [
   {
     "id": "omega-14-de-ville-tresor-power-reserve",
     "_id": "omega-14-de-ville-tresor-power-reserve",
-    "name": "De Ville TrÃ©sor Power Reserve (435.13.40.21.02.001)",
+    "name": "De Ville Trésor Power Reserve (435.13.40.21.02.001)",
     "brand": "Omega",
     "collection": "De Ville",
     "category": "Slim Dress",
@@ -3092,7 +3092,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-10-30T07:07:03.272Z",
     "hidePrice": true
   },
@@ -3122,7 +3122,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3151,7 +3151,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3180,7 +3180,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3209,7 +3209,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3238,7 +3238,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3267,7 +3267,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3296,7 +3296,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3325,7 +3325,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3354,7 +3354,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3383,7 +3383,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3412,7 +3412,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3441,7 +3441,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3470,7 +3470,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3499,7 +3499,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3528,7 +3528,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3557,7 +3557,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3586,7 +3586,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3615,7 +3615,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3644,7 +3644,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3673,7 +3673,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3702,7 +3702,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3731,7 +3731,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.538Z",
     "hidePrice": true
   },
@@ -3761,7 +3761,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3790,7 +3790,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.557Z",
     "hidePrice": true
   },
@@ -3820,7 +3820,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.586Z",
     "hidePrice": true
   },
@@ -3850,7 +3850,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.620Z",
     "hidePrice": true
   },
@@ -3880,7 +3880,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3909,7 +3909,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.649Z",
     "hidePrice": true
   },
@@ -3939,7 +3939,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3968,7 +3968,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -3997,7 +3997,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4026,7 +4026,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4055,7 +4055,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4084,7 +4084,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.686Z",
     "hidePrice": true
   },
@@ -4114,7 +4114,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.719Z",
     "hidePrice": true
   },
@@ -4144,7 +4144,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4173,7 +4173,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4202,7 +4202,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4231,7 +4231,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.756Z",
     "hidePrice": true
   },
@@ -4261,7 +4261,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4290,7 +4290,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4319,7 +4319,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4348,7 +4348,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4377,7 +4377,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4406,7 +4406,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4435,7 +4435,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4464,7 +4464,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4493,7 +4493,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4522,7 +4522,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4551,7 +4551,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4580,7 +4580,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4609,7 +4609,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4638,7 +4638,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4667,7 +4667,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4696,7 +4696,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4725,7 +4725,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4754,7 +4754,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4783,7 +4783,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4812,7 +4812,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4841,7 +4841,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4870,7 +4870,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4899,7 +4899,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4928,7 +4928,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -4957,7 +4957,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:41:03.868Z",
     "hidePrice": true
   },
@@ -4987,7 +4987,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5016,7 +5016,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5045,7 +5045,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5074,7 +5074,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5103,7 +5103,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5132,7 +5132,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5161,7 +5161,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5190,7 +5190,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5219,7 +5219,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5248,7 +5248,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5277,7 +5277,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5306,7 +5306,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5335,7 +5335,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5364,7 +5364,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5393,7 +5393,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "hidePrice": true
   },
   {
@@ -5415,7 +5415,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5438,7 +5438,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5461,7 +5461,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-03",
     "updatedAt": "2026-11-02T17:00:29.375Z",
     "inStock": true,
@@ -5486,7 +5486,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5509,7 +5509,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5532,7 +5532,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5555,7 +5555,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5578,7 +5578,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5601,7 +5601,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5624,7 +5624,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5647,7 +5647,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-11",
     "updatedAt": "2026-11-02T17:00:29.394Z",
     "inStock": true,
@@ -5672,7 +5672,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-12",
     "updatedAt": "2026-11-02T17:00:29.420Z",
     "inStock": true,
@@ -5697,7 +5697,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5720,7 +5720,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-14",
     "updatedAt": "2026-11-02T17:00:29.448Z",
     "inStock": true,
@@ -5745,7 +5745,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5768,7 +5768,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5791,7 +5791,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5814,7 +5814,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5837,7 +5837,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   },
@@ -5860,7 +5860,7 @@ export const fallbackWatches = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock â€¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "inStock": true,
     "hidePrice": true
   }

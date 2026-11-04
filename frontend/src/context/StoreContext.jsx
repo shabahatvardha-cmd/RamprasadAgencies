@@ -1,8 +1,40 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { fetchSettings, updateSettings, fetchWatches } from '../utils/api';
 
-const LOCAL_STORAGE_KEY = 'fossil_storefront_state_v2';
+const LOCAL_STORAGE_KEY = 'rpa_storefront_state_v6';
 const BROADCAST_CHANNEL_NAME = 'fossil_store_realtime_sync';
+
+export const cleanMojibake = (str) => {
+  if (typeof str !== 'string') return str;
+  return str
+    .replace(/(?:\uD83C\uDDEE\uD83C\uDDF3|\u00F0\u0178\u2021\u00AE\u00F0\u0178\u2021\u00B3|ðŸ‡®ðŸ‡³|dY[\s\S]?rdY[\s\S]?3|\?{1,4}\s*(?=INDIAN WATCH HERITAGE)|[^A-Za-z0-9\s:•–,\-&]+(?=\s*INDIAN WATCH HERITAGE))\s*/gi, '')
+    .replace(/(?:\u26A1|\u00E2\u0161\u00A1|âš¡|\?{1,2}\s*(?=FLASH SALE))/gi, '\u26A1 ')
+    .replace(/(?:\u00E2\u20AC\u00A2|â€¢|\uFFFD\?\uFFFD|\b\?\b\s*(?=Use Code)|(?<=\w)\s*\?\s*(?=\w))/g, ' \u2022 ')
+    .replace(/(?:\u00E2\u20AC\u201C|â€“)/g, ' \u2013 ')
+    .replace(/(?:\u00E2\u20AC\u0153|â€œ|\?o)/g, '\u201C')
+    .replace(/(?:\u00E2\u20AC\u009D|â€\x9D|\?\?)/g, '\u201D')
+    .replace(/(?:\u00E2\u20AC\u2122|â€™|\?T)/g, '\u2019')
+    .replace(/(?:\u00E2\u201A\u00B9|â‚¹)/g, '\u20B9')
+    .replace(/guilloch(?:Ã©|Ac)/gi, 'guilloch\u00E9')
+    .replace(/caf(?:Ã©|Ac)/gi, 'caf\u00E9')
+    .replace(/Tr(?:Ã©|Ac)sor/gi, 'Tr\u00E9sor')
+    .replace(/[ ]{2,}/g, ' ')
+    .trim();
+};
+
+export const deepCleanMojibake = (obj) => {
+  if (obj === null || obj === undefined) return obj;
+  if (typeof obj === 'string') return cleanMojibake(obj);
+  if (Array.isArray(obj)) return obj.map(deepCleanMojibake);
+  if (typeof obj === 'object') {
+    const cleaned = {};
+    for (const key of Object.keys(obj)) {
+      cleaned[key] = deepCleanMojibake(obj[key]);
+    }
+    return cleaned;
+  }
+  return obj;
+};
 
 // ============================================================================
 // CURATED VINTAGE-INSPIRED DEFAULT DATASET (Fossil Luxury Lifestyle Aesthetic)
@@ -28,7 +60,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       tagline: 'Swiss Horology & Automatic Heritage',
       address: 'Baldev Plaza, Main Market, Golghar, Gorakhpur - 273001',
       landmark: 'Opposite Town Hall / Commercial Center',
-      hours: '10:30 AM â€“ 9:00 PM (All 7 Days)',
+      hours: '10:30 AM \u2013 9:00 PM (All 7 Days)',
       image: '/images/showrooms/baldev-plaza.webp',
       mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
@@ -46,7 +78,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       tagline: 'Contemporary & Everyday Luxury Timepieces',
       address: 'Shop No. 1, JalKal Building, Golghar, Gorakhpur - 273001',
       landmark: 'Near JalKal Compound, Main Golghar Market',
-      hours: '10:30 AM â€“ 9:00 PM (All 7 Days)',
+      hours: '10:30 AM \u2013 9:00 PM (All 7 Days)',
       image: '/images/showrooms/jalkal-building.webp',
       mapQuery: 'JalKal+Building+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
@@ -65,8 +97,8 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     isActive: true,
     speed: 'normal',
     messages: [
-      'ðŸ‡®ðŸ‡³ INDIAN WATCH HERITAGE: Complete Collections for Titan, Titan Raga, HMT, Fastrack & Sonata Available at Golghar',
-      'âš¡ FLASH SALE: Extra 15% Off Swiss, Japanese & Indian Mechanicals â€¢ Use Code: VINTAGE15',
+      'INDIAN WATCH HERITAGE: Complete Collections for Titan, Titan Raga, HMT, Fastrack & Sonata Available at Golghar',
+      '\u26A1 FLASH SALE: Extra 15% Off Swiss, Japanese & Indian Mechanicals \u2022 Use Code: VINTAGE15',
       'Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers',
       'Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty',
       'Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms',
@@ -121,7 +153,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         id: 'hero-3',
         badge: 'JAPANESE CRAFTSMANSHIP',
         headline: 'Seiko Presage Automatics',
-        subheadline: 'Exquisite radial sunburst guillochÃ© dials crafted with authentic in-house mechanical calibers.',
+        subheadline: 'Exquisite radial sunburst guilloch\u00E9 dials crafted with authentic in-house mechanical calibers.',
         ctaPrimary: 'Explore Maisons',
         ctaPrimaryLink: '#brands',
         ctaSecondary: 'View Showrooms',
@@ -132,7 +164,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         id: 'hero-4',
         badge: 'TITAN COLLECTION',
         headline: 'Titan Edge & Regalia Heritage',
-        subheadline: 'Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guillochÃ© timepieces by the Tata legacy.',
+        subheadline: 'Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guilloch\u00E9 timepieces by the Tata legacy.',
         ctaPrimary: 'Explore Titan',
         ctaPrimaryLink: '#brands',
         ctaSecondary: 'View Showrooms',
@@ -199,7 +231,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         caseSize: '40.5mm Polished Steel',
         strap: 'Solid Multi-Link Stainless Steel Bracelet',
         inStock: true,
-        description: 'Shimmering radial guillochÃ© dial with heat-blued hands inspired by cocktail culture, date window and exhibition back.',
+        description: 'Shimmering radial guilloch\u00E9 dial with heat-blued hands inspired by cocktail culture, date window and exhibition back.',
       },
       {
         id: 'na-3',
@@ -216,7 +248,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         caseSize: '41mm Stainless Steel',
         strap: 'Integrated Stainless Steel Bracelet',
         inStock: true,
-        description: 'Horizontal teak concept dial inspired by wooden decks of luxury yachts, date window at 6 oâ€™clock, and certified METAS anti-magnetic precision.',
+        description: 'Horizontal teak concept dial inspired by wooden decks of luxury yachts, date window at 6 o\'clock, and certified METAS anti-magnetic precision.',
       },
       {
         id: 'na-4',
@@ -379,7 +411,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       },
       {
         id: 'icon-2',
-        name: 'Seiko Presage Craftsmanship GuillochÃ© Automatic',
+        name: 'Seiko Presage Craftsmanship Guilloch\u00E9 Automatic',
         brand: 'Seiko Presage',
         category: 'Automatic',
         price: null,
@@ -392,7 +424,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         caseSize: '40.5mm Polished Steel',
         strap: 'Multi-Link Fine Stainless Steel Bracelet',
         inStock: true,
-        description: 'Radial guillochÃ© dial with blued leaf hands, date complication at 3 o\'clock, and exhibition caseback displaying the decorated Japanese movement.',
+        description: 'Radial guilloch\u00E9 dial with blued leaf hands, date complication at 3 o\'clock, and exhibition caseback displaying the decorated Japanese movement.',
       },
       {
         id: 'icon-3',
@@ -409,7 +441,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         caseSize: '41mm Polished Steel',
         strap: 'Perforated Black Racing Calfskin Strap',
         inStock: true,
-        description: 'Vintage 1960s cafÃ©-racer heritage chronograph featuring an ice-blue bow-tie "Zorro" dial, contrasting black squircle subdials, and in-house COSC B01 calibre.',
+        description: 'Vintage 1960s caf\u00E9-racer heritage chronograph featuring an ice-blue bow-tie "Zorro" dial, contrasting black squircle subdials, and in-house COSC B01 calibre.',
       },
       {
         id: 'icon-4',
@@ -480,7 +512,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
         caseSize: '40.5mm Polished Steel',
         strap: 'Fine Multi-Link Stainless Steel',
         inStock: true,
-        description: 'Flash Deal: Radial guillochÃ© dial with blued hands and date window at special showroom pricing.',
+        description: 'Flash Deal: Radial guilloch\u00E9 dial with blued hands and date window at special showroom pricing.',
       },
       {
         id: 'fd-3',
@@ -653,7 +685,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       title: 'Indian Heritage & Brands',
       subtitle: 'Titan Edge, Octane, HMT Mechanicals, Fastrack & Sonata',
       itemCount: '45+ Timepieces',
-      tag: 'ðŸ‡®ðŸ‡³ Proud Indian Horology',
+      tag: '🇮🇳 Proud Indian Horology',
       image: '/images/watches/titan/12.webp',
       filterKey: 'Indian Brands',
     },
@@ -697,9 +729,9 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
 
   // 6. BACKGROUND WATCH ADVERTISEMENT SHOWCASE (SIGNATURE EDITORIAL)
   editorialAd: {
-    badge: 'SWISS HOROLOGY MASTERPIECE â€¢ GORAKHPUR FLAGSHIPS',
+    badge: 'SWISS HOROLOGY MASTERPIECE \u2022 GORAKHPUR FLAGSHIPS',
     title: 'The Heritage of Swiss Master Chronometer Precision',
-    quote: 'â€œA fine mechanical watch doesnâ€™t just count hours. It preserves generations of precision engineering and personal triumphs.â€',
+    quote: '\u201CA fine mechanical watch doesn\u2019t just count hours. It preserves generations of precision engineering and personal triumphs.\u201D',
     description: 'Ram Prasad Agencies is Eastern UP\'s authorized destination for world-renowned horological houses. Every timepiece across our Baldev Plaza and JalKal Building showrooms is 100% authentic, accompanied by official international stamped warranty cards, tamper-proof serial numbers, and lifetime battery and ultrasonic bracelet sizing support.',
     caliber: 'Omega Co-Axial Master Chronometer Calibre 3861 (50-Hour Reserve)',
     material: '316L Stainless Steel with Hesalite & Sapphire Crystal',
@@ -971,7 +1003,7 @@ export const sanitizeStoreData = (data) => {
       ...DEFAULT_VINTAGE_STORE_DATA.announcements,
       ...(data.announcements || {}),
       messages: (data.announcements?.messages && data.announcements.messages.length > 0)
-        ? data.announcements.messages
+        ? data.announcements.messages.map(cleanMojibake)
         : DEFAULT_VINTAGE_STORE_DATA.announcements.messages,
     },
     flashSale: {
@@ -1066,14 +1098,14 @@ export const sanitizeStoreData = (data) => {
 
   // If we cleaned any offender imagery or updated version, persist sanitized data
   try {
-    if (typeof window !== 'undefined' && shouldResetImagery) {
+    if (typeof window !== 'undefined') {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(sanitized));
     }
   } catch {
     // ignore storage quota errors
   }
 
-  return sanitized;
+  return deepCleanMojibake(sanitized);
 };
 
 // ============================================================================
@@ -1084,15 +1116,20 @@ export const StoreContext = createContext(null);
 export function StoreProvider({ children }) {
   const [storeData, setStoreData] = useState(() => {
     try {
+      if (typeof window !== 'undefined') {
+        ['fossil_storefront_state', 'fossil_storefront_state_v1', 'fossil_storefront_state_v2', 'fossil_storefront_state_v3', 'fossil_storefront_state_v4', 'rpa_storefront_state_v5'].forEach((k) => {
+          try { localStorage.removeItem(k); } catch {}
+        });
+      }
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        return sanitizeStoreData(parsed);
+        return deepCleanMojibake(sanitizeStoreData(parsed));
       }
     } catch (e) {
       console.warn('LocalStorage read error:', e);
     }
-    return DEFAULT_VINTAGE_STORE_DATA;
+    return deepCleanMojibake(DEFAULT_VINTAGE_STORE_DATA);
   });
 
   const [lastSyncTime, setLastSyncTime] = useState(Date.now());
@@ -1195,7 +1232,7 @@ export function StoreProvider({ children }) {
                 ...merged.hero,
                 slides: settings.heroSlides.map((s, idx) => ({
                   id: s.id || `slide-${idx}`,
-                  badge: s.badge || 'EST. 1984 â€¢ VINTAGE HERITAGE',
+                  badge: s.badge || 'EST. 1984 \u2022 VINTAGE HERITAGE',
                   headline: s.headline || s.title || 'Vintage Timepiece Showcase',
                   subheadline: s.subheadline || s.subtitle || '',
                   ctaPrimary: s.ctaPrimary || 'Shop The Capsule',

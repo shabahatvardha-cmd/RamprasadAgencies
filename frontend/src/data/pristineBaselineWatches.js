@@ -1,4 +1,4 @@
-﻿// Permanent Untouched Pristine Baseline Catalog (240 Timepieces)
+// Permanent Untouched Pristine Baseline Catalog (240 Timepieces)
 // NEVER overwrite this file during user edits or runtime changes.
 export const PRISTINE_BASELINE_WATCHES = [
   {
@@ -1489,7 +1489,7 @@ export const PRISTINE_BASELINE_WATCHES = [
   {
     "id": "omega-14-de-ville-tresor-power-reserve",
     "_id": "omega-14-de-ville-tresor-power-reserve",
-    "name": "De Ville TrÃƒÂ©sor Power Reserve (435.13.40.21.02.001)",
+    "name": "De Ville Trésor Power Reserve (435.13.40.21.02.001)",
     "brand": "Omega",
     "collection": "De Ville",
     "category": "Slim Dress",
@@ -2878,7 +2878,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-10-30T07:07:03.272Z"
   },
   {
@@ -2907,7 +2907,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-03-ecodrive-calendrier",
@@ -2935,7 +2935,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-04-corso-ecodrive",
@@ -2963,7 +2963,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-05-promaster-mechanical-diver",
@@ -2991,7 +2991,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-06-radiocontrolled-world-chrono",
@@ -3019,7 +3019,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-07-tsuyosa-yellow",
@@ -3047,7 +3047,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-08-promaster-aqualand",
@@ -3075,7 +3075,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-09-axiom-ecodrive",
@@ -3103,7 +3103,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-10-series-8-mechanical",
@@ -3131,7 +3131,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-11-ecodrive-chronograph",
@@ -3159,7 +3159,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-12-ecodrive-ladies-diamond",
@@ -3187,7 +3187,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-13-promaster-skyhawk-at",
@@ -3215,7 +3215,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-14-ecodrive-titanium",
@@ -3243,7 +3243,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-15-tsuyosa-green",
@@ -3271,7 +3271,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-16-ecodrive-one",
@@ -3299,7 +3299,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-17-calendrier-multifunction",
@@ -3327,7 +3327,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-18-promaster-tough",
@@ -3355,7 +3355,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-19-silhouette-crystal",
@@ -3383,7 +3383,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "citizen-20-promaster-ecodrive-gmt",
@@ -3411,7 +3411,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "3-Year Citizen Official International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Citizen Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-01-neon-disco",
@@ -3439,7 +3439,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-02-reflex-vox-smartwatch",
@@ -3467,7 +3467,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-03-edge-metallic",
@@ -3495,7 +3495,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.538Z"
   },
   {
@@ -3524,7 +3524,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-05-economy-casual",
@@ -3552,7 +3552,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.557Z"
   },
   {
@@ -3581,7 +3581,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.586Z"
   },
   {
@@ -3610,7 +3610,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.620Z"
   },
   {
@@ -3639,7 +3639,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-09-stunners-party-watch",
@@ -3667,7 +3667,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.649Z"
   },
   {
@@ -3696,7 +3696,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-11-occupational-casual",
@@ -3724,7 +3724,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-12-reflex-play-smartwatch",
@@ -3752,7 +3752,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Fastrack Smartwatch Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-13-work-casual-steel",
@@ -3780,7 +3780,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-14-un-form-asymmetric",
@@ -3808,7 +3808,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-15-next-gen-digital",
@@ -3836,7 +3836,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.686Z"
   },
   {
@@ -3865,7 +3865,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.719Z"
   },
   {
@@ -3894,7 +3894,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-18-duo-couple-set",
@@ -3922,7 +3922,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-19-fastfit-sport",
@@ -3950,7 +3950,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fastrack-20-gradient-chic",
@@ -3978,7 +3978,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fastrack International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fastrack Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:17:53.756Z"
   },
   {
@@ -4007,7 +4007,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-02-classic-formal",
@@ -4035,7 +4035,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-03-superfibre-sports",
@@ -4063,7 +4063,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-04-yuva-digital",
@@ -4091,7 +4091,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-05-essentials-steel",
@@ -4119,7 +4119,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-06-gold-wedding-series",
@@ -4147,7 +4147,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-07-stilo-womens-gold",
@@ -4175,7 +4175,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-08-activa-fitness",
@@ -4203,7 +4203,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-09-sleek-metal",
@@ -4231,7 +4231,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-10-digital-alarm-watch",
@@ -4259,7 +4259,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-11-fibre-youth",
@@ -4287,7 +4287,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-12-sleek-leather",
@@ -4315,7 +4315,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-13-poze-rose-gold",
@@ -4343,7 +4343,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-14-wedding-couple-set",
@@ -4371,7 +4371,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-15-gold-dial-classic",
@@ -4399,7 +4399,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-16-gold-chic-women",
@@ -4427,7 +4427,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-17-superfibre-ocean",
@@ -4455,7 +4455,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-18-studded-party-watch",
@@ -4483,7 +4483,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-19-essentials-roman",
@@ -4511,7 +4511,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "sonata-20-minimalist-black",
@@ -4539,7 +4539,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "1-Year Tata Official Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Sonata Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-01-neutra-chronograph",
@@ -4567,7 +4567,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-02-machine-chronograph",
@@ -4595,7 +4595,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-03-everett-three-hand",
@@ -4623,7 +4623,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-04-townsman-automatic",
@@ -4651,7 +4651,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-05-raquel-three-hand",
@@ -4679,7 +4679,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "updatedAt": "2026-11-02T17:41:03.868Z"
   },
   {
@@ -4708,7 +4708,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-07-minimalist-three-hand",
@@ -4736,7 +4736,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-08-grant-chronograph",
@@ -4764,7 +4764,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-09-fossil-blue-diver",
@@ -4792,7 +4792,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-10-carraway-tonneau",
@@ -4820,7 +4820,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-11-bronson-chronograph",
@@ -4848,7 +4848,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-12-heritage-automatic",
@@ -4876,7 +4876,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-13-scarlette-mini",
@@ -4904,7 +4904,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-14-sport-tourer",
@@ -4932,7 +4932,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-15-harwell-three-hand",
@@ -4960,7 +4960,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-16-nate-chronograph",
@@ -4988,7 +4988,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-17-fb-01-diver",
@@ -5016,7 +5016,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-18-jacqueline-three-hand",
@@ -5044,7 +5044,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-19-gen-6-smartwatch",
@@ -5072,7 +5072,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "fossil-20-townsman-chronograph",
@@ -5100,7 +5100,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "2-Year Fossil International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Fossil Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-01",
@@ -5121,7 +5121,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-02",
@@ -5142,7 +5142,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-03",
@@ -5163,7 +5163,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-03",
     "updatedAt": "2026-11-02T17:00:29.375Z"
   },
@@ -5186,7 +5186,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-05",
@@ -5207,7 +5207,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-06",
@@ -5228,7 +5228,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-07",
@@ -5249,7 +5249,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-08",
@@ -5270,7 +5270,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-09",
@@ -5291,7 +5291,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-10",
@@ -5312,7 +5312,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-11",
@@ -5322,7 +5322,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "collection": "Professional",
     "movement": "Thermo-Compensated Quartz",
     "dialColor": "Black & Blue",
-    "caseMaterial": "BreitlightÂ®",
+    "caseMaterial": "Breitlight",
     "price": null,
     "originalPrice": null,
     "image": "/images/watches/breitling/11.webp",
@@ -5333,7 +5333,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-11",
     "updatedAt": "2026-11-02T17:00:29.394Z"
   },
@@ -5356,7 +5356,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-12",
     "updatedAt": "2026-11-02T17:00:29.420Z"
   },
@@ -5379,7 +5379,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-14",
@@ -5400,7 +5400,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty",
+    "officialStock": "Official Authorized Stock • Stamped Warranty",
     "_id": "breitling-14",
     "updatedAt": "2026-11-02T17:00:29.448Z"
   },
@@ -5423,7 +5423,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-16",
@@ -5444,7 +5444,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-17",
@@ -5465,7 +5465,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-18",
@@ -5486,7 +5486,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-19",
@@ -5507,7 +5507,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   },
   {
     "id": "breitling-20",
@@ -5528,7 +5528,7 @@ export const PRISTINE_BASELINE_WATCHES = [
     "isAvailable": true,
     "warranty": "5-Year Breitling International Warranty",
     "authorizedRetailer": "Ram Prasad & Sons Authorized Breitling Retailer",
-    "officialStock": "Official Authorized Stock Ã¢â‚¬Â¢ Stamped Warranty"
+    "officialStock": "Official Authorized Stock • Stamped Warranty"
   }
 ];
 

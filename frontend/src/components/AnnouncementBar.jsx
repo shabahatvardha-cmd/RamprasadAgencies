@@ -10,10 +10,21 @@ export default function AnnouncementBar() {
   const baseMessages = announcements.messages && announcements.messages.length > 0
     ? announcements.messages
     : [
-        '⚡ FLASH SALE: Extra 15% Off Curated Swiss & Japanese Big Brand Automatics • Use Code: VINTAGE15',
+        '\u26A1 FLASH SALE: Extra 15% Off Curated Swiss & Japanese Big Brand Automatics \u2022 Use Code: VINTAGE15',
         'Authorized Specialists for Tissot, Seiko, Rado, Citizen, Fossil & Swiss Calibers in Gorakhpur',
       ];
-  const messages = overrideTicker ? [overrideTicker, ...baseMessages] : baseMessages;
+  const cleanMessage = (msg) => {
+    if (!msg || typeof msg !== 'string') return msg;
+    return msg
+      .replace(/(?:\uD83C\uDDEE\uD83C\uDDF3|\u00F0\u0178\u2021\u00AE\u00F0\u0178\u2021\u00B3|ðŸ‡®ðŸ‡³|dY[\s\S]?rdY[\s\S]?3|\?{1,4}\s*(?=INDIAN WATCH HERITAGE)|[^A-Za-z0-9\s:•–,\-&]+(?=\s*INDIAN WATCH HERITAGE))\s*/gi, '')
+      .replace(/(?:\u26A1|\u00E2\u0161\u00A1|âš¡|\?{1,2}\s*(?=FLASH SALE))/gi, '\u26A1 ')
+      .replace(/(?:\u00E2\u20AC\u00A2|â€¢|\uFFFD\?\uFFFD|\b\?\b\s*(?=Use Code)|(?<=\w)\s*\?\s*(?=\w))/g, ' \u2022 ')
+      .replace(/(?:\u00E2\u20AC\u201C|â€“)/g, ' \u2013 ')
+      .replace(/(?:\u00E2\u201A\u00B9|â‚¹)/g, '\u20B9')
+      .replace(/[ ]{2,}/g, ' ')
+      .trim();
+  };
+  const messages = (overrideTicker ? [overrideTicker, ...baseMessages] : baseMessages).map(cleanMessage);
 
   const contactPhone = storeData.contactPhone || '+91 98765 43210';
   const cleanPhone = contactPhone.replace(/[^0-9]/g, '');

@@ -56,7 +56,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     isActive: true,
     speed: 'normal',
     messages: [
-      'âš¡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics â€¢ Use Code: VINTAGE15',
+      '⚡ FLASH SALE: Extra 15% Off Swiss & Japanese Automatics • Use Code: VINTAGE15',
       'Authorized Luxury Specialist for Tissot, Seiko, Titan, HMT, Citizen, Fossil & Swiss Calibers',
       'Direct Imports for Omega, Tissot & Breitling with Stamped International Warranty',
       'Complimentary Watch Bracelet Sizing & Battery Health Check at Golghar Showrooms',
@@ -954,7 +954,7 @@ export const sanitizeStoreData = (data) => {
       ...DEFAULT_VINTAGE_STORE_DATA.announcements,
       ...(data.announcements || {}),
       messages: (data.announcements?.messages && data.announcements.messages.length > 0)
-        ? data.announcements.messages
+        ? data.announcements.messages.map((m) => typeof m === 'string' ? m.replace(/ðŸ‡®ðŸ‡³/g, '🇮🇳').replace(/âš¡/g, '⚡').replace(/â€¢/g, '•').replace(/â€“/g, '–').replace(/â‚¹/g, '₹') : m)
         : DEFAULT_VINTAGE_STORE_DATA.announcements.messages,
     },
     flashSale: {

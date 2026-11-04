@@ -16,7 +16,7 @@
       "tagline": "Swiss Horology & Automatic Heritage",
       "address": "Baldev Plaza, Main Market, Golghar, Gorakhpur - 273001",
       "landmark": "Opposite Town Hall / Commercial Center",
-      "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
+      "hours": "10:30 AM – 9:00 PM (All 7 Days)",
       "image": "/images/showrooms/baldev-plaza.webp",
       "mapQuery": "Baldev+Plaza+Golghar+Gorakhpur",
       "phone": "+91 98765 43210",
@@ -33,7 +33,7 @@
       "tagline": "Contemporary & Everyday Luxury Timepieces",
       "address": "Shop No. 1, JalKal Building, Golghar, Gorakhpur - 273001",
       "landmark": "Near JalKal Compound, Main Golghar Market",
-      "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
+      "hours": "10:30 AM – 9:00 PM (All 7 Days)",
       "image": "/images/showrooms/jalkal-building.webp",
       "mapQuery": "JalKal+Building+Golghar+Gorakhpur",
       "phone": "+91 98765 43210",
@@ -100,7 +100,7 @@
       "id": "hero-3",
       "badge": "JAPANESE AUTOMATIC MASTERY",
       "headline": "Seiko Presage Cocktail Time & Automatic Calibers",
-      "subheadline": "Exquisite radial sunburst guillochÃ© dials with heat-blued hands, crafted by master Japanese horologists. Powered by robust in-house mechanical movements.",
+      "subheadline": "Exquisite radial sunburst guilloché dials with heat-blued hands, crafted by master Japanese horologists. Powered by robust in-house mechanical movements.",
       "ctaPrimary": "Discover Seiko Presage",
       "ctaPrimaryLink": "#our-icons",
       "ctaSecondary": "Book Private Fitting",
@@ -112,7 +112,7 @@
       "id": "hero-4",
       "badge": "INDIAN HOROLOGY FLAGSHIP",
       "headline": "Titan Edge & Regalia Heritage",
-      "subheadline": "Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guillochÃ© timepieces by the Tata legacy.",
+      "subheadline": "Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guilloché timepieces by the Tata legacy.",
       "ctaPrimary": "Explore Titan",
       "ctaPrimaryLink": "#brands",
       "ctaSecondary": "View Showrooms",
@@ -165,7 +165,7 @@
         "tagline": "Swiss Horology & Automatic Heritage",
         "address": "Baldev Plaza, Main Market, Golghar, Gorakhpur - 273001",
         "landmark": "Opposite Town Hall / Commercial Center",
-        "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
+        "hours": "10:30 AM – 9:00 PM (All 7 Days)",
         "image": "/images/showrooms/baldev-plaza.webp",
         "mapQuery": "Baldev+Plaza+Golghar+Gorakhpur",
         "phone": "+91 98765 43210",
@@ -182,7 +182,7 @@
         "tagline": "Contemporary & Everyday Luxury Timepieces",
         "address": "Shop No. 1, JalKal Building, Golghar, Gorakhpur - 273001",
         "landmark": "Near JalKal Compound, Main Golghar Market",
-        "hours": "10:30 AM â€“ 9:00 PM (All 7 Days)",
+        "hours": "10:30 AM – 9:00 PM (All 7 Days)",
         "image": "/images/showrooms/jalkal-building.webp",
         "mapQuery": "JalKal+Building+Golghar+Gorakhpur",
         "phone": "+91 98765 43210",
@@ -225,7 +225,7 @@
       "slides": [
         {
           "id": "hero-1",
-          "badge": "SWISS PRECISION â€¢ EST. 1853",
+          "badge": "SWISS PRECISION • EST. 1853",
           "headline": "Tissot PRX Powermatic 80 & Swiss Automatics",
           "subheadline": "Iconic 1970s integrated bracelet geometry powered by an 80-hour Nivachron anti-magnetic balance spring. Experience authentic Swiss horology at Ram Prasad Agencies.",
           "ctaPrimary": "Explore Tissot PRX",
@@ -233,7 +233,7 @@
           "ctaSecondary": "View Showrooms",
           "ctaSecondaryLink": "#showrooms",
           "image": "/images/watches/tissot-prx-powermatic-80.webp",
-          "specsTag": "Powermatic 80 Caliber â€¢ 100M Water Resistant â€¢ Anti-Magnetic"
+          "specsTag": "Powermatic 80 Caliber • 100M Water Resistant • Anti-Magnetic"
         },
         {
           "id": "hero-2",
@@ -245,31 +245,31 @@
           "ctaSecondary": "WhatsApp Support",
           "ctaSecondaryLink": "#inquiry",
           "image": "/images/hero-omega-showcase.webp",
-          "specsTag": "Cerachrom Ceramic Bezel â€¢ Co-Axial Master Chronometer"
+          "specsTag": "Cerachrom Ceramic Bezel • Co-Axial Master Chronometer"
         },
         {
           "id": "hero-3",
           "badge": "JAPANESE AUTOMATIC MASTERY",
           "headline": "Seiko Presage Cocktail Time & Automatic Calibers",
-          "subheadline": "Exquisite radial sunburst guillochÃ© dials with heat-blued hands, crafted by master Japanese horologists. Powered by robust in-house mechanical movements.",
+          "subheadline": "Exquisite radial sunburst guilloché dials with heat-blued hands, crafted by master Japanese horologists. Powered by robust in-house mechanical movements.",
           "ctaPrimary": "Discover Seiko Presage",
           "ctaPrimaryLink": "#our-icons",
           "ctaSecondary": "Book Private Fitting",
           "ctaSecondaryLink": "#showrooms",
           "image": "/images/watches/seiko-presage-cocktail-time.webp",
-          "specsTag": "In-House 4R35 Automatic â€¢ Box-Shaped Hardlex Crystal"
+          "specsTag": "In-House 4R35 Automatic • Box-Shaped Hardlex Crystal"
         },
         {
           "id": "hero-4",
           "badge": "INDIAN HOROLOGY FLAGSHIP",
           "headline": "Titan Edge & Regalia Heritage",
-          "subheadline": "Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guillochÃ© timepieces by the Tata legacy.",
+          "subheadline": "Engineered in India: the world-renowned ultra-slim ceramic calibers and royal festive guilloché timepieces by the Tata legacy.",
           "ctaPrimary": "Explore Titan",
           "ctaPrimaryLink": "#brands",
           "ctaSecondary": "View Showrooms",
           "ctaSecondaryLink": "#showrooms",
           "image": "/images/hero-titan-regalia.webp",
-          "specsTag": "Titan Ultra-Slim Caliber â€¢ Scratch-Resistant Sapphire â€¢ Tata Pedigree"
+          "specsTag": "Titan Ultra-Slim Caliber • Scratch-Resistant Sapphire • Tata Pedigree"
         },
         {
           "id": "hero-5",
@@ -281,7 +281,7 @@
           "ctaSecondary": "WhatsApp Support",
           "ctaSecondaryLink": "#inquiry",
           "image": "/images/hero-hmt-kohinoor-vintage.webp",
-          "specsTag": "In-House Calibre 0231 â€¢ 17 Jewels Mechanical â€¢ Made in India"
+          "specsTag": "In-House Calibre 0231 • 17 Jewels Mechanical • Made in India"
         },
         {
           "id": "hero-6",
@@ -293,7 +293,7 @@
           "ctaSecondary": "Visit Showrooms",
           "ctaSecondaryLink": "#showrooms",
           "image": "/images/fastrack-banner.webp",
-          "specsTag": "All-Weather Water Resistance â€¢ Precision Quartz â€¢ Tata Quality"
+          "specsTag": "All-Weather Water Resistance • Precision Quartz • Tata Quality"
         }
       ]
     },
@@ -331,7 +331,7 @@
           "caseSize": "40.5mm Polished Steel",
           "strap": "Solid Multi-Link Stainless Steel Bracelet",
           "inStock": true,
-          "description": "Shimmering radial guillochÃ© dial with heat-blued hands inspired by cocktail culture, date window and exhibition back."
+          "description": "Shimmering radial guilloché dial with heat-blued hands inspired by cocktail culture, date window and exhibition back."
         },
         {
           "id": "na-3",
@@ -348,7 +348,7 @@
           "caseSize": "41mm Stainless Steel",
           "strap": "Integrated Stainless Steel Bracelet",
           "inStock": true,
-          "description": "Horizontal teak concept dial inspired by wooden decks of luxury yachts, date window at 6 oâ€™clock, and certified METAS anti-magnetic precision."
+          "description": "Horizontal teak concept dial inspired by wooden decks of luxury yachts, date window at 6 o'clock, and certified METAS anti-magnetic precision."
         },
         {
           "id": "na-4",
@@ -509,7 +509,7 @@
         },
         {
           "id": "icon-2",
-          "name": "Seiko Presage Craftsmanship GuillochÃ© Automatic",
+          "name": "Seiko Presage Craftsmanship Guilloché Automatic",
           "brand": "Seiko Presage",
           "category": "Automatic",
           "price": null,
@@ -522,7 +522,7 @@
           "caseSize": "40.5mm Polished Steel",
           "strap": "Multi-Link Fine Stainless Steel Bracelet",
           "inStock": true,
-          "description": "Radial guillochÃ© dial with blued leaf hands, date complication at 3 o'clock, and exhibition caseback displaying the decorated Japanese movement."
+          "description": "Radial guilloché dial with blued leaf hands, date complication at 3 o'clock, and exhibition caseback displaying the decorated Japanese movement."
         },
         {
           "id": "icon-3",
@@ -539,7 +539,7 @@
           "caseSize": "41mm Polished Steel",
           "strap": "Perforated Black Racing Calfskin Strap",
           "inStock": true,
-          "description": "Vintage 1960s cafÃ©-racer heritage chronograph featuring an ice-blue bow-tie \"Zorro\" dial, contrasting black squircle subdials, and in-house COSC B01 calibre."
+          "description": "Vintage 1960s café-racer heritage chronograph featuring an ice-blue bow-tie \"Zorro\" dial, contrasting black squircle subdials, and in-house COSC B01 calibre."
         },
         {
           "id": "icon-4",
@@ -609,7 +609,7 @@
           "caseSize": "40.5mm Polished Steel",
           "strap": "Fine Multi-Link Stainless Steel",
           "inStock": true,
-          "description": "Flash Deal: Radial guillochÃ© dial with blued hands and date window at special showroom pricing."
+          "description": "Flash Deal: Radial guilloché dial with blued hands and date window at special showroom pricing."
         },
         {
           "id": "fd-3",
@@ -791,7 +791,7 @@
         "title": "Indian Heritage & Brands",
         "subtitle": "Titan Edge, Octane, HMT Mechanicals, Fastrack & Sonata",
         "itemCount": "45+ Timepieces",
-        "tag": "ðŸ‡®ðŸ‡³ Proud Indian Horology",
+        "tag": "🇮🇳 Proud Indian Horology",
         "image": "/images/watches/titan/12.webp",
         "filterKey": "Indian Brands"
       },
@@ -833,9 +833,9 @@
       }
     ],
     "editorialAd": {
-      "badge": "SWISS HOROLOGY MASTERPIECE â€¢ GORAKHPUR FLAGSHIPS",
+      "badge": "SWISS HOROLOGY MASTERPIECE • GORAKHPUR FLAGSHIPS",
       "title": "The Heritage of Swiss Master Chronometer Precision",
-      "quote": "â€œA fine mechanical watch doesnâ€™t just count hours. It preserves generations of precision engineering and personal triumphs.â€",
+      "quote": "\"A fine mechanical watch doesn't just count hours. It preserves generations of precision engineering and personal triumphs.\"",
       "description": "Ram Prasad Agencies is Eastern UP's authorized destination for world-renowned horological houses. Every timepiece across our Baldev Plaza and JalKal Building showrooms is 100% authentic, accompanied by official international stamped warranty cards, tamper-proof serial numbers, and lifetime battery and ultrasonic bracelet sizing support.",
       "caliber": "Omega Co-Axial Master Chronometer Calibre 3861 (50-Hour Reserve)",
       "material": "316L Stainless Steel with Hesalite & Sapphire Crystal",
