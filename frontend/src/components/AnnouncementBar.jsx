@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Sparkles, Phone, Clock, MapPin, Zap, ExternalLink, ShieldCheck } from 'lucide-react';
+import React from 'react';
+import { Zap } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 
 export default function AnnouncementBar() {
@@ -26,9 +26,6 @@ export default function AnnouncementBar() {
   };
   const messages = (overrideTicker ? [overrideTicker, ...baseMessages] : baseMessages).map(cleanMessage);
 
-  const contactPhone = storeData.contactPhone || '+91 98765 43210';
-  const cleanPhone = contactPhone.replace(/[^0-9]/g, '');
-
   if (announcements.isActive === false) {
     return null;
   }
@@ -45,28 +42,9 @@ export default function AnnouncementBar() {
       aria-label="Promotional announcement and store hours"
       className="relative w-full bg-[#EDE7DE] border-b border-[#DDD5C7] text-[#2C2723] text-xs overflow-hidden z-30 transition-colors"
     >
-      {/* Top Utility Ribbon */}
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 py-1.5 flex flex-col md:flex-row items-center justify-between gap-2 border-b border-[#DDD5C7]/70">
-        {/* Left: Authentic Showroom Status */}
-        <div className="hidden lg:flex items-center gap-3 text-[11px] text-[#3D3731]">
-          <span className="flex items-center gap-1.5 font-semibold text-brass-800">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-            Gorakhpur Showrooms Open Today
-          </span>
-          <span className="text-[#C4BCB0]">|</span>
-          <span className="flex items-center gap-1 text-[#5A524A]">
-            <Clock className="w-3.5 h-3.5 text-brass-700" />
-            <span>10:30 AM – 9:00 PM (All 7 Days)</span>
-          </span>
-          <span className="text-[#C4BCB0]">|</span>
-          <span className="flex items-center gap-1 text-[#5A524A]">
-            <ShieldCheck className="w-3.5 h-3.5 text-brass-700" />
-            <span>Authorized Luxury Specialist</span>
-          </span>
-        </div>
-
-        {/* Center: Dynamic Marquee Ticker */}
-        <div className="flex-1 max-w-4xl mx-auto overflow-hidden marquee-wrapper py-0.5 relative group">
+      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 flex items-center justify-center">
+        {/* Dynamic Marquee Ticker */}
+        <div className="flex-1 max-w-5xl mx-auto overflow-hidden marquee-wrapper py-0.5 relative group">
           {/* Subtle gradient fades on edges */}
           <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#EDE7DE] to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#EDE7DE] to-transparent z-10 pointer-events-none"></div>
@@ -89,28 +67,6 @@ export default function AnnouncementBar() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Right: Phone, Showroom link & Admin launcher */}
-        <div className="flex items-center gap-3 text-[11px] text-[#5A524A] shrink-0">
-          <a
-            href={`tel:${cleanPhone}`}
-            className="flex items-center gap-1.5 text-[#3D3731] hover:text-brass-800 transition-colors"
-            title="Call Showrooms"
-          >
-            <Phone className="w-3 h-3 text-brass-700" />
-            <span className="font-mono text-[11px] font-semibold">{contactPhone}</span>
-          </a>
-
-          <span className="hidden sm:inline text-[#C4BCB0]">|</span>
-
-          <a
-            href="#showrooms"
-            className="hidden sm:flex items-center gap-1 text-[#5A524A] hover:text-brass-800 transition-colors"
-          >
-            <MapPin className="w-3 h-3 text-brass-700" />
-            <span>Baldev Plaza & JalKal</span>
-          </a>
         </div>
       </div>
     </aside>

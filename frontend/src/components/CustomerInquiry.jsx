@@ -493,27 +493,6 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                                   className="flex-1 bg-transparent px-3 sm:px-4 py-3 text-sm text-[#1A1A1A] placeholder-[#9E9589] placeholder:text-[11.5px] sm:placeholder:text-xs font-mono focus:outline-none"
                                 />
                               </div>
-
-                              {/* Digit Counter & Validation Feedback */}
-                              <div className="flex items-center justify-between text-[11px] text-[#7A7268] px-1 pt-0.5">
-                                <span>{countryCode === '+91' ? 'Numbers only • 10-digit mobile' : 'International • 7 to 15 digits'}</span>
-                                <span
-                                  className={`font-mono font-bold transition-colors ${(countryCode === '+91' && value.length === 10) || (countryCode !== '+91' && value.length >= 7)
-                                    ? 'text-emerald-700 font-extrabold'
-                                    : value.length > 0
-                                      ? 'text-amber-700'
-                                      : 'text-[#8C847A]'
-                                    }`}
-                                >
-                                  {countryCode === '+91'
-                                    ? value.length === 10
-                                      ? '✓ 10 Digits Complete'
-                                      : `${value.length}/10 digits`
-                                    : value.length >= 7
-                                      ? `✓ ${value.length} Digits`
-                                      : `${value.length} digits (min 7)`}
-                                </span>
-                              </div>
                             </div>
                           ) : (
                             <input
