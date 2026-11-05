@@ -187,11 +187,11 @@ export default function Footer() {
           {/* Col 2: Showroom 1 - Baldev Plaza */}
           <div className="space-y-3">
             <a
-              href="https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8"
+              href="https://www.google.com/maps?q=26.754034,83.371134&z=19"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block group/fstore"
-              title="Open Baldev Plaza on Google Maps"
+              title="View Baldev Plaza Flagship on Google Maps"
             >
               <h5 className="font-serif text-sm font-semibold text-[#1A1A1A] group-hover/fstore:text-brass-800 uppercase tracking-wider flex items-center gap-2 transition-colors">
                 <MapPin className="w-4 h-4 text-brass-700 group-hover/fstore:scale-110 transition-transform" />
@@ -199,11 +199,11 @@ export default function Footer() {
               </h5>
             </a>
             <a
-              href="https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8"
+              href="https://www.google.com/maps?q=26.754034,83.371134&z=19"
               target="_blank"
               rel="noopener noreferrer"
               className="block leading-relaxed text-[#5A524A] hover:text-[#1A1A1A] hover:underline underline-offset-2 transition-colors"
-              title="Open Baldev Plaza on Google Maps"
+              title="View Baldev Plaza Flagship on Google Maps"
             >
               Baldev Plaza, Main Commercial Market, Golghar, Gorakhpur, Uttar Pradesh - 273001.
             </a>
@@ -222,11 +222,11 @@ export default function Footer() {
           {/* Col 3: Showroom 2 - JalKal Building */}
           <div className="space-y-3">
             <a
-              href="https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8"
+              href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block group/fstore"
-              title="Open JalKal Building on Google Maps"
+              title="View JalKal Building Boutique on Google Maps"
             >
               <h5 className="font-serif text-sm font-semibold text-[#1A1A1A] group-hover/fstore:text-brass-800 uppercase tracking-wider flex items-center gap-2 transition-colors">
                 <MapPin className="w-4 h-4 text-brass-700 group-hover/fstore:scale-110 transition-transform" />
@@ -234,11 +234,11 @@ export default function Footer() {
               </h5>
             </a>
             <a
-              href="https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8"
+              href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19"
               target="_blank"
               rel="noopener noreferrer"
               className="block leading-relaxed text-[#5A524A] hover:text-[#1A1A1A] hover:underline underline-offset-2 transition-colors"
-              title="Open JalKal Building on Google Maps"
+              title="View JalKal Building Boutique on Google Maps"
             >
               Shop No. 1, JalKal Building, Main Road, Golghar, Gorakhpur, Uttar Pradesh - 273001.
             </a>

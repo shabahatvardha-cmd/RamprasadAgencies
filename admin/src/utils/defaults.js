@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 // CURATED VINTAGE & LUXURY WATCHES DATASET (Big Brand Horology in India)
 // Ram Prasad Agencies - Authorized & Imported Luxury Watch Specialist, Gorakhpur
 // ============================================================================
@@ -23,7 +23,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       landmark: 'Opposite Town Hall / Commercial Center',
       hours: '10:30 AM â€“ 9:00 PM (All 7 Days)',
       image: '/images/showrooms/baldev-plaza.webp',
-      mapUrl: 'https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8',
+      mapUrl: 'https://www.google.com/maps?q=26.754034,83.371134&z=19',
       mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
       specialties: [
@@ -41,7 +41,7 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
       landmark: 'Near JalKal Compound, Main Golghar Market',
       hours: '10:30 AM â€“ 9:00 PM (All 7 Days)',
       image: '/images/showrooms/jalkal-building.webp',
-      mapUrl: 'https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8',
+      mapUrl: 'https://www.google.com/maps?q=26.7516951,83.3704248&z=19',
       mapQuery: 'JalKal+Building+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
       specialties: [

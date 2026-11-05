@@ -3,11 +3,18 @@ import { MapPin, Clock, Phone, Navigation, Sparkles, CheckCircle2, MessageCircle
 import { getWhatsAppLink, getFullImageUrl } from '../utils/api';
 import { OriginalWhatsAppIcon } from './FloatingWhatsApp';
 
-export const BALDEV_PLAZA_MAP_URL = 'https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8';
-export const JALKAL_BUILDING_MAP_URL = 'https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8';
+export const BALDEV_PLAZA_MAP_URL = 'https://www.google.com/maps?q=26.754034,83.371134&z=19';
+export const JALKAL_BUILDING_MAP_URL = 'https://www.google.com/maps?q=26.7516951,83.3704248&z=19';
 
 export const getStoreMapUrl = (store, index) => {
   if (store?.mapUrl && typeof store.mapUrl === 'string' && store.mapUrl.startsWith('http')) {
+    // If the store URL is still the legacy place link or directions route, route cleanly to the zoomed-in street pin
+    if (store.mapUrl.includes('JPL1Scbx3Cuz57YY8') || store.mapUrl.includes('destination=26.754034')) {
+      return BALDEV_PLAZA_MAP_URL;
+    }
+    if (store.mapUrl.includes('EyUZdyhBnWcFoa8i8') || store.mapUrl.includes('destination=26.7516951')) {
+      return JALKAL_BUILDING_MAP_URL;
+    }
     return store.mapUrl;
   }
   const nameLower = (store?.name || '').toLowerCase();

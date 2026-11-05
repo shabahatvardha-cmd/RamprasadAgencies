@@ -341,7 +341,7 @@ export default function AboutSection({
 
                     <div>
                       <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
-                      <a href="https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 1: Baldev Plaza Flagship &rarr;</a>
+                      <a href="https://www.google.com/maps?q=26.754034,83.371134&z=19" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 1: Baldev Plaza Flagship &rarr;</a>
                       </h4>
                       <p className="text-[11px] text-[#7A7167] mt-0.5">
                         Opposite Town Hall / Heart of Golghar Hub
@@ -363,7 +363,7 @@ export default function AboutSection({
                       <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                       Master Horology Bench
                     </span>
-                    <a href="https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
+                    <a href="https://www.google.com/maps?q=26.754034,83.371134&z=19" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
                   </div>
                 </div>
 
@@ -381,7 +381,7 @@ export default function AboutSection({
 
                     <div>
                       <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
-                      <a href="https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 2: JalKal Building Boutique &rarr;</a>
+                      <a href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 2: JalKal Building Boutique &rarr;</a>
                       </h4>
                       <p className="text-[11px] text-[#7A7167] mt-0.5">
                         Near JalKal Compound, Main Golghar Market
@@ -403,7 +403,7 @@ export default function AboutSection({
                       <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                       Instant Battery & Sizing
                     </span>
-                    <a href="https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
+                    <a href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
                   </div>
                 </div>
 
