@@ -10,7 +10,7 @@ export const BRAND_REFERENCE_IMAGES = {
   tissot: '/images/brands/tissot.webp',
   omega: '/images/brands/omega.webp',
   seiko: '/images/brands/seiko.webp',
-  citizen: '/images/brands/citizen.webp',
+  citizen: '/images/watches/citizen/01.webp',
   breitling: '/images/brands/breitling.webp',
   rado: '/images/brands/rado.webp',
   fossil: '/images/brands/fossil.webp',
@@ -102,7 +102,7 @@ export default function BrandMarquee({
       try {
         const last = sessionStorage.getItem('rpa_last_viewed_brand');
         if (last) targetSlug = last.toLowerCase().trim();
-      } catch {}
+      } catch { }
     }
 
     if (targetSlug) {
@@ -235,14 +235,13 @@ export default function BrandMarquee({
         onClick={() => {
           try {
             sessionStorage.setItem('rpa_last_viewed_brand', slug);
-          } catch {}
+          } catch { }
           if (onSelectBrand) onSelectBrand(bName);
         }}
-        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[120px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-500 flex flex-col justify-between p-2.5 sm:p-4 text-left no-underline block cursor-pointer ${spanClass} ${
-          isHighlighted
+        className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[120px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-500 flex flex-col justify-between p-2.5 sm:p-4 text-left no-underline block cursor-pointer ${spanClass} ${isHighlighted
             ? 'border-amber-400 ring-4 ring-amber-400 shadow-[0_0_30px_rgba(245,158,11,0.6)] scale-[1.03] z-20'
             : 'border-[#DDD5C7]/80 hover:border-amber-400 shadow-md hover:shadow-xl hover:-translate-y-1'
-        }`}
+          }`}
       >
         {/* Subtle Indicator Badge when returning to this specific brand */}
         {isHighlighted && (
