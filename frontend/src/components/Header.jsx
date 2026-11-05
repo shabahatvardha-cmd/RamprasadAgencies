@@ -54,10 +54,8 @@ export default function Header({
       e.preventDefault();
       if (location.pathname === '/') {
         try {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } catch {
           window.scrollTo(0, 0);
-        }
+        } catch { }
       } else {
         navigate('/');
       }
@@ -81,7 +79,10 @@ export default function Header({
         const destId = finalHref.replace('/#', '');
         const el = document.getElementById(destId) || document.getElementById('brands');
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const headerOffset = 70;
+          const elementPosition = el.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo(0, Math.max(0, offsetPosition));
         }
       } else {
         navigate(finalHref);

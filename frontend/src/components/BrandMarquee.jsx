@@ -113,7 +113,7 @@ export default function BrandMarquee({
       const scrollTimer = setInterval(() => {
         const el = document.getElementById(`brand-${targetSlug}`);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.scrollIntoView({ behavior: 'auto', block: 'center' });
           clearInterval(scrollTimer);
         } else if (++attempts > 12) {
           clearInterval(scrollTimer);

@@ -20,22 +20,21 @@ function ScrollToTop() {
       const checkAndScroll = () => {
         const el = document.getElementById(targetId);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const headerOffset = 70;
+          const elementPosition = el.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo(0, Math.max(0, offsetPosition));
         } else if (attempts < 10) {
           attempts++;
-          setTimeout(checkAndScroll, 70);
+          setTimeout(checkAndScroll, 50);
         }
       };
-      setTimeout(checkAndScroll, 50);
+      setTimeout(checkAndScroll, 10);
       return;
     }
     try {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch {
-      try {
-        window.scrollTo(0, 0);
-      } catch { }
-    }
+      window.scrollTo(0, 0);
+    } catch { }
   }, [pathname, hash]);
   return null;
 }
