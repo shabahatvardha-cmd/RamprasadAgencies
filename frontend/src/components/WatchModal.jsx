@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { X, Phone, MapPin, Clock, AlertCircle, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getFullImageUrl, getWhatsAppLink, getStoredCustomerProfile } from '../utils/api';
 import { getWatchGender } from '../data/fallbackWatches';
@@ -162,7 +162,7 @@ Thank you!`;
           <div className="absolute inset-0 bg-radial from-white/80 via-transparent to-transparent pointer-events-none" />
 
           {/* Top Badges (Gender & Stock) */}
-          <div className="relative z-10 w-full flex items-center justify-between gap-1.5 pointer-events-none">
+          <div className="relative z-10 w-full flex items-center justify-between gap-1.5 pointer-events-none pr-9 sm:pr-0">
             {/* Gender Badge */}
             <span className="px-2 py-0.5 rounded-md text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wider bg-black/75 backdrop-blur-md text-amber-300 border border-white/20 shadow-2xs pointer-events-auto">
               {gender}

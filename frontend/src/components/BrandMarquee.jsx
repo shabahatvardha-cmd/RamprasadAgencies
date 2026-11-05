@@ -98,11 +98,6 @@ export default function BrandMarquee({
 
     if (hash.startsWith('#brand-')) {
       targetSlug = hash.replace('#brand-', '').toLowerCase().trim();
-    } else if (hash === '#brands' || hash === '#brand') {
-      try {
-        const last = sessionStorage.getItem('rpa_last_viewed_brand');
-        if (last) targetSlug = last.toLowerCase().trim();
-      } catch { }
     }
 
     if (targetSlug) {
@@ -233,9 +228,7 @@ export default function BrandMarquee({
         id={`brand-${slug}`}
         to={`/brand/${slug}`}
         onClick={() => {
-          try {
-            sessionStorage.setItem('rpa_last_viewed_brand', slug);
-          } catch { }
+          sessionStorage.setItem('rpa_last_viewed_brand', slug);
           if (onSelectBrand) onSelectBrand(bName);
         }}
         className={`group relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[120px] sm:min-h-[145px] md:min-h-[160px] max-h-[185px] rounded-xl overflow-hidden bg-[#141312] border transition-all duration-500 flex flex-col justify-between p-2.5 sm:p-4 text-left no-underline block cursor-pointer ${spanClass} ${isHighlighted
@@ -296,7 +289,7 @@ export default function BrandMarquee({
   };
 
   return (
-    <section id="brands" className="py-10 sm:py-14 border-b border-[#E8E1D5] bg-[#F6F2EB]">
+    <section id="brands" className="py-10 sm:py-14 border-b border-[#E8E1D5] bg-[#F6F2EB] scroll-mt-20 sm:scroll-mt-24">
       {/* 1. Main Header */}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mb-6 sm:mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#DDD5C7] pb-4">

@@ -98,7 +98,16 @@ router.get('/stats', async (req, res) => {
  */
 router.post('/', async (req, res) => {
   try {
-    const { name, phone, email, storeLocation, inquiryType, watchName, message, source, customFields } = req.body;
+    const { name, phone, email, storeLocation, inquiryType, category, leadType, watchName, message, source, customFields } = req.body;
+
+    const resolvedCategory =
+      category ||
+      (inquiryType && inquiryType.toLowerCase().includes('retailer') ? 'retailer' :
+       inquiryType && (inquiryType.toLowerCase().includes('support') || inquiryType.toLowerCase().includes('advertising')) ? 'support' :
+       'inquiry');
+
+    const resolvedLeadType =
+      leadType || resolvedCategory;
 
     // 1. Create a Mongoose Lead document in memory
     const leadInstance = new Lead({
@@ -107,6 +116,8 @@ router.post('/', async (req, res) => {
       email: email ? String(email).trim() : '',
       storeLocation: storeLocation || 'Baldev Plaza & JalKal Building, Golghar, Gorakhpur',
       inquiryType: inquiryType || 'Buy / Inquire Specific Watch',
+      category: resolvedCategory,
+      leadType: resolvedLeadType,
       watchName: watchName ? String(watchName).trim() : '',
       message: message ? String(message).trim() : '',
       customFields: customFields && typeof customFields === 'object' ? customFields : {},

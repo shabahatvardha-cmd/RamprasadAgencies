@@ -1,6 +1,30 @@
 import React from 'react';
-import { MapPin, Clock, Phone, Navigation, Sparkles, CheckCircle2, MessageCircle } from 'lucide-react';
+import { MapPin, Clock, Phone, Navigation, Sparkles, CheckCircle2, MessageCircle, ExternalLink } from 'lucide-react';
 import { getWhatsAppLink, getFullImageUrl } from '../utils/api';
+import { OriginalWhatsAppIcon } from './FloatingWhatsApp';
+
+export const BALDEV_PLAZA_MAP_URL = 'https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8';
+export const JALKAL_BUILDING_MAP_URL = 'https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8';
+
+export const getStoreMapUrl = (store, index) => {
+  if (store?.mapUrl && typeof store.mapUrl === 'string' && store.mapUrl.startsWith('http')) {
+    return store.mapUrl;
+  }
+  const nameLower = (store?.name || '').toLowerCase();
+  const addrLower = (store?.address || '').toLowerCase();
+  const idLower = (store?.id || '').toLowerCase();
+
+  if (
+    nameLower.includes('jalkal') ||
+    addrLower.includes('jalkal') ||
+    idLower.includes('jalkal') ||
+    store?.id === 'store-2' ||
+    index === 1
+  ) {
+    return JALKAL_BUILDING_MAP_URL;
+  }
+  return BALDEV_PLAZA_MAP_URL;
+};
 
 const STORES = [
   {
@@ -16,6 +40,7 @@ const STORES = [
       'Luxury presentation boxes & collector timepieces',
       'Watch battery, bracelet adjustment & precision servicing',
     ],
+    mapUrl: BALDEV_PLAZA_MAP_URL,
     mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
     phone: '+91 98765 43210',
     image: '/images/showrooms/baldev-plaza.webp',
@@ -33,6 +58,7 @@ const STORES = [
       'Genuine leather straps, steel bracelets & horology accessories',
       'Instant watch battery replacement & ultrasonic cleaning',
     ],
+    mapUrl: JALKAL_BUILDING_MAP_URL,
     mapQuery: 'JalKal+Building+Golghar+Gorakhpur',
     phone: '+91 98765 43210',
     image: '/images/showrooms/jalkal-building.webp',
@@ -66,16 +92,23 @@ export default function DualStorefront({ contactPhone, showrooms }) {
           {storeList.map((store, index) => {
             const phone = contactPhone || store.phone;
             const waLink = getWhatsAppLink(phone, null, store.name);
-            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${store.mapQuery || store.name}`;
+            const mapUrl = getStoreMapUrl(store, index);
             const storeImg = getFullImageUrl(store.image);
+            const isBaldev = mapUrl === BALDEV_PLAZA_MAP_URL;
 
             return (
               <div
                 key={store.id || index}
                 className="rounded-2xl sm:rounded-3xl bg-white border border-[#E5DFD5] hover:border-brass-500/60 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-md hover:shadow-xl group"
               >
-                {/* Store Visual & Badge */}
-                <div className="relative h-48 sm:h-56 overflow-hidden bg-[#FAF7F2]">
+                {/* Store Visual & Badge - Clickable to Google Maps */}
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative h-48 sm:h-56 overflow-hidden bg-[#FAF7F2] cursor-pointer"
+                  title={`Open ${store.name} on Google Maps`}
+                >
                   <img
                     src={storeImg}
                     alt={store.name}
@@ -85,33 +118,50 @@ export default function DualStorefront({ contactPhone, showrooms }) {
 
                   <div className="absolute top-3.5 sm:top-4 left-3.5 sm:left-4">
                     <span className="px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-white/95 text-brass-800 border border-brass-600/30 shadow-sm backdrop-blur-md">
-                      Store #{index + 1} • {index === 0 ? 'Baldev Plaza' : 'JalKal Building'}
+                      Store #{index + 1} • {isBaldev ? 'Baldev Plaza' : 'JalKal Building'}
+                    </span>
+                  </div>
+
+                  <div className="absolute top-3.5 sm:top-4 right-3.5 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold text-white bg-black/60 backdrop-blur-md border border-white/20 shadow-sm">
+                      <ExternalLink className="w-3 h-3 text-amber-400" />
+                      <span>View Map</span>
                     </span>
                   </div>
 
                   <div className="absolute bottom-3 sm:bottom-3.5 left-3 sm:left-3.5 right-3 sm:right-3.5 p-3 sm:p-3.5 rounded-xl bg-black/75 backdrop-blur-md border border-white/15 shadow-lg">
-                    <h3 className="font-serif text-base sm:text-xl font-bold text-white drop-shadow-sm">
-                      {store.name}
+                    <h3 className="font-serif text-base sm:text-xl font-bold text-white drop-shadow-sm flex items-center justify-between">
+                      <span>{store.name}</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-amber-300/80 group-hover:text-amber-300 transition-colors" />
                     </h3>
                     <p className="text-[11px] sm:text-xs text-brass-300 font-medium mt-0.5">
                       {store.tagline}
                     </p>
                   </div>
-                </div>
+                </a>
 
                 {/* Store Details Body */}
                 <div className="p-4 sm:p-8 space-y-5 sm:space-y-6 flex-1 flex flex-col justify-between bg-white">
                   <div className="space-y-3 sm:space-y-4">
-                    {/* Address & Landmark */}
-                    <div className="flex items-start gap-2.5 sm:gap-3">
-                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-brass-700 shrink-0 mt-0.5" />
+                    {/* Address & Landmark - Clickable link directly opening the Google Maps pin */}
+                    <a
+                      href={mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-2.5 sm:gap-3 group/addr transition-colors"
+                      title={`Open ${store.name} in Google Maps`}
+                    >
+                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-brass-700 shrink-0 mt-0.5 group-hover/addr:scale-110 group-hover/addr:text-brass-900 transition-transform" />
                       <div>
-                        <p className="text-xs sm:text-sm font-semibold text-[#1A1A1A]">{store.address}</p>
+                        <p className="text-xs sm:text-sm font-semibold text-[#1A1A1A] group-hover/addr:text-brass-800 group-hover/addr:underline underline-offset-2 flex items-center gap-1.5">
+                          <span>{store.address}</span>
+                          <ExternalLink className="w-3 h-3 text-brass-600 inline shrink-0" />
+                        </p>
                         <p className="text-[11px] sm:text-xs text-[#6B635B] mt-0.5">
                           Landmark: {store.landmark}
                         </p>
                       </div>
-                    </div>
+                    </a>
 
                     {/* Hours */}
                     <div className="flex items-center gap-2.5 sm:gap-3">
@@ -154,9 +204,10 @@ export default function DualStorefront({ contactPhone, showrooms }) {
                       href={mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-semibold bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#1A1A1A] border border-[#DDD5C7] hover:border-brass-600 transition-colors shadow-sm"
+                      className="w-full sm:flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold bg-[#FAF7F2] hover:bg-brass-700 hover:text-white text-[#1A1A1A] border border-[#DDD5C7] hover:border-brass-700 transition-all shadow-xs active:scale-98 group/dir"
+                      title={`Open ${store.name} on Google Maps`}
                     >
-                      <Navigation className="w-3.5 h-3.5 text-brass-700" />
+                      <Navigation className="w-3.5 h-3.5 text-brass-700 group-hover/dir:text-white transition-colors" />
                       <span>Get Directions</span>
                     </a>
 
@@ -164,9 +215,9 @@ export default function DualStorefront({ contactPhone, showrooms }) {
                       href={waLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-colors"
+                      className="w-full sm:flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md shadow-[#25D366]/20 transition-all active:scale-98"
                     >
-                      <MessageCircle className="w-3.5 h-3.5" />
+                      <OriginalWhatsAppIcon className="w-4 h-4 shrink-0" size={16} />
                       <span>WhatsApp Store</span>
                     </a>
                   </div>

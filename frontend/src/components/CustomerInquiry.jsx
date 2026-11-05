@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, MessageCircle, Clock, ShieldCheck, Sparkles, Phone, Loader2, Store, AlertCircle, Check } from 'lucide-react';
 import { getWhatsAppLink, submitLead, saveCustomerProfile } from '../utils/api';
 import { useStore, DEFAULT_INQUIRY_FORM_CONFIG } from '../context/StoreContext';
+import { OriginalWhatsAppIcon } from './FloatingWhatsApp';
 
 const COUNTRY_CODES = [
   { code: '+91', iso: 'IN', country: 'India', flag: '🇮🇳' },
@@ -363,9 +364,9 @@ You can reach me at ${contactList || 'this WhatsApp number'}. Looking forward to
                       href={waDirectUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white shadow-lg transition-all active:scale-95"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-lg shadow-[#25D366]/25 transition-all active:scale-95 border border-white/20"
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <OriginalWhatsAppIcon className="w-4 h-4 shrink-0" size={18} />
                       <span>Forward Directly to WhatsApp</span>
                     </a>
 

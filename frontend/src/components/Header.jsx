@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Menu, X, Search } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import BrandLogo from './BrandLogo';
@@ -65,27 +65,17 @@ export default function Header({
     if (href.startsWith('/#')) {
       e.preventDefault();
       const targetId = href.replace('/#', '');
-      let finalHref = href;
-      if (targetId === 'brands' || targetId === 'brand') {
-        try {
-          const lastBrand = sessionStorage.getItem('rpa_last_viewed_brand');
-          if (lastBrand) {
-            finalHref = `/#brand-${lastBrand}`;
-          }
-        } catch {}
-      }
 
       if (location.pathname === '/') {
-        const destId = finalHref.replace('/#', '');
-        const el = document.getElementById(destId) || document.getElementById('brands');
+        const el = document.getElementById(targetId);
         if (el) {
           const headerOffset = 70;
           const elementPosition = el.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo(0, Math.max(0, offsetPosition));
+          window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
         }
       } else {
-        navigate(finalHref);
+        navigate(href);
       }
     }
   };

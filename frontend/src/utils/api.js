@@ -176,6 +176,7 @@ You can reach me at ${customerPhone} or ${customerEmail}. Looking forward to you
 
 /**
  * Submit customer lead to POST /api/leads with resilient LocalStorage fallback
+ * and instant cross-tab BroadcastChannel dispatch for real-time Admin CRM updates.
  */
 export const submitLead = async (leadData) => {
   const timestamp = new Date().toISOString();
@@ -184,6 +185,16 @@ export const submitLead = async (leadData) => {
     ...leadData,
     status: 'New',
     createdAt: timestamp,
+  };
+
+  const broadcastLead = (lead) => {
+    try {
+      if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
+        const channel = new BroadcastChannel('fossil_store_realtime_sync');
+        channel.postMessage({ type: 'NEW_LEAD', lead });
+        channel.close();
+      }
+    } catch {}
   };
 
   try {
@@ -197,7 +208,9 @@ export const submitLead = async (leadData) => {
 
     if (res.ok) {
       const json = await res.json();
-      return json.data;
+      const savedLead = json.data || localLead;
+      broadcastLead(savedLead);
+      return savedLead;
     }
     throw new Error(`Server returned ${res.status}`);
   } catch (err) {
@@ -206,6 +219,7 @@ export const submitLead = async (leadData) => {
       const existing = JSON.parse(localStorage.getItem('rpa_customer_leads') || '[]');
       const updated = [localLead, ...existing];
       localStorage.setItem('rpa_customer_leads', JSON.stringify(updated));
+      broadcastLead(localLead);
     } catch {
       // ignore
     }

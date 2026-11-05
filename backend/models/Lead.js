@@ -55,6 +55,16 @@ const LeadSchema = new mongoose.Schema(
       default: 'Buy / Inquire Specific Watch',
       trim: true,
     },
+    category: {
+      type: String,
+      default: 'inquiry',
+      trim: true,
+    },
+    leadType: {
+      type: String,
+      default: 'inquiry',
+      trim: true,
+    },
     watchName: {
       type: String,
       default: '',

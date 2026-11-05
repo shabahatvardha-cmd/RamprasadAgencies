@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
   Award,
   ShieldCheck,
@@ -174,7 +174,7 @@ export default function AboutSection({
   return (
     <section
       id="about"
-      className="relative py-16 sm:py-24 bg-gradient-to-b from-[#FAF7F2] via-[#F3EDE2] to-[#FAF7F2] text-[#1A1A1A] border-b border-[#E8E1D5] overflow-hidden"
+      className="relative py-10 sm:py-16 bg-gradient-to-b from-[#FAF7F2] via-[#F3EDE2] to-[#FAF7F2] text-[#1A1A1A] border-b border-[#E8E1D5] overflow-hidden"
     >
       {/* 1. KINETIC MECHANICAL HOROLOGY GEAR WATERMARK (LIGHT LUXURY GRAPHIC) */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden opacity-[0.05]">
@@ -200,7 +200,7 @@ export default function AboutSection({
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 2. SECTION HEADER */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 border border-brass-600/25 text-brass-800 text-[11px] font-mono font-bold uppercase tracking-widest mb-3 backdrop-blur-md shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-brass-600" />
             <span>Generational Horology Since 1960s</span>
@@ -219,7 +219,7 @@ export default function AboutSection({
         </div>
 
         {/* 3. PRESTIGE METRICS COUNTERS */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5 sm:mb-6">
           <div className="p-4 sm:p-5 rounded-2xl bg-white/50 backdrop-blur-md border border-[#DDD5C7]/70 hover:bg-white/80 transition-all duration-300 shadow-sm text-center">
             <div className="font-serif text-2xl sm:text-3xl font-extrabold text-brass-800">
               60+
@@ -270,7 +270,7 @@ export default function AboutSection({
         </div>
 
         {/* 4. TABS PILL SWITCHER */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-6 sm:mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-4 sm:mb-6">
           {tabs.map((tab, idx) => {
             const Icon = tab.icon;
             const isActive = activeTab === idx;
@@ -341,7 +341,7 @@ export default function AboutSection({
 
                     <div>
                       <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
-                        Store 1: Baldev Plaza Flagship
+                      <a href="https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 1: Baldev Plaza Flagship &rarr;</a>
                       </h4>
                       <p className="text-[11px] text-[#7A7167] mt-0.5">
                         Opposite Town Hall / Heart of Golghar Hub
@@ -363,7 +363,7 @@ export default function AboutSection({
                       <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                       Master Horology Bench
                     </span>
-                    <span className="text-[#8A8177]">Opp. Town Hall</span>
+                    <a href="https://maps.app.goo.gl/JPL1Scbx3Cuz57YY8" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
                   </div>
                 </div>
 
@@ -381,7 +381,7 @@ export default function AboutSection({
 
                     <div>
                       <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
-                        Store 2: JalKal Building Boutique
+                      <a href="https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 2: JalKal Building Boutique &rarr;</a>
                       </h4>
                       <p className="text-[11px] text-[#7A7167] mt-0.5">
                         Near JalKal Compound, Main Golghar Market
@@ -403,7 +403,7 @@ export default function AboutSection({
                       <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                       Instant Battery & Sizing
                     </span>
-                    <span className="text-[#8A8177]">Near JalKal</span>
+                    <a href="https://maps.app.goo.gl/EyUZdyhBnWcFoa8i8" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
                   </div>
                 </div>
 
@@ -653,38 +653,6 @@ export default function AboutSection({
               </div>
             </div>
           )}
-        </div>
-
-        {/* 6. BOTTOM QUALITY EMBOSSED BANNER */}
-        <div className="mt-8 sm:mt-10 p-5 sm:p-6 rounded-2xl bg-white/40 backdrop-blur-md border border-brass-500/20 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-brass-100/80 border border-brass-300 flex items-center justify-center shrink-0 text-brass-800">
-              <Award className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="font-serif text-sm sm:text-base font-bold text-[#1A1A1A]">
-                Ram Prasad Agencies Horology Guarantee
-              </div>
-              <div className="text-[11.5px] text-[#5C544D]">
-                Official presentation box, international stamped warranty, and complimentary lifetime sizing.
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <a
-              href="#store-locator"
-              className="px-3.5 py-1.5 rounded-full bg-white/70 hover:bg-white border border-brass-600/30 text-brass-800 text-xs font-semibold transition-all no-underline shadow-xs"
-            >
-              Showroom Hours
-            </a>
-            <a
-              href={`tel:${cleanPhone}`}
-              className="px-3.5 py-1.5 rounded-full bg-brass-700 hover:bg-brass-800 text-white text-xs font-bold transition-all no-underline shadow-xs"
-            >
-              Call Showrooms
-            </a>
-          </div>
         </div>
       </div>
 
