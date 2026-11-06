@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Award,
   ShieldCheck,
@@ -115,12 +115,12 @@ export default function AboutSection({
       featureItems: [
         {
           icon: Store,
-          title: 'Store 1: Baldev Plaza Flagship',
+          title: 'Store 1: Ram Prasad Agencies — Baldev Plaza',
           subtitle: 'Swiss luxury & automatic pavilion (Opp. Town Hall)',
         },
         {
           icon: MapPin,
-          title: 'Store 2: JalKal Building Boutique',
+          title: 'Store 2: Ram Prasad Agencies — JalKal Building',
           subtitle: 'Contemporary, sports & everyday classics',
         },
         {
@@ -341,7 +341,7 @@ export default function AboutSection({
 
                     <div>
                       <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
-                      <a href="https://www.google.com/maps?q=26.754034,83.371134&z=19" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 1: Baldev Plaza Flagship &rarr;</a>
+                      <a href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7540195,83.3709465,19.34z/data=!4m6!3m5!1s0x399144642a773705:0x3bad10d5aa6adb42!8m2!3d26.754034!4d83.371134!16s%2Fg%2F11cjpcj5f7?entry=ttu" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 1: Ram Prasad Agencies — Baldev Plaza Flagship &rarr;</a>
                       </h4>
                       <p className="text-[11px] text-[#7A7167] mt-0.5">
                         Opposite Town Hall / Heart of Golghar Hub
@@ -363,7 +363,7 @@ export default function AboutSection({
                       <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                       Master Horology Bench
                     </span>
-                    <a href="https://www.google.com/maps?q=26.754034,83.371134&z=19" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
+                    <a href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7540195,83.3709465,19.34z/data=!4m6!3m5!1s0x399144642a773705:0x3bad10d5aa6adb42!8m2!3d26.754034!4d83.371134!16s%2Fg%2F11cjpcj5f7?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Get Directions &rarr;</a>
                   </div>
                 </div>
 
@@ -381,7 +381,7 @@ export default function AboutSection({
 
                     <div>
                       <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A] font-serif">
-                      <a href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 2: JalKal Building Boutique &rarr;</a>
+                      <a href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7518984,83.3699537,19.16z/data=!4m6!3m5!1s0x39914560a023e6ab:0x2198675743c2615c!8m2!3d26.7516951!4d83.3704248!16s%2Fg%2F11krs2yzqt?entry=ttu" target="_blank" rel="noopener noreferrer" className="hover:text-brass-700 hover:underline transition-colors block">Store 2: Ram Prasad Agencies — JalKal Building Boutique &rarr;</a>
                       </h4>
                       <p className="text-[11px] text-[#7A7167] mt-0.5">
                         Near JalKal Compound, Main Golghar Market
@@ -403,7 +403,7 @@ export default function AboutSection({
                       <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                       Instant Battery & Sizing
                     </span>
-                    <a href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Map Pin &rarr;</a>
+                    <a href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7518984,83.3699537,19.16z/data=!4m6!3m5!1s0x39914560a023e6ab:0x2198675743c2615c!8m2!3d26.7516951!4d83.3704248!16s%2Fg%2F11krs2yzqt?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-brass-800 hover:text-brass-900 font-bold hover:underline transition-colors">Get Directions &rarr;</a>
                   </div>
                 </div>
 

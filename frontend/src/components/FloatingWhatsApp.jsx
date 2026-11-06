@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { getWhatsAppLink } from '../utils/api';
+import { useWhatsApp } from '../context/WhatsAppContext';
 
 /**
  * Authentic Official WhatsApp Brand Vector Icon
@@ -30,18 +31,26 @@ export function OriginalWhatsAppIcon({ className = "w-6 h-6", size = 24 }) {
 
 export default function FloatingWhatsApp({ contactPhone }) {
   const [showTooltip, setShowTooltip] = useState(true);
-  const waLink = getWhatsAppLink(contactPhone, null);
+  const { openWhatsApp } = useWhatsApp();
+
+  const handleOpenWhatsApp = (e) => {
+    e?.preventDefault();
+    openWhatsApp({
+      phone: contactPhone,
+      message: 'Hello Ram Prasad Agencies, I would like to inquire about your luxury & heritage watch collections and showroom stock in Golghar.',
+      title: 'WhatsApp Showroom Support',
+      subtitle: 'Enter your name to connect directly with our Gorakhpur showroom advisors',
+    });
+  };
 
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-end gap-3 animate-fade-in">
       {/* Tooltip speech bubble */}
       {showTooltip && (
         <div className="hidden md:flex items-center gap-3 p-3 rounded-2xl bg-white/95 hover:bg-white border border-[#DDD5C7] text-xs text-[#1A1A1A] shadow-2xl backdrop-blur-md max-w-sm group transition-all duration-200 hover:shadow-[#25D366]/15">
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2.5 flex-1 min-w-0"
+          <div
+            onClick={handleOpenWhatsApp}
+            className="flex items-center gap-2.5 flex-1 min-w-0 cursor-pointer"
           >
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5">
@@ -52,7 +61,7 @@ export default function FloatingWhatsApp({ contactPhone }) {
                 Inquire about watch stock at Baldev Plaza & JalKal Building
               </p>
             </div>
-          </a>
+          </div>
 
           <button
             onClick={() => setShowTooltip(false)}
@@ -65,17 +74,16 @@ export default function FloatingWhatsApp({ contactPhone }) {
       )}
 
       {/* Floating Action Button */}
-      <a
-        href={waLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-xl shadow-[#25D366]/35 transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white/40"
+      <button
+        type="button"
+        onClick={handleOpenWhatsApp}
+        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-xl shadow-[#25D366]/35 transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white/40 cursor-pointer"
         aria-label="Chat on WhatsApp with Ram Prasad Agencies"
       >
         <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#25D366] animate-ping opacity-75"></span>
         <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#25D366] border-2 border-white shadow-sm"></span>
         <OriginalWhatsAppIcon className="w-8 h-8 sm:w-9 sm:h-9" size={36} />
-      </a>
+      </button>
     </div>
   );
 }

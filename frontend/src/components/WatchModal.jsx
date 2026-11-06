@@ -1,10 +1,12 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Phone, MapPin, Clock, AlertCircle, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getFullImageUrl, getWhatsAppLink, getStoredCustomerProfile } from '../utils/api';
 import { getWatchGender } from '../data/fallbackWatches';
 import { OriginalWhatsAppIcon } from './FloatingWhatsApp';
+import { useWhatsApp } from '../context/WhatsAppContext';
 
 export default function WatchModal({ watch, onClose, contactPhone }) {
+  const { openWhatsApp } = useWhatsApp();
   const [userName] = useState(() => getStoredCustomerProfile()?.name || '');
   const [userPhone] = useState(() => getStoredCustomerProfile()?.phone || '');
   const [userEmail] = useState(() => getStoredCustomerProfile()?.email || '');
@@ -367,11 +369,20 @@ Thank you!`;
 
           {/* 5. Direct Action Buttons */}
           <div className="flex items-center gap-2 pt-0.5">
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 sm:py-2.5 px-3 rounded-lg text-[10.5px] sm:text-xs uppercase tracking-wider font-bold text-white shadow-md transition-all active:scale-[0.98] ${
+            <button
+              type="button"
+              onClick={() => {
+                openWhatsApp({
+                  phone: contactPhone,
+                  message: isOutOfStock ? outOfStockWaMessage : null,
+                  watch: isOutOfStock ? null : watch,
+                  storeName: watch.storeLocation || 'Golghar showrooms',
+                  purpose: 'watch_inquiry',
+                  title: `Inquire about ${watch.brand ? watch.brand + ' ' : ''}${watch.name}`,
+                  subtitle: `Enter your name to connect with our horologists regarding this ${watch.brand || 'luxury'} timepiece`,
+                });
+              }}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 sm:py-2.5 px-3 rounded-lg text-[10.5px] sm:text-xs uppercase tracking-wider font-bold text-white shadow-md transition-all active:scale-[0.98] cursor-pointer ${
                 !isOutOfStock
                   ? 'bg-[#25D366] hover:bg-[#20ba59] shadow-[#25D366]/20'
                   : 'bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 shadow-amber-600/20'
@@ -379,7 +390,7 @@ Thank you!`;
             >
               <OriginalWhatsAppIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" size={16} />
               <span>{!isOutOfStock ? 'Inquire WhatsApp' : 'Inquire Restock / Waitlist'}</span>
-            </a>
+            </button>
 
             <a
               href={`tel:${cleanPhone}`}

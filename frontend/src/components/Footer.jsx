@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   MapPin,
   Phone,
@@ -8,15 +8,18 @@ import {
   Award,
   Store,
   Megaphone,
-  ArrowRight,
   Instagram,
   Facebook,
 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import BrandLogo from './BrandLogo';
+import { OriginalWhatsAppIcon } from './FloatingWhatsApp';
+import { getWhatsAppLink } from '../utils/api';
+import { useWhatsApp } from '../context/WhatsAppContext';
 
 export default function Footer() {
   const { storeData, getOverride } = useStore();
+  const { openWhatsApp } = useWhatsApp();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -26,6 +29,13 @@ export default function Footer() {
   const brandName = storeData.brandName || 'RAM PRASAD AGENCIES';
   const facebookUrl = storeData.facebookUrl || 'https://www.facebook.com/share/18ih1rWwd6/';
   const instagramUrl = storeData.instagramUrl || 'https://www.instagram.com/ramprasadagencies?rpxt=ZTdmdGQybncwOXBr';
+
+  // Pre-composed direct WhatsApp inquiries for B2B Retailer & Advertising Support
+  const retailerWaMsg = `Hello Ram Prasad Agencies, I am interested in partnering with you as an authorized retailer for official watch distribution and wholesale allocations across Eastern Uttar Pradesh. Please share details and wholesale catalog.`;
+  const retailerWaLink = getWhatsAppLink(contactPhone, retailerWaMsg);
+
+  const salesSupportWaMsg = `Hello Ram Prasad Agencies, I would like to request advertising materials, certified brand digital assets, and POS showcase displays. Please share the available marketing collateral.`;
+  const salesSupportWaLink = getWhatsAppLink(contactPhone, salesSupportWaMsg);
 
   return (
     <footer className="bg-[#EDE7DE] border-t border-[#DDD5C7] pt-16 pb-12 text-[#5A524A] text-xs font-sans">
@@ -60,18 +70,21 @@ export default function Footer() {
                   </p>
                 </div>
                 <div className="pt-4">
-                  <Link
-                    to="/retailer-application"
-                    onClick={() => {
-                      try {
-                        sessionStorage.setItem('rpa_return_anchor', 'retailer-support');
-                      } catch {}
-                    }}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-stone-900 group-hover:bg-brass-500 text-white group-hover:text-stone-950 transition-all duration-300 shadow-sm group-hover:shadow-xl active:scale-95 group/btn"
+                  <button
+                    type="button"
+                    onClick={() => openWhatsApp({
+                      phone: contactPhone,
+                      message: retailerWaMsg,
+                      purpose: 'retailer',
+                      title: 'Retailer Partnership Inquiry',
+                      subtitle: 'Enter your name or store name to personalize your authorized retailer inquiry',
+                    })}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md shadow-[#25D366]/25 hover:shadow-xl transition-all duration-300 active:scale-95 group/btn cursor-pointer"
+                    title="Connect on WhatsApp regarding Retailer Partnership"
                   >
-                    <span>Apply as Retailer</span>
-                    <ArrowRight className="w-4 h-4 text-brass-400 group-hover:text-stone-950 transition-all duration-300 group-hover/btn:translate-x-1" />
-                  </Link>
+                    <OriginalWhatsAppIcon className="w-4 h-4 shrink-0" size={16} />
+                    <span>Apply via WhatsApp</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -103,18 +116,21 @@ export default function Footer() {
                   </p>
                 </div>
                 <div className="pt-4">
-                  <Link
-                    to="/sales-support"
-                    onClick={() => {
-                      try {
-                        sessionStorage.setItem('rpa_return_anchor', 'retailer-support');
-                      } catch {}
-                    }}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-stone-900 group-hover:bg-brass-500 text-white group-hover:text-stone-950 transition-all duration-300 shadow-sm group-hover:shadow-xl active:scale-95 group/btn"
+                  <button
+                    type="button"
+                    onClick={() => openWhatsApp({
+                      phone: contactPhone,
+                      message: salesSupportWaMsg,
+                      purpose: 'sales_support',
+                      title: 'Advertising & Sales Support',
+                      subtitle: 'Enter your name or store name to request advertising collateral and POS displays',
+                    })}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md shadow-[#25D366]/25 hover:shadow-xl transition-all duration-300 active:scale-95 group/btn cursor-pointer"
+                    title="Connect on WhatsApp regarding Advertising & Sales Support"
                   >
-                    <span>Explore Support</span>
-                    <ArrowRight className="w-4 h-4 text-brass-400 group-hover:text-stone-950 transition-all duration-300 group-hover/btn:translate-x-1" />
-                  </Link>
+                    <OriginalWhatsAppIcon className="w-4 h-4 shrink-0" size={16} />
+                    <span>Request on WhatsApp</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -187,23 +203,23 @@ export default function Footer() {
           {/* Col 2: Showroom 1 - Baldev Plaza */}
           <div className="space-y-3">
             <a
-              href="https://www.google.com/maps?q=26.754034,83.371134&z=19"
+              href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7540195,83.3709465,19.34z/data=!4m6!3m5!1s0x399144642a773705:0x3bad10d5aa6adb42!8m2!3d26.754034!4d83.371134!16s%2Fg%2F11cjpcj5f7?entry=ttu"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block group/fstore"
-              title="View Baldev Plaza Flagship on Google Maps"
+              title="Get GPS Directions to Ram Prasad Agencies - Baldev Plaza on Google Maps"
             >
               <h5 className="font-serif text-sm font-semibold text-[#1A1A1A] group-hover/fstore:text-brass-800 uppercase tracking-wider flex items-center gap-2 transition-colors">
                 <MapPin className="w-4 h-4 text-brass-700 group-hover/fstore:scale-110 transition-transform" />
-                <span className="group-hover/fstore:underline underline-offset-2">Baldev Plaza Flagship</span>
+                <span className="group-hover/fstore:underline underline-offset-2">Ram Prasad Agencies — Baldev Plaza</span>
               </h5>
             </a>
             <a
-              href="https://www.google.com/maps?q=26.754034,83.371134&z=19"
+              href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7540195,83.3709465,19.34z/data=!4m6!3m5!1s0x399144642a773705:0x3bad10d5aa6adb42!8m2!3d26.754034!4d83.371134!16s%2Fg%2F11cjpcj5f7?entry=ttu"
               target="_blank"
               rel="noopener noreferrer"
               className="block leading-relaxed text-[#5A524A] hover:text-[#1A1A1A] hover:underline underline-offset-2 transition-colors"
-              title="View Baldev Plaza Flagship on Google Maps"
+              title="Get GPS Directions to Ram Prasad Agencies - Baldev Plaza on Google Maps"
             >
               Baldev Plaza, Main Commercial Market, Golghar, Gorakhpur, Uttar Pradesh - 273001.
             </a>
@@ -222,23 +238,23 @@ export default function Footer() {
           {/* Col 3: Showroom 2 - JalKal Building */}
           <div className="space-y-3">
             <a
-              href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19"
+              href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7518984,83.3699537,19.16z/data=!4m6!3m5!1s0x39914560a023e6ab:0x2198675743c2615c!8m2!3d26.7516951!4d83.3704248!16s%2Fg%2F11krs2yzqt?entry=ttu"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block group/fstore"
-              title="View JalKal Building Boutique on Google Maps"
+              title="Get GPS Directions to Ram Prasad Agencies - JalKal Building on Google Maps"
             >
               <h5 className="font-serif text-sm font-semibold text-[#1A1A1A] group-hover/fstore:text-brass-800 uppercase tracking-wider flex items-center gap-2 transition-colors">
                 <MapPin className="w-4 h-4 text-brass-700 group-hover/fstore:scale-110 transition-transform" />
-                <span className="group-hover/fstore:underline underline-offset-2">JalKal Building Boutique</span>
+                <span className="group-hover/fstore:underline underline-offset-2">Ram Prasad Agencies — JalKal Building</span>
               </h5>
             </a>
             <a
-              href="https://www.google.com/maps?q=26.7516951,83.3704248&z=19"
+              href="https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7518984,83.3699537,19.16z/data=!4m6!3m5!1s0x39914560a023e6ab:0x2198675743c2615c!8m2!3d26.7516951!4d83.3704248!16s%2Fg%2F11krs2yzqt?entry=ttu"
               target="_blank"
               rel="noopener noreferrer"
               className="block leading-relaxed text-[#5A524A] hover:text-[#1A1A1A] hover:underline underline-offset-2 transition-colors"
-              title="View JalKal Building Boutique on Google Maps"
+              title="Get GPS Directions to Ram Prasad Agencies - JalKal Building on Google Maps"
             >
               Shop No. 1, JalKal Building, Main Road, Golghar, Gorakhpur, Uttar Pradesh - 273001.
             </a>

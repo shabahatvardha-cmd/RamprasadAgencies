@@ -1,4 +1,4 @@
-﻿// ============================================================================
+// ============================================================================
 // CURATED VINTAGE & LUXURY WATCHES DATASET (Big Brand Horology in India)
 // Ram Prasad Agencies - Authorized & Imported Luxury Watch Specialist, Gorakhpur
 // ============================================================================
@@ -17,14 +17,14 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
   showrooms: [
     {
       id: 'store-1',
-      name: 'Baldev Plaza Flagship Showroom',
+      name: 'Ram Prasad Agencies — Baldev Plaza Flagship',
       tagline: 'Swiss Horology & Automatic Heritage',
       address: 'Baldev Plaza, Main Market, Golghar, Gorakhpur - 273001',
       landmark: 'Opposite Town Hall / Commercial Center',
       hours: '10:30 AM â€“ 9:00 PM (All 7 Days)',
       image: '/images/showrooms/baldev-plaza.webp',
-      mapUrl: 'https://www.google.com/maps?q=26.754034,83.371134&z=19',
-      mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
+      mapUrl: 'https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7540195,83.3709465,19.34z/data=!4m6!3m5!1s0x399144642a773705:0x3bad10d5aa6adb42!8m2!3d26.754034!4d83.371134!16s%2Fg%2F11cjpcj5f7?entry=ttu',
+      mapQuery: 'Ram+Prasad+Agencies+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
       specialties: [
         'Official Swiss Collections (Tissot, Rado, Breitling, Omega)',
@@ -35,13 +35,13 @@ export const DEFAULT_VINTAGE_STORE_DATA = {
     },
     {
       id: 'store-2',
-      name: 'JalKal Building Boutique',
+      name: 'Ram Prasad Agencies — JalKal Building Boutique',
       tagline: 'Contemporary & Everyday Luxury Timepieces',
       address: 'Shop No. 1, JalKal Building, Golghar, Gorakhpur - 273001',
       landmark: 'Near JalKal Compound, Main Golghar Market',
       hours: '10:30 AM â€“ 9:00 PM (All 7 Days)',
       image: '/images/showrooms/jalkal-building.webp',
-      mapUrl: 'https://www.google.com/maps?q=26.7516951,83.3704248&z=19',
+      mapUrl: 'https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7518984,83.3699537,19.16z/data=!4m6!3m5!1s0x39914560a023e6ab:0x2198675743c2615c!8m2!3d26.7516951!4d83.3704248!16s%2Fg%2F11krs2yzqt?entry=ttu',
       mapQuery: 'JalKal+Building+Golghar+Gorakhpur',
       phone: '+91 98765 43210',
       specialties: [

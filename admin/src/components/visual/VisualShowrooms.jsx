@@ -130,7 +130,7 @@ export default function VisualShowrooms({ showrooms, isEditMode, onOpenEdit }) {
                     </span>
 
                     <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${store.mapQuery || 'Golghar+Gorakhpur'}`}
+                      href={store.mapUrl || 'https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7540195,83.3709465,19.34z/data=!4m6!3m5!1s0x399144642a773705:0x3bad10d5aa6adb42!8m2!3d26.754034!4d83.371134!16s%2Fg%2F11cjpcj5f7?entry=ttu'}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#F5F2EB] hover:bg-[#EAE4D7] text-[#1A1A1A] border border-[#DDD5C7] flex items-center gap-1.5 transition-colors"

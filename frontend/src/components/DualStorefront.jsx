@@ -2,20 +2,37 @@ import React from 'react';
 import { MapPin, Clock, Phone, Navigation, Sparkles, CheckCircle2, MessageCircle, ExternalLink } from 'lucide-react';
 import { getWhatsAppLink, getFullImageUrl } from '../utils/api';
 import { OriginalWhatsAppIcon } from './FloatingWhatsApp';
+import { useWhatsApp } from '../context/WhatsAppContext';
 
-export const BALDEV_PLAZA_MAP_URL = 'https://www.google.com/maps?q=26.754034,83.371134&z=19';
-export const JALKAL_BUILDING_MAP_URL = 'https://www.google.com/maps?q=26.7516951,83.3704248&z=19';
+export const BALDEV_PLAZA_MAP_URL =
+  'https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7540195,83.3709465,19.34z/data=!4m6!3m5!1s0x399144642a773705:0x3bad10d5aa6adb42!8m2!3d26.754034!4d83.371134!16s%2Fg%2F11cjpcj5f7?entry=ttu';
+export const JALKAL_BUILDING_MAP_URL =
+  'https://www.google.com/maps/place/Ram+Prasad+Agencies/@26.7518984,83.3699537,19.16z/data=!4m6!3m5!1s0x39914560a023e6ab:0x2198675743c2615c!8m2!3d26.7516951!4d83.3704248!16s%2Fg%2F11krs2yzqt?entry=ttu';
 
 export const getStoreMapUrl = (store, index) => {
   if (store?.mapUrl && typeof store.mapUrl === 'string' && store.mapUrl.startsWith('http')) {
-    // If the store URL is still the legacy place link or directions route, route cleanly to the zoomed-in street pin
-    if (store.mapUrl.includes('JPL1Scbx3Cuz57YY8') || store.mapUrl.includes('destination=26.754034')) {
+    // If the store URL is a place overview link or raw coordinate link, upgrade directly to the live GPS directions URL
+    if (
+      store.mapUrl.includes('26.754034') ||
+      store.mapUrl.includes('JPL1Scbx3Cuz57YY8') ||
+      store.mapUrl.includes('Baldev') ||
+      store.mapUrl.includes('store-1') ||
+      store.mapUrl.includes('q=26.754')
+    ) {
       return BALDEV_PLAZA_MAP_URL;
     }
-    if (store.mapUrl.includes('EyUZdyhBnWcFoa8i8') || store.mapUrl.includes('destination=26.7516951')) {
+    if (
+      store.mapUrl.includes('26.7516951') ||
+      store.mapUrl.includes('EyUZdyhBnWcFoa8i8') ||
+      store.mapUrl.includes('JalKal') ||
+      store.mapUrl.includes('store-2') ||
+      store.mapUrl.includes('q=26.751')
+    ) {
       return JALKAL_BUILDING_MAP_URL;
     }
-    return store.mapUrl;
+    if (store.mapUrl.includes('/dir/') && store.mapUrl.includes('Ram+Prasad')) {
+      return store.mapUrl;
+    }
   }
   const nameLower = (store?.name || '').toLowerCase();
   const addrLower = (store?.address || '').toLowerCase();
@@ -36,7 +53,7 @@ export const getStoreMapUrl = (store, index) => {
 const STORES = [
   {
     id: 'store-1',
-    name: 'Baldev Plaza Flagship Showroom',
+    name: 'Ram Prasad Agencies — Baldev Plaza Flagship',
     tagline: 'Swiss Horology & Automatic Heritage',
     address: 'Baldev Plaza, Main Market, Golghar, Gorakhpur, UP - 273001',
     landmark: 'Opposite Town Hall / Heart of Golghar Commercial Hub',
@@ -48,13 +65,13 @@ const STORES = [
       'Watch battery, bracelet adjustment & precision servicing',
     ],
     mapUrl: BALDEV_PLAZA_MAP_URL,
-    mapQuery: 'Baldev+Plaza+Golghar+Gorakhpur',
+    mapQuery: 'Ram+Prasad+Agencies+Baldev+Plaza+Golghar+Gorakhpur',
     phone: '+91 98765 43210',
     image: '/images/showrooms/baldev-plaza.webp',
   },
   {
     id: 'store-2',
-    name: 'JalKal Building Boutique',
+    name: 'Ram Prasad Agencies — JalKal Building Boutique',
     tagline: 'Contemporary & Everyday Luxury Timepieces',
     address: 'Shop No. 1, JalKal Building, Golghar, Gorakhpur, UP - 273001',
     landmark: 'Near JalKal Compound, Main Golghar Market',
@@ -66,13 +83,14 @@ const STORES = [
       'Instant watch battery replacement & ultrasonic cleaning',
     ],
     mapUrl: JALKAL_BUILDING_MAP_URL,
-    mapQuery: 'JalKal+Building+Golghar+Gorakhpur',
+    mapQuery: 'Ram+Prasad+Agencies+JalKal+Building+Golghar+Gorakhpur',
     phone: '+91 98765 43210',
     image: '/images/showrooms/jalkal-building.webp',
   },
 ];
 
 export default function DualStorefront({ contactPhone, showrooms }) {
+  const { openWhatsApp } = useWhatsApp();
   const storeList = (showrooms && Array.isArray(showrooms) && showrooms.length > 0)
     ? showrooms
     : STORES;
@@ -108,12 +126,12 @@ export default function DualStorefront({ contactPhone, showrooms }) {
                 key={store.id || index}
                 className="rounded-2xl sm:rounded-3xl bg-white border border-[#E5DFD5] hover:border-brass-500/60 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-md hover:shadow-xl group"
               >
-                {/* Store Visual & Badge - Clickable to Google Maps */}
+                {/* Store Visual & Badge - Clickable directly to Ram Prasad Agencies on Google Maps */}
                 <a
                   href={mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block relative h-48 sm:h-56 overflow-hidden bg-[#FAF7F2] cursor-pointer"
+                  className="block relative h-48 sm:h-56 overflow-hidden bg-[#FAF7F2] cursor-pointer group/img"
                   title={`Open ${store.name} on Google Maps`}
                 >
                   <img
@@ -125,14 +143,14 @@ export default function DualStorefront({ contactPhone, showrooms }) {
 
                   <div className="absolute top-3.5 sm:top-4 left-3.5 sm:left-4">
                     <span className="px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest bg-white/95 text-brass-800 border border-brass-600/30 shadow-sm backdrop-blur-md">
-                      Store #{index + 1} • {isBaldev ? 'Baldev Plaza' : 'JalKal Building'}
+                      Ram Prasad Agencies • {isBaldev ? 'Baldev Plaza' : 'JalKal Building'}
                     </span>
                   </div>
 
                   <div className="absolute top-3.5 sm:top-4 right-3.5 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold text-white bg-black/60 backdrop-blur-md border border-white/20 shadow-sm">
                       <ExternalLink className="w-3 h-3 text-amber-400" />
-                      <span>View Map</span>
+                      <span>Open Maps</span>
                     </span>
                   </div>
 
@@ -212,21 +230,27 @@ export default function DualStorefront({ contactPhone, showrooms }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold bg-[#FAF7F2] hover:bg-brass-700 hover:text-white text-[#1A1A1A] border border-[#DDD5C7] hover:border-brass-700 transition-all shadow-xs active:scale-98 group/dir"
-                      title={`Open ${store.name} on Google Maps`}
+                      title={`Get Directions to ${store.name} on Google Maps`}
                     >
                       <Navigation className="w-3.5 h-3.5 text-brass-700 group-hover/dir:text-white transition-colors" />
                       <span>Get Directions</span>
                     </a>
 
-                    <a
-                      href={waLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full sm:flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md shadow-[#25D366]/20 transition-all active:scale-98"
+                    <button
+                      type="button"
+                      onClick={() => openWhatsApp({
+                        phone,
+                        storeName: store.name,
+                        message: `Hello Ram Prasad Agencies, I would like to inquire about timepiece collections and schedule a private showroom consultation at your ${store.name}.`,
+                        purpose: 'showroom',
+                        title: `Inquire with ${store.name}`,
+                        subtitle: `Enter your name to personalize your showroom inquiry with our ${store.name} team`,
+                      })}
+                      className="w-full sm:flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md shadow-[#25D366]/20 transition-all active:scale-98 cursor-pointer"
                     >
                       <OriginalWhatsAppIcon className="w-4 h-4 shrink-0" size={16} />
                       <span>WhatsApp Store</span>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

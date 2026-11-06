@@ -131,6 +131,40 @@ export const saveCustomerProfile = (profile) => {
 };
 
 /**
+ * Injects customer name into a WhatsApp message template cleanly.
+ */
+export const formatWhatsAppMessage = (rawMessage, name = null) => {
+  if (typeof rawMessage !== 'string' || !rawMessage.trim()) return '';
+  const profile = getStoredCustomerProfile() || {};
+  const customerName = (name !== null && name !== undefined ? name : profile.name)?.trim() || '';
+
+  let msg = rawMessage.trim();
+
+  // If a name is available, inject it cleanly
+  if (customerName && customerName !== '[Your Name]') {
+    // 1. Replace explicit [Your Name] or [Name] placeholders if present
+    if (msg.includes('[Your Name]') || msg.includes('[Name]')) {
+      return msg.replace(/\[(Your )?Name\]/gi, customerName);
+    }
+    // 2. If it already has "my name is <name>", keep it
+    if (/my name is/i.test(msg)) {
+      return msg;
+    }
+    // 3. If starts with greeting like "Hello Ram Prasad Agencies,", inject name
+    if (/^Hello Ram Prasad Agencies,\s*/i.test(msg)) {
+      return msg.replace(
+        /^Hello Ram Prasad Agencies,\s*/i,
+        `Hello Ram Prasad Agencies, my name is ${customerName}. `
+      );
+    }
+    // 4. Otherwise prepend greeting with name
+    return `Hello Ram Prasad Agencies, my name is ${customerName}. ${msg}`;
+  }
+
+  return msg;
+};
+
+/**
  * Helper to build prefilled WhatsApp inquiry link in a natural, polite paragraph format
  * including the customer's Name, Phone Number, and Email ID.
  */
@@ -151,11 +185,9 @@ export const getWhatsAppLink = (
   const customerPhone = profile.phone?.trim() || '[Your Phone Number]';
   const customerEmail = profile.email?.trim() || '[Your Email ID]';
 
-  const contactString = `You can reach me at ${customerPhone} or ${customerEmail}.`;
-
   let message = '';
   if (typeof watchOrMessage === 'string' && watchOrMessage.trim() !== '') {
-    message = watchOrMessage;
+    message = formatWhatsAppMessage(watchOrMessage, customerName !== '[Your Name]' ? customerName : null);
   } else if (watchOrMessage && typeof watchOrMessage === 'object') {
     const watchTitle = `${watchOrMessage.brand ? watchOrMessage.brand + ' ' : ''}${watchOrMessage.name || ''}`.trim();
     message = `Hello Ram Prasad Agencies,
