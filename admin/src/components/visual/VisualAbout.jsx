@@ -371,7 +371,7 @@ export default function VisualAbout({ storeData, isEditMode, onOpenEdit }) {
               <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#E8DFC0]/70">
                 <a
                   href="#showrooms"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brass-700 via-amber-700 to-brass-800 hover:from-brass-800 hover:to-brass-900 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-brass-700/20 hover:shadow-brass-700/35 hover:scale-[1.02] active:scale-[0.98] transition-all no-underline cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#4E382A]/90 via-[#3E2B1E]/90 to-[#2E1D13]/90 hover:from-[#5C4333]/95 hover:to-[#422C1D]/95 text-[#FAF7F2] font-bold text-xs sm:text-sm tracking-wide backdrop-blur-md border border-[#C5A059]/35 hover:border-[#E4CF99]/65 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)] shadow-md shadow-[#261A12]/30 hover:shadow-xl hover:shadow-[#261A12]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 no-underline cursor-pointer"
                 >
                   <span>View Full Showroom Details & Maps</span>
                   <ChevronRight className="w-4 h-4" />
@@ -432,7 +432,11 @@ export default function VisualAbout({ storeData, isEditMode, onOpenEdit }) {
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
                     href={currentTab.ctaHref}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brass-700 via-amber-700 to-brass-800 hover:from-brass-800 hover:to-brass-900 text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-lg shadow-brass-700/20 hover:shadow-brass-700/35 hover:scale-[1.02] active:scale-[0.98] transition-all no-underline cursor-pointer"
+                    className={
+                      currentTab.ctaLabel === 'Book Consultation'
+                        ? "inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-[1.02] active:scale-[0.98] border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 no-underline cursor-pointer"
+                        : "inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#4E382A]/90 via-[#3E2B1E]/90 to-[#2E1D13]/90 hover:from-[#5C4333]/95 hover:to-[#422C1D]/95 text-[#FAF7F2] font-bold text-xs sm:text-sm tracking-wide backdrop-blur-md border border-[#C5A059]/35 hover:border-[#E4CF99]/65 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)] shadow-md shadow-[#261A12]/30 hover:shadow-xl hover:shadow-[#261A12]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 no-underline cursor-pointer"
+                    }
                   >
                     <span>{currentTab.ctaLabel}</span>
                     <ChevronRight className="w-4 h-4" />
