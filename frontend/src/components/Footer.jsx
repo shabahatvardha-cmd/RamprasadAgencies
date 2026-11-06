@@ -38,8 +38,8 @@ export default function Footer() {
   const salesSupportWaLink = getWhatsAppLink(contactPhone, salesSupportWaMsg);
 
   return (
-    <footer className="bg-[#EDE7DE] border-t border-[#DDD5C7] pt-16 pb-12 text-[#5A524A] text-xs font-sans">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-12">
+    <footer className="bg-[#EDE7DE] border-t border-[#DDD5C7] pt-16 pb-0 text-[#5A524A] text-xs font-sans">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-12 pb-12">
         {/* B2B Partnership & Retailer Support Grid (Only displayed on the Main Website / Homepage) */}
         {isHomePage && (
           <div id="retailer-support" className="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-24">
@@ -163,40 +163,9 @@ export default function Footer() {
               Gorakhpur's premier authorized specialists in imported luxury timepieces, Swiss automatic calibers, and certified horology servicing for over four decades.
             </p>
 
-            <div className="flex items-center gap-2 text-brass-800 font-medium">
-              <ShieldCheck className="w-4 h-4 text-brass-700" />
+            <div className="flex items-center gap-2 text-brass-800 font-medium pt-1">
+              <ShieldCheck className="w-4 h-4 text-brass-700 shrink-0" />
               <span>Official Stamped 2-Year International Warranty</span>
-            </div>
-
-            {/* Official Social Media Channels */}
-            <div className="pt-2 border-t border-[#DDD5C7]/70 space-y-2">
-              <span className="block text-[10px] font-bold uppercase tracking-wider text-[#7C746B]">
-                Official Channels
-              </span>
-              <div className="flex items-center gap-2.5 flex-wrap">
-                <a
-                  href={instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#DDD5C7] hover:border-[#E1306C]/50 text-[#5A524A] hover:text-[#E1306C] shadow-xs hover:shadow-md transition-all duration-300"
-                  title="Follow Ram Prasad Agencies on Instagram (@ramprasadagencies)"
-                  aria-label="Ram Prasad Agencies on Instagram"
-                >
-                  <Instagram className="w-4 h-4 text-[#7C746B] group-hover:text-[#E1306C] transition-colors group-hover:scale-110 duration-200" />
-                  <span className="text-xs font-semibold tracking-tight">Instagram</span>
-                </a>
-                <a
-                  href={facebookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#DDD5C7] hover:border-[#1877F2]/50 text-[#5A524A] hover:text-[#1877F2] shadow-xs hover:shadow-md transition-all duration-300"
-                  title="Follow Ram Prasad Agencies on Facebook"
-                  aria-label="Ram Prasad Agencies on Facebook"
-                >
-                  <Facebook className="w-4 h-4 text-[#7C746B] group-hover:text-[#1877F2] transition-colors group-hover:scale-110 duration-200" />
-                  <span className="text-xs font-semibold tracking-tight">Facebook</span>
-                </a>
-              </div>
             </div>
           </div>
 
@@ -300,41 +269,52 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar: Copyright, Social & Authenticity Seal */}
-        <div className="pt-8 border-t border-[#DDD5C7] flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-[#7C746B]">
-          <p className="text-center md:text-left">
-            {storeData.footerCopyright || `© ${new Date().getFullYear()} ${brandName} — Baldev Plaza & JalKal Building, Golghar, Gorakhpur. All rights reserved.`}
-          </p>
+      {/* Dark Luxury Sub-Footer Bar (Circular Social Media Style: Instagram & Facebook Only) */}
+      <div className="w-full bg-[#0D0C0A] border-t border-[#23201C] py-8 sm:py-10 px-4 sm:px-6 text-center">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5">
+          {/* Circular Social Buttons: Facebook & Instagram Only */}
+          <div className="flex items-center justify-center gap-3.5">
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-[#262320] hover:bg-[#1877F2] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-110 active:scale-95 group/fb"
+              title="Follow Ram Prasad Agencies on Facebook"
+              aria-label="Ram Prasad Agencies on Facebook"
+            >
+              <Facebook className="w-4 h-4 fill-white text-white transition-transform group-hover/fb:scale-105" />
+            </a>
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-[#262320] hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-110 active:scale-95 group/ig"
+              title="Follow Ram Prasad Agencies on Instagram (@ramprasadagencies)"
+              aria-label="Ram Prasad Agencies on Instagram"
+            >
+              <Instagram className="w-4 h-4 text-white transition-transform group-hover/ig:scale-105" />
+            </a>
+          </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3.5 text-brass-800 font-medium">
-            <div className="flex items-center gap-2 text-[#5A524A]">
-              <span className="text-[10px] uppercase tracking-wider text-[#7C746B] font-semibold">Social:</span>
-              <a
-                href={instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 h-7 rounded-lg bg-white border border-[#DDD5C7] text-[#5A524A] hover:text-[#E1306C] hover:border-[#E1306C]/50 flex items-center justify-center shadow-xs hover:shadow transition-all group/soc"
-                title="Instagram @ramprasadagencies"
-                aria-label="Ram Prasad Agencies on Instagram"
-              >
-                <Instagram className="w-3.5 h-3.5 transition-transform group-hover/soc:scale-110" />
-              </a>
-              <a
-                href={facebookUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 h-7 rounded-lg bg-white border border-[#DDD5C7] text-[#5A524A] hover:text-[#1877F2] hover:border-[#1877F2]/50 flex items-center justify-center shadow-xs hover:shadow transition-all group/soc"
-                title="Facebook @ramprasadagencies"
-                aria-label="Ram Prasad Agencies on Facebook"
-              >
-                <Facebook className="w-3.5 h-3.5 transition-transform group-hover/soc:scale-110" />
-              </a>
-            </div>
-            <span className="hidden sm:inline text-[#DDD5C7]">|</span>
-            <span>• 100% Genuine Stamped Stock</span>
-            <span>• Free Insured Express Transit</span>
-            <span>• Verified Horologists</span>
+          {/* Centered Legal / Policy / Assurance Links */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[#9E968D]">
+            <span className="hover:text-white transition-colors cursor-pointer">Authenticity Guarantee</span>
+            <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
+            <span className="hover:text-white transition-colors cursor-pointer">Terms & Conditions</span>
+            <span className="hover:text-white transition-colors cursor-pointer">Showroom Visit Terms</span>
+          </div>
+
+          {/* Centered Copyright & Horological Disclaimer */}
+          <div className="text-[10.5px] sm:text-[11px] text-[#6C655D] flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 leading-relaxed">
+            <span>
+              {storeData.footerCopyright || `© ${new Date().getFullYear()} ${brandName}`}
+            </span>
+            <span className="text-[#3A3530] hidden sm:inline">|</span>
+            <span>
+              *Official Authorized Watch Retailer & Horology Service Center, Gorakhpur. All timepieces carry official stamped manufacturer warranties.
+            </span>
           </div>
         </div>
       </div>
