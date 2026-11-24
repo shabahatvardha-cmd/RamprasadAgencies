@@ -7,6 +7,7 @@ import Header from './components/Header';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import WatchModal from './components/WatchModal';
 import Footer from './components/Footer';
+import WebsitePreviewModal from './components/WebsitePreviewModal';
 import HomePage from './pages/HomePage';
 import BrandPage from './pages/BrandPage';
 import { FALLBACK_WATCHES } from './data/fallbackWatches';
@@ -52,8 +53,13 @@ function ScrollToTop() {
 
 function StorefrontContent() {
   const { storeData, liveWatches } = useStore();
+  const location = useLocation();
   const currentData = storeData || DEFAULT_VINTAGE_STORE_DATA;
   const contactPhone = currentData.contactPhone || '+91 98765 43210';
+
+  const isInsidePreview =
+    (typeof window !== 'undefined' && window.self !== window.top) ||
+    new URLSearchParams(location.search).get('preview') === '1';
 
   // Modal & Search state
   const [selectedWatchForModal, setSelectedWatchForModal] = useState(null);
@@ -170,10 +176,13 @@ function StorefrontContent() {
       )}
 
       {/* 4. Floating WhatsApp Concierge */}
-      <FloatingWhatsApp contactPhone={contactPhone} />
+      {!isInsidePreview && <FloatingWhatsApp contactPhone={contactPhone} />}
 
       {/* 5. Vintage Lifestyle Brand Footer */}
       <Footer />
+
+      {/* 6. Client Review & Kickoff Booking Popup */}
+      {!isInsidePreview && <WebsitePreviewModal />}
     </div>
   );
 }

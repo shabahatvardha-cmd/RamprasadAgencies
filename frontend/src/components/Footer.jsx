@@ -38,7 +38,7 @@ export default function Footer() {
   const salesSupportWaLink = getWhatsAppLink(contactPhone, salesSupportWaMsg);
 
   return (
-    <footer className="bg-[#EDE7DE] border-t border-[#DDD5C7] pt-16 pb-0 text-[#5A524A] text-xs font-sans">
+    <footer id="website-footer" className="bg-[#EDE7DE] border-t border-[#DDD5C7] pt-16 pb-0 text-[#5A524A] text-xs font-sans">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-12 pb-12">
         {/* B2B Partnership & Retailer Support Grid (Only displayed on the Main Website / Homepage) */}
         {isHomePage && (
